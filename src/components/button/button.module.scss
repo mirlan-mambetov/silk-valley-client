@@ -1,0 +1,9 @@
+.button {
+	background: none;
+	border: none;
+	cursor: pointer;
+	color: inherit;
+	&:focus {
+		outline: none;
+	}
+}

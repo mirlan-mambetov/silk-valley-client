@@ -1,0 +1,82 @@
+@import "../../styles/vars";
+
+.header {
+	padding: 0 0 12px 0;
+}
+.top {
+	background: $darken;
+	.wrap {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		color: $white;
+		padding: 6px 0;
+		.row {
+			.deliver {
+				display: flex;
+				align-items: center;
+				gap: 8px;
+				button {
+					display: flex;
+					span {
+						font-size: 12px;
+					}
+				}
+			}
+		}
+	}
+}
+.content {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 0;
+	.menu,
+	.logo,
+	.action {
+		flex: 1;
+		// border: 1px solid red;
+	}
+	.menu {
+		display: flex;
+		gap: 15px;
+		align-items: center;
+		.button {
+			display: flex;
+			flex-direction: column;
+			gap: 3px;
+			span {
+				width: 17px;
+				height: 1px;
+				background: $darken;
+			}
+		}
+	}
+	.logo {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		img {
+			width: 140px;
+			height: 60px;
+		}
+	}
+	.action {
+		display: flex;
+		justify-content: flex-end;
+		gap: 15px;
+		color: $darken;
+
+		.column {
+			.search,
+			.cart {
+				font-size: 18px;
+			}
+			button {
+				font-size: 12px;
+				font-weight: 500;
+				text-transform: uppercase;
+			}
+		}
+	}
+}
