@@ -7,3 +7,6 @@ export interface IMenuItems {
 	Icon?: IconType
 	itemId?: number
 }
+export interface IMenuData extends IMenuItems {
+	childsData?: IMenuItems[]
+}

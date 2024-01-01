@@ -1,14 +1,23 @@
 "use client"
 
+import { variants3, variants4 } from "@/framer-motion"
+import useOutsiteClick from "@/hooks/useOutsideClick"
+import cn from "classnames"
+import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
+import { useState } from "react"
 import { FaMapMarkerAlt } from "react-icons/fa"
 import { IoSearchOutline } from "react-icons/io5"
 import { SlHandbag } from "react-icons/sl"
 import { ButtonComponent, MenuComponent } from "../"
+import { HEADER_MENU } from "../menu/menu.data"
 import style from "./header.module.scss"
 
 export const HeaderComponent = () => {
+	const [active, setActive] = useState(false)
+	const { elRef, isShow, setIsShow } = useOutsiteClick(false)
+
 	return (
 		<div className={style.header}>
 			{/* TOP HEADER */}
@@ -35,13 +44,21 @@ export const HeaderComponent = () => {
 			<div className="container">
 				<div className={style.content}>
 					{/* MENU */}
-					<div className={style.menu}>
-						<ButtonComponent className={style.button}>
+					<div className={cn(style.menu, { [style.active]: isShow })}>
+						<ButtonComponent
+							className={style.button}
+							onClick={() => setIsShow(!isShow)}
+						>
 							<span></span>
 							<span></span>
 							<span></span>
 						</ButtonComponent>
-						<MenuComponent />
+						<MenuComponent
+							orientation="column"
+							data={HEADER_MENU}
+							limit={3}
+							animate={false}
+						/>
 					</div>
 					{/* END MENU */}
 
@@ -77,6 +94,24 @@ export const HeaderComponent = () => {
 					</div>
 					{/* END ACTIONS */}
 				</div>
+				<motion.div
+					variants={variants3}
+					animate={isShow ? "open" : "closed"}
+					className={style.navigation}
+					ref={elRef}
+				>
+					<motion.div
+						animate={isShow ? "active" : "closed"}
+						variants={variants4}
+						className={style.border}
+					></motion.div>
+					<MenuComponent
+						type="absolute"
+						orientation="row"
+						secondMenu={false}
+						data={HEADER_MENU}
+					/>
+				</motion.div>
 			</div>
 		</div>
 	)

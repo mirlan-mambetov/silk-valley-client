@@ -10,11 +10,20 @@ export const ButtonComponent: FC<IButtonComponent> = ({
 	type,
 	children,
 	className,
+	...props
 }) => {
 	switch (type) {
 		case "cart":
-			return <button className={cn(style.button, className)}>cartbtn</button>
+			return (
+				<button className={cn(style.button, className)} {...props}>
+					cartbtn
+				</button>
+			)
 		default:
-			return <button className={cn(style.button, className)}>{children}</button>
+			return (
+				<button className={cn(style.button, className)} {...props}>
+					{children}
+				</button>
+			)
 	}
 }
