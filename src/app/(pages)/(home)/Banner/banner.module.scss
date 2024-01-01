@@ -1,0 +1,194 @@
+@import "../../../../styles/vars";
+
+.banner {
+	padding: 20px 0;
+	.bannerWrapp {
+		border-radius: 6px;
+		overflow: hidden;
+		.wrapp {
+			position: relative;
+			.navigations {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 100%;
+				transform: translate(-50%, -50%);
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				z-index: 3;
+				padding: 0 10px;
+				.prev,
+				.next {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					width: 60px;
+					height: 60px;
+					border-radius: 50%;
+					font-size: 30px;
+					cursor: pointer;
+					color: $black;
+					background: $white;
+				}
+			}
+			.timeLeft {
+				position: absolute;
+				right: 20px;
+				bottom: 20px;
+				width: 60px;
+				height: 60px;
+				z-index: 3;
+				.autoPlay {
+					position: relative;
+					width: 100%;
+					height: 100%;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					.progress {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 0;
+						height: 100%;
+						border-radius: 50%;
+						border: 1px solid $white;
+					}
+				}
+			}
+
+			.reel {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				display: flex;
+				justify-content: flex-end;
+				.video {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+				}
+			}
+			.content {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 12px;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				color: $white;
+				z-index: 2;
+				.name {
+					display: flex;
+					align-items: center;
+					justify-content: flex-end;
+					max-width: 35%;
+					text-align: right;
+					width: 100%;
+					h2 {
+						font-size: 46px;
+						font-style: normal;
+						line-height: 50px;
+						font-weight: bold;
+					}
+				}
+				.description {
+					padding: 8px;
+					background: $black;
+					border-radius: 4px;
+					max-width: 45%;
+					width: 100%;
+					.text {
+						display: -webkit-box;
+						-webkit-line-clamp: 2;
+						text-overflow: ellipsis;
+						-webkit-box-orient: vertical;
+						overflow: hidden;
+						font-size: 18px;
+						font-style: normal;
+						font-weight: 300;
+						line-height: 20px;
+					}
+				}
+			}
+		}
+		.bannerBox {
+			position: relative;
+			padding-top: calc(100% * 60 / 180);
+			background-color: $black;
+			&::after {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: $darkenRGBA;
+				pointer-events: none;
+			}
+		}
+	}
+}
+.autoplayProgress {
+	position: absolute;
+	right: 16px;
+	bottom: 16px;
+	z-index: 10;
+	width: 80px;
+	height: 80px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: $white;
+	svg {
+		--progress: 0;
+		position: absolute;
+		left: 0;
+		top: 0px;
+		z-index: 10;
+		width: 100%;
+		height: 100%;
+		stroke-width: 1px;
+		stroke: $purple;
+		fill: none;
+		stroke-dashoffset: calc(125.6 * (1 - var(--progress)));
+		stroke-dasharray: 125.6;
+		transform: rotate(-90deg);
+	}
+	span {
+		font-size: 12px;
+		font-style: normal;
+		font-weight: 300;
+	}
+}
+
+.pagination {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 10px 0;
+	gap: 6px;
+	z-index: 5;
+}
+.bulletClass {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	cursor: pointer;
+	border: 1px solid $purple;
+	color: $black;
+}
+.bulletActiveClass {
+	background: $discount;
+	border: none;
+}

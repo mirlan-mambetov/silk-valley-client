@@ -20,13 +20,13 @@ export const variants4: Variants = {
 	active: {
 		width: "100%",
 		transition: {
-			width: { stiffness: 1000, velocity: -100 },
+			delay: 0.5,
 		},
 	},
 	closed: {
 		width: "0",
 		transition: {
-			width: { stiffness: 1000 },
+			delay: 0.5,
 		},
 	},
 }
