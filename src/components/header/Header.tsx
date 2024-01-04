@@ -6,7 +6,6 @@ import cn from "classnames"
 import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
-import { useState } from "react"
 import { FaMapMarkerAlt } from "react-icons/fa"
 import { IoSearchOutline } from "react-icons/io5"
 import { SlHandbag } from "react-icons/sl"
@@ -15,7 +14,6 @@ import { HEADER_MENU } from "../menu/menu.data"
 import style from "./header.module.scss"
 
 export const HeaderComponent = () => {
-	const [active, setActive] = useState(false)
 	const { elRef, isShow, setIsShow } = useOutsiteClick(false)
 
 	return (

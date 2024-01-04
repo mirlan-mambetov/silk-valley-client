@@ -1,3 +1,6 @@
+@import "../../styles/mixin";
+@import "../../styles/vars";
+
 .button {
 	background: none;
 	border: none;
@@ -7,4 +10,14 @@
 	&:focus {
 		outline: none;
 	}
+}
+.cart {
+	display: flex;
+	align-items: center;
+	padding: 8px 17px;
+	border-radius: 10px;
+	background: $black;
+	color: $white;
+	font-size: 14px;
+	font-weight: bold;
 }

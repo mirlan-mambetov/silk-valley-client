@@ -2,13 +2,13 @@ import { IMenuItems } from "@/interfaces/menu.interface"
 import Link from "next/link"
 import { DetailsHTMLAttributes, FC } from "react"
 
-interface IMenu extends DetailsHTMLAttributes<HTMLUListElement> {
+interface IMenuProps extends DetailsHTMLAttributes<HTMLUListElement> {
 	listClassName: string
 	listItemClassName: string
 	data: IMenuItems[]
 }
 
-export const ListGroupComponent: FC<IMenu> = ({
+export const ListGroupComponent: FC<IMenuProps> = ({
 	listClassName,
 	listItemClassName,
 	data,

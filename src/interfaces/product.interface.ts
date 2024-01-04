@@ -4,4 +4,8 @@ export interface IProduct extends IBase {
 	title: string
 	video?: string
 	description: string
+	poster: string
+	images: string[]
+	price: number
+	article: number
 }

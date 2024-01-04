@@ -8,7 +8,7 @@ import Link from "next/link"
 import { FC, useState } from "react"
 import style from "./menu.module.scss"
 
-interface IMenuComponent {
+interface IMenuComponentProps {
 	orientation?: "row" | "column"
 	secondMenu?: boolean
 	type?: "default" | "absolute"
@@ -16,7 +16,7 @@ interface IMenuComponent {
 	limit?: number
 	animate?: boolean
 }
-export const MenuComponent: FC<IMenuComponent> = ({
+export const MenuComponent: FC<IMenuComponentProps> = ({
 	orientation = "column",
 	secondMenu = true,
 	type = "default",
