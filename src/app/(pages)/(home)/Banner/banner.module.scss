@@ -28,8 +28,8 @@
 					border-radius: 50%;
 					font-size: 30px;
 					cursor: pointer;
-					color: $black;
-					background: $white;
+					color: $white;
+					background: $darkenRGBA;
 				}
 			}
 			.timeLeft {
@@ -100,20 +100,21 @@
 				}
 				.description {
 					padding: 8px;
-					background: $black;
+					background: $white;
 					border-radius: 4px;
 					max-width: 45%;
 					width: 100%;
+					color: $black;
 					.text {
 						display: -webkit-box;
 						-webkit-line-clamp: 2;
 						text-overflow: ellipsis;
 						-webkit-box-orient: vertical;
 						overflow: hidden;
-						font-size: 18px;
+						font-size: 16px;
 						font-style: normal;
-						font-weight: 300;
-						line-height: 20px;
+						font-weight: 500;
+						line-height: 22px;
 					}
 				}
 			}

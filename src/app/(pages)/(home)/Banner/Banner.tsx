@@ -18,7 +18,6 @@ interface IMainBannerProps {
 }
 export const Banner: FC<IMainBannerProps> = ({ data }) => {
 	const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
-	const paginationRef = useRef(null)
 	const [isChanged, setIsChanged] = useState<"change" | "changed" | "stoped">(
 		"stoped"
 	)
