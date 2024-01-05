@@ -1,5 +1,6 @@
-import { CardsComponent } from "@/components"
+import { CardsComponent, SharesComponent } from "@/components"
 import { CARDS_PRODUCT } from "@/components/product/product.data"
+import { SHARES_DATA } from "@/components/shares/shares.data"
 import { Banner } from "./Banner/Banner"
 import { BANNER_DATA } from "./Banner/banner.data"
 import style from "./home.module.scss"
@@ -13,7 +14,12 @@ const HomePage = () => {
 					<Banner data={BANNER_DATA} />
 				</div>
 			</section>
-
+			{/* SHARES */}
+			<section>
+				<div className="container">
+					<SharesComponent data={SHARES_DATA} />
+				</div>
+			</section>
 			{/* CARDS*/}
 			<section>
 				<div className="container">
