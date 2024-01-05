@@ -5,7 +5,7 @@ import { IMenuData } from "@/interfaces/menu.interface"
 import cn from "classnames"
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { FC, useState } from "react"
+import { FC } from "react"
 import style from "./menu.module.scss"
 
 interface IMenuComponentProps {
@@ -24,8 +24,6 @@ export const MenuComponent: FC<IMenuComponentProps> = ({
 	limit,
 	animate,
 }) => {
-	const [itemId, setItemId] = useState<null | number>(null)
-
 	const limitedData = limit ? data.slice(0, limit) : data
 	return (
 		<motion.div

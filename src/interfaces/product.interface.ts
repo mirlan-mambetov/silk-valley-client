@@ -11,4 +11,5 @@ export interface IProduct extends IBase {
 	rating: number
 	new?: boolean
 	discount?: number
+	isHit?: boolean
 }

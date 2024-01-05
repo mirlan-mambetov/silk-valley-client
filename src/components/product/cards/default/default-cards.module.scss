@@ -99,6 +99,12 @@
 						font-size: 14px;
 						background: $purple;
 					}
+					.new {
+						background: $discount;
+					}
+					.hit {
+						background: $darkRED;
+					}
 					span {
 						flex: none;
 						font-size: 8px;
@@ -106,7 +112,6 @@
 						line-height: 14px;
 						text-transform: uppercase;
 						color: $white;
-						background: $discount;
 						padding: 2px 4px;
 						border-radius: 2px;
 					}

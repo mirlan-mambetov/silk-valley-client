@@ -12,15 +12,21 @@ import style from "./default-cards.module.scss"
 
 interface IDefaultCardsComponentProps {
 	data: IProduct[]
+	limit?: number
+	title?: string
 }
 export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 	data,
+	limit,
+	title,
 }) => {
+	const limitedData = data.slice(0, limit)
 	const [isHover, setIsHover] = useState(false)
 	return (
 		<div className={style.cards}>
+			{title ? <h3 className="section-title">{title}</h3> : null}
 			<div className={style.wrap}>
-				{data.map((product) => (
+				{limitedData.map((product) => (
 					<div
 						className={style.card}
 						key={product.id}
@@ -40,12 +46,13 @@ export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 										alt={product.title}
 									/>
 									<div className={style.action}>
+										{product.isHit && <span className={style.hit}>Хит!</span>}
 										{product.discount && (
 											<span className={style.discount}>
 												-{product.discount}%
 											</span>
 										)}
-										{product.new && <span>Новинка</span>}
+										{product.new && <span className={style.new}>Новинка</span>}
 									</div>
 								</div>
 							</div>

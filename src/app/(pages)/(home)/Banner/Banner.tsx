@@ -68,84 +68,82 @@ export const Banner: FC<IMainBannerProps> = ({ data }) => {
 	}
 	return (
 		<div className={style.banner}>
-			<div className="container">
-				<div className={style.bannerWrapp}>
-					<Swiper
-						onTransitionStart={({ activeIndex, slides }) => {
-							setCurrentSlideIndex(activeIndex)
-							setIsChanged("change")
-						}}
-						onTransitionEnd={({ activeIndex }) => {
-							setIsChanged("changed")
-						}}
-						onAutoplayTimeLeft={onAutoplayTimeLeft}
-						autoplay={{
-							delay: videoDurations[currentSlideIndex],
-							disableOnInteraction: false,
-						}}
-						// onAutoplayTimeLeft={onAutoplayTimeLeft}
-						navigation={{
-							nextEl: `.${style.next}`,
-							prevEl: `.${style.prev}`,
-						}}
-						effect={"fade"}
-						pagination={{
-							el: `.${style.pagination}`,
-							bulletActiveClass: style.bulletActiveClass,
-							bulletClass: style.bulletClass,
-							renderBullet: function (index: number, className: string) {
-								return `<span class="${className}"></span>`
-							},
-							clickable: true,
-						}}
-						modules={[Navigation, Pagination, Autoplay, EffectFade]}
-						className={style.wrapp}
-					>
-						{data.map((data, index) => (
-							<SwiperSlide key={data.id} className={style.bannerBox}>
-								{/* <Discount discount={data.discount} /> */}
-								<div className={style.reel}>
-									<video
-										playsInline
-										muted
-										ref={(el) => (videoRefs.current[index] = el)}
-										loop
-										className={style.video}
-										src={data.video}
-									></video>
+			<div className={style.bannerWrapp}>
+				<Swiper
+					onTransitionStart={({ activeIndex, slides }) => {
+						setCurrentSlideIndex(activeIndex)
+						setIsChanged("change")
+					}}
+					onTransitionEnd={({ activeIndex }) => {
+						setIsChanged("changed")
+					}}
+					onAutoplayTimeLeft={onAutoplayTimeLeft}
+					autoplay={{
+						delay: videoDurations[currentSlideIndex],
+						disableOnInteraction: false,
+					}}
+					// onAutoplayTimeLeft={onAutoplayTimeLeft}
+					navigation={{
+						nextEl: `.${style.next}`,
+						prevEl: `.${style.prev}`,
+					}}
+					effect={"fade"}
+					pagination={{
+						el: `.${style.pagination}`,
+						bulletActiveClass: style.bulletActiveClass,
+						bulletClass: style.bulletClass,
+						renderBullet: function (index: number, className: string) {
+							return `<span class="${className}"></span>`
+						},
+						clickable: true,
+					}}
+					modules={[Navigation, Pagination, Autoplay, EffectFade]}
+					className={style.wrapp}
+				>
+					{data.map((data, index) => (
+						<SwiperSlide key={data.id} className={style.bannerBox}>
+							{/* <Discount discount={data.discount} /> */}
+							<div className={style.reel}>
+								<video
+									playsInline
+									muted
+									ref={(el) => (videoRefs.current[index] = el)}
+									loop
+									className={style.video}
+									src={data.video}
+								></video>
+							</div>
+							<div className={style.content}>
+								<div className={style.name}>
+									<h2>{data.title}</h2>
 								</div>
-								<div className={style.content}>
-									<div className={style.name}>
-										<h2>{data.title}</h2>
-									</div>
-									<div className={style.description}>
-										<p className={style.text}>{data.description}</p>
-									</div>
+								<div className={style.description}>
+									<p className={style.text}>{data.description}</p>
 								</div>
-								<div className={style.autoplayProgress} slot="container-end">
-									<svg
-										viewBox="0 0 48 48"
-										ref={(el) => (progressCircles.current[index] = el)}
-									>
-										<circle cx="24" cy="24" r="20"></circle>
-									</svg>
-									<span
-										ref={(el) => (progressContents.current[index] = el)}
-									></span>
-								</div>
-							</SwiperSlide>
-						))}
-						<div className={style.navigations}>
-							<ButtonComponent className={style.prev}>
-								<BsArrowLeft />
-							</ButtonComponent>
-							<ButtonComponent className={style.next}>
-								<BsArrowRight />
-							</ButtonComponent>
-						</div>
-						<div className={style.pagination}></div>
-					</Swiper>
-				</div>
+							</div>
+							<div className={style.autoplayProgress} slot="container-end">
+								<svg
+									viewBox="0 0 48 48"
+									ref={(el) => (progressCircles.current[index] = el)}
+								>
+									<circle cx="24" cy="24" r="20"></circle>
+								</svg>
+								<span
+									ref={(el) => (progressContents.current[index] = el)}
+								></span>
+							</div>
+						</SwiperSlide>
+					))}
+					<div className={style.navigations}>
+						<ButtonComponent className={style.prev}>
+							<BsArrowLeft />
+						</ButtonComponent>
+						<ButtonComponent className={style.next}>
+							<BsArrowRight />
+						</ButtonComponent>
+					</div>
+					<div className={style.pagination}></div>
+				</Swiper>
 			</div>
 		</div>
 	)
