@@ -1,10 +1,13 @@
 "use client"
 
-import { ButtonComponent } from "@/components"
+import {
+	ButtonComponent,
+	FeaturedComponent,
+	RatingComponent,
+} from "@/components"
 import { IProduct } from "@/interfaces/product.interface"
 import Image from "next/image"
 import { FC, useState } from "react"
-import { Rating } from "react-simple-star-rating"
 import style from "./default-cards.module.scss"
 
 interface IDefaultCardsComponentProps {
@@ -24,6 +27,9 @@ export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 						onMouseEnter={() => setIsHover(!isHover)}
 					>
 						<div className={style.card_wrap}>
+							<div className={style.featured}>
+								<FeaturedComponent />
+							</div>
 							<div className={style.top}>
 								<div className={style.poster}>
 									<Image
@@ -33,6 +39,14 @@ export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 										src={product.poster}
 										alt={product.title}
 									/>
+									<div className={style.action}>
+										{product.discount && (
+											<span className={style.discount}>
+												-{product.discount}%
+											</span>
+										)}
+										{product.new && <span>Новинка</span>}
+									</div>
 								</div>
 							</div>
 							<div className={style.content}>
@@ -45,7 +59,7 @@ export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 
 								<div className={style.middle}>
 									<div className={style.rating}>
-										<Rating initialValue={3} size={14} />
+										<RatingComponent rating={product.rating} />
 										<span>Отзывов: 323</span>
 									</div>
 									<div className={style.price}>
@@ -54,8 +68,7 @@ export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 									</div>
 								</div>
 							</div>
-
-							<div className={style.action}>
+							<div className={style.buttons}>
 								<ButtonComponent type="cart" />
 							</div>
 						</div>

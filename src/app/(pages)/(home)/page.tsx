@@ -1,5 +1,7 @@
 import { CardsComponent } from "@/components"
 import { CARDS_PRODUCT } from "@/components/product/product.data"
+import { Banner } from "./Banner/Banner"
+import { BANNER_DATA } from "./Banner/banner.data"
 import style from "./home.module.scss"
 
 const HomePage = () => {
@@ -7,7 +9,9 @@ const HomePage = () => {
 		<>
 			{/* BANNER HERO */}
 			<section className={style.banner}>
-				<div className="container">{/* <Banner data={BANNER_DATA} /> */}</div>
+				<div className="container">
+					<Banner data={BANNER_DATA} />
+				</div>
 			</section>
 
 			{/* CARDS*/}

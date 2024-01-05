@@ -8,4 +8,7 @@ export interface IProduct extends IBase {
 	images: string[]
 	price: number
 	article: number
+	rating: number
+	new?: boolean
+	discount?: number
 }

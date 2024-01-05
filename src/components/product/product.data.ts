@@ -16,6 +16,9 @@ export const CARDS_PRODUCT: IProduct[] = [
 			"https://basket-11.wbbasket.ru/vol1618/part161824/161824021/images/big/7.webp",
 		],
 		price: 2022,
+		rating: 3.4,
+		new: true,
+		discount: 12,
 	},
 	{
 		id: 2,
@@ -32,6 +35,9 @@ export const CARDS_PRODUCT: IProduct[] = [
 			"https://basket-11.wbbasket.ru/vol1612/part161286/161286292/images/big/5.webp",
 		],
 		price: 3022,
+		rating: 2.3,
+		new: false,
+		discount: 15,
 	},
 	{
 		id: 3,
@@ -48,6 +54,9 @@ export const CARDS_PRODUCT: IProduct[] = [
 			"https://basket-12.wbbasket.ru/vol1714/part171493/171493980/images/big/6.webp",
 		],
 		price: 3022,
+		rating: 3.8,
+		discount: 20,
+		new: true,
 	},
 	{
 		id: 4,
@@ -64,6 +73,8 @@ export const CARDS_PRODUCT: IProduct[] = [
 			"https://basket-05.wbbasket.ru/vol945/part94563/94563844/images/big/7.webp",
 		],
 		price: 3022,
+		rating: 4.5,
+		new: false,
 	},
 	{
 		id: 5,
@@ -80,6 +91,9 @@ export const CARDS_PRODUCT: IProduct[] = [
 			"https://basket-05.wbbasket.ru/vol972/part97209/97209381/images/big/6.webp",
 		],
 		price: 3022,
+		rating: 4.2,
+		new: true,
+		discount: 10,
 	},
 	{
 		id: 6,
@@ -96,6 +110,8 @@ export const CARDS_PRODUCT: IProduct[] = [
 			"https://basket-06.wbbasket.ru/vol1023/part102336/102336723/images/big/12.webp",
 		],
 		price: 3022,
+		rating: 4.0,
+		new: false,
 	},
 	{
 		id: 7,
@@ -112,6 +128,10 @@ export const CARDS_PRODUCT: IProduct[] = [
 			"https://basket-12.wbbasket.ru/vol1687/part168705/168705407/images/big/5.webp",
 		],
 		price: 3022,
+		new: false,
+		discount: 40,
+
+		rating: 3.8,
 	},
 	{
 		id: 8,
@@ -128,6 +148,8 @@ export const CARDS_PRODUCT: IProduct[] = [
 			"https://basket-12.wbbasket.ru/vol1771/part177120/177120727/images/big/5.webp",
 		],
 		price: 3022,
+		rating: 3.1,
+		new: true,
 	},
 	{
 		id: 9,
@@ -141,6 +163,9 @@ export const CARDS_PRODUCT: IProduct[] = [
 			"https://basket-12.wbbasket.ru/vol1722/part172232/172232336/images/big/7.webp",
 		],
 		price: 3022,
+		rating: 3.2,
+		new: false,
+		discount: 8,
 	},
 	{
 		id: 10,
@@ -156,6 +181,8 @@ export const CARDS_PRODUCT: IProduct[] = [
 			"https://basket-10.wbbasket.ru/vol1517/part151775/151775685/images/big/4.webp",
 		],
 		price: 3022,
+		rating: 4.0,
+		new: false,
 	},
 	{
 		id: 11,
@@ -171,7 +198,10 @@ export const CARDS_PRODUCT: IProduct[] = [
 			"https://basket-05.wbbasket.ru/vol972/part97209/97209381/images/big/5.webp",
 			"https://basket-05.wbbasket.ru/vol972/part97209/97209381/images/big/6.webp",
 		],
+		discount: 5,
 		price: 3022,
+		rating: 4.1,
+		new: false,
 	},
 	{
 		id: 12,
@@ -188,5 +218,7 @@ export const CARDS_PRODUCT: IProduct[] = [
 			"https://basket-12.wbbasket.ru/vol1771/part177120/177120727/images/big/5.webp",
 		],
 		price: 3022,
+		rating: 4.8,
+		new: true,
 	},
 ]
