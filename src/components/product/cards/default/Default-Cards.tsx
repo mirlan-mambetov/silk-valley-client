@@ -3,6 +3,7 @@
 import {
 	ButtonComponent,
 	FeaturedComponent,
+	PriceComponent,
 	RatingComponent,
 } from "@/components"
 import { IProduct } from "@/interfaces/product.interface"
@@ -61,17 +62,17 @@ export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 									<h2 className={style.title}>
 										{product.title}. <small>Кеды / мужские</small>
 									</h2>
+
 									<span>Бренд: Apple </span>
 								</div>
-
+								<PriceComponent
+									price={product.price}
+									discount={product.discount}
+								/>
 								<div className={style.middle}>
 									<div className={style.rating}>
 										<RatingComponent rating={product.rating} />
 										<span>Отзывов: 323</span>
-									</div>
-									<div className={style.price}>
-										{product.price}
-										<span>KGS</span>
 									</div>
 								</div>
 							</div>

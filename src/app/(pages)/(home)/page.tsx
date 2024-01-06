@@ -26,7 +26,6 @@ const HomePage = () => {
 					<CardsComponent products={CARDS_PRODUCT} />
 				</div>
 			</section>
-
 			{/* CARDS*/}
 			<section>
 				<div className="container">
@@ -37,7 +36,6 @@ const HomePage = () => {
 					/>
 				</div>
 			</section>
-
 			{/* WOMANS */}
 			{/* <CardsComponent type="woman" products={WOMANS_PRODUCT} /> */}
 			<FooterComponent />
