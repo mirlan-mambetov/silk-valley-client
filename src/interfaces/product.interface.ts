@@ -2,6 +2,8 @@ import { IBase } from "./base.interface"
 
 export interface IProduct extends IBase {
 	title: string
+	subtitle: string
+	alias: string
 	video?: string
 	description: string
 	poster: string

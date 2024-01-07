@@ -5,7 +5,20 @@
 	flex-direction: column;
 	justify-content: center;
 	gap: 2px;
-
+	&.xl2 {
+		flex-direction: row;
+		justify-content: unset;
+		align-items: center;
+		gap: 12px;
+		.old {
+			font-size: 16px;
+		}
+		.default,
+		.new {
+			font-size: 20px;
+			line-height: 28px;
+		}
+	}
 	min-height: 45px;
 	.old {
 		font-size: 12px;

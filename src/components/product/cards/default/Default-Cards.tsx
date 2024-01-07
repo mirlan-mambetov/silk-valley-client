@@ -8,6 +8,7 @@ import {
 } from "@/components"
 import { IProduct } from "@/interfaces/product.interface"
 import Image from "next/image"
+import Link from "next/link"
 import { FC, useState } from "react"
 import style from "./default-cards.module.scss"
 
@@ -37,45 +38,46 @@ export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 							<div className={style.featured}>
 								<FeaturedComponent />
 							</div>
-							<div className={style.top}>
-								<div className={style.poster}>
-									<Image
-										priority
-										width={900}
-										height={700}
-										src={product.poster}
-										alt={product.title}
-									/>
-									<div className={style.action}>
-										{product.isHit && <span className={style.hit}>Хит!</span>}
-										{product.discount && (
-											<span className={style.discount}>
-												-{product.discount}%
-											</span>
-										)}
-										{product.new && <span className={style.new}>Новинка</span>}
+							<Link href={`/product/${product.alias}`}>
+								<div className={style.top}>
+									<div className={style.poster}>
+										<Image
+											priority
+											width={900}
+											height={700}
+											src={product.poster}
+											alt={product.title}
+										/>
+										<div className={style.action}>
+											{product.isHit && <span className={style.hit}>Хит!</span>}
+											{product.discount && (
+												<span className={style.discount}>
+													-{product.discount}%
+												</span>
+											)}
+											{product.new && (
+												<span className={style.new}>Новинка</span>
+											)}
+										</div>
 									</div>
 								</div>
-							</div>
-							<div className={style.content}>
-								<div className={style.name}>
-									<h2 className={style.title}>
-										{product.title}. <small>Кеды / мужские</small>
-									</h2>
+								<div className={style.content}>
+									<div className={style.name}>
+										<h2 className={style.title}>
+											{product.title}. <small>{product.subtitle}</small>
+										</h2>
 
-									<span>Бренд: Apple </span>
-								</div>
-								<PriceComponent
-									price={product.price}
-									discount={product.discount}
-								/>
-								<div className={style.middle}>
-									<div className={style.rating}>
+										<span>Бренд: Apple </span>
+									</div>
+									<PriceComponent
+										price={product.price}
+										discount={product.discount}
+									/>
+									<div className={style.middle}>
 										<RatingComponent rating={product.rating} />
-										<span>Отзывов: 323</span>
 									</div>
 								</div>
-							</div>
+							</Link>
 							<div className={style.buttons}>
 								<ButtonComponent type="cart" />
 							</div>

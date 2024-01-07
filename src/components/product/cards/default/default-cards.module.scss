@@ -123,6 +123,7 @@
 			flex-direction: column;
 			gap: 5px;
 			color: $darken;
+			padding-top: 10px;
 			.name {
 				.title {
 					line-height: 18px;
@@ -133,8 +134,10 @@
 					text-overflow: ellipsis;
 
 					small {
+						display: none;
 						color: $gray;
 						font-size: 10px;
+						line-height: 12px !important;
 					}
 				}
 				span {
@@ -148,17 +151,6 @@
 				display: flex;
 				flex-direction: column;
 				gap: 4px;
-				.rating {
-					display: flex;
-					gap: 4px;
-					justify-content: space-between;
-					align-items: baseline;
-					span {
-						font-size: 10px;
-						font-weight: 400;
-						line-height: 17px;
-					}
-				}
 			}
 		}
 		.buttons {
