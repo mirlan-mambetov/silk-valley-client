@@ -3,7 +3,6 @@
 .detail {
 	border-top: 1px solid $darkenRGBA;
 	padding-top: 10px;
-	min-height: 300px;
 	.wrap {
 		display: grid;
 		grid-template-columns: calc(100% / 2 * 1.5 - 6px) calc(100% / 5 * 1.2 - 6px);
@@ -58,7 +57,9 @@
 	}
 	.product_image {
 		padding-top: 0;
-		padding-bottom: 10px;
+		border: 1px dashed $darkenRGBA;
+		padding: 2px;
+		border-radius: 4px;
 
 		.product_poster {
 			position: relative;
@@ -77,5 +78,4 @@
 }
 .characters {
 	border: 1px solid red;
-	height: 300vh;
 }

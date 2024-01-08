@@ -4,6 +4,7 @@ import {
 	ButtonComponent,
 	ProductAttributesComponent,
 	ProductInfoComponent,
+	ProductSpecificationsComponent,
 } from "@/components"
 import { IProduct } from "@/interfaces/product.interface"
 import Image from "next/image"
@@ -49,7 +50,7 @@ export const Detail: FC<IDetailProps> = ({ data }) => {
 				</div>
 				{/* ORDER INFO */}
 				<ProductInfoComponent data={data} />
-				<div className={style.characters}></div>
+				<ProductSpecificationsComponent />
 			</div>
 		</div>
 	)

@@ -31,9 +31,9 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 				</div>
 
 				<div className={style.box}>
-					<small>
-						Цена
-						{data.discount ? (
+					{data.discount ? (
+						<small>
+							Цена
 							<>
 								с учетом скидки
 								<ProductDiscountComponent
@@ -42,18 +42,18 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 									size="xl1"
 								/>
 							</>
-						) : null}
-					</small>
-					{data.discount ? (
-						<div className={style.box_item}>
-							<PriceComponent
-								price={data.price}
-								discount={data.discount}
-								orientation="column"
-							/>
-						</div>
+						</small>
 					) : (
-						""
+						<>
+							<small>Цена</small>
+							<div className={style.box_item}>
+								<PriceComponent
+									price={data.price}
+									discount={data.discount}
+									orientation="column"
+								/>
+							</div>
+						</>
 					)}
 				</div>
 
