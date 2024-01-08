@@ -1,6 +1,10 @@
 "use client"
 
-import { AttributesComponent, ButtonComponent } from "@/components"
+import {
+	ButtonComponent,
+	ProductAttributesComponent,
+	ProductInfoComponent,
+} from "@/components"
 import { IProduct } from "@/interfaces/product.interface"
 import Image from "next/image"
 import { FC } from "react"
@@ -40,13 +44,11 @@ export const Detail: FC<IDetailProps> = ({ data }) => {
 							</ButtonComponent>
 						</div>
 						{/* ATTRIBUTES */}
-						<AttributesComponent data={data} />
+						<ProductAttributesComponent data={data} />
 					</div>
 				</div>
 				{/* ORDER INFO */}
-				<div className={style.info}>
-					<h3 className={style.total}>Общие детали</h3>
-				</div>
+				<ProductInfoComponent data={data} />
 				<div className={style.characters}></div>
 			</div>
 		</div>

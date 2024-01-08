@@ -4,6 +4,7 @@ import {
 	ButtonComponent,
 	FeaturedComponent,
 	PriceComponent,
+	ProductDiscountComponent,
 	RatingComponent,
 } from "@/components"
 import { IProduct } from "@/interfaces/product.interface"
@@ -50,11 +51,7 @@ export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 										/>
 										<div className={style.action}>
 											{product.isHit && <span className={style.hit}>Хит!</span>}
-											{product.discount && (
-												<span className={style.discount}>
-													-{product.discount}%
-												</span>
-											)}
+											<ProductDiscountComponent discount={product.discount} />
 											{product.new && (
 												<span className={style.new}>Новинка</span>
 											)}

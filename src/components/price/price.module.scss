@@ -5,6 +5,12 @@
 	flex-direction: column;
 	justify-content: center;
 	gap: 2px;
+	&.column {
+		flex-direction: unset;
+		align-items: baseline;
+		gap: 7px;
+		min-height: unset;
+	}
 	&.xl2 {
 		flex-direction: row;
 		justify-content: unset;

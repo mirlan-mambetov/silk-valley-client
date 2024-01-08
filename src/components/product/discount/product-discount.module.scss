@@ -1,0 +1,23 @@
+@import "../../../styles/mixin";
+@import "../../../styles/vars";
+
+.discount {
+	&.default {
+		background: $purple;
+	}
+	&.xl2 {
+		font-size: 14px !important;
+		padding: 4px 5px !important;
+	}
+	&.xl1 {
+		font-size: 12px !important;
+		padding: 2px 5px !important;
+	}
+
+	&.extension {
+		color: $white;
+		background: $discount;
+		border-radius: 3px;
+		padding: 2px;
+	}
+}

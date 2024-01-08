@@ -1,12 +1,17 @@
-import { ButtonComponent, PriceComponent, RatingComponent } from "@/components"
+import {
+	ButtonComponent,
+	PriceComponent,
+	ProductDiscountComponent,
+	RatingComponent,
+} from "@/components"
 import { IProduct } from "@/interfaces/product.interface"
 import { FC } from "react"
-import style from "./attributes.module.scss"
+import style from "./product-attributes.module.scss"
 
 interface IAttributesComponentProps {
 	data: IProduct
 }
-export const AttributesComponent: FC<IAttributesComponentProps> = ({
+export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 	data,
 }) => {
 	return (
@@ -19,7 +24,11 @@ export const AttributesComponent: FC<IAttributesComponentProps> = ({
 					orientation="column"
 					size="2xl"
 				/>
-				{data.discount ? <span>- {data.discount}%</span> : null}
+				<ProductDiscountComponent
+					discount={data.discount}
+					type="default"
+					size="xl2"
+				/>
 			</div>
 			<div className={style.colors}>
 				<h5 className={style.attribute_title}>Цвета</h5>
@@ -33,7 +42,7 @@ export const AttributesComponent: FC<IAttributesComponentProps> = ({
 				</div>
 			</div>
 			<div className={style.sizes}>
-				<h5 className={style.attribute_title}>Цвета</h5>
+				<h5 className={style.attribute_title}>Размеры</h5>
 				<div className={style.size}>
 					<ButtonComponent className={style.active_btn}>32</ButtonComponent>
 					<ButtonComponent>36</ButtonComponent>
