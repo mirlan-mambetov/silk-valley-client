@@ -8,6 +8,7 @@ import {
 import { IProduct } from "@/interfaces/product.interface"
 import { FC } from "react"
 import { FiEdit2 } from "react-icons/fi"
+import { LuMinus, LuPlus } from "react-icons/lu"
 import style from "./product-info.module.scss"
 
 interface IProductInfoComponentProps {
@@ -68,6 +69,19 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 					<small>Размеры</small>
 					<div className={style.box_item}>
 						<span>32X</span>
+					</div>
+				</div>
+
+				<div className={style.quantity}>
+					<small>Количество</small>
+					<div className={style.quantity_item}>
+						<ButtonComponent>
+							<LuPlus />
+						</ButtonComponent>
+						<span>1</span>
+						<ButtonComponent>
+							<LuMinus />
+						</ButtonComponent>
 					</div>
 				</div>
 

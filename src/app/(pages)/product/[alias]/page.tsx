@@ -1,3 +1,4 @@
+import { CardsComponent } from "@/components"
 import { CARDS_PRODUCT } from "@/components/product/product.data"
 import { IPageParams } from "@/interfaces/page.interface"
 import { Suspense } from "react"
@@ -20,6 +21,11 @@ const ProductPage = async ({ params }: IPageParams) => {
 					<Suspense fallback={<>Загрузка...</>}>
 						{product ? <Detail data={product} /> : null}
 					</Suspense>
+				</div>
+			</section>
+			<section>
+				<div className="container">
+					<CardsComponent products={CARDS_PRODUCT} title="Смотрите также" />
 				</div>
 			</section>
 		</>
