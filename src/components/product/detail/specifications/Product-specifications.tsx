@@ -10,7 +10,9 @@ export const ProductSpecificationsComponent: FC<
 > = () => {
 	return (
 		<div className={style.specifications}>
-			<h3 className={style.title}>Дополнительная информация</h3>
+			<h3 className={style.title}>
+				<span>Дополнительная информация</span>
+			</h3>
 			<div className={style.wrap}>
 				<div className={style.column}>
 					<div className={style.row}>
@@ -65,6 +67,12 @@ export const ProductSpecificationsComponent: FC<
 						<span>Раскладной</span>
 					</div>
 					<span>Да</span>
+				</div>
+				<div className={style.column}>
+					<div className={style.row}>
+						<span>Пошив</span>
+					</div>
+					<span>Китай</span>
 				</div>
 				<div className={style.column}>
 					<div className={style.row}>

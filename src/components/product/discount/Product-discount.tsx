@@ -1,33 +1,36 @@
 "use client"
 
+import { IProduct } from "@/interfaces/product.interface"
 import cn from "classnames"
 import { FC } from "react"
 import style from "./product-discount.module.scss"
 
 interface IProductDiscountComponentProps {
-	discount?: number
+	product: Pick<IProduct, "discount" | "new" | "isHit">
 	type?: "default" | "extension"
 	size?: "xl1" | "xl2"
 }
 export const ProductDiscountComponent: FC<IProductDiscountComponentProps> = ({
-	discount,
+	product,
 	type = "default",
 	size = "xl1",
 }) => {
 	return (
-		<>
-			{discount && (
-				<span
-					className={cn(style.discount, {
-						[style.extension]: type === "extension",
-						[style.default]: type === "default",
-						[style.xl1]: size === "xl1",
-						[style.xl2]: size === "xl2",
-					})}
-				>
-					-{discount}%
-				</span>
-			)}
-		</>
+		<div
+			className={cn(style.wrap, {
+				[style.extension]: type === "extension",
+				[style.default]: type === "default",
+			})}
+		>
+			<div className={style.promotions}>
+				{product?.isHit && <span className={style.hite}>Хит продаж</span>}
+				{product?.new && <span className={style.new}>Новинка</span>}
+			</div>
+			{product?.discount ? (
+				<div className={style.discount}>
+					<span>- {product.discount}%</span>
+				</div>
+			) : null}
+		</div>
 	)
 }

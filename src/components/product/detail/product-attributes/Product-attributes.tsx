@@ -1,3 +1,5 @@
+"use client"
+
 import {
 	ButtonComponent,
 	PriceComponent,
@@ -5,7 +7,7 @@ import {
 	RatingComponent,
 } from "@/components"
 import { IProduct } from "@/interfaces/product.interface"
-import { FC } from "react"
+import { FC, useState } from "react"
 import style from "./product-attributes.module.scss"
 
 interface IAttributesComponentProps {
@@ -14,6 +16,7 @@ interface IAttributesComponentProps {
 export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 	data,
 }) => {
+	const [visible, setVisible] = useState(false)
 	return (
 		<div className={style.attributes}>
 			<RatingComponent rating={data?.rating || 0} className={style.rating} />
@@ -24,11 +27,7 @@ export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 					orientation="column"
 					size="2xl"
 				/>
-				<ProductDiscountComponent
-					discount={data.discount}
-					type="default"
-					size="xl2"
-				/>
+				<ProductDiscountComponent product={data} type="extension" size="xl2" />
 			</div>
 			<div className={style.colors}>
 				<h5 className={style.attribute_title}>Цвета</h5>
@@ -50,10 +49,10 @@ export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 					<ButtonComponent>40</ButtonComponent>
 				</div>
 			</div>
-			<p className={style.description}>
+			<div className={style.description}>
 				<h5 className={style.attribute_title}>Описание</h5>
-				{data?.description}
-			</p>
+				<p>{data?.description}</p>
+			</div>
 		</div>
 	)
 }

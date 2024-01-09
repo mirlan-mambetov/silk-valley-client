@@ -5,6 +5,7 @@ import {
 	ProductAttributesComponent,
 	ProductInfoComponent,
 	ProductSpecificationsComponent,
+	RoutesHistoryComponent,
 } from "@/components"
 import { IProduct } from "@/interfaces/product.interface"
 import Image from "next/image"
@@ -18,6 +19,10 @@ interface IDetailProps {
 export const Detail: FC<IDetailProps> = ({ data }) => {
 	return (
 		<div className={style.detail}>
+			<div className={style.top}>
+				{/* ROUTES HISTORY */}
+				<RoutesHistoryComponent productName={data.title} />
+			</div>
 			<div className={style.wrap}>
 				{/* PRODUCT */}
 				<div className={style.product}>

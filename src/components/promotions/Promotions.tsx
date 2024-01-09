@@ -1,14 +1,18 @@
+"use client"
+
 import { IShares } from "@/interfaces/shares.interface"
 import { FC } from "react"
 import { IoArrowRedoOutline } from "react-icons/io5"
 
 import { ButtonComponent } from ".."
-import style from "./shares.module.scss"
+import style from "./promotions.module.scss"
 
-interface ISharesComponentProps {
+interface IPromotionsComponentProps {
 	data: IShares[]
 }
-export const SharesComponent: FC<ISharesComponentProps> = ({ data }) => {
+export const PromotionsComponent: FC<IPromotionsComponentProps> = ({
+	data,
+}) => {
 	return (
 		<div className={style.shares}>
 			<div className={style.wrap}>

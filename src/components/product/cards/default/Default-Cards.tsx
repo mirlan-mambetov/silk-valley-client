@@ -49,13 +49,7 @@ export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 											src={product.poster}
 											alt={product.title}
 										/>
-										<div className={style.action}>
-											{product.isHit && <span className={style.hit}>Хит!</span>}
-											<ProductDiscountComponent discount={product.discount} />
-											{product.new && (
-												<span className={style.new}>Новинка</span>
-											)}
-										</div>
+										<ProductDiscountComponent product={product} />
 									</div>
 								</div>
 								<div className={style.content}>

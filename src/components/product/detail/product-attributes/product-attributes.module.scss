@@ -62,7 +62,7 @@
 	.price {
 		display: flex;
 		align-items: center;
-		gap: 12px;
+		gap: 3px;
 		padding: 0 !important;
 		> span {
 			color: $white;
@@ -73,12 +73,14 @@
 	}
 
 	.description {
-		font-size: 14px;
-		line-height: 20px;
-		font-weight: 400;
-		display: -webkit-box;
-		-webkit-line-clamp: 10;
-		overflow: hidden;
-		-webkit-box-orient: vertical;
+		p {
+			font-size: 14px;
+			line-height: 20px;
+			font-weight: 400;
+			display: -webkit-box;
+			-webkit-line-clamp: 10;
+			overflow: hidden;
+			-webkit-box-orient: vertical;
+		}
 	}
 }
