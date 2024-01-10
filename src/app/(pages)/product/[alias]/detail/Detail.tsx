@@ -28,6 +28,19 @@ export const Detail: FC<IDetailProps> = ({ data }) => {
 				<div className={style.product}>
 					{/* IMAGE */}
 					<div className={style.product_image}>
+						{/* IMAGES */}
+						<div className={style.product_images}>
+							{data.images.map((image) => (
+								<div className={style.image}>
+									<Image
+										src={image}
+										alt={data.title}
+										width={900}
+										height={100}
+									/>
+								</div>
+							))}
+						</div>
 						{/* POSTER */}
 						<div className={style.product_poster}>
 							<Image
@@ -37,8 +50,6 @@ export const Detail: FC<IDetailProps> = ({ data }) => {
 								alt={data?.title}
 							/>
 						</div>
-						{/* IMAGES */}
-						<div className={style.poster_images}></div>
 					</div>
 					{/* PRODUCT CONTENT */}
 					<div className={style.product_content}>

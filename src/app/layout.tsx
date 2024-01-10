@@ -1,4 +1,4 @@
-import { HeaderComponent } from "@/components"
+import { FooterComponent, HeaderComponent } from "@/components"
 import type { Metadata } from "next"
 import { ReactNode } from "react"
 import "../styles/global.scss"
@@ -14,6 +14,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
 			<body>
 				<HeaderComponent />
 				{children}
+				<FooterComponent />
 			</body>
 		</html>
 	)

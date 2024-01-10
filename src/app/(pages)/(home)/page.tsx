@@ -1,8 +1,4 @@
-import {
-	CardsComponent,
-	FooterComponent,
-	PromotionsComponent,
-} from "@/components"
+import { CardsComponent, PromotionsComponent } from "@/components"
 import { CARDS_PRODUCT } from "@/components/product/product.data"
 import { SHARES_DATA } from "@/components/promotions/promotions.data"
 import { Banner } from "./Banner/Banner"
@@ -43,7 +39,6 @@ const HomePage = () => {
 			</section>
 			{/* WOMANS */}
 			{/* <CardsComponent type="woman" products={WOMANS_PRODUCT} /> */}
-			<FooterComponent />
 		</>
 	)
 }
