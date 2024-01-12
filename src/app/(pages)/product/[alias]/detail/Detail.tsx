@@ -9,14 +9,26 @@ import {
 } from "@/components"
 import { IProduct } from "@/interfaces/product.interface"
 import Image from "next/image"
-import { FC } from "react"
+import { FC, useEffect, useState } from "react"
 import { MdContentCopy } from "react-icons/md"
+import ReactImageMagnify from "react-image-magnify"
 import style from "./detail.module.scss"
 
 interface IDetailProps {
 	data: IProduct
 }
 export const Detail: FC<IDetailProps> = ({ data }) => {
+	const [imgSrc, setImgSrc] = useState<string | null>(null)
+	const [newSrc, setNewSrc] = useState<string | null>(null)
+
+	useEffect(() => {
+		if (imgSrc) {
+			const urlWithoutPrefix = imgSrc.replace(/^.*\?url=/, "")
+			const finalUrl = urlWithoutPrefix.replace(/\&.*$/, "")
+			setNewSrc(decodeURIComponent(finalUrl))
+		}
+	}, [imgSrc])
+
 	return (
 		<div className={style.detail}>
 			<div className={style.top}>
@@ -37,18 +49,33 @@ export const Detail: FC<IDetailProps> = ({ data }) => {
 										alt={data.title}
 										width={900}
 										height={100}
+										onMouseEnter={(e) => setImgSrc(e.currentTarget.src)}
+										onMouseLeave={() => setImgSrc(null)}
 									/>
 								</div>
 							))}
 						</div>
 						{/* POSTER */}
 						<div className={style.product_poster}>
-							<Image
-								width={900}
-								height={1000}
-								src={data?.poster}
-								alt={data?.title}
-							/>
+							<div className={style.poster}>
+								<ReactImageMagnify
+									{...{
+										smallImage: {
+											width: 900,
+											height: 1000,
+											src: newSrc ? newSrc : data?.poster,
+											alt: data?.title,
+											isFluidWidth: true,
+										},
+										largeImage: {
+											width: 900,
+											height: 1000,
+											src: newSrc ? newSrc : data?.poster,
+											alt: data?.title,
+										},
+									}}
+								/>
+							</div>
 						</div>
 					</div>
 					{/* PRODUCT CONTENT */}
