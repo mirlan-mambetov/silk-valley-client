@@ -7,6 +7,9 @@
 		grid-template-columns: repeat(6, calc(100% / 6 - 30px / 6 * (6 - 1)));
 		column-gap: 30px;
 		row-gap: 40px;
+		&.grid5 {
+			grid-template-columns: repeat(5, calc(100% / 5 - 30px / 5 * (5 - 1)));
+		}
 	}
 }
 .card {

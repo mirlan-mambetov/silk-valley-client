@@ -8,6 +8,7 @@ import {
 	RatingComponent,
 } from "@/components"
 import { IProduct } from "@/interfaces/product.interface"
+import cn from "classnames"
 import Image from "next/image"
 import Link from "next/link"
 import { FC, useState } from "react"
@@ -17,18 +18,20 @@ interface IDefaultCardsComponentProps {
 	data: IProduct[]
 	limit?: number
 	title?: string
+	grid?: "6" | "5"
 }
 export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 	data,
 	limit,
 	title,
+	grid,
 }) => {
 	const limitedData = data.slice(0, limit)
 	const [isHover, setIsHover] = useState(false)
 	return (
 		<div className={style.cards}>
 			{title ? <h3 className="section-title">{title}</h3> : null}
-			<div className={style.wrap}>
+			<div className={cn(style.wrap, { [style.grid5]: grid === "5" })}>
 				{limitedData.map((product) => (
 					<div
 						className={style.card}

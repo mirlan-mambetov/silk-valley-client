@@ -13,7 +13,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
 		<html lang="ru">
 			<body>
 				<HeaderComponent />
-				{children}
+				<main className="main">{children}</main>
 				<FooterComponent />
 			</body>
 		</html>

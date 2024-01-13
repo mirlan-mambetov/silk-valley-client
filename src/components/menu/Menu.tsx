@@ -9,7 +9,7 @@ import { FC } from "react"
 import style from "./menu.module.scss"
 
 interface IMenuComponentProps {
-	orientation?: "row" | "column"
+	orientation?: "row" | "column" | "row-heigth"
 	secondMenu?: boolean
 	type?: "default" | "absolute"
 	data: IMenuData[]
@@ -38,6 +38,7 @@ export const MenuComponent: FC<IMenuComponentProps> = ({
 				animate={!animate ? false : animate ? "open" : "closed"}
 				className={cn(style.list, {
 					[style.row]: orientation === "row",
+					[style.row_heigth]: orientation === "row-heigth",
 					[style.column]: orientation === "column",
 				})}
 			>
@@ -48,7 +49,7 @@ export const MenuComponent: FC<IMenuComponentProps> = ({
 						key={link.id}
 						// onMouseEnter={() => setItemId(link.id)}
 					>
-						<Link href={`/${link.href}`}>{link.name}</Link>
+						<Link href={`/${link.alias}`}>{link.name}</Link>
 						{link.childsData && secondMenu ? (
 							<motion.ul
 								// initial={false}
@@ -65,7 +66,7 @@ export const MenuComponent: FC<IMenuComponentProps> = ({
 												className={style.submenu__item}
 												key={secondLink.id}
 											>
-												<Link href={`/${secondLink.href}`}>
+												<Link href={`/${secondLink.alias}`}>
 													{secondLink.name}
 												</Link>
 											</motion.li>

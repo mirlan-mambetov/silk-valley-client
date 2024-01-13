@@ -30,6 +30,15 @@
 				width: calc(100% / 4 * 1.3);
 			}
 		}
+		&.row_heigth {
+			display: flex;
+			flex-direction: column;
+			gap: 7px;
+
+			.list__item {
+				width: unset;
+			}
+		}
 
 		&.column {
 			display: flex;

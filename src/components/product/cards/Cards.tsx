@@ -7,6 +7,7 @@ import { WomanCardsComponent } from "./woman/Woman-Cards"
 
 interface ICardsComponentProps {
 	type?: "default" | "woman"
+	grid?: "6" | "5"
 	products: IProduct[]
 	limit?: number
 	title?: string
@@ -17,11 +18,17 @@ export const CardsComponent: FC<ICardsComponentProps> = ({
 	products,
 	limit,
 	title,
+	grid,
 }) => {
 	switch (type) {
 		case "default":
 			return (
-				<DefaultCardsComponent data={products} limit={limit} title={title} />
+				<DefaultCardsComponent
+					grid={grid}
+					data={products}
+					limit={limit}
+					title={title}
+				/>
 			)
 
 		case "woman":

@@ -1,26 +1,26 @@
-import { IMenuData, IMenuItems } from "@/interfaces/menu.interface"
+import { IMenuData } from "@/interfaces/menu.interface"
 
 export const HEADER_MENU: IMenuData[] = [
 	{
 		id: 1,
-		href: "#",
+		alias: "catalog/mens",
 		name: "Мужчинам",
 		childsData: [
 			{
 				id: 1,
-				href: "#",
 				name: "Куртки зимние",
 				itemId: 1,
+				alias: "#",
 			},
 			{
 				id: 2,
-				href: "#",
+				alias: "#",
 				name: "Очки",
 				itemId: 1,
 			},
 			{
 				id: 3,
-				href: "#",
+				alias: "#",
 				name: "Джинсы",
 				itemId: 1,
 			},
@@ -28,42 +28,42 @@ export const HEADER_MENU: IMenuData[] = [
 	},
 	{
 		id: 2,
-		href: "#",
+		alias: "catalog/womans",
 		name: "Женщинам",
 		childsData: [
 			{
 				id: 1,
-				href: "#",
+				alias: "#",
 				name: "Часы",
 				itemId: 2,
 			},
 			{
 				id: 2,
-				href: "#",
+				alias: "#",
 				name: "Платья",
 				itemId: 2,
 			},
 			{
 				id: 3,
-				href: "#",
+				alias: "#",
 				name: "Джинсы",
 				itemId: 2,
 			},
 			{
 				id: 4,
-				href: "#",
+				alias: "#",
 				name: "Куртки",
 				itemId: 2,
 			},
 			{
 				id: 5,
-				href: "#",
+				alias: "#",
 				name: "Обувь",
 				itemId: 2,
 			},
 			{
 				id: 6,
-				href: "#",
+				alias: "#",
 				name: "Брюки",
 				itemId: 2,
 			},
@@ -71,18 +71,18 @@ export const HEADER_MENU: IMenuData[] = [
 	},
 	{
 		id: 3,
-		href: "#",
+		alias: "catalog/childs",
 		name: "Детям",
 		childsData: [
 			{
 				id: 1,
-				href: "#",
+				alias: "#",
 				name: "Памперсы",
 				itemId: 3,
 			},
 			{
 				id: 2,
-				href: "#",
+				alias: "#",
 				name: "Коляски",
 				itemId: 3,
 			},
@@ -90,18 +90,18 @@ export const HEADER_MENU: IMenuData[] = [
 	},
 	{
 		id: 4,
-		href: "#",
+		alias: "catalog/electronics",
 		name: "Электроника",
 		childsData: [
 			{
 				id: 1,
-				href: "#",
+				alias: "#",
 				name: "Смартфоны",
 				itemId: 4,
 			},
 			{
 				id: 2,
-				href: "#",
+				alias: "#",
 				name: "Ноутбуки",
 				itemId: 4,
 			},
@@ -109,30 +109,30 @@ export const HEADER_MENU: IMenuData[] = [
 	},
 	{
 		id: 5,
-		href: "#",
+		alias: "catalog/obuv",
 		name: "Обувь",
 		childsData: [
 			{
 				id: 1,
-				href: "#",
+				alias: "#",
 				name: "Детская",
 				itemId: 5,
 			},
 			{
 				id: 2,
-				href: "#",
+				alias: "#",
 				name: "Женщинам",
 				itemId: 5,
 			},
 			{
 				id: 3,
-				href: "#",
+				alias: "#",
 				name: "Мужчинам",
 				itemId: 5,
 			},
 			{
 				id: 4,
-				href: "#",
+				alias: "#",
 				name: "Аксессуары для обуви",
 				itemId: 5,
 			},
@@ -140,35 +140,33 @@ export const HEADER_MENU: IMenuData[] = [
 	},
 	{
 		id: 6,
-		href: "#",
+		alias: "catalog/products",
 		name: "Продукты",
 		childsData: [
 			{
 				id: 1,
-				href: "#",
+				alias: "#",
 				name: "Детское питание",
 				itemId: 6,
 			},
 			{
 				id: 2,
-				href: "#",
+				alias: "#",
 				name: "Напитки",
 				itemId: 6,
 			},
 			{
 				id: 3,
-				href: "#",
+				alias: "#",
 				name: "Подарочные наборы",
 				itemId: 6,
 			},
 			{
 				id: 4,
-				href: "#",
+				alias: "#",
 				name: "Молочные продукты",
 				itemId: 5,
 			},
 		],
 	},
 ]
-
-export const HEADER_MENU_SECOND: IMenuItems[] = []

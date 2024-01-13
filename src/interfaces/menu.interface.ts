@@ -1,12 +1,5 @@
-import { IconType } from "react-icons"
+import { ICategories } from "./categories.interface"
 
-export interface IMenuItems {
-	id: number
-	href: string
-	name: string
-	Icon?: IconType
-	itemId?: number
-}
-export interface IMenuData extends IMenuItems {
-	childsData?: IMenuItems[]
+export interface IMenuData extends ICategories {
+	childsData?: ICategories[]
 }

@@ -1,0 +1,13 @@
+@import "../../../styles/mixin";
+@import "../../../styles/vars";
+
+.catalog {
+	display: grid;
+	grid-template-columns: minmax(0, 0.2fr) minmax(0, 1fr);
+	column-gap: 20px;
+}
+.content {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
