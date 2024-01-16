@@ -3,7 +3,7 @@
 .price {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-end;
 	gap: 2px;
 	&.column {
 		flex-direction: unset;

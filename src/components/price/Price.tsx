@@ -1,3 +1,5 @@
+"use client"
+
 import { calculateOldPrice, formatPrice } from "@/utils/product.utils"
 import cn from "classnames"
 import { FC } from "react"
