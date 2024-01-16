@@ -2,10 +2,10 @@
 
 import { calculateOldPrice, formatPrice } from "@/utils/product.utils"
 import cn from "classnames"
-import { FC } from "react"
+import { DetailsHTMLAttributes, FC } from "react"
 import style from "./price.module.scss"
 
-interface IPriceComponentProps {
+interface IPriceComponentProps extends DetailsHTMLAttributes<HTMLDivElement> {
 	price: number
 	discount?: number
 	size?: "1xl" | "2xl"
@@ -16,11 +16,13 @@ export const ProductPriceComponent: FC<IPriceComponentProps> = ({
 	discount,
 	size = "1xl",
 	orientation = "row",
+	className,
 }) => {
 	return (
 		<div
-			className={cn(style.price, {
+			className={cn(style.price, className, {
 				[style.xl2]: size === "2xl",
+				[style.xl1]: size === "1xl",
 				[style.column]: orientation === "column",
 			})}
 		>

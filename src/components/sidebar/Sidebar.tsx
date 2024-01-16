@@ -1,11 +1,7 @@
 "use client"
 
 import { usePathname } from "next/navigation"
-import {
-	MenuComponent,
-	PriceRangeComponent,
-	ProducAttributeComponent,
-} from ".."
+import { MenuComponent } from ".."
 import { HEADER_MENU } from "../menu/menu.data"
 import style from "./sidebar.module.scss"
 
@@ -19,7 +15,7 @@ export const SidebarComponent = () => {
 	return (
 		<div className={style.sidebar}>
 			<div className={style.wrap}>
-				<h4 className={style.title}>Категории</h4>
+				<h4 className={style.title}>Каталог</h4>
 				{/* MENU CATEGORIES */}
 				{data?.childsData && (
 					<MenuComponent
@@ -30,7 +26,7 @@ export const SidebarComponent = () => {
 					/>
 				)}
 				{/* SORT COLORS AND SIZES */}
-				<ProducAttributeComponent
+				{/* <ProducAttributeComponent
 					data={["32xl", "34xl", "38xl", "48XXL"]}
 					title="Размеры"
 					orientation="column"
@@ -44,7 +40,7 @@ export const SidebarComponent = () => {
 					className={style.attributes}
 					size="1xl"
 				/>
-				<PriceRangeComponent />
+				<PriceRangeComponent /> */}
 			</div>
 		</div>
 	)

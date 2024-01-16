@@ -1,5 +1,5 @@
 import { IPageParams } from "@/interfaces/page.interface"
-import { Catalog } from "../Catalog"
+import { Catalog } from "./Catalog"
 
 const CatalogPage = ({ params }: IPageParams) => {
 	return (

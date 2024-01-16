@@ -1,10 +1,6 @@
 "use client"
 
-import {
-	CardsComponent,
-	FiltersComponent,
-	SidebarComponent,
-} from "@/components"
+import { CatalogCardsComponent, SidebarComponent } from "@/components"
 import { CARDS_PRODUCT } from "@/components/product/product.data"
 import { FC } from "react"
 import style from "./catalog.module.scss"
@@ -28,8 +24,8 @@ export const Catalog: FC<ICatalog> = ({ path }) => {
 			<div className={style.wrap}>
 				<SidebarComponent />
 				<div className={style.content}>
-					<FiltersComponent />
-					<CardsComponent products={CARDS_PRODUCT} grid="5" limit={10} />
+					<CatalogCardsComponent data={CARDS_PRODUCT} />
+					{/* <CardsComponent products={CARDS_PRODUCT} grid="5" limit={10} /> */}
 				</div>
 			</div>
 		</div>

@@ -27,6 +27,16 @@
 			line-height: 28px;
 		}
 	}
+	&.xl1 {
+		.old {
+			font-size: 12px;
+		}
+		.default,
+		.new {
+			font-size: 12px;
+			line-height: 18px;
+		}
+	}
 	min-height: 45px;
 	.old {
 		font-size: 12px;
