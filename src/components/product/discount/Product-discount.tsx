@@ -22,15 +22,15 @@ export const ProductDiscountComponent: FC<IProductDiscountComponentProps> = ({
 				[style.default]: type === "default",
 			})}
 		>
-			<div className={style.promotions}>
-				{product?.isHit && <span className={style.hite}>Хит продаж</span>}
-				{product?.new && <span className={style.new}>Новинка</span>}
-			</div>
 			{product?.discount ? (
 				<div className={style.discount}>
 					<span>- {product.discount}%</span>
 				</div>
 			) : null}
+			<div className={style.promotions}>
+				{product?.new && <span className={style.new}>Новинка</span>}
+				{product?.isHit && <span className={style.hite}>Хит продаж</span>}
+			</div>
 		</div>
 	)
 }

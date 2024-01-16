@@ -31,15 +31,13 @@ export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 			<ProducAttributeComponent
 				data={["white", "black", "yellow", "White&Black"]}
 				title="Цвета"
-				type="colors"
 			/>
 			<ProducAttributeComponent
 				data={["32xl", "34xl", "38xl", "48XXL"]}
 				title="Размеры"
-				type="sizes"
 			/>
 			<div className={style.description}>
-				<h5 className={style.attribute_title}>Описание</h5>
+				<h5 className={style.title}>Описание</h5>
 				<p>{data?.description}</p>
 			</div>
 		</div>
