@@ -1,0 +1,53 @@
+@import "../../../styles/mixin";
+@import "../../../styles/vars";
+.wrap {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	padding: 0 10px;
+	.range {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		.value {
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+		}
+		span {
+			color: $gray;
+		}
+		span,
+		small {
+			font-weight: 500;
+			font-size: 12px;
+		}
+		input {
+			cursor: pointer;
+			-webkit-appearance: none;
+			&:focus {
+				outline: none;
+			}
+			&::-webkit-slider-runnable-track {
+				width: 300px;
+				height: 5px;
+				background: $purpleFavorite;
+				border: none;
+				border-radius: 3px;
+			}
+			&::-webkit-slider-thumb {
+				-webkit-appearance: none;
+				border: none;
+				height: 12px;
+				width: 12px;
+				border-radius: 50%;
+				background: $discount;
+				@include baseBoxShadow;
+				margin-top: -4px;
+			}
+			&:focus::-webkit-slider-runnable-track {
+				background: $purpleDarken;
+			}
+		}
+	}
+}

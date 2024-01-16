@@ -4,7 +4,6 @@
 	position: relative;
 	cursor: pointer;
 	user-select: none;
-	padding: 8px 0;
 
 	&_placeholder {
 		display: flex;
@@ -12,6 +11,7 @@
 		justify-content: space-between;
 		padding: 6px 10px;
 		border-radius: 3px;
+		border: 1px dashed $darkenRGBA;
 		&.outShadow {
 			box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.02);
 		}

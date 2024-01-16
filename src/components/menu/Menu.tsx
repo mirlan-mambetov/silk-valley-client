@@ -5,29 +5,32 @@ import { IMenuData } from "@/interfaces/menu.interface"
 import cn from "classnames"
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { FC } from "react"
+import { DetailsHTMLAttributes, FC } from "react"
 import style from "./menu.module.scss"
 
-interface IMenuComponentProps {
+interface IMenuComponentProps extends DetailsHTMLAttributes<HTMLDivElement> {
 	orientation?: "row" | "column" | "row-heigth"
 	secondMenu?: boolean
 	type?: "default" | "absolute"
 	data: IMenuData[]
 	limit?: number
+	size?: "1xl" | "2xl"
 	animate?: boolean
 }
 export const MenuComponent: FC<IMenuComponentProps> = ({
 	orientation = "column",
 	secondMenu = true,
+	className,
 	type = "default",
 	data,
+	size = "2xl",
 	limit,
 	animate,
 }) => {
 	const limitedData = limit ? data.slice(0, limit) : data
 	return (
 		<motion.div
-			className={cn(style.menu, {
+			className={cn(style.menu, className, {
 				[style.absolute]: type === "absolute",
 				// [style.active]: isShow,
 			})}
@@ -40,6 +43,7 @@ export const MenuComponent: FC<IMenuComponentProps> = ({
 					[style.row]: orientation === "row",
 					[style.row_heigth]: orientation === "row-heigth",
 					[style.column]: orientation === "column",
+					[style.xl1]: size === "1xl",
 				})}
 			>
 				{limitedData.map((link) => (
