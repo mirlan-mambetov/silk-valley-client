@@ -48,6 +48,9 @@
 			&:focus::-webkit-slider-runnable-track {
 				background: $purpleDarken;
 			}
+			&:focus::-webkit-slider-thumb {
+				background: $purple;
+			}
 		}
 	}
 }
