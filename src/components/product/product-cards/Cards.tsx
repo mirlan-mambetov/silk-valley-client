@@ -3,7 +3,6 @@
 import { IProduct } from "@/interfaces/product.interface"
 import { FC } from "react"
 import { DefaultCardsComponent } from "./default/Default-Cards"
-import { WomanCardsComponent } from "./woman/Woman-Cards"
 
 interface ICardsComponentProps {
 	type?: "default" | "woman"
@@ -32,7 +31,7 @@ export const CardsComponent: FC<ICardsComponentProps> = ({
 			)
 
 		case "woman":
-			return <WomanCardsComponent data={products} />
+			return <>WOMAN</>
 
 		default:
 			return (

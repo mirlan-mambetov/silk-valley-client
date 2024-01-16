@@ -1,10 +1,6 @@
 "use client"
 
-import {
-	ButtonComponent,
-	PriceComponent,
-	ProductDiscountComponent,
-} from "@/components"
+import { ButtonComponent, ProductPriceComponent } from "@/components"
 import { IProduct } from "@/interfaces/product.interface"
 import { FC } from "react"
 import { FiEdit2 } from "react-icons/fi"
@@ -36,17 +32,10 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 						<>
 							<small>
 								Цена
-								<>
-									с учетом скидки
-									<ProductDiscountComponent
-										discount={data.discount}
-										type="extension"
-										size="xl1"
-									/>
-								</>
+								<>с учетом скидки</>
 							</small>
 							<div className={style.box_item}>
-								<PriceComponent
+								<ProductPriceComponent
 									price={data.price}
 									discount={data.discount}
 									orientation="column"
@@ -57,7 +46,7 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 						<>
 							<small>Цена</small>
 							<div className={style.box_item}>
-								<PriceComponent
+								<ProductPriceComponent
 									price={data.price}
 									discount={data.discount}
 									orientation="column"

@@ -7,7 +7,7 @@ interface IRatingComponentProps {
 	rating: number
 	className?: string
 }
-export const RatingComponent: FC<IRatingComponentProps> = ({
+export const ProductRatingComponent: FC<IRatingComponentProps> = ({
 	rating,
 	className,
 }) => {

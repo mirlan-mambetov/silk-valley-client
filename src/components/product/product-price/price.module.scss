@@ -1,15 +1,17 @@
-@import "../../styles/mixin";
-@import "../../styles/vars";
+@import "../../../styles/mixin";
+@import "../../../styles/vars";
 .price {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
 	gap: 2px;
 	&.column {
-		flex-direction: unset;
-		align-items: baseline;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
 		gap: 7px;
 		min-height: unset;
+		width: 100%;
 	}
 	&.xl2 {
 		flex-direction: row;

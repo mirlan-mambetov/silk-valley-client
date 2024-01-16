@@ -3,9 +3,9 @@
 import {
 	ButtonComponent,
 	FeaturedComponent,
-	PriceComponent,
 	ProductDiscountComponent,
-	RatingComponent,
+	ProductPriceComponent,
+	ProductRatingComponent,
 } from "@/components"
 import { IProduct } from "@/interfaces/product.interface"
 import cn from "classnames"
@@ -63,12 +63,12 @@ export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 
 										<span>Бренд: Apple </span>
 									</div>
-									<PriceComponent
+									<ProductPriceComponent
 										price={product.price}
 										discount={product.discount}
 									/>
 									<div className={style.middle}>
-										<RatingComponent rating={product.rating} />
+										<ProductRatingComponent rating={product.rating} />
 									</div>
 								</div>
 							</Link>

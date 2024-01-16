@@ -11,7 +11,7 @@ interface IPriceComponentProps {
 	size?: "1xl" | "2xl"
 	orientation?: "column" | "row"
 }
-export const PriceComponent: FC<IPriceComponentProps> = ({
+export const ProductPriceComponent: FC<IPriceComponentProps> = ({
 	price,
 	discount,
 	size = "1xl",

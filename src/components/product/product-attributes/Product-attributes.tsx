@@ -1,10 +1,10 @@
 "use client"
 
 import {
-	PriceComponent,
 	ProducAttributeComponent,
 	ProductDiscountComponent,
-	RatingComponent,
+	ProductPriceComponent,
+	ProductRatingComponent,
 } from "@/components"
 import { IProduct } from "@/interfaces/product.interface"
 import { FC } from "react"
@@ -18,9 +18,12 @@ export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 }) => {
 	return (
 		<div className={style.attributes}>
-			<RatingComponent rating={data?.rating || 0} className={style.rating} />
+			<ProductRatingComponent
+				rating={data?.rating || 0}
+				className={style.rating}
+			/>
 			<div className={style.price}>
-				<PriceComponent
+				<ProductPriceComponent
 					price={data.price}
 					discount={data.discount}
 					orientation="column"
