@@ -414,24 +414,4 @@ export const CARDS_PRODUCT: IProduct[] = [
 		rating: 4.1,
 		new: false,
 	},
-	{
-		id: 12,
-		title: "iPhone 15 128GB    ",
-		subtitle: "iPhone 15 128GB    ",
-		alias: "kedy-advantage-12",
-		description:
-			"Спецификация модели - A3092. Смартфон Apple iPhone 15 Green. OLED-дисплей Super Retina XDR с диагональю 6,1 дюйма обеспечивает несравнимое качество изображения. Каждая фотография или видеоролик проигрываются с невероятной детализацией и цветопередачей. Система двойной камеры 48+12 Мп и новые функции по улучшению изображения и ночной съемки позволят создавать яркие и четкие фотографии в любых условиях. Мощный шестиядерный процессор A16 Bionic обеспечивает сверхбыструю обработку данных, плавную работу приложений и эффективное энергосбережение. Поддержка Wi‑Fi 6 для быстрого и стабильного интернет-соединения, Bluetooth 5.3 для связи с совместимыми устройствами и универсальный разъем Type-C для зарядки и передачи данных.    ",
-		poster:
-			"https://basket-12.wbbasket.ru/vol1771/part177120/177120727/images/big/1.webp",
-		article: 1324234234234,
-		images: [
-			"https://basket-12.wbbasket.ru/vol1771/part177120/177120727/images/big/2.webp",
-			"https://basket-12.wbbasket.ru/vol1771/part177120/177120727/images/big/3.webp",
-			"https://basket-12.wbbasket.ru/vol1771/part177120/177120727/images/big/4.webp",
-			"https://basket-12.wbbasket.ru/vol1771/part177120/177120727/images/big/5.webp",
-		],
-		price: 3022,
-		rating: 4.8,
-		new: true,
-	},
 ]

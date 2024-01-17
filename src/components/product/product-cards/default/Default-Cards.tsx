@@ -60,16 +60,19 @@ export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 										<h2 className={style.title}>
 											{product.title}. <small>{product.subtitle}</small>
 										</h2>
-
 										<span>Бренд: Apple </span>
+									</div>
+
+									<div className={style.middle}>
+										<ProductRatingComponent
+											hideReviews
+											rating={product.rating}
+										/>
 									</div>
 									<ProductPriceComponent
 										price={product.price}
 										discount={product.discount}
 									/>
-									<div className={style.middle}>
-										<ProductRatingComponent rating={product.rating} />
-									</div>
 								</div>
 							</Link>
 							<div className={style.buttons}>
