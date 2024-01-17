@@ -1,6 +1,7 @@
 "use client"
 
 import { IProduct } from "@/interfaces/product.interface"
+import cn from "classnames"
 import Image from "next/image"
 import { FC } from "react"
 import { ProductDiscountComponent } from "../../product-discount/Product-discount"
@@ -9,14 +10,18 @@ import style from "./catalog.cards.module.scss"
 
 interface ICatalogCardsComponentProps {
 	data: IProduct[]
+	gridSize?: "3" | "4"
+	limited?: number
 }
 export const CatalogCardsComponent: FC<ICatalogCardsComponentProps> = ({
 	data,
+	gridSize = "3",
+	limited = 7,
 }) => {
-	const limitedData = data.slice(0, 7)
+	const limitedData = data.slice(0, limited)
 	return (
 		<div className={style.wrap}>
-			<div className={style.cards}>
+			<div className={cn(style.cards, { [style.grid4]: gridSize === "4" })}>
 				{limitedData.map((product, i) => (
 					<div key={i} className={style.card}>
 						<div className={style.image}>

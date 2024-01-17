@@ -6,8 +6,9 @@
 }
 .top {
 	display: flex;
+	align-items: center;
 	gap: 12px;
-	.select {
+	.box {
 		flex: 1;
 	}
 }

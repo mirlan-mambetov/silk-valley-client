@@ -1,0 +1,9 @@
+@import "../../../../styles/mixin";
+@import "../../../../styles/vars";
+.explorer {
+	.wrap {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+}

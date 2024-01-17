@@ -8,3 +8,8 @@ export enum EnumProductSort {
 	OLDEST = "oldest",
 	NEWEST = "newest",
 }
+
+export enum EnumProductSortByAttributes {
+	COLOR = "color",
+	SIZE = "size",
+}

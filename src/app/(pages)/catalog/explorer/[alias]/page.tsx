@@ -1,7 +1,14 @@
 import { Explorer } from "../Explorer"
 
 const ExplorerPage = () => {
-	return <Explorer />
+	return (
+		<>
+			{/* HERO */}
+			<section>
+				<Explorer />
+			</section>
+		</>
+	)
 }
 
 export default ExplorerPage

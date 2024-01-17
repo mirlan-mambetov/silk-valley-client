@@ -2,8 +2,7 @@
 @import "../../../styles/vars";
 .wrap {
 	display: flex;
-	flex-direction: column;
-	gap: 12px;
+	gap: 5px;
 	padding: 0 10px;
 	.range {
 		display: flex;
@@ -24,6 +23,7 @@
 		}
 		input {
 			cursor: pointer;
+			max-width: 80px;
 			-webkit-appearance: none;
 			&:focus {
 				outline: none;
