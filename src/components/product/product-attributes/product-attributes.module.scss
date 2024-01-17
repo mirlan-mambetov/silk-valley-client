@@ -4,7 +4,7 @@
 	font-size: 14px;
 	font-weight: 500;
 	color: $gray;
-	margin: 10px 0;
+	margin: 5px 0;
 }
 .attributes {
 	display: flex;
@@ -24,7 +24,6 @@
 
 	.price {
 		display: flex;
-		align-items: baseline;
 		padding: 0 !important;
 		> span {
 			color: $white;

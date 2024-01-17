@@ -32,12 +32,14 @@ export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 				<ProductDiscountComponent product={data} type="extension" size="xl2" />
 			</div>
 			<ProducAttributeComponent
-				data={["white", "black", "yellow", "White&Black"]}
+				data={["Черный", "Белый", "Зеленый", "Черно&Белый"]}
 				title="Цвета"
+				size="1xl"
 			/>
 			<ProducAttributeComponent
 				data={["32xl", "34xl", "38xl", "48XXL"]}
 				title="Размеры"
+				size="1xl"
 			/>
 			<div className={style.description}>
 				<h5 className={style.title}>Описание</h5>

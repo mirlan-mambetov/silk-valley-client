@@ -5,7 +5,6 @@ import {
 	FeaturedComponent,
 	ProductDiscountComponent,
 	ProductPriceComponent,
-	ProductRatingComponent,
 } from "@/components"
 import { IProduct } from "@/interfaces/product.interface"
 import cn from "classnames"
@@ -63,15 +62,10 @@ export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 										<span>Бренд: Apple </span>
 									</div>
 
-									<div className={style.middle}>
-										<ProductRatingComponent
-											hideReviews
-											rating={product.rating}
-										/>
-									</div>
 									<ProductPriceComponent
 										price={product.price}
 										discount={product.discount}
+										orientation="column"
 									/>
 								</div>
 							</Link>

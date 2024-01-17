@@ -22,10 +22,11 @@
 	-webkit-box-shadow: 0px 10px 23px 3px rgba(34, 30, 40, 0.02);
 	-moz-box-shadow: 0px 10px 23px 3px rgba(34, 30, 40, 0.02);
 	box-shadow: 0px 10px 23px 3px rgba(34, 30, 40, 0.02);
+	border: 1px dashed $darkenRGBA;
+
 	.card_wrap {
 		display: flex;
 		flex-direction: column;
-		gap: 5px;
 		overflow: hidden;
 
 		&:hover {
@@ -46,7 +47,7 @@
 				opacity: 1;
 			}
 			.buttons {
-				margin: 15px 0;
+				margin: 5px 0;
 				display: block;
 			}
 			.content {
@@ -94,9 +95,10 @@
 		.content {
 			display: flex;
 			flex-direction: column;
-			gap: 5px;
+			gap: 15px;
 			color: $darken;
 			padding-top: 10px;
+			padding-bottom: 20px;
 			.name {
 				.title {
 					line-height: 18px;
@@ -107,7 +109,6 @@
 					text-overflow: ellipsis;
 
 					small {
-						display: none;
 						color: $gray;
 						font-size: 10px;
 						line-height: 12px !important;
@@ -118,12 +119,6 @@
 					font-size: 12px;
 					color: $gray;
 				}
-			}
-
-			.middle {
-				display: flex;
-				flex-direction: column;
-				gap: 4px;
 			}
 		}
 		.buttons {

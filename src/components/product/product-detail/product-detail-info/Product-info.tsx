@@ -74,11 +74,11 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 					<small>Количество</small>
 					<div className={style.quantity_item}>
 						<ButtonComponent>
-							<LuPlus />
+							<LuMinus />
 						</ButtonComponent>
 						<span>1</span>
 						<ButtonComponent>
-							<LuMinus />
+							<LuPlus />
 						</ButtonComponent>
 					</div>
 				</div>
