@@ -1,4 +1,7 @@
 @import "../../../../styles/vars";
+@import "../../../../styles/media.mixin";
+@import "../../../../styles/mixin";
+
 .cards {
 	position: relative;
 	.wrap {
@@ -7,6 +10,16 @@
 		grid-template-columns: repeat(6, calc(100% / 6 - 20px / 6 * (6 - 1)));
 		column-gap: 20px;
 		row-gap: 40px;
+		@include mediaLarge1024px {
+			grid-template-columns: repeat(4, calc(100% / 4 - 20px / 4 * (4 - 1)));
+		}
+		@include mediaLarge776px {
+			grid-template-columns: repeat(3, calc(100% / 3 - 20px / 3 * (3 - 1)));
+		}
+		@include mediaLarge530px {
+			grid-template-columns: repeat(2, calc(100% / 2 - 10px / 2 * (2 - 1)));
+			column-gap: 10px;
+		}
 		&.grid5 {
 			grid-template-columns: repeat(5, calc(100% / 5 - 20px / 5 * (5 - 1)));
 		}

@@ -1,4 +1,5 @@
 import { FooterComponent, HeaderComponent } from "@/components"
+import { MobileMenuComponent } from "@/components/menu/mobile-menu/Mobile-menu"
 import type { Metadata } from "next"
 import { ReactNode } from "react"
 import "../styles/global.scss"
@@ -13,6 +14,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
 		<html lang="ru">
 			<body>
 				<HeaderComponent />
+				<MobileMenuComponent />
 				<main className="main">{children}</main>
 				<FooterComponent />
 			</body>

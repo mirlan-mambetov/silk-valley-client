@@ -1,4 +1,6 @@
 @import "../../../../styles/vars";
+@import "../../../../styles/media.mixin";
+@import "../../../../styles/mixin";
 
 .banner {
 	.bannerWrapp {
@@ -29,6 +31,22 @@
 					cursor: pointer;
 					color: $white;
 					background: $darkenRGBA;
+					@include mediaLarge640px {
+						width: 32px;
+						height: 32px;
+						padding: 4px;
+					}
+					@include mediaLarge480px {
+						width: 25px;
+						height: 25px;
+					}
+				}
+				@include mediaLarge640px {
+					top: unset;
+					left: 10px;
+					bottom: 10px;
+					justify-content: unset;
+					transform: unset;
 				}
 			}
 			.timeLeft {
@@ -83,6 +101,9 @@
 				height: 100%;
 				color: $white;
 				z-index: 2;
+				@include mediaLarge1024px {
+					flex-direction: column;
+				}
 				.name {
 					display: flex;
 					align-items: center;
@@ -90,11 +111,23 @@
 					max-width: 35%;
 					text-align: right;
 					width: 100%;
+					@include mediaLarge1024px {
+						max-width: unset;
+						justify-content: center;
+						text-align: center;
+					}
 					h2 {
 						font-size: 46px;
 						font-style: normal;
 						line-height: 50px;
 						font-weight: bold;
+						@include mediaLarge640px {
+							font-size: 35px;
+						}
+						@include mediaLarge480px {
+							font-size: 27px;
+							line-height: 30px;
+						}
 					}
 				}
 				.description {
@@ -104,6 +137,14 @@
 					max-width: 45%;
 					width: 100%;
 					color: $black;
+					@include mediaLarge1024px {
+						max-width: 70%;
+						text-align: center;
+					}
+					@include mediaLarge640px {
+						background: transparent;
+						color: $white;
+					}
 					.text {
 						display: -webkit-box;
 						-webkit-line-clamp: 2;
@@ -114,6 +155,11 @@
 						font-style: normal;
 						font-weight: 500;
 						line-height: 22px;
+						@include mediaLarge1024px {
+							font-size: 18px;
+							font-weight: 400;
+							line-height: 20px;
+						}
 					}
 				}
 			}
@@ -122,6 +168,15 @@
 			position: relative;
 			padding-top: calc(100% * 60 / 180);
 			background-color: $black;
+			@include mediaLarge1024px {
+				padding-top: calc(100% * 90 / 180);
+			}
+			@include mediaLarge530px {
+				padding-top: calc(100% * 120 / 180);
+			}
+			@include mediaLarge440px {
+				padding-top: calc(100% * 130 / 150);
+			}
 			&::after {
 				content: "";
 				position: absolute;

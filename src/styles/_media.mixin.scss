@@ -1,0 +1,42 @@
+@import "./vars";
+
+@mixin mediaLarge1200px {
+	@media (max-width: $largePOINT1200) {
+		@content;
+	}
+}
+@mixin mediaLarge1024px {
+	@media (max-width: $largePOINT1024) {
+		@content;
+	}
+}
+
+@mixin mediaLarge776px {
+	@media (max-width: $largePOINT776) {
+		@content;
+	}
+}
+
+@mixin mediaLarge640px {
+	@media (max-width: $largePOINT640) {
+		@content;
+	}
+}
+
+@mixin mediaLarge530px {
+	@media (max-width: $mobilePOINT530) {
+		@content;
+	}
+}
+
+@mixin mediaLarge480px {
+	@media (max-width: $mobilePOINT480) {
+		@content;
+	}
+}
+
+@mixin mediaLarge440px {
+	@media (max-width: $mobilePOINT440) {
+		@content;
+	}
+}

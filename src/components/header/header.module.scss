@@ -1,4 +1,6 @@
 @import "../../styles/vars";
+@import "../../styles/media.mixin";
+@import "../../styles/mixin";
 
 .header {
 	position: relative;
@@ -54,7 +56,11 @@
 		display: flex;
 		align-items: center;
 		gap: 12px;
-
+		.list {
+			@include mediaLarge776px {
+				display: none;
+			}
+		}
 		.button {
 			display: flex;
 			flex-direction: column;
@@ -90,7 +96,10 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-
+		@include mediaLarge440px {
+			flex: 2;
+			justify-content: flex-start;
+		}
 		img {
 			width: 140px;
 			height: 60px;
@@ -102,7 +111,9 @@
 		justify-content: flex-end;
 		gap: 15px;
 		color: $darken;
-
+		@include mediaLarge440px {
+			display: none;
+		}
 		.column {
 			.search,
 			.cart {

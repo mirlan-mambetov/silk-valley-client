@@ -1,5 +1,7 @@
 @import "./normalize.scss";
 @import "./vars";
+@import "./mixin";
+@import "./media.mixin";
 * {
 	margin: 0;
 	padding: 0;

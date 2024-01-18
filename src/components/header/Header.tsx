@@ -53,6 +53,7 @@ export const HeaderComponent = () => {
 								<span></span>
 							</ButtonComponent>
 							<MenuComponent
+								className={style.list}
 								orientation="column"
 								data={HEADER_MENU}
 								limit={3}

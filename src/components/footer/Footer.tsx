@@ -1,3 +1,5 @@
+"use client"
+
 import { FC } from "react"
 import { MenuComponent } from ".."
 import { FOOTER_LINKS } from "./footer.data"
