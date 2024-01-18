@@ -37,6 +37,7 @@ export const Banner: FC<IMainBannerProps> = ({ data }) => {
 	useEffect(() => {
 		data.forEach((data, index) => {
 			if (videoRefs.current[index]) {
+				// @ts-ignore
 				const duration = videoRefs.current[index].duration
 				setVideoDurations((prevDurations) =>
 					prevDurations.map((prevDuration, i) =>
@@ -52,6 +53,7 @@ export const Banner: FC<IMainBannerProps> = ({ data }) => {
 		})
 	}, [currentSlideIndex, isChanged])
 
+	// @ts-ignore
 	const onAutoplayTimeLeft = (s, time: number, progress: number) => {
 		data.forEach((data, index) => {
 			const totalSeconds = time / 1000
@@ -62,6 +64,7 @@ export const Banner: FC<IMainBannerProps> = ({ data }) => {
 					"--progress",
 					String(1 - progress)
 				)
+				// @ts-ignore
 				progressContents.current[index].textContent = `${minutes}m ${seconds}s`
 			}
 		})

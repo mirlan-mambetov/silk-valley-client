@@ -4,6 +4,13 @@ export const BANNER_DATA: IProduct[] = [
 	{
 		id: 1,
 		title: "ASUS Zenbook 15 OLED",
+		alias: "banner-data-1",
+		subtitle: "ASUS Zenbook 15 OLED",
+		poster: "",
+		images: [],
+		article: 1341134312,
+		price: 134234,
+		rating: 3.2,
 		description: "Портативный. Экологичный. Невероятный.",
 		video:
 			"https://res.cloudinary.com/djzubalr7/video/upload/v1692891776/silk-valley/banner-promo/videoplayback_fkd6ng.mp4",
@@ -11,6 +18,13 @@ export const BANNER_DATA: IProduct[] = [
 	{
 		id: 2,
 		title: "iPhone 14 Pro Max 128 ГБ",
+		alias: "banner-data-2",
+		subtitle: "iPhone 14 Pro Max 128 ГБ",
+		poster: "",
+		images: [],
+		article: 1341134312,
+		price: 134234,
+		rating: 4.2,
 		description:
 			"Dynamic Island, новый волшебный способ взаимодействия с iPhone",
 		video:
@@ -19,6 +33,13 @@ export const BANNER_DATA: IProduct[] = [
 	{
 		id: 3,
 		title: "Microsoft Surface Laptop 2",
+		alias: "banner-data-3",
+		subtitle: "Microsoft Surface Laptop 2",
+		poster: "",
+		images: [],
+		article: 1341134312,
+		price: 134234,
+		rating: 4.2,
 		description:
 			"Выполняйте свои задачи с большей мощностью многозадачности и до 70% большей скоростью",
 		video:
@@ -27,6 +48,13 @@ export const BANNER_DATA: IProduct[] = [
 	{
 		id: 4,
 		title: "HP Spectre X360 14",
+		alias: "banner-data-4",
+		subtitle: "HP Spectre X360 14",
+		poster: "",
+		images: [],
+		article: 1341134312,
+		price: 134234,
+		rating: 4.2,
 		description:
 			"HP Spectre x360 Convertible 14-ea0005ur – ноутбук-трансформер с сенсорным экраном",
 		video:

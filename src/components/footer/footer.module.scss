@@ -1,5 +1,7 @@
 @import "../../styles/mixin";
+@import "../../styles/media.mixin";
 @import "../../styles/vars";
+
 .footer {
 	background: $darken;
 	.wrap {
@@ -11,14 +13,32 @@
 		justify-content: flex-end;
 		gap: 50px;
 		color: $gray;
+		@include mediaLarge1024px {
+			padding: 20px 0;
+		}
+		@include mediaLarge440px {
+			padding-bottom: 30px;
+		}
 		.column {
 			font-size: 10px;
 			line-height: 15px;
 			ul {
 				display: flex;
 				gap: 2px !important;
+				@include mediaLarge1024px {
+					flex-wrap: wrap;
+				}
+				@include mediaLarge440px {
+					flex-direction: column;
+				}
 				li {
 					width: 20% !important;
+					@include mediaLarge1024px {
+						width: 45% !important;
+					}
+					@include mediaLarge440px {
+						width: unset !important;
+					}
 					a {
 						font-size: 10px !important;
 						line-height: 15px;

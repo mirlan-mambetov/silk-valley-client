@@ -1,11 +1,11 @@
-import { IMenuItems } from "@/interfaces/menu.interface"
+import { ICategories } from "@/interfaces/categories.interface"
 import Link from "next/link"
 import { DetailsHTMLAttributes, FC } from "react"
 
 interface IMenuProps extends DetailsHTMLAttributes<HTMLUListElement> {
 	listClassName: string
 	listItemClassName: string
-	data: IMenuItems[]
+	data: ICategories[]
 }
 
 export const ListGroupComponent: FC<IMenuProps> = ({
@@ -18,7 +18,7 @@ export const ListGroupComponent: FC<IMenuProps> = ({
 		<ul className={listClassName} {...props}>
 			{data.map((link) => (
 				<li className={listItemClassName} key={link.name}>
-					<Link href={`/${link.href}`}>{link.name}</Link>
+					<Link href={`/${link.alias}`}>{link.name}</Link>
 				</li>
 			))}
 		</ul>

@@ -1,74 +1,74 @@
-import { IMenuItems } from "@/interfaces/menu.interface"
+import { ICategories } from "@/interfaces/categories.interface"
 
-export const FOOTER_LINKS: IMenuItems[] = [
+export const FOOTER_LINKS: ICategories[] = [
 	{
 		id: 1,
-		href: "#",
+		alias: "#",
 		name: "Покупка и продажа",
 	},
 	{
 		id: 2,
-		href: "#",
+		alias: "#",
 		name: "Спопобы оплаты",
 	},
 	{
 		id: 3,
-		href: "#",
+		alias: "#",
 		name: "Возврат денежных средств",
 	},
 	{
 		id: 4,
-		href: "#",
+		alias: "#",
 		name: "Проблемы с доставкой",
 	},
 	{
 		id: 5,
-		href: "#",
+		alias: "#",
 		name: "Проблемы с оплатой",
 	},
 	{
 		id: 6,
-		href: "#",
+		alias: "#",
 		name: "Политика конфеденциальности",
 	},
 	{
 		id: 7,
-		href: "#",
+		alias: "#",
 		name: "Регистрация и авторизация",
 	},
 	{
 		id: 8,
-		href: "#",
+		alias: "#",
 		name: "Куки и обработка личных данных",
 	},
 	{
 		id: 9,
-		href: "#",
+		alias: "#",
 		name: "Правила пользования платформой",
 	},
 	{
 		id: 10,
-		href: "#",
+		alias: "#",
 		name: "Что нужно учитывать при регистрации",
 	},
 	{
 		id: 11,
-		href: "#",
+		alias: "#",
 		name: "Пользовательское соглашение",
 	},
 	{
 		id: 12,
-		href: "#",
+		alias: "#",
 		name: "Как заработать с Silk Valley",
 	},
 	{
 		id: 13,
-		href: "#",
+		alias: "#",
 		name: "Покупка лицензионной музыки и прослушивание",
 	},
 	{
 		id: 14,
-		href: "#",
+		alias: "#",
 		name: "Работа в Silk Valley",
 	},
 ]
