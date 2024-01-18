@@ -11,12 +11,17 @@
 		justify-content: space-between;
 		padding: 6px 10px;
 		border-radius: 3px;
-		border: 1px dashed $darkenRGBA;
-		&.outShadow {
-			box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.02);
-		}
+		box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.02);
 		.title {
+			display: flex;
+			gap: 12px;
+			align-items: center;
 			font-size: 13px;
+			font-weight: 500;
+			span {
+				display: flex;
+				font-size: 15px;
+			}
 		}
 	}
 	&_list {
@@ -33,6 +38,7 @@
 		z-index: 8;
 		color: $darken;
 		overflow-y: scroll;
+		max-height: 200px;
 	}
 	&_item {
 		font-size: 13px;

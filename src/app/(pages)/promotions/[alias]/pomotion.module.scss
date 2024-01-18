@@ -1,0 +1,16 @@
+@import "../../../../styles/mixin";
+@import "../../../../styles/vars";
+.wrap {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	.title {
+		font-size: 16px;
+		font-weight: 500;
+	}
+	.promotions {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+	}
+}

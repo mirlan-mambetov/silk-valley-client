@@ -4,7 +4,7 @@ import { IRoutesHistoryItem } from "@/interfaces/routes.history.interface"
 import cn from "classnames"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { FC, useState } from "react"
+import { FC } from "react"
 import { IoMdArrowDropright } from "react-icons/io"
 import style from "./routes-history.module.scss"
 
@@ -17,9 +17,9 @@ export const RoutesHistoryComponent: FC<IRoutesHistoryProps> = ({
 	links,
 	productName,
 }) => {
-	const [active, setActive] = useState(false)
+	// const [active, setActive] = useState(false)
 	const pathName = usePathname()
-	const replcaseString = pathName.replace(/^\/[^\/]+\//, "")
+	// const replcaseString = pathName.replace(/^\/[^\/]+\//, "")
 
 	return (
 		<div className={style.history}>

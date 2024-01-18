@@ -3,6 +3,7 @@
 import useOutsiteClick from "@/hooks/useOutsideClick"
 import cn from "classnames"
 import { useState } from "react"
+import { IconType } from "react-icons"
 import { LuSettings2 } from "react-icons/lu"
 import style from "./select.module.scss"
 
@@ -12,7 +13,7 @@ export interface ISelectProps<K = string> {
 	value?: ISelectItem<K>
 	title?: string
 	className?: string
-	boxShadow?: boolean
+	TitleIcon?: IconType
 }
 
 export interface ISelectItem<K = string> {
@@ -27,7 +28,7 @@ function SelectComponent<T>({
 	className,
 	title,
 	value,
-	boxShadow,
+	TitleIcon,
 }: ISelectProps<T>) {
 	const { elRef, isShow, setIsShow } = useOutsiteClick(false)
 	const [isSelected, setIsSelected] = useState<any>(null)
@@ -35,15 +36,13 @@ function SelectComponent<T>({
 	return (
 		<div className={cn(style.select, className)} ref={elRef}>
 			<div
-				className={cn(style.select_placeholder, {
-					[style.outShadow]: boxShadow,
-				})}
+				className={style.select_placeholder}
 				onClick={() => setIsShow(!isShow)}
 			>
-				<span className={style.title}>
+				<h5 className={style.title}>
+					<span>{TitleIcon ? <TitleIcon /> : null}</span>
 					{isSelected ? isSelected : `${title}`}
-				</span>
-				{/* <MdOutlineKeyboardArrowDown /> */}
+				</h5>
 				<LuSettings2 />
 			</div>
 			{isShow && (

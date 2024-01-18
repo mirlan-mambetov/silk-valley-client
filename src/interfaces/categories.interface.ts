@@ -5,5 +5,11 @@ export interface ICategories extends IBase {
 	name: string
 	alias: string
 	Icon?: IconType
-	itemId?: number
+}
+
+export interface IChildsCategories extends IBase {
+	name: string
+	alias: string
+	Icon?: IconType
+	category: ICategories
 }

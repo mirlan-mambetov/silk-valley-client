@@ -2,7 +2,8 @@
 @import "../../styles/vars";
 .history {
 	margin: 10px 0;
-	// border-bottom: 1px solid $darkenRGBA;
+	padding: 10px 0;
+	border-top: 1px solid $darkenRGBA;
 	// padding: 10px;
 	.list {
 		display: flex;

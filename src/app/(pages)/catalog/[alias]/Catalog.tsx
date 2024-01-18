@@ -5,10 +5,8 @@ import { CARDS_PRODUCT } from "@/components/product/product.data"
 import { FC } from "react"
 import style from "./catalog.module.scss"
 
-interface ICatalog {
-	path?: string
-}
-export const Catalog: FC<ICatalog> = ({ path }) => {
+interface ICatalog {}
+export const Catalog: FC<ICatalog> = () => {
 	return (
 		<div className={style.catalog}>
 			{/* ROUTES HISTORY */}

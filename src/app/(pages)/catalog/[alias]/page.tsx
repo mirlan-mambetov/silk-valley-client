@@ -6,7 +6,7 @@ const CatalogPage = ({ params }: IPageParams) => {
 		<>
 			<section>
 				<div className="container">
-					<Catalog path={params.alias} />
+					<Catalog />
 				</div>
 			</section>
 		</>

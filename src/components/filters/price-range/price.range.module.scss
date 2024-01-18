@@ -2,22 +2,31 @@
 @import "../../../styles/vars";
 .wrap {
 	display: flex;
-	gap: 5px;
-	padding: 0 10px;
+	align-items: center;
+	gap: 20px;
 	.range {
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		gap: 12px;
 		.value {
 			display: flex;
-			flex-direction: column;
 			gap: 12px;
 		}
 		span {
 			color: $gray;
 		}
-		span,
 		small {
+			position: absolute;
+			top: -200%;
+			right: 0;
+			border: 1px dashed $darkenRGBA;
+			padding: 3px;
+			border-radius: 3px;
+			font-size: 12px;
+			z-index: 300;
+		}
+		span {
 			font-weight: 500;
 			font-size: 12px;
 		}

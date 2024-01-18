@@ -63,7 +63,7 @@ export const MenuComponent: FC<IMenuComponentProps> = ({
 								// onMouseLeave={() => setItemId(null)}
 							>
 								{link.childsData.map((secondLink) => {
-									if (secondLink.itemId === link.id) {
+									if (secondLink.category.id === link.id) {
 										return (
 											<motion.li
 												variants={variants}

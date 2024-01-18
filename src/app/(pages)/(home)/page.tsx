@@ -3,13 +3,12 @@ import { CARDS_PRODUCT } from "@/components/product/product.data"
 import { SHARES_DATA } from "@/components/promotions/promotions.data"
 import { Banner } from "./Banner/Banner"
 import { BANNER_DATA } from "./Banner/banner.data"
-import style from "./home.module.scss"
 
 const HomePage = () => {
 	return (
 		<>
 			{/* BANNER HERO */}
-			<section className={style.banner}>
+			<section>
 				<div className="container">
 					<Banner data={BANNER_DATA} />
 				</div>

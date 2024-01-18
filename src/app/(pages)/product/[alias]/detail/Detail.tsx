@@ -31,10 +31,8 @@ export const Detail: FC<IDetailProps> = ({ data }) => {
 
 	return (
 		<div className={style.detail}>
-			<div className={style.top}>
-				{/* ROUTES HISTORY */}
-				<RoutesHistoryComponent productName={data.title} />
-			</div>
+			{/* ROUTES HISTORY */}
+			<RoutesHistoryComponent productName={data.title} />
 			<div className={style.wrap}>
 				{/* PRODUCT */}
 				<div className={style.product}>

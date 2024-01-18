@@ -25,6 +25,7 @@
 	.price {
 		display: flex;
 		padding: 0 !important;
+		align-items: baseline;
 		> span {
 			color: $white;
 			background: $discount;
