@@ -11,7 +11,7 @@
 		row-gap: 30px;
 		@include mediaLarge776px {
 			grid-template-columns: 1fr;
-			grid-template-rows: repeat(4, 180px);
+			grid-template-rows: repeat(4, 150px);
 			row-gap: 50px;
 		}
 		@include mediaLarge640px {
@@ -48,6 +48,7 @@
 						cursor: pointer;
 						@include mediaLarge640px {
 							font-size: 25px;
+							line-height: 30px;
 						}
 					}
 					.description {

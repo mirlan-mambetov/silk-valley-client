@@ -105,6 +105,9 @@
 				@include mediaLarge1024px {
 					flex-direction: column;
 				}
+				@include mediaLarge640px {
+					gap: 4px;
+				}
 				.name {
 					display: flex;
 					align-items: center;
@@ -123,10 +126,11 @@
 						line-height: 50px;
 						font-weight: bold;
 						@include mediaLarge640px {
-							font-size: 35px;
+							font-size: 30px;
+							line-height: 40px;
 						}
-						@include mediaLarge480px {
-							font-size: 27px;
+						@include mediaLarge440px {
+							font-size: 25px;
 							line-height: 30px;
 						}
 					}
@@ -142,9 +146,12 @@
 						max-width: 70%;
 						text-align: center;
 					}
-					@include mediaLarge640px {
+					@include mediaLarge1024px {
 						background: transparent;
 						color: $white;
+					}
+					@include mediaLarge480px {
+						padding: 0;
 					}
 					.text {
 						display: -webkit-box;
@@ -156,10 +163,8 @@
 						font-style: normal;
 						font-weight: 500;
 						line-height: 22px;
-						@include mediaLarge1024px {
-							font-size: 18px;
-							font-weight: 400;
-							line-height: 20px;
+						@include mediaLarge440px {
+							line-height: 18px;
 						}
 					}
 				}
@@ -172,14 +177,20 @@
 			@include mediaLarge1024px {
 				padding-top: calc(100% * 90 / 180);
 			}
-			@include mediaLarge530px {
-				padding-top: calc(100% * 120 / 180);
+			@include mediaLarge830px {
+				padding-top: calc(100% * 100 / 180);
+			}
+			@include mediaLarge640px {
+				padding-top: calc(100% * 100 / 140);
+			}
+			@include mediaLarge480px {
+				padding-top: calc(100% * 120 / 140);
 			}
 			@include mediaLarge440px {
-				padding-top: calc(100% * 90 / 150);
+				padding-top: calc(100% * 130 / 150);
 			}
 			@include mediaLarge360px {
-				padding-top: calc(100% * 120 / 150);
+				padding-top: calc(100% * 140 / 140);
 			}
 			&::after {
 				content: "";

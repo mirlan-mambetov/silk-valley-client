@@ -133,6 +133,12 @@
 					color: $gray;
 				}
 			}
+			.price {
+				@include mediaLarge440px {
+					flex-direction: column;
+					align-items: flex-start;
+				}
+			}
 		}
 		.buttons {
 			display: none;

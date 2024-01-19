@@ -11,6 +11,12 @@
 	}
 }
 
+@mixin mediaLarge830px {
+	@media (max-width: $largePOINT835) {
+		@content;
+	}
+}
+
 @mixin mediaLarge776px {
 	@media (max-width: $largePOINT776) {
 		@content;

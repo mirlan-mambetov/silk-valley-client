@@ -63,6 +63,7 @@ export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 									</div>
 
 									<ProductPriceComponent
+										className={style.price}
 										price={product.price}
 										discount={product.discount}
 										orientation="column"
