@@ -1,5 +1,10 @@
 @import "./vars";
 
+@mixin mediaLarge1260px {
+	@media (max-width: $largePOINT1260) {
+		@content;
+	}
+}
 @mixin mediaLarge1200px {
 	@media (max-width: $largePOINT1200) {
 		@content;
@@ -7,6 +12,11 @@
 }
 @mixin mediaLarge1024px {
 	@media (max-width: $largePOINT1024) {
+		@content;
+	}
+}
+@mixin mediaLarge940px {
+	@media (max-width: $largePOINT940) {
 		@content;
 	}
 }

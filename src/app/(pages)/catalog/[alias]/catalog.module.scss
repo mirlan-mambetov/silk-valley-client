@@ -1,5 +1,6 @@
 @import "../../../../styles/mixin";
 @import "../../../../styles/vars";
+@import "../../../../styles/media.mixin";
 
 .catalog {
 	display: flex;
@@ -10,6 +11,11 @@
 	display: grid;
 	grid-template-columns: minmax(0, 0.2fr) minmax(0, 1fr);
 	column-gap: 20px;
+	@include mediaLarge940px {
+		position: relative;
+		grid-template-columns: unset;
+		padding-top: 20px;
+	}
 }
 .content {
 	display: flex;

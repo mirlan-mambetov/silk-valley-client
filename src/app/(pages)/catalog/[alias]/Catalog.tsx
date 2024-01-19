@@ -2,6 +2,7 @@
 
 import { CatalogCardsComponent, SidebarComponent } from "@/components"
 import { CARDS_PRODUCT } from "@/components/product/product.data"
+
 import { FC } from "react"
 import style from "./catalog.module.scss"
 
@@ -23,7 +24,6 @@ export const Catalog: FC<ICatalog> = () => {
 				<SidebarComponent />
 				<div className={style.content}>
 					<CatalogCardsComponent data={CARDS_PRODUCT} />
-					{/* <CardsComponent products={CARDS_PRODUCT} grid="5" limit={10} /> */}
 				</div>
 			</div>
 		</div>

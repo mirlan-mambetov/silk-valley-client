@@ -1,4 +1,6 @@
 @import "../../styles/vars";
+@import "../../styles/mixin";
+@import "../../styles/media.mixin";
 
 .menu {
 	position: relative;
@@ -14,6 +16,9 @@
 			.list__item {
 				font-size: 12px;
 				font-weight: 400;
+				@include mediaLarge480px {
+					font-size: 16px;
+				}
 			}
 		}
 
@@ -21,6 +26,10 @@
 			font-size: 12px;
 			font-weight: 500;
 			text-transform: uppercase;
+			@include mediaLarge480px {
+				font-size: 14px;
+				font-weight: 400;
+			}
 			a {
 				color: $darken;
 			}
@@ -30,6 +39,9 @@
 			display: flex;
 			flex-wrap: wrap;
 			gap: 7px;
+			@include mediaLarge480px {
+				gap: 12px;
+			}
 
 			.list__item {
 				width: calc(100% / 4 * 1.3);

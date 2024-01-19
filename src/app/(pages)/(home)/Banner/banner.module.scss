@@ -189,9 +189,6 @@
 			@include mediaLarge440px {
 				padding-top: calc(100% * 130 / 150);
 			}
-			@include mediaLarge360px {
-				padding-top: calc(100% * 140 / 140);
-			}
 			&::after {
 				content: "";
 				position: absolute;

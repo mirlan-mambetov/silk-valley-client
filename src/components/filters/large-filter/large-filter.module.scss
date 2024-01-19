@@ -1,0 +1,33 @@
+@import "../../../styles/media.mixin";
+@import "../../../styles/mixin";
+@import "../../../styles/vars";
+.large {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	@include mediaLarge1260px {
+		flex-wrap: wrap;
+		gap: 20px;
+	}
+	@include mediaLarge1024px {
+		gap: 12px;
+		justify-content: center;
+	}
+	.box {
+		flex: 1;
+		@include mediaLarge1260px {
+			flex: unset;
+			max-width: 320px;
+			width: 100%;
+		}
+		@include mediaLarge1024px {
+			max-width: 45%;
+		}
+		@include mediaLarge776px {
+			max-width: 300px;
+		}
+		@include mediaLarge640px {
+			max-width: 100%;
+		}
+	}
+}

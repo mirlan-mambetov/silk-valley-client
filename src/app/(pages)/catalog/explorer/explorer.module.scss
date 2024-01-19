@@ -1,9 +1,13 @@
 @import "../../../../styles/mixin";
 @import "../../../../styles/vars";
+@import "../../../../styles/media.mixin";
 .explorer {
 	.wrap {
 		display: flex;
 		flex-direction: column;
 		gap: 20px;
+		@include mediaLarge1024px {
+			gap: 36px;
+		}
 	}
 }

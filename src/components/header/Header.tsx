@@ -4,12 +4,10 @@ import { variants3, variants4 } from "@/framer-motion"
 import useOutsiteClick from "@/hooks/useOutsideClick"
 import cn from "classnames"
 import { motion } from "framer-motion"
-import Image from "next/image"
-import Link from "next/link"
 import { FaMapMarkerAlt } from "react-icons/fa"
 import { IoSearchOutline } from "react-icons/io5"
 import { SlHandbag } from "react-icons/sl"
-import { ButtonComponent, MenuComponent } from "../"
+import { ButtonComponent, LogoComponent, MenuComponent } from "../"
 import { HEADER_MENU } from "../menu/menu.data"
 import style from "./header.module.scss"
 
@@ -63,17 +61,7 @@ export const HeaderComponent = () => {
 						{/* END MENU */}
 
 						{/* LOGO */}
-						<div className={style.logo}>
-							<Link href={`/`}>
-								<Image
-									priority
-									src="/icons/Silk Valley.svg"
-									width={300}
-									height={300}
-									alt="logo"
-								/>
-							</Link>
-						</div>
+						<LogoComponent />
 						{/* END LOGO */}
 
 						{/* ACTIONS */}

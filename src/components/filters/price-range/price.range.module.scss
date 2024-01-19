@@ -1,9 +1,11 @@
 @import "../../../styles/mixin";
 @import "../../../styles/vars";
+@import "../../../styles/media.mixin";
 .wrap {
 	display: flex;
 	align-items: center;
 	gap: 20px;
+	padding: 10px;
 	.range {
 		position: relative;
 		display: flex;
@@ -25,6 +27,9 @@
 			border-radius: 3px;
 			font-size: 12px;
 			z-index: 300;
+			@include mediaLarge1260px {
+				top: 110%;
+			}
 		}
 		span {
 			font-weight: 500;

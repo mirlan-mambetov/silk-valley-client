@@ -22,22 +22,27 @@
 		.column {
 			font-size: 10px;
 			line-height: 15px;
+			@include mediaLarge480px {
+				font-size: 14px;
+				line-height: 18px;
+			}
 			ul {
 				display: flex;
 				gap: 2px !important;
 				@include mediaLarge1024px {
 					flex-wrap: wrap;
 				}
-				@include mediaLarge440px {
+				@include mediaLarge480px {
 					flex-direction: column;
+					gap: 7px !important;
 				}
 				li {
 					width: 20% !important;
 					@include mediaLarge1024px {
 						width: 45% !important;
 					}
-					@include mediaLarge440px {
-						width: unset !important;
+					@include mediaLarge480px {
+						width: 100% !important;
 					}
 					a {
 						font-size: 10px !important;
@@ -45,6 +50,10 @@
 						color: $gray !important;
 						text-transform: uppercase;
 						transition: all 0.1s ease;
+						@include mediaLarge480px {
+							font-size: 14px !important;
+							line-height: 20px;
+						}
 						&:hover {
 							color: $white !important;
 						}

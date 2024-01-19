@@ -20,6 +20,10 @@
 			grid-template-columns: repeat(2, calc(100% / 2 - 10px / 2 * (2 - 1)));
 			column-gap: 10px;
 		}
+		@include mediaLarge440px {
+			grid-template-columns: repeat(2, calc(100% / 2 - 4px / 2 * (2 - 1)));
+			column-gap: 4px;
+		}
 		&.grid5 {
 			grid-template-columns: repeat(5, calc(100% / 5 - 20px / 5 * (5 - 1)));
 		}

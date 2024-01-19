@@ -1,13 +1,6 @@
 @import "../../styles/mixin";
 @import "../../styles/vars";
+@import "../../styles/media.mixin";
 .filters {
 	padding: 0;
-}
-.top {
-	display: flex;
-	align-items: center;
-	gap: 12px;
-	.box {
-		flex: 1;
-	}
 }
