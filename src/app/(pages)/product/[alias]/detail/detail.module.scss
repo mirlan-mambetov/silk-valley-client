@@ -1,10 +1,17 @@
 @import "../../../../../styles/mixin";
 @import "../../../../../styles/vars";
+@import "../../../../../styles/media.mixin";
+
 .detail {
 	.wrap {
 		display: grid;
-		grid-template-columns: calc(100% / 2 * 1.5 - 6px) calc(100% / 6 * 1.5 - 6px);
+		grid-template-columns: calc(100% / 2 * 1.5 - 12px / 2 * (2 - 1)) calc(
+				100% / 6 * 1.5 - 12px / 6 * (6 - 1)
+			);
 		column-gap: 12px;
+		@include mediaLarge1200px {
+			grid-template-columns: 1fr;
+		}
 	}
 }
 .product {
@@ -12,6 +19,15 @@
 	display: grid;
 	grid-template-columns: calc(100% / 2 * 1.1 - 10px) calc(100% / 3 * 1.4 - 10px);
 	column-gap: 10px;
+	@include mediaLarge1200px {
+		grid-template-columns: calc(100% / 3 * 1.5 - 10px) calc(
+				100% / 3 * 1.4 - 10px
+			);
+	}
+	@include mediaLarge940px {
+		grid-template-columns: 1fr;
+		row-gap: 20px;
+	}
 
 	.product_content {
 		display: flex;
@@ -49,71 +65,6 @@
 				box-shadow: 0px 10px 23px 3px rgba(34, 60, 40, 0.03);
 				font-size: 12px;
 				font-weight: 500;
-			}
-		}
-	}
-	.product_image {
-		position: relative;
-		padding-top: 0;
-		border: 1px dashed $darkenRGBA;
-		border-radius: 4px;
-		display: flex;
-		justify-content: center;
-		gap: 8px;
-		padding: 3px;
-
-		.product_poster {
-			position: relative;
-			// padding-top: calc(100% * (320 / 300));
-			width: calc(100% / 2 * 1.6);
-			border-radius: 2px;
-			// overflow: hidden;
-			.poster {
-				position: absolute;
-				top: 0;
-				left: 0;
-				bottom: 0;
-				width: 100%;
-				height: 100%;
-				> div {
-					width: 100% !important;
-					height: 100% !important;
-					z-index: 1000;
-
-					&:nth-child(2) {
-						width: 100% !important;
-						height: 100% !important;
-					}
-					&:nth-child(3) {
-						z-index: 1000;
-					}
-					> img {
-						width: 100% !important;
-						height: 100% !important;
-					}
-				}
-			}
-		}
-		.product_images {
-			display: flex;
-			flex-direction: column;
-			width: calc(100% / 6 * 1.2 - 10px);
-			justify-content: space-between;
-			gap: 10px;
-			.image {
-				position: relative;
-				overflow: hidden;
-				padding-top: calc(100% * (172 / 115));
-				border-radius: 2px;
-				overflow: hidden;
-
-				img {
-					position: absolute;
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: 100%;
-				}
 			}
 		}
 	}

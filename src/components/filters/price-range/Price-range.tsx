@@ -11,32 +11,26 @@ export const PriceRangeComponent: FC = () => {
 	return (
 		<div className={style.wrap}>
 			<div className={style.range}>
-				<div className={style.value}>
-					<span>Цена от</span>
-					<input
-						type="range"
-						min={MIN_PRICE}
-						max={MAX_PRICE}
-						step={10}
-						onChange={(e) => setMinPrice(+e.currentTarget.value)}
-						defaultValue={MIN_PRICE}
-					/>
-				</div>
-				<small>{minPrice} KGS</small>
+				<span>Цена от</span>
+				<input
+					min={MIN_PRICE}
+					type="number"
+					max={MAX_PRICE}
+					step={10}
+					onChange={(e) => setMinPrice(+e.currentTarget.value)}
+					defaultValue={MIN_PRICE}
+				/>
 			</div>
 			<div className={style.range}>
-				<div className={style.value}>
-					<span>Цена до</span>
-					<input
-						type="range"
-						min={MIN_PRICE}
-						max={MAX_PRICE}
-						defaultValue={MAX_PRICE}
-						step={10}
-						onChange={(e) => setMaxPrice(+e.currentTarget.value)}
-					/>
-				</div>
-				<small>{maxPrice} KGS</small>
+				<span>Цена до</span>
+				<input
+					type="number"
+					min={MIN_PRICE}
+					max={MAX_PRICE}
+					defaultValue={MAX_PRICE}
+					step={10}
+					onChange={(e) => setMaxPrice(+e.currentTarget.value)}
+				/>
 			</div>
 		</div>
 	)

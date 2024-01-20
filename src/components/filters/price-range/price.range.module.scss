@@ -6,64 +6,35 @@
 	align-items: center;
 	gap: 20px;
 	padding: 10px;
+	box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.02);
+
 	.range {
 		position: relative;
 		display: flex;
-		flex-direction: column;
-		gap: 12px;
-		.value {
+		align-items: center;
+		gap: 5px;
+		span {
 			display: flex;
-			gap: 12px;
-		}
-		span {
+			justify-content: center;
+			width: 60px;
 			color: $gray;
-		}
-		small {
-			position: absolute;
-			top: -200%;
-			right: 0;
-			border: 1px dashed $darkenRGBA;
-			padding: 3px;
-			border-radius: 3px;
-			font-size: 12px;
-			z-index: 300;
-			@include mediaLarge1260px {
-				top: 110%;
-			}
-		}
-		span {
 			font-weight: 500;
 			font-size: 12px;
 		}
 		input {
-			cursor: pointer;
+			padding: 4px;
 			max-width: 80px;
-			-webkit-appearance: none;
+			border-radius: 4px;
+			border: 1px dashed $darkenRGBA;
+			font-family: inherit;
+			font-size: 14px;
 			&:focus {
 				outline: none;
 			}
-			&::-webkit-slider-runnable-track {
-				width: 300px;
-				height: 5px;
-				background: $purpleFavorite;
-				border: none;
-				border-radius: 3px;
-			}
-			&::-webkit-slider-thumb {
+			&::-webkit-inner-spin-button,
+			&::-webkit-outer-spin-button {
 				-webkit-appearance: none;
-				border: none;
-				height: 12px;
-				width: 12px;
-				border-radius: 50%;
-				background: $discount;
-				@include baseBoxShadow;
-				margin-top: -4px;
-			}
-			&:focus::-webkit-slider-runnable-track {
-				background: $purpleDarken;
-			}
-			&:focus::-webkit-slider-thumb {
-				background: $purple;
+				margin: 0;
 			}
 		}
 	}

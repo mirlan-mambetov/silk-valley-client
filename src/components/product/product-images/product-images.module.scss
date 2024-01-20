@@ -1,0 +1,111 @@
+@import "../../../styles/media.mixin";
+@import "../../../styles/mixin";
+@import "../../../styles/vars";
+
+.product_image {
+	position: relative;
+	padding-top: 0;
+	border: 1px dashed $darkenRGBA;
+	border-radius: 4px;
+	display: flex;
+	justify-content: center;
+	gap: 8px;
+	padding: 3px;
+	overflow: hidden;
+	.product_poster {
+		position: relative;
+		padding-top: calc(100% * (320 / 300));
+		width: calc(100% / 2 * 1.6);
+		border-radius: 2px;
+		@include mediaLarge1200px {
+			padding-top: calc(100% * (280 / 300));
+			width: calc(100% / 2 * 1.4);
+		}
+		@include mediaLarge940px {
+			width: calc(100% / 2 * 1.6);
+		}
+		@include mediaLarge940px {
+			width: calc(100% / 3 * 1.5);
+			padding-top: calc(100% * (200 / 300));
+		}
+		@include mediaLarge640px {
+			display: none;
+		}
+
+		.poster {
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			height: 100%;
+			> div {
+				width: 100% !important;
+				height: 100% !important;
+				z-index: 1000;
+
+				&:nth-child(2) {
+					width: 100% !important;
+					height: 100% !important;
+				}
+				&:nth-child(3) {
+					z-index: 1000;
+				}
+				> img {
+					width: 100% !important;
+					height: 100% !important;
+				}
+			}
+		}
+	}
+	.product_images {
+		position: relative;
+		width: calc(100% / 6 * 1.2 - 10px);
+		overflow: hidden;
+		@include mediaLarge940px {
+			width: calc(100% / 7 * 1.2 - 10px);
+		}
+		@include mediaLarge640px {
+			width: 60%;
+		}
+		@include mediaLarge530px {
+			width: 80%;
+		}
+		@include mediaLarge480px {
+			width: 100%;
+		}
+		.slider {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			@include mediaLarge640px {
+				position: unset;
+			}
+			.slide {
+				overflow: hidden;
+				.image {
+					position: relative;
+					padding-top: calc(100% * (172 / 115));
+					border-radius: 2px;
+					overflow: hidden;
+					@include mediaLarge1200px {
+						padding-top: calc(100% * (150 / 100));
+					}
+					@include mediaLarge640px {
+						padding-top: calc(100% * (80 / 60));
+					}
+
+					img {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+					}
+				}
+			}
+		}
+	}
+}
