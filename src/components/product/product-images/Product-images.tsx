@@ -52,6 +52,7 @@ export const ProductImagesComponent: FC<IProductImagesComponent> = ({
 						<SwiperSlide key={i} className={style.slide}>
 							<div className={style.image}>
 								<Image
+									priority
 									onMouseEnter={(e) => setImgSrc(e.currentTarget.src)}
 									onMouseLeave={() => setImgSrc(null)}
 									src={image}

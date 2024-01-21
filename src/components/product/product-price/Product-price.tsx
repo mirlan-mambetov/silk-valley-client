@@ -8,7 +8,7 @@ import style from "./price.module.scss"
 interface IPriceComponentProps extends DetailsHTMLAttributes<HTMLDivElement> {
 	price: number
 	discount?: number
-	size?: "1xl" | "2xl"
+	size?: "1xl" | "2xl" | "1xxl"
 	orientation?: "column" | "row"
 }
 export const ProductPriceComponent: FC<IPriceComponentProps> = ({
@@ -23,6 +23,7 @@ export const ProductPriceComponent: FC<IPriceComponentProps> = ({
 			className={cn(style.price, className, {
 				[style.xl2]: size === "2xl",
 				[style.xl1]: size === "1xl",
+				[style.xxl1]: size === "1xxl",
 				[style.column]: orientation === "column",
 			})}
 		>

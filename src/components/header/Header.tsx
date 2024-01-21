@@ -4,6 +4,7 @@ import { variants3, variants4 } from "@/framer-motion"
 import useOutsiteClick from "@/hooks/useOutsideClick"
 import cn from "classnames"
 import { motion } from "framer-motion"
+import { useRouter } from "next/navigation"
 import { FaMapMarkerAlt } from "react-icons/fa"
 import { IoSearchOutline } from "react-icons/io5"
 import { SlHandbag } from "react-icons/sl"
@@ -13,6 +14,7 @@ import style from "./header.module.scss"
 
 export const HeaderComponent = () => {
 	const { elRef, isShow, setIsShow } = useOutsiteClick(false)
+	const { push } = useRouter()
 
 	return (
 		<>
@@ -75,7 +77,10 @@ export const HeaderComponent = () => {
 								</ButtonComponent>
 							</div>
 							<div className={style.column}>
-								<ButtonComponent className={style.cart}>
+								<ButtonComponent
+									className={style.cart}
+									onClick={() => push("/cart")}
+								>
 									<SlHandbag />
 								</ButtonComponent>
 							</div>

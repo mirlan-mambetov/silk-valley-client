@@ -26,6 +26,7 @@ export const CatalogCardsComponent: FC<ICatalogCardsComponentProps> = ({
 					<div key={i} className={style.card}>
 						<div className={style.image}>
 							<Image
+								priority
 								src={product.poster}
 								alt={product.title}
 								width={900}

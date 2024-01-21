@@ -9,6 +9,7 @@
 				100% / 6 * 1.5 - 12px / 6 * (6 - 1)
 			);
 		column-gap: 12px;
+		align-items: start;
 		@include mediaLarge1200px {
 			grid-template-columns: 1fr;
 		}

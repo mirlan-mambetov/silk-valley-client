@@ -1,11 +1,14 @@
 "use client"
 
-import { ButtonComponent, ProductPriceComponent } from "@/components"
+import {
+	ButtonComponent,
+	CartRangeComponent,
+	ProductPriceComponent,
+} from "@/components"
 import { IProduct } from "@/interfaces/product.interface"
 import cn from "classnames"
 import { FC } from "react"
 import { FiEdit2 } from "react-icons/fi"
-import { LuMinus, LuPlus } from "react-icons/lu"
 import style from "./product-info.module.scss"
 
 interface IProductInfoComponentProps {
@@ -77,18 +80,7 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 					</div>
 				</div>
 
-				<div className={style.quantity}>
-					<small>Количество</small>
-					<div className={style.quantity_item}>
-						<ButtonComponent>
-							<LuMinus />
-						</ButtonComponent>
-						<span>1</span>
-						<ButtonComponent>
-							<LuPlus />
-						</ButtonComponent>
-					</div>
-				</div>
+				<CartRangeComponent />
 
 				<div className={style.buttons}>
 					<ButtonComponent type="cart" />

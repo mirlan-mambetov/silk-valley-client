@@ -2,10 +2,12 @@
 
 import { ButtonComponent } from "@/components"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 import { FC } from "react"
 import style from "./mobile-menu.module.scss"
 
 export const MobileMenuComponent: FC = () => {
+	const { push } = useRouter()
 	return (
 		<div className={style.menu}>
 			<div className="container">
@@ -34,7 +36,7 @@ export const MobileMenuComponent: FC = () => {
 					</div>
 
 					<div className={style.item}>
-						<ButtonComponent>
+						<ButtonComponent onClick={() => push("/cart")}>
 							<Image
 								src={"/icons/Bag.svg"}
 								alt="search"

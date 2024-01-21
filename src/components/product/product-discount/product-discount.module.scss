@@ -12,7 +12,15 @@
 	justify-content: flex-end;
 	gap: 4px;
 	padding: 4px;
-
+	&.default {
+		position: unset;
+		.promotions {
+			position: unset;
+			.new {
+				position: unset;
+			}
+		}
+	}
 	&.extension {
 		position: unset;
 		@include mediaLarge440px {

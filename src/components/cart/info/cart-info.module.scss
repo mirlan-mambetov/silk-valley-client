@@ -1,0 +1,8 @@
+@import "../../../styles/media.mixin";
+@import "../../../styles/mixin";
+@import "../../../styles/vars";
+.info {
+	position: sticky;
+	top: 20px;
+	border: 1px solid green;
+}

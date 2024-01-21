@@ -1,4 +1,6 @@
 export * from "./button/Button"
+export * from "./cart/cart-range/Cart-range"
+export * from "./cart/info/Cart-info"
 export * from "./featured/Featured"
 export * from "./filters/Filters"
 export * from "./filters/mobile-filter/Mobile-filter"
