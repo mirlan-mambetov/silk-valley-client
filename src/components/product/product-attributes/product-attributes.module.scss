@@ -1,5 +1,6 @@
 @import "../../../styles/mixin";
 @import "../../../styles/vars";
+@import "../../../styles/media.mixin";
 .title {
 	font-size: 14px;
 	font-weight: 500;
@@ -24,8 +25,12 @@
 
 	.price {
 		display: flex;
-		padding: 0 !important;
 		align-items: baseline;
+		padding: 0 !important;
+		@include mediaLarge440px {
+			align-items: center;
+		}
+
 		> span {
 			color: $white;
 			background: $discount;

@@ -70,6 +70,7 @@
 
 		@include mediaLarge940px {
 			width: calc(100% / 7 * 1.2 - 10px);
+			border: none;
 		}
 		@include mediaLarge640px {
 			width: 60%;
@@ -96,6 +97,7 @@
 					padding-top: calc(100% * (172 / 115));
 					border-radius: 2px;
 					overflow: hidden;
+
 					@include mediaLarge1200px {
 						padding-top: calc(100% * (150 / 100));
 					}
@@ -109,6 +111,7 @@
 						left: 0;
 						width: 100%;
 						height: 100%;
+						z-index: -1;
 					}
 				}
 			}

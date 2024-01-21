@@ -36,6 +36,7 @@
 		justify-content: space-between;
 		@include mediaLarge776px {
 			flex-direction: column;
+			flex-wrap: unset;
 		}
 		.column {
 			width: calc(100% / 3 * 1.4 - 8px);
@@ -45,13 +46,18 @@
 			padding: 7px 0;
 			@include mediaLarge776px {
 				width: unset;
+				padding: 5px 0;
 			}
 			span {
 				font-size: 12px;
+				line-height: 18px;
 				font-weight: 500;
 			}
 			.row {
 				width: calc(100% / 2 * 1.5);
+				@include mediaLarge776px {
+					width: 70%;
+				}
 				span {
 					display: flex;
 					align-items: baseline;

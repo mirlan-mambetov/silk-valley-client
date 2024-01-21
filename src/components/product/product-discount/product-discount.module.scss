@@ -1,5 +1,6 @@
 @import "../../../styles/mixin";
 @import "../../../styles/vars";
+@import "../../../styles/media.mixin";
 .wrap {
 	position: absolute;
 	top: 0;
@@ -11,12 +12,17 @@
 	justify-content: flex-end;
 	gap: 4px;
 	padding: 4px;
+	@include mediaLarge440px {
+		justify-content: center;
+		max-width: 80px;
+	}
 	&.extension {
 		position: unset;
 		.promotions {
 			position: absolute;
 			top: 5px;
 			right: 20px;
+			z-index: 5;
 			.new {
 				position: unset;
 			}

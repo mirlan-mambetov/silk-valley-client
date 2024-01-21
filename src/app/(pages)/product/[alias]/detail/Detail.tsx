@@ -35,18 +35,16 @@ export const Detail: FC<IDetailProps> = ({ data }) => {
 					{/* IMAGES */}
 					<ProductImagesComponent data={data} />
 					{/* PRODUCT CONTENT */}
-					<div className={style.helper}>
-						<div className={style.product_content}>
-							<h2 className={style.product_name}>{data?.title}</h2>
-							<div className={style.product_id}>
-								<span>ID: {data?.article}</span>
-								<ButtonComponent title="Нажмите скопировать">
-									<MdContentCopy />
-								</ButtonComponent>
-							</div>
-							{/* ATTRIBUTES */}
-							<ProductAttributesComponent data={data} />
+					<div className={style.product_content}>
+						<h2 className={style.product_name}>{data?.title}</h2>
+						<div className={style.product_id}>
+							<span>ID: {data?.article}</span>
+							<ButtonComponent title="Нажмите скопировать">
+								<MdContentCopy />
+							</ButtonComponent>
 						</div>
+						{/* ATTRIBUTES */}
+						<ProductAttributesComponent data={data} />
 					</div>
 				</div>
 				{/* ORDER INFO */}
