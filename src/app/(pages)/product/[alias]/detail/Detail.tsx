@@ -24,9 +24,11 @@ export const Detail: FC<IDetailProps> = ({ data }) => {
 	return (
 		<div className={style.detail}>
 			{/* STICY INFORMATION */}
-			<StickyHeaderComponent>
-				<MobileDetailInfoComponent data={data} />
-			</StickyHeaderComponent>
+			{width < 940 ? (
+				<StickyHeaderComponent>
+					<MobileDetailInfoComponent data={data} />
+				</StickyHeaderComponent>
+			) : null}
 			{/* ROUTES HISTORY */}
 			<RoutesHistoryComponent productName={data.title} />
 			<div className={style.wrap}>

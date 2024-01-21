@@ -51,18 +51,19 @@ export const SidebarComponent: FC<ISidebarComponentProps> = ({
 			>
 				<div className={style.wrap}>
 					<div className={style.top}>
-						<h4 className={style.title}>Каталог</h4>
 						<ButtonComponent onClick={() => setIsShow(!isShow)} type="closed" />
 					</div>
-					{/* MENU CATEGORIES */}
-					{data?.childsData && (
-						<MenuComponent
-							className={style.menu}
-							data={data?.childsData}
-							orientation="row-heigth"
-							size="1xl"
-						/>
-					)}
+					<div className={style.content}>
+						{/* MENU CATEGORIES */}
+						{data?.childsData && (
+							<MenuComponent
+								className={style.menu}
+								data={data?.childsData}
+								orientation="row-heigth"
+								size="1xl"
+							/>
+						)}
+					</div>
 					{/* SORT COLORS AND SIZES */}
 					{/* <ProducAttributeComponent
 					data={["32xl", "34xl", "38xl", "48XXL"]}

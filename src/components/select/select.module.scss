@@ -1,5 +1,7 @@
 @import "../../styles/mixin";
 @import "../../styles/vars";
+@import "../../styles/media.mixin";
+
 .select {
 	position: relative;
 	cursor: pointer;
@@ -12,15 +14,23 @@
 		padding: 14px 10px;
 		border-radius: 3px;
 		box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.02);
+
 		.title {
 			display: flex;
 			gap: 12px;
 			align-items: center;
 			font-size: 13px;
 			font-weight: 500;
+			@include mediaLarge640px {
+				gap: 6px;
+				font-size: 14px;
+			}
 			span {
 				display: flex;
 				font-size: 15px;
+				@include mediaLarge640px {
+					font-size: 18px;
+				}
 			}
 		}
 	}

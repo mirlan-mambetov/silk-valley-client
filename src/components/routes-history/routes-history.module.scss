@@ -1,5 +1,7 @@
 @import "../../styles/mixin";
 @import "../../styles/vars";
+@import "../../styles/media.mixin";
+
 .history {
 	margin: 10px 0;
 	padding: 10px 0;
@@ -9,6 +11,9 @@
 		display: flex;
 		align-items: center;
 		gap: 4px;
+		@include mediaLarge440px {
+			align-items: baseline;
+		}
 
 		.listItem {
 			font-size: 14px;
@@ -36,6 +41,11 @@
 			line-height: 18px;
 			font-weight: bold;
 			color: $purple;
+			@include mediaLarge440px {
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
 		}
 	}
 }
