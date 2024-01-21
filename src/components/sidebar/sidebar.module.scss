@@ -20,8 +20,19 @@
 		transform: translateX(-320px);
 		background: $white;
 		transition: transform 0.2s ease;
+		padding: 5px 0;
 		&.isOpen {
 			transform: translateX(0);
+		}
+	}
+	.top {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		button {
+			background: transparent;
+			color: $black;
+			font-size: 20px;
 		}
 	}
 
@@ -44,7 +55,13 @@
 .button {
 	display: flex;
 	align-items: flex-end;
-	gap: 6px;
-	justify-content: center;
+	gap: 4px;
+	justify-content: flex-start;
 	margin: 0px 0px 20px 0px;
+	@include baseBoxShadow;
+	padding: 10px 0px;
+	color: $darkSkay;
+	small {
+		font-size: 16px;
+	}
 }

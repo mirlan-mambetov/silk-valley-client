@@ -5,9 +5,11 @@ import useOutsiteClick from "@/hooks/useOutsideClick"
 import cn from "classnames"
 import { usePathname } from "next/navigation"
 import { DetailedHTMLProps, FC, HTMLAttributes } from "react"
-import { IoListOutline } from "react-icons/io5"
+
 import { ButtonComponent, MenuComponent } from ".."
 import { HEADER_MENU } from "../menu/menu.data"
+
+import Image from "next/image"
 import style from "./sidebar.module.scss"
 
 interface ISidebarComponentProps
@@ -33,8 +35,13 @@ export const SidebarComponent: FC<ISidebarComponentProps> = ({
 					className={style.button}
 					onClick={() => setIsShow(!isShow)}
 				>
-					<IoListOutline />
-					Каталог
+					<Image
+						src={`/icons/Category.svg`}
+						alt="categories"
+						width={17}
+						height={17}
+					/>
+					<small>Каталог</small>
 				</ButtonComponent>
 			) : null}
 			<div
@@ -43,7 +50,10 @@ export const SidebarComponent: FC<ISidebarComponentProps> = ({
 				ref={elRef}
 			>
 				<div className={style.wrap}>
-					<h4 className={style.title}>Каталог</h4>
+					<div className={style.top}>
+						<h4 className={style.title}>Каталог</h4>
+						<ButtonComponent onClick={() => setIsShow(!isShow)} type="closed" />
+					</div>
 					{/* MENU CATEGORIES */}
 					{data?.childsData && (
 						<MenuComponent

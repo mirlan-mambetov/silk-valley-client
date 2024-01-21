@@ -16,9 +16,6 @@
 			.list__item {
 				font-size: 12px;
 				font-weight: 400;
-				@include mediaLarge480px {
-					font-size: 16px;
-				}
 			}
 		}
 

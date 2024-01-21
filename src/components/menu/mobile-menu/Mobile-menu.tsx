@@ -18,7 +18,7 @@ export const MobileMenuComponent: FC = () => {
 								width={30}
 								height={30}
 							/>
-							<span>Категории</span>
+							{/* <span>Категории</span> */}
 						</ButtonComponent>
 					</div>
 					<div className={style.item}>
@@ -29,7 +29,7 @@ export const MobileMenuComponent: FC = () => {
 								width={30}
 								height={30}
 							/>
-							<span>Поиск</span>
+							{/* <span>Поиск</span> */}
 						</ButtonComponent>
 					</div>
 
@@ -41,7 +41,7 @@ export const MobileMenuComponent: FC = () => {
 								width={30}
 								height={30}
 							/>
-							<span>Корзина</span>
+							{/* <span>Корзина</span> */}
 						</ButtonComponent>
 					</div>
 					<div className={style.item}>
@@ -52,7 +52,7 @@ export const MobileMenuComponent: FC = () => {
 								width={30}
 								height={30}
 							/>
-							<span>Профиль</span>
+							{/* <span>Профиль</span> */}
 						</ButtonComponent>
 					</div>
 				</div>
