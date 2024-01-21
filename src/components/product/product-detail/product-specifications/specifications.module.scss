@@ -1,5 +1,7 @@
 @import "../../../../styles/mixin";
 @import "../../../../styles/vars";
+@import "../../../../styles/media.mixin";
+
 .specifications {
 	display: flex;
 	flex-direction: column;
@@ -32,14 +34,18 @@
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
-		// border: 1px dashed $darkenRGBA;
-
+		@include mediaLarge776px {
+			flex-direction: column;
+		}
 		.column {
 			width: calc(100% / 3 * 1.4 - 8px);
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
 			padding: 7px 0;
+			@include mediaLarge776px {
+				width: unset;
+			}
 			span {
 				font-size: 12px;
 				font-weight: 500;

@@ -1,0 +1,60 @@
+@import "../../../../../styles/media.mixin";
+@import "../../../../../styles/vars";
+@import "../../../../../styles/mixin";
+
+.mobile {
+	.wrap {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		.product {
+			display: flex;
+			align-items: center;
+			gap: 15px;
+			overflow: hidden;
+			width: calc(100% / 2 * 1.5);
+
+			@include mediaLarge440px {
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 4px;
+				width: calc(100% / 3 * 1.8);
+			}
+			.image {
+				padding-top: calc(100% * (5 / 40));
+				position: relative;
+				width: calc(100% / 10 * 1);
+				overflow: hidden;
+				border: 1px dashed $darkenRGBA;
+				border-radius: 4px;
+				img {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					object-fit: contain;
+				}
+			}
+			.item {
+				.name {
+					font-size: 14px;
+					font-weight: 500;
+					@include mediaLarge480px {
+						width: 200px;
+						overflow: hidden;
+						white-space: nowrap;
+						text-overflow: ellipsis;
+					}
+				}
+			}
+		}
+		.button {
+			button {
+				@include mediaLarge480px {
+					font-size: 12px;
+				}
+			}
+		}
+	}
+}

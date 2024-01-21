@@ -12,10 +12,15 @@
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
+
 	@include mediaLarge1200px {
 		position: unset;
 		height: unset;
 		box-shadow: unset;
+	}
+	@include mediaLarge940px {
+		border: unset;
+		min-width: 300px;
 	}
 	.total {
 		position: relative;

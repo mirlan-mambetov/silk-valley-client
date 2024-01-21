@@ -12,6 +12,9 @@
 		@include mediaLarge1200px {
 			grid-template-columns: 1fr;
 		}
+		@include mediaLarge940px {
+			row-gap: 20px;
+		}
 	}
 }
 .product {

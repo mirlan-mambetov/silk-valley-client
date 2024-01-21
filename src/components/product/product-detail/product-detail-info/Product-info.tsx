@@ -2,6 +2,7 @@
 
 import { ButtonComponent, ProductPriceComponent } from "@/components"
 import { IProduct } from "@/interfaces/product.interface"
+import cn from "classnames"
 import { FC } from "react"
 import { FiEdit2 } from "react-icons/fi"
 import { LuMinus, LuPlus } from "react-icons/lu"
@@ -9,12 +10,18 @@ import style from "./product-info.module.scss"
 
 interface IProductInfoComponentProps {
 	data: IProduct
+	type?: "sticky" | "default"
 }
 export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 	data,
+	type = "default",
 }) => {
 	return (
-		<div className={style.info}>
+		<div
+			className={cn(style.info, {
+				[style.sticky]: type === "sticky",
+			})}
+		>
 			<h3 className={style.total}>Общие детали</h3>
 			<div className={style.wrap}>
 				<div className={style.box}>
