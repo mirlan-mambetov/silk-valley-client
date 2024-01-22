@@ -51,7 +51,10 @@ export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 											src={product.poster}
 											alt={product.title}
 										/>
-										<ProductDiscountComponent product={product} />
+										<ProductDiscountComponent
+											type="absolute"
+											product={product}
+										/>
 									</div>
 								</div>
 								<div className={style.content}>

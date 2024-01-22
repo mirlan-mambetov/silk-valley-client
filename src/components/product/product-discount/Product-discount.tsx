@@ -7,7 +7,7 @@ import style from "./product-discount.module.scss"
 
 interface IProductDiscountComponentProps {
 	product: Pick<IProduct, "discount" | "new" | "isHit">
-	type?: "default" | "extension"
+	type?: "default" | "extension" | "absolute"
 	size?: "xl1" | "xl2"
 }
 export const ProductDiscountComponent: FC<IProductDiscountComponentProps> = ({
@@ -20,6 +20,7 @@ export const ProductDiscountComponent: FC<IProductDiscountComponentProps> = ({
 			className={cn(style.wrap, {
 				[style.extension]: type === "extension",
 				[style.default]: type === "default",
+				[style.absolute]: type === "absolute",
 			})}
 		>
 			{product?.discount ? (

@@ -47,6 +47,7 @@
 					}
 				}
 				&:nth-child(4) {
+					grid-column: 4 / 6;
 					@include mediaLarge1260px {
 						grid-column: unset;
 					}
