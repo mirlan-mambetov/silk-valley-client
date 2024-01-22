@@ -1,4 +1,5 @@
 export * from "./button/Button"
+export * from "./cart/cart-product/Cart-product"
 export * from "./cart/cart-range/Cart-range"
 export * from "./cart/info/Cart-info"
 export * from "./featured/Featured"

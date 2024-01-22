@@ -4,5 +4,61 @@
 .info {
 	position: sticky;
 	top: 20px;
-	border: 1px solid green;
+	padding: 20px;
+	border-radius: 4px;
+	@include baseBoxShadow;
+	@include mediaLarge1024px {
+		position: unset;
+		max-width: 400px;
+		order: 3;
+	}
+	.wrap {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		.deliver {
+			color: $purple;
+			cursor: pointer;
+		}
+		.box,
+		.deliver {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			span {
+				font-size: 14px;
+			}
+			&:nth-child(2) {
+				span {
+					color: $gray;
+				}
+			}
+			&:nth-child(3) {
+				span {
+					font-size: 18px;
+				}
+			}
+			.price {
+				color: $gray;
+				div {
+					font-size: 12px !important;
+				}
+			}
+			.price,
+			.total {
+				min-height: unset !important;
+			}
+		}
+		.button {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 5px;
+			background: $purple;
+			color: $white;
+			padding: 15px 12px;
+			border-radius: 10px;
+			@include buttonHover;
+		}
+	}
 }
