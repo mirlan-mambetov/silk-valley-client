@@ -18,8 +18,8 @@
 		width: calc(100% / 10 * 1.2);
 		overflow: hidden;
 		border-radius: 5px;
-		@include mediaLarge776px {
-			width: 90px;
+		@include mediaLarge530px {
+			width: 70px;
 		}
 		img {
 			position: absolute;
@@ -40,6 +40,7 @@
 	@include mediaLarge776px {
 		flex-direction: column;
 		align-items: unset;
+		justify-content: unset;
 	}
 	.wrap {
 		display: flex;
@@ -51,6 +52,10 @@
 			font-size: 16px;
 			font-weight: 500;
 			line-height: 20px;
+			@include mediaLarge480px {
+				font-size: 12px;
+				line-height: 16px;
+			}
 		}
 		.items {
 			display: flex;
@@ -68,6 +73,9 @@
 					gap: 4px;
 					font-size: 12px;
 					font-weight: 400;
+					@include mediaLarge480px {
+						font-size: 10px;
+					}
 					small {
 						font-size: 12px;
 						font-weight: 400;
@@ -85,6 +93,10 @@
 		justify-content: center;
 		order: 3;
 		@include mediaLarge776px {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			right: 13px;
 			justify-content: flex-start;
 		}
 		> div {
@@ -101,12 +113,27 @@
 		display: flex;
 		flex-direction: column;
 		gap: 7px;
+		> div {
+			min-height: unset !important;
+			@include mediaLarge776px {
+				justify-content: flex-start;
+			}
+		}
+		.button {
+			@include mediaLarge776px {
+				position: absolute;
+				right: 10px;
+				bottom: 10px;
+			}
+			@include mediaLarge480px {
+				button {
+					font-size: 10px !important;
+				}
+			}
+		}
 		@include mediaLarge776px {
 			flex-direction: row-reverse;
 			justify-content: flex-end;
-		}
-		> div {
-			min-height: unset !important;
 		}
 	}
 }
