@@ -11,15 +11,28 @@
 	-webkit-box-shadow: 7px 12px 19px 0px rgba(34, 60, 80, 0.02);
 	-moz-box-shadow: 7px 12px 19px 0px rgba(34, 60, 80, 0.02);
 	box-shadow: 7px 12px 19px 0px rgba(34, 60, 80, 0.02);
-
+	@include mediaLarge776px {
+		align-items: center;
+	}
+	@include mediaLarge530px {
+		align-items: unset;
+	}
 	.poster {
 		position: relative;
 		padding-top: calc(100% * (25 / 155));
 		width: calc(100% / 10 * 1.2);
 		overflow: hidden;
 		border-radius: 5px;
+		@include mediaLarge776px {
+			width: calc(100% / 6 * 1.2);
+			padding-top: calc(100% * (40 / 155));
+		}
 		@include mediaLarge530px {
-			width: 70px;
+			width: calc(100% / 4 * 1.2);
+			padding-top: calc(100% * (60 / 155));
+		}
+		@include mediaLarge380px {
+			width: calc(100% / 4 * 1.5);
 		}
 		img {
 			position: absolute;
@@ -42,17 +55,22 @@
 		align-items: unset;
 		justify-content: unset;
 	}
+	@include mediaLarge530px {
+		gap: 30px;
+	}
 	.wrap {
 		display: flex;
 		flex-direction: column;
 		gap: 12px;
 		flex: 1;
-
+		@include mediaLarge480px {
+			gap: 4px;
+		}
 		.title {
 			font-size: 16px;
 			font-weight: 500;
 			line-height: 20px;
-			@include mediaLarge480px {
+			@include mediaLarge380px {
 				font-size: 12px;
 				line-height: 16px;
 			}
@@ -93,11 +111,14 @@
 		justify-content: center;
 		order: 3;
 		@include mediaLarge776px {
+			justify-content: unset;
 			position: absolute;
 			top: 50%;
+			right: 20px;
 			transform: translateY(-50%);
-			right: 13px;
-			justify-content: flex-start;
+		}
+		@include mediaLarge530px {
+			position: unset;
 		}
 		> div {
 			z-index: 3;
@@ -116,6 +137,7 @@
 		> div {
 			min-height: unset !important;
 			@include mediaLarge776px {
+				flex-direction: column-reverse;
 				justify-content: flex-start;
 			}
 		}
@@ -125,7 +147,8 @@
 				right: 10px;
 				bottom: 10px;
 			}
-			@include mediaLarge480px {
+			@include mediaLarge530px {
+				position: unset;
 				button {
 					font-size: 10px !important;
 				}
@@ -134,6 +157,9 @@
 		@include mediaLarge776px {
 			flex-direction: row-reverse;
 			justify-content: flex-end;
+		}
+		@include mediaLarge640px {
+			align-items: center;
 		}
 	}
 }
