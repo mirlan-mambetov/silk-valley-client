@@ -1,0 +1,12 @@
+@import "../../styles/media.mixin";
+@import "../../styles/mixin";
+@import "../../styles/vars";
+.field {
+	width: 100%;
+	font-family: inherit;
+	font-style: inherit;
+	color: inherit;
+	&:focus {
+		outline: none;
+	}
+}

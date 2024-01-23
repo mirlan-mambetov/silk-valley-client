@@ -1,0 +1,43 @@
+@import "../../../styles/media.mixin";
+@import "../../../styles/mixin";
+@import "../../../styles/vars";
+
+.header {
+	position: sticky;
+	top: 0;
+	padding: 10px 0;
+	z-index: 300;
+	background: $white;
+	-webkit-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.05);
+	-moz-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.05);
+	box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.05);
+	.wrap {
+		display: flex;
+		align-items: center;
+		gap: 4px;
+		button {
+			max-width: 5%;
+			width: 100%;
+		}
+		.search {
+			position: relative;
+			display: flex;
+			max-width: 94%;
+			width: 100%;
+			.button {
+				position: absolute;
+				top: 50%;
+				right: 10px;
+				transform: translateY(-50%);
+				display: flex;
+				font-size: 20px;
+				z-index: 4;
+			}
+			input {
+				border: 1px solid $darkenRGBA;
+				border-radius: 4px;
+				padding: 8px 0;
+			}
+		}
+	}
+}

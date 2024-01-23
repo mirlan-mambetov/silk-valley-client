@@ -1,6 +1,7 @@
 "use client"
 
 import { variants3, variants4 } from "@/framer-motion"
+import { useWindowWidth } from "@/hooks/app/useWindowWidth"
 import useOutsiteClick from "@/hooks/useOutsideClick"
 import cn from "classnames"
 import { motion } from "framer-motion"
@@ -8,13 +9,19 @@ import { useRouter } from "next/navigation"
 import { FaMapMarkerAlt } from "react-icons/fa"
 import { IoSearchOutline } from "react-icons/io5"
 import { SlHandbag } from "react-icons/sl"
-import { ButtonComponent, LogoComponent, MenuComponent } from "../"
+import {
+	ButtonComponent,
+	LogoComponent,
+	MenuComponent,
+	MobileHeaderComponent,
+} from "../"
 import { HEADER_MENU } from "../menu/menu.data"
 import style from "./header.module.scss"
 
 export const HeaderComponent = () => {
 	const { elRef, isShow, setIsShow } = useOutsiteClick(false)
 	const { push } = useRouter()
+	const { width } = useWindowWidth()
 
 	return (
 		<>
@@ -110,6 +117,9 @@ export const HeaderComponent = () => {
 				</div>
 			</motion.div>
 			<div className={cn(style.overlay, { [style.transform]: isShow })}></div>
+
+			{/* MOBILE */}
+			{width < 530 ? <MobileHeaderComponent /> : null}
 		</>
 	)
 }

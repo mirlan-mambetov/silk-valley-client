@@ -17,21 +17,10 @@ export const MobileMenuComponent: FC = () => {
 							<Image
 								src={`/icons/Category.svg`}
 								alt="categories"
-								width={25}
-								height={25}
+								width={28}
+								height={28}
 							/>
 							{/* <span>Категории</span> */}
-						</ButtonComponent>
-					</div>
-					<div className={style.item}>
-						<ButtonComponent>
-							<Image
-								src={"/icons/Search.svg"}
-								alt="search"
-								width={25}
-								height={25}
-							/>
-							{/* <span>Поиск</span> */}
 						</ButtonComponent>
 					</div>
 
@@ -40,8 +29,8 @@ export const MobileMenuComponent: FC = () => {
 							<Image
 								src={"/icons/Bag.svg"}
 								alt="search"
-								width={25}
-								height={25}
+								width={28}
+								height={28}
 							/>
 							{/* <span>Корзина</span> */}
 						</ButtonComponent>
@@ -51,8 +40,8 @@ export const MobileMenuComponent: FC = () => {
 							<Image
 								src={"/icons/Heart.svg"}
 								alt="search"
-								width={25}
-								height={25}
+								width={28}
+								height={28}
 							/>
 							{/* <span>Профиль</span> */}
 						</ButtonComponent>
@@ -62,8 +51,8 @@ export const MobileMenuComponent: FC = () => {
 							<Image
 								src={"/icons/Profile.svg"}
 								alt="search"
-								width={25}
-								height={25}
+								width={28}
+								height={28}
 							/>
 							{/* <span>Профиль</span> */}
 						</ButtonComponent>

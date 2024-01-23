@@ -27,7 +27,7 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 						<Image
 							src={product.poster}
 							alt={product.title}
-							width={100}
+							width={110}
 							height={140}
 						/>
 						<ProductDiscountComponent product={product} type="absolute" />

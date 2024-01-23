@@ -12,6 +12,7 @@
 	display: none;
 	@include mediaLarge530px {
 		display: block;
+		padding: 0 20px;
 	}
 	.list {
 		display: flex;
