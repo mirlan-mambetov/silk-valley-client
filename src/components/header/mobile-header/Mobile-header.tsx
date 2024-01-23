@@ -1,20 +1,27 @@
 "use client"
 
-import { ButtonComponent, FieldComponent } from "@/components"
+import { ButtonComponent, FieldComponent, LogoComponent } from "@/components"
 import { FC } from "react"
-import { IoIosArrowBack } from "react-icons/io"
 
+import cn from "classnames"
 import Image from "next/image"
+import { usePathname } from "next/navigation"
 import style from "./mobile-header.module.scss"
 
 export const MobileHeaderComponent: FC = () => {
+	const pathName = usePathname()
+	const isProductPage = /^\/product\/[a-zA-Z0-9_-]+/.test(pathName)
+	const isPromotionsPage = /^\/promotions\/[a-zA-Z0-9_-]+/.test(pathName)
+	const isCartPage = "/cart"
 	return (
-		<div className={style.header}>
+		<div
+			className={cn(style.header, {
+				[style.strech]: isProductPage || isPromotionsPage || isCartPage,
+			})}
+		>
 			<div className="container">
 				<div className={style.wrap}>
-					<ButtonComponent>
-						<IoIosArrowBack />
-					</ButtonComponent>
+					<LogoComponent className={style.logo} height={40} width={70} />
 					<div className={style.search}>
 						<ButtonComponent className={style.button}>
 							<Image

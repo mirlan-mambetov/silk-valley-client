@@ -9,6 +9,7 @@
 		grid-template-rows: repeat(2, calc(520px / 2 - 30px / 2 * (2 - 1)));
 		column-gap: 20px;
 		row-gap: 30px;
+		user-select: none;
 		@include mediaLarge776px {
 			grid-template-columns: 1fr;
 			grid-template-rows: repeat(4, 150px);

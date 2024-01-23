@@ -8,22 +8,35 @@
 	padding: 10px 0;
 	z-index: 300;
 	background: $white;
-	-webkit-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.05);
-	-moz-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.05);
-	box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.05);
+	-webkit-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.08);
+	-moz-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.08);
+	box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.08);
+	&.strech {
+		position: unset;
+		box-shadow: unset;
+	}
 	.wrap {
 		display: flex;
 		align-items: center;
-		gap: 4px;
-		button {
-			max-width: 5%;
-			width: 100%;
+		gap: 10px;
+		.logo {
+			position: relative;
+			flex: 0.4;
+			padding: 10px 0px;
+			min-height: 50px;
+			img {
+				position: absolute;
+				top: 2px;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+			}
 		}
 		.search {
 			position: relative;
 			display: flex;
-			max-width: 94%;
-			width: 100%;
+			flex: 1;
 			.button {
 				position: absolute;
 				top: 50%;
@@ -36,7 +49,10 @@
 			input {
 				border: 1px solid $darkenRGBA;
 				border-radius: 4px;
-				padding: 8px 0;
+				padding: 6px 0;
+				@include mediaLarge440px {
+					padding: 4px;
+				}
 			}
 		}
 	}
