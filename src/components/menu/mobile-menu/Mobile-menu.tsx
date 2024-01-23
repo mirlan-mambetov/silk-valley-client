@@ -1,6 +1,8 @@
 "use client"
 
-import { ButtonComponent } from "@/components"
+import { ButtonComponent, MenuCategoriesComponent } from "@/components"
+import { useScreen } from "@/hooks/screen/useScreen"
+import cn from "classnames"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { FC } from "react"
@@ -8,12 +10,24 @@ import style from "./mobile-menu.module.scss"
 
 export const MobileMenuComponent: FC = () => {
 	const { push } = useRouter()
+	const { setContentHandler, isOpen, clearContentHandler } = useScreen()
+
 	return (
-		<div className={style.menu}>
+		<div
+			className={cn(style.menu, {
+				[style.shadow]: isOpen,
+			})}
+		>
 			<div className="container">
 				<div className={style.list}>
 					<div className={style.item}>
-						<ButtonComponent>
+						<ButtonComponent
+							onClick={() =>
+								isOpen
+									? clearContentHandler()
+									: setContentHandler(<MenuCategoriesComponent />)
+							}
+						>
 							<Image
 								src={`/icons/Category.svg`}
 								alt="categories"

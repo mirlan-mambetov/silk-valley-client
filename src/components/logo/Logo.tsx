@@ -12,8 +12,8 @@ interface ILogoComponentProps extends DetailsHTMLAttributes<HTMLDivElement> {
 }
 export const LogoComponent: FC<ILogoComponentProps> = ({
 	className,
-	height = 300,
-	width = 300,
+	height,
+	width,
 }) => {
 	return (
 		<div className={cn(style.logo, className)}>
@@ -21,8 +21,8 @@ export const LogoComponent: FC<ILogoComponentProps> = ({
 				<Image
 					priority
 					src="/icons/Silk Valley.svg"
-					width={width}
-					height={height}
+					width={width ? width : 300}
+					height={height ? height : 300}
 					alt="Silk Valley logotype"
 				/>
 			</Link>

@@ -3,12 +3,18 @@
 import { screenMotionVariant } from "@/framer-motion/screen/screen.motion"
 import { useScreen } from "@/hooks/screen/useScreen"
 import { motion } from "framer-motion"
-import { FC } from "react"
+import { FC, useEffect } from "react"
 import { ButtonComponent, LogoComponent } from ".."
 import style from "./screen.module.scss"
 
 export const ScreenComponent: FC = () => {
 	const { clearContentHandler, content, isOpen } = useScreen()
+
+	useEffect(() => {
+		if (isOpen) document.body.style.overflow = "hidden"
+		else document.body.style.overflow = "auto"
+	}, [isOpen])
+
 	return (
 		<motion.div
 			variants={screenMotionVariant}
@@ -18,7 +24,7 @@ export const ScreenComponent: FC = () => {
 			<div className="container">
 				<div className={style.wrap}>
 					<div className={style.top}>
-						<LogoComponent />
+						<LogoComponent className={style.logo} />
 						<ButtonComponent
 							onClick={clearContentHandler}
 							className={style.close}

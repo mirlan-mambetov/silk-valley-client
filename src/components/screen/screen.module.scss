@@ -2,18 +2,32 @@
 @import "../../styles/mixin";
 @import "../../styles/vars";
 .screen {
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
 	background: $white;
-	z-index: 300;
+	z-index: 190;
 	.wrap {
+		padding: 14px 0;
 		.top {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
+			.logo {
+				position: relative;
+				max-width: 120px;
+				width: 100%;
+				height: 50px;
+				img {
+					position: absolute;
+					top: 0;
+					left: 0;
+					bottom: -2px;
+					width: 100%;
+				}
+			}
 		}
 	}
 }
