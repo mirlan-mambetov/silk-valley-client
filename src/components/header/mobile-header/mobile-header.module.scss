@@ -13,7 +13,9 @@
 	box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.08);
 	&.strech {
 		position: unset;
-		box-shadow: unset;
+		-webkit-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.04);
+		-moz-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.04);
+		box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.04);
 	}
 	.wrap {
 		display: flex;
