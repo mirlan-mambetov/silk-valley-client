@@ -1,169 +1,123 @@
 @import "../../../styles/media.mixin";
-@import "../../../styles/mixin";
 @import "../../../styles/vars";
-.product {
-	position: relative;
-	display: flex;
-	justify-content: space-between;
-	border-radius: 5px;
-	padding: 5px;
-	overflow: hidden;
-	-webkit-box-shadow: 7px 12px 19px 0px rgba(34, 60, 80, 0.02);
-	-moz-box-shadow: 7px 12px 19px 0px rgba(34, 60, 80, 0.02);
-	box-shadow: 7px 12px 19px 0px rgba(34, 60, 80, 0.02);
-	@include mediaLarge776px {
-		align-items: center;
-	}
-	@include mediaLarge530px {
-		align-items: unset;
-	}
-	.poster {
-		position: relative;
-		padding-top: calc(100% * (25 / 155));
-		width: calc(100% / 10 * 1.2);
-		overflow: hidden;
-		border-radius: 5px;
-		@include mediaLarge776px {
-			width: calc(100% / 6 * 1.2);
-			padding-top: calc(100% * (40 / 155));
-		}
-		@include mediaLarge530px {
-			width: calc(100% / 4 * 1.2);
-			padding-top: calc(100% * (60 / 155));
-		}
-		@include mediaLarge440px {
-			width: calc(100% / 4 * 1.4);
-		}
-		@include mediaLarge380px {
-			width: calc(100% / 4 * 1.6);
-		}
-		img {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-		}
-	}
-}
-.content {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	gap: 12px;
-	padding: 0 10px;
-	flex: 1;
-	@include mediaLarge776px {
-		flex-direction: column;
-		align-items: unset;
-		justify-content: unset;
-	}
-	@include mediaLarge530px {
-		gap: 30px;
-	}
-	.wrap {
-		display: flex;
-		flex-direction: column;
-		gap: 12px;
-		flex: 1;
-		@include mediaLarge480px {
-			gap: 10px;
-		}
-		.title {
-			font-size: 16px;
-			font-weight: 500;
-			line-height: 20px;
-			@include mediaLarge380px {
-				font-size: 12px;
-				line-height: 16px;
-			}
-		}
-		.items {
-			display: flex;
-			flex-direction: column;
-			gap: 4px;
-			.item {
-				display: flex;
-				align-items: center;
-				gap: 4px;
-				font-size: 14px;
-				color: $skay;
-				span {
-					display: flex;
-					align-items: center;
-					gap: 4px;
-					font-size: 12px;
-					font-weight: 400;
-					@include mediaLarge480px {
-						font-size: 10px;
-					}
-					small {
-						font-size: 12px;
-						font-weight: 400;
-					}
-				}
-			}
-		}
-	}
-	.price,
-	.range {
-		flex: 0.5;
-	}
-	.range {
-		display: flex;
-		justify-content: center;
-		order: 3;
-		z-index: 3;
-		@include mediaLarge776px {
-			justify-content: unset;
-			position: absolute;
-			top: 50%;
-			right: 20px;
-			transform: translateY(-50%);
-		}
-		@include mediaLarge530px {
-			position: unset;
-		}
-		> div {
-			z-index: 3;
-		}
-	}
-	.discount {
-		> div {
-			justify-content: center;
-			align-items: center;
-		}
-	}
-	.price {
-		display: flex;
-		flex-direction: column;
-		gap: 7px;
-		> div {
-			min-height: unset !important;
+@import "../../../styles/mixin";
+
+.products {
+	display: grid;
+	grid-template-columns: 1fr;
+	row-gap: 10px;
+	.product {
+		display: grid;
+		grid-template-columns: 0.1fr 1fr;
+		column-gap: 12px;
+		-webkit-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.03);
+		-moz-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.03);
+		box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.03);
+		padding: 10px;
+		.product_image {
+			position: relative;
+			padding-top: calc(100% * (220 / 150));
+			overflow: hidden;
+			border-radius: 5px;
 			@include mediaLarge776px {
-				flex-direction: column-reverse;
-				justify-content: flex-start;
+				width: 90px;
+				height: 120px;
 			}
-		}
-		.button {
-			@include mediaLarge776px {
+			img {
 				position: absolute;
-				right: 10px;
-				bottom: 10px;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
 			}
-			@include mediaLarge530px {
-				position: unset;
-				button {
-					font-size: 10px !important;
+		}
+		.wrap {
+			position: relative;
+			display: grid;
+			grid-template-columns: 1fr 0.5fr 0.4fr 0.2fr;
+			align-items: center;
+			@include mediaLarge776px {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 8px;
+			}
+			@include mediaLarge440px {
+				gap: 15px;
+			}
+			.price {
+				gap: 6px !important;
+				align-items: flex-start;
+
+				@include mediaLarge776px {
+					position: absolute;
+					top: 50%;
+					right: 10px;
+					align-items: center;
+					transform: translateY(-50%);
+				}
+				@include mediaLarge440px {
+					position: unset;
+					flex-direction: row !important;
+					align-items: center;
+					transform: unset;
 				}
 			}
-		}
-		@include mediaLarge776px {
-			flex-direction: row-reverse;
-			justify-content: flex-end;
-		}
-		@include mediaLarge640px {
-			align-items: center;
+			.content {
+				@include mediaLarge776px {
+					justify-self: start;
+				}
+			}
+			.action {
+				@include mediaLarge776px {
+					position: absolute;
+					top: 10px;
+					right: 20px;
+				}
+				@include mediaLarge480px {
+					top: unset;
+					right: 20px;
+					bottom: 0;
+				}
+			}
+			.content,
+			.action,
+			.price {
+				display: flex;
+				flex-direction: column;
+				gap: 15px;
+				.title {
+					font-size: 16px;
+					font-weight: 400;
+					line-height: 18px;
+				}
+				.number {
+					justify-content: center !important;
+					min-height: unset !important;
+				}
+				.items {
+					display: flex;
+					flex-direction: column;
+					gap: 4px;
+					.item {
+						display: flex;
+						align-items: center;
+						gap: 5px;
+						font-size: 12px;
+						span {
+							display: flex;
+							align-items: center;
+							gap: 5px;
+							font-size: 10px;
+							color: $gray;
+						}
+						small {
+							color: $skay;
+							font-size: 12px;
+						}
+					}
+				}
+			}
 		}
 	}
 }

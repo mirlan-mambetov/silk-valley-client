@@ -10,11 +10,6 @@
 		grid-template-columns: 1fr;
 	}
 }
-.products {
-	display: flex;
-	flex-direction: column;
-	gap: 20px;
-}
 .order {
 	display: flex;
 	flex-direction: column;
@@ -46,7 +41,7 @@
 				display: flex;
 				align-items: center;
 				gap: 4px;
-				background: $purple;
+				background: $darken;
 				padding: 10px 14px;
 				border-radius: 5px;
 				font-size: 12px;

@@ -17,9 +17,7 @@ export const Cart: FC = () => {
 	const data = CART_DATA
 	return (
 		<div className={style.cart}>
-			<div className={style.products}>
-				<CartProductComponent products={data} />
-			</div>
+			<CartProductComponent products={data} />
 			<CartInfoComponent />
 			<div className={style.order}>
 				<div className={style.box}>

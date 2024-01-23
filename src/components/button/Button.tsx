@@ -5,11 +5,12 @@ import { DetailsHTMLAttributes, FC, ReactNode } from "react"
 import { IoCloseOutline } from "react-icons/io5"
 import { LuPercent } from "react-icons/lu"
 
+import { CgRemove } from "react-icons/cg"
 import style from "./button.module.scss"
 
 interface IButtonComponentProps
 	extends DetailsHTMLAttributes<HTMLButtonElement> {
-	type?: "default" | "cart" | "closed" | "promo"
+	type?: "default" | "cart" | "closed" | "promo" | "delete"
 	children?: ReactNode
 }
 export const ButtonComponent: FC<IButtonComponentProps> = ({
@@ -19,6 +20,15 @@ export const ButtonComponent: FC<IButtonComponentProps> = ({
 	...props
 }) => {
 	switch (type) {
+		case "delete":
+			return (
+				<button
+					className={cn(style.button, style.delete, className)}
+					{...props}
+				>
+					<CgRemove />
+				</button>
+			)
 		case "promo":
 			return (
 				<button className={cn(style.button, style.promo, className)} {...props}>
