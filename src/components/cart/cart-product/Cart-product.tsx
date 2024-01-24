@@ -59,7 +59,7 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 							<ButtonComponent type="promo" />
 						</div>
 						<div className={style.content}>
-							<CartRangeComponent text={false} />
+							<CartRangeComponent className={style.range} text={false} />
 						</div>
 						<div className={style.action}>
 							<ButtonComponent type="delete" title="Убрать из корзины" />

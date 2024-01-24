@@ -14,6 +14,9 @@
 		-moz-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.03);
 		box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.03);
 		padding: 10px;
+		@include mediaLarge480px {
+			align-self: center;
+		}
 
 		.product_image {
 			position: relative;
@@ -61,16 +64,12 @@
 				@include mediaLarge480px {
 					position: unset;
 					flex-direction: row !important;
-					align-items: center;
-					justify-content: space-between;
 					transform: unset;
 					order: 1;
 					gap: 12px !important;
 
 					> div {
-						flex-direction: row;
-						align-items: center;
-						gap: 5px;
+						gap: 2px;
 						> div {
 							font-size: 14px !important;
 						}
@@ -95,10 +94,7 @@
 					right: 20px;
 				}
 				@include mediaLarge480px {
-					top: unset;
-					right: 20px;
-					bottom: 0;
-					order: 3;
+					right: 0;
 				}
 			}
 			.content,
@@ -119,6 +115,11 @@
 				.number {
 					justify-content: center !important;
 					min-height: unset !important;
+				}
+				.range {
+					position: absolute;
+					top: 50%;
+					right: 0;
 				}
 				.items {
 					display: flex;
