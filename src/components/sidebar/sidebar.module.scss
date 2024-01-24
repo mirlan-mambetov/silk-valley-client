@@ -21,24 +21,24 @@
 	}
 	.top {
 		display: flex;
+		padding: 0 5px;
 		button {
 			background: transparent;
 			color: $black;
-			font-size: 30px;
+			font-size: 27px;
 			padding: 0;
 		}
 	}
 
 	.wrap {
-		position: sticky;
 		top: 12px;
 		display: flex;
 		flex-direction: column;
 		gap: 18px;
 		.content {
-			padding: 12px 0;
+			padding: 12px;
 			.menu {
-				padding-left: 10px;
+				overflow: auto;
 			}
 		}
 	}
