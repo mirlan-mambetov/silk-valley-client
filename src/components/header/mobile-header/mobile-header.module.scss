@@ -8,14 +8,11 @@
 	padding: 10px 0;
 	z-index: 180;
 	background: $white;
-	-webkit-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.08);
-	-moz-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.08);
-	box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.08);
+	-webkit-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.04);
+	-moz-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.04);
+	box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.04);
 	&.strech {
 		position: unset;
-		-webkit-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.04);
-		-moz-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.04);
-		box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.04);
 	}
 	.wrap {
 		display: flex;
