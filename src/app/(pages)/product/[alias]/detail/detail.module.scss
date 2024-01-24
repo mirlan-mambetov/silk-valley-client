@@ -10,6 +10,7 @@
 			);
 		column-gap: 12px;
 		align-items: start;
+
 		@include mediaLarge1200px {
 			grid-template-columns: 1fr;
 		}
@@ -32,7 +33,6 @@
 		grid-template-columns: 1fr;
 		row-gap: 20px;
 	}
-
 	.product_content {
 		display: flex;
 		flex-direction: column;

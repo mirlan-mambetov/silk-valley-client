@@ -10,6 +10,7 @@ import { FC } from "react"
 import { FaUser } from "react-icons/fa6"
 import { CART_DATA } from "./cart.data"
 
+import cn from "classnames"
 import { FaMapMarkerAlt } from "react-icons/fa"
 import style from "./cart.module.scss"
 
@@ -17,6 +18,8 @@ export const Cart: FC = () => {
 	const data = CART_DATA
 	return (
 		<div className={style.cart}>
+			<h3 className={cn("section-title", style.title)}>Корзина</h3>
+
 			<CartProductComponent products={data} />
 			<CartInfoComponent />
 			<div className={style.order}>

@@ -5,7 +5,6 @@ const CartPage = () => {
 		<>
 			<section>
 				<div className="container">
-					<h3 className="section-title">Корзина</h3>
 					{/* PRODUCT INFORMATION ON CART*/}
 					<Cart />
 				</div>
