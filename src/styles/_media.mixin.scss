@@ -20,37 +20,31 @@
 		@content;
 	}
 }
-
 @mixin mediaLarge830px {
 	@media (max-width: $largePOINT835) {
 		@content;
 	}
 }
-
 @mixin mediaLarge776px {
 	@media (max-width: $largePOINT776) {
 		@content;
 	}
 }
-
 @mixin mediaLarge640px {
 	@media (max-width: $largePOINT640) {
 		@content;
 	}
 }
-
 @mixin mediaLarge530px {
 	@media (max-width: $mobilePOINT530) {
 		@content;
 	}
 }
-
 @mixin mediaLarge480px {
 	@media (max-width: $mobilePOINT480) {
 		@content;
 	}
 }
-
 @mixin mediaLarge440px {
 	@media (max-width: $mobilePOINT440) {
 		@content;
@@ -61,7 +55,6 @@
 		@content;
 	}
 }
-
 @mixin mediaLarge360px {
 	@media (max-width: $mobilePOINT360) {
 		@content;

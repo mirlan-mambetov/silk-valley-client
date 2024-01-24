@@ -1,16 +1,12 @@
 "use client"
 
-import { FC, useEffect, useRef, useState } from "react"
-import "swiper/css"
-import "swiper/css/effect-fade"
-import "swiper/css/navigation"
-import "swiper/css/pagination"
-
 import { ButtonComponent } from "@/components"
+import { SwiperComponent } from "@/components/swiper-component/Swiper-component"
 import { IProduct } from "@/interfaces/product.interface"
+import { FC, useEffect, useRef, useState } from "react"
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs"
 import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules"
-import { Swiper, SwiperSlide } from "swiper/react"
+import { SwiperSlide } from "swiper/react"
 import style from "./banner.module.scss"
 
 interface IMainBannerProps {
@@ -72,36 +68,38 @@ export const Banner: FC<IMainBannerProps> = ({ data }) => {
 	return (
 		<div className={style.banner}>
 			<div className={style.bannerWrapp}>
-				<Swiper
-					onTransitionStart={({ activeIndex, slides }) => {
-						setCurrentSlideIndex(activeIndex)
-						setIsChanged("change")
-					}}
-					onTransitionEnd={({ activeIndex }) => {
-						setIsChanged("changed")
-					}}
-					onAutoplayTimeLeft={onAutoplayTimeLeft}
-					autoplay={{
-						delay: videoDurations[currentSlideIndex],
-						disableOnInteraction: false,
-					}}
-					// onAutoplayTimeLeft={onAutoplayTimeLeft}
-					navigation={{
-						nextEl: `.${style.next}`,
-						prevEl: `.${style.prev}`,
-					}}
-					effect={"fade"}
-					pagination={{
-						el: `.${style.pagination}`,
-						bulletActiveClass: style.bulletActiveClass,
-						bulletClass: style.bulletClass,
-						renderBullet: function (index: number, className: string) {
-							return `<span class="${className}"></span>`
+				<SwiperComponent
+					options={{
+						onTransitionStart: ({ activeIndex, slides }) => {
+							setCurrentSlideIndex(activeIndex)
+							setIsChanged("change")
 						},
-						clickable: true,
+						onTransitionEnd: () => {
+							setIsChanged("changed")
+						},
+						onAutoplayTimeLeft: onAutoplayTimeLeft,
+						autoplay: {
+							delay: videoDurations[currentSlideIndex],
+							disableOnInteraction: false,
+						},
+						// onAutoplayTimeLeft={onAutoplayTimeLeft}
+						navigation: {
+							nextEl: `.${style.next}`,
+							prevEl: `.${style.prev}`,
+						},
+						effect: "fade",
+						pagination: {
+							el: `.${style.pagination}`,
+							bulletActiveClass: style.bulletActiveClass,
+							bulletClass: style.bulletClass,
+							renderBullet: function (index: number, className: string) {
+								return `<span class="${className}"></span>`
+							},
+							clickable: true,
+						},
+						modules: [Navigation, Pagination, Autoplay, EffectFade],
+						className: style.wrapp,
 					}}
-					modules={[Navigation, Pagination, Autoplay, EffectFade]}
-					className={style.wrapp}
 				>
 					{data.map((data, index) => (
 						<SwiperSlide key={data.id} className={style.bannerBox}>
@@ -146,7 +144,7 @@ export const Banner: FC<IMainBannerProps> = ({ data }) => {
 						</ButtonComponent>
 					</div>
 					<div className={style.pagination}></div>
-				</Swiper>
+				</SwiperComponent>
 			</div>
 		</div>
 	)

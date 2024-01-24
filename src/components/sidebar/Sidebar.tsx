@@ -51,8 +51,14 @@ export const SidebarComponent: FC<ISidebarComponentProps> = ({
 			>
 				<div className={style.wrap}>
 					<div className={style.top}>
-						{/* <div className={style.title}>Каталог</div> */}
-						<ButtonComponent onClick={() => setIsShow(!isShow)} type="closed" />
+						{width < 940 ? (
+							<ButtonComponent
+								onClick={() => setIsShow(!isShow)}
+								type="closed"
+							/>
+						) : (
+							<div className={style.title}>Каталог</div>
+						)}
 					</div>
 					<div className={style.content}>
 						{/* MENU CATEGORIES */}

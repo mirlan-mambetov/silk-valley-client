@@ -3,7 +3,6 @@
 @import "../../styles/media.mixin";
 
 .sidebar {
-	padding: 10px;
 	@include mediaLarge940px {
 		position: absolute;
 		top: 0;

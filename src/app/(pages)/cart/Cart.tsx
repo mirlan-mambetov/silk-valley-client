@@ -18,7 +18,7 @@ export const Cart: FC = () => {
 	const data = CART_DATA
 	return (
 		<>
-			<h3 className={cn("section-title", style.title)}>
+			<h3 className={cn("section-title", style.top_title)}>
 				<span>
 					Корзина
 					<sup>3</sup>

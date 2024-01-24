@@ -1,10 +1,13 @@
 @import "../../../../styles/mixin";
 @import "../../../../styles/vars";
+@import "../../../../styles/media.mixin";
 .wrap {
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
-	padding-top: 20px;
+	@include mediaLarge530px {
+		padding-top: 20px;
+	}
 	.title {
 		font-size: 16px;
 		font-weight: 500;
