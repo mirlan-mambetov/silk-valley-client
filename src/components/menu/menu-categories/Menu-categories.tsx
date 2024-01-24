@@ -8,7 +8,11 @@ import style from "./menu-categories.module.scss"
 export const MenuCategoriesComponent: FC = () => {
 	return (
 		<div className={style.menu}>
-			<MenuComponent data={HEADER_MENU} orientation="row-heigth" />
+			<MenuComponent
+				className={style.list}
+				data={HEADER_MENU}
+				orientation="row-heigth"
+			/>
 		</div>
 	)
 }

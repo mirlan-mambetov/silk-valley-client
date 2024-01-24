@@ -49,6 +49,9 @@
 		color: $darken;
 		overflow-y: scroll;
 		max-height: 200px;
+		@include mediaLarge480px {
+			gap: 12px;
+		}
 	}
 	&_item {
 		font-size: 14px;

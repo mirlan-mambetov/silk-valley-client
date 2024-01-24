@@ -27,10 +27,9 @@ export const ScreenComponent: FC = () => {
 						<LogoComponent className={style.logo} />
 						<ButtonComponent
 							onClick={clearContentHandler}
-							className={style.close}
-						>
-							Закрыть
-						</ButtonComponent>
+							type="closed"
+							size="xl2"
+						></ButtonComponent>
 					</div>
 					{/* CONTENT */}
 					<div className={style.content}>{content}</div>

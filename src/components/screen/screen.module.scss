@@ -29,13 +29,8 @@
 				}
 			}
 		}
+		.content {
+			padding: 10px 0;
+		}
 	}
-}
-.close {
-	padding: 10px 12px;
-	border-radius: 50px;
-	color: $purple;
-	-webkit-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.03);
-	-moz-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.03);
-	box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.03);
 }

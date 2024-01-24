@@ -11,13 +11,12 @@ import style from "./mobile-header.module.scss"
 export const MobileHeaderComponent: FC = () => {
 	const pathName = usePathname()
 	const isProductPage = /^\/product\/[a-zA-Z0-9_-]+/.test(pathName)
-	const isPromotionsPage = /^\/promotions\/[a-zA-Z0-9_-]+/.test(pathName)
-	const isCartPage = /^\/cart+/.test(pathName)
+	// const isPromotionsPage = /^\/promotions\/[a-zA-Z0-9_-]+/.test(pathName)
 
 	return (
 		<div
 			className={cn(style.header, {
-				[style.strech]: isProductPage || isPromotionsPage || isCartPage,
+				[style.strech]: isProductPage,
 			})}
 		>
 			<div className="container">

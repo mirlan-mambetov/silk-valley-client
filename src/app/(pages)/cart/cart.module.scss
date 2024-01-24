@@ -1,15 +1,35 @@
 @import "../../../styles/media.mixin";
 @import "../../../styles/vars";
 @import "../../../styles/mixin";
+.title {
+	margin-bottom: 10px;
+	@include mediaLarge530px {
+		margin-top: 30px;
+	}
+	span {
+		position: relative;
+		sup {
+			position: absolute;
+			top: 0;
+			right: -15px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: $purple;
+			width: 15px;
+			color: $white;
+			font-size: 10px;
+			height: 15px;
+			border-radius: 50%;
+		}
+	}
+}
 .cart {
 	display: grid;
 	grid-template-columns: calc(100% / 3 * 2.1 - 20px) calc(100% / 6 * 1.9 - 20px);
 	column-gap: 20px;
 	align-items: start;
-	padding-top: 20px;
-	.title {
-		margin-bottom: 10px;
-	}
+
 	@include mediaLarge1024px {
 		grid-template-columns: 1fr;
 	}
@@ -28,13 +48,15 @@
 		border: 1px dashed $darkenRGBA;
 		padding: 10px;
 		border-radius: 5px;
-
+		@include mediaLarge480px {
+			gap: 4px;
+		}
 		.title {
 			display: flex;
 			font-size: 16px;
 			line-height: 24px;
 			font-weight: 400;
-			color: $darken;
+			color: $purple;
 			span {
 				@include dashdeLine;
 			}

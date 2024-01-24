@@ -1,4 +1,5 @@
 @import "../../styles/mixin";
+@import "../../styles/media.mixin";
 @import "../../styles/vars";
 
 .button {
@@ -10,17 +11,32 @@
 	&:focus {
 		outline: none;
 	}
+	&.xl2 {
+		font-size: 24px;
+	}
+}
+.close {
+	display: flex;
+	padding: 5px;
+	border-radius: 50px;
+	color: $purple;
+	-webkit-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.04);
+	-moz-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.04);
+	box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.04);
 }
 .promo {
 	display: flex;
 	align-items: center;
 	gap: 4px;
-	font-size: 12px;
 	span {
 		display: flex;
 		flex-direction: column;
 		gap: 4px;
+		font-size: 12px;
 		@include dashdeLine;
+		@include mediaLarge480px {
+			gap: 2px;
+		}
 	}
 }
 .cart {

@@ -12,11 +12,13 @@ interface IButtonComponentProps
 	extends DetailsHTMLAttributes<HTMLButtonElement> {
 	type?: "default" | "cart" | "closed" | "promo" | "delete"
 	children?: ReactNode
+	size?: "xl1" | "xxl1" | "xl2"
 }
 export const ButtonComponent: FC<IButtonComponentProps> = ({
 	type,
 	children,
 	className,
+	size = "xl1",
 	...props
 }) => {
 	switch (type) {
@@ -33,7 +35,7 @@ export const ButtonComponent: FC<IButtonComponentProps> = ({
 			return (
 				<button className={cn(style.button, style.promo, className)} {...props}>
 					<LuPercent />
-					<span>Есть промо-код</span>
+					<span>Есть промо-код ?</span>
 				</button>
 			)
 		case "cart":
@@ -44,7 +46,12 @@ export const ButtonComponent: FC<IButtonComponentProps> = ({
 			)
 		case "closed":
 			return (
-				<button className={cn(style.button, className)} {...props}>
+				<button
+					className={cn(style.button, style.close, className, {
+						[style.xl2]: size === "xl2",
+					})}
+					{...props}
+				>
 					<IoCloseOutline />
 				</button>
 			)
