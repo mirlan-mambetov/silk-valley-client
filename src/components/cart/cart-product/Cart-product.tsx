@@ -7,6 +7,7 @@ import {
 	ProductPriceComponent,
 } from "@/components"
 import { IProduct } from "@/interfaces/product.interface"
+import cn from "classnames"
 import Image from "next/image"
 import { FC } from "react"
 import { IoResizeOutline } from "react-icons/io5"
@@ -20,21 +21,20 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 	products,
 }) => {
 	return (
-		<div className={style.products}>
+		<div className={style.cart}>
 			{products.map((product) => (
 				<div className={style.product} key={product.id}>
-					<div className={style.product_image}>
-						<Image
-							src={product.poster}
-							alt={product.title}
-							width={110}
-							height={140}
-						/>
-						<ProductDiscountComponent product={product} type="absolute" />
-					</div>
-					<div className={style.wrap}>
-						<div className={style.content}>
-							<h3 className={style.title}>{product.title}</h3>
+					<div className={style.content}>
+						<div className={style.image}>
+							<Image
+								src={product.poster}
+								alt={product.title}
+								width={90}
+								height={120}
+							/>
+						</div>
+						<div className={style.description}>
+							<h4 className={style.title}>{product.title}</h4>
 							<div className={style.items}>
 								<div className={style.item}>
 									<MdInvertColors />
@@ -49,20 +49,22 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 									</span>
 								</div>
 							</div>
+							<ButtonComponent className={style.promo} type="promo" />
 						</div>
-						<div className={style.price}>
+					</div>
+					<div className={style.actions}>
+						<div className={cn(style.action)}>
 							<ProductPriceComponent
-								className={style.number}
+								className={style.price}
 								price={product.price}
 								discount={product.discount}
 							/>
-							<ButtonComponent type="promo" />
 						</div>
-						<div className={style.content}>
-							<CartRangeComponent className={style.range} text={false} />
+						<div className={cn(style.action, style.discount)}>
+							<ProductDiscountComponent product={product} />
 						</div>
-						<div className={style.action}>
-							<ButtonComponent type="delete" title="Убрать из корзины" />
+						<div className={cn(style.action, style.range)}>
+							<CartRangeComponent text={false} />
 						</div>
 					</div>
 				</div>
