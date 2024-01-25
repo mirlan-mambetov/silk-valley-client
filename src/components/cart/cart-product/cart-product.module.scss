@@ -3,7 +3,6 @@
 @import "../../../styles/mixin";
 
 .cart {
-	padding-top: 20px;
 	.product {
 		position: relative;
 		display: flex;
@@ -36,6 +35,9 @@
 				height: 120px;
 				overflow: hidden;
 				border-radius: 5px;
+				@include mediaLarge480px {
+					border: 1px dashed $darkenRGBA;
+				}
 				img {
 					position: absolute;
 					top: 0;
@@ -48,6 +50,10 @@
 				display: flex;
 				flex-direction: column;
 				gap: 10px;
+				@include mediaLarge480px {
+					justify-content: space-between;
+					gap: 15px;
+				}
 				.title {
 					font-size: 16px;
 					font-weight: 400;
@@ -143,7 +149,7 @@
 				@include mediaLarge530px {
 					flex: 1;
 					justify-content: flex-start;
-					padding-left: 7px;
+					padding-left: 8px;
 				}
 				@include mediaLarge380px {
 					flex: 0.5;

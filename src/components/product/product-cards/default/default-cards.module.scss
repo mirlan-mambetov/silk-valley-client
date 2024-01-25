@@ -12,6 +12,7 @@
 		row-gap: 40px;
 		@include mediaLarge1024px {
 			grid-template-columns: repeat(4, calc(100% / 4 - 20px / 4 * (4 - 1)));
+			row-gap: 5px;
 		}
 		@include mediaLarge776px {
 			grid-template-columns: repeat(3, calc(100% / 3 - 20px / 3 * (3 - 1)));
@@ -23,7 +24,6 @@
 		@include mediaLarge480px {
 			grid-template-columns: repeat(2, calc(100% / 2 - 4px / 2 * (2 - 1)));
 			column-gap: 4px;
-			row-gap: 10px;
 		}
 		&.grid5 {
 			grid-template-columns: repeat(5, calc(100% / 5 - 20px / 5 * (5 - 1)));

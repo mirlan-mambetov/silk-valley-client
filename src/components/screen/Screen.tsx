@@ -4,7 +4,7 @@ import { screenMotionVariant } from "@/framer-motion/screen/screen.motion"
 import { useScreen } from "@/hooks/screen/useScreen"
 import { motion } from "framer-motion"
 import { FC, useEffect } from "react"
-import { ButtonComponent, LogoComponent } from ".."
+import { ButtonComponent } from ".."
 import style from "./screen.module.scss"
 
 export const ScreenComponent: FC = () => {
@@ -23,14 +23,12 @@ export const ScreenComponent: FC = () => {
 		>
 			<div className="container">
 				<div className={style.wrap}>
-					<div className={style.top}>
-						<LogoComponent className={style.logo} />
-						<ButtonComponent
-							onClick={clearContentHandler}
-							type="closed"
-							size="xl2"
-						></ButtonComponent>
-					</div>
+					<ButtonComponent
+						className={style.close}
+						onClick={clearContentHandler}
+						type="closed"
+						size="xl2"
+					></ButtonComponent>
 					{/* CONTENT */}
 					<div className={style.content}>{content}</div>
 				</div>

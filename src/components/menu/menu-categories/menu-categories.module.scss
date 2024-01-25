@@ -2,13 +2,9 @@
 @import "../../../styles/mixin";
 @import "../../../styles/vars";
 .menu {
-	padding: 50px 0;
 	.list {
 		ul {
-			gap: 16px !important;
-			li {
-				font-size: 16px !important;
-			}
+			gap: 10px !important;
 		}
 	}
 }

@@ -211,7 +211,7 @@ export const CARDS_PRODUCT: IProduct[] = [
 		discount: 15,
 	},
 	{
-		id: 9,
+		id: 15,
 		title: "MacBook Air 13/M2/8/256 (Space Grey)    ",
 		subtitle: "MacBook Air 13/M2/8/256 (Space Grey)    ",
 		alias: "kedy-advantage-9",

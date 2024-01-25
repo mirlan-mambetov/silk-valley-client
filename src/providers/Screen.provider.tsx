@@ -1,11 +1,13 @@
 "use client"
 
 import { ScreenContext } from "@/context/screen.context"
-import { FC, PropsWithChildren, ReactNode, useState } from "react"
+import { usePathname } from "next/navigation"
+import { FC, PropsWithChildren, ReactNode, useEffect, useState } from "react"
 
 export const ScreenProvider: FC<PropsWithChildren> = ({ children }) => {
 	const [isOpen, setIsOpen] = useState<boolean>(false)
 	const [content, setContent] = useState<ReactNode | null>()
+	const pathNameRoute = usePathname()
 
 	const setContentHandler = (content: ReactNode) => {
 		setIsOpen(true)
@@ -15,6 +17,10 @@ export const ScreenProvider: FC<PropsWithChildren> = ({ children }) => {
 		setIsOpen(false)
 		setContent(null)
 	}
+
+	useEffect(() => {
+		setIsOpen(false)
+	}, [pathNameRoute])
 
 	return (
 		<ScreenContext.Provider
