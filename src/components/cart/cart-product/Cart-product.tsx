@@ -49,22 +49,24 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 									</span>
 								</div>
 							</div>
-							<ButtonComponent className={style.promo} type="promo" />
+							<div className={style.price}>
+								<ProductPriceComponent
+									className={style.number}
+									price={product.price}
+								/>
+								<ButtonComponent className={style.promo} type="promo" />
+							</div>
 						</div>
 					</div>
 					<div className={style.actions}>
-						<div className={cn(style.action)}>
-							<ProductPriceComponent
-								className={style.price}
-								price={product.price}
-								discount={product.discount}
-							/>
-						</div>
 						<div className={cn(style.action, style.discount)}>
 							<ProductDiscountComponent product={product} />
 						</div>
 						<div className={cn(style.action, style.range)}>
 							<CartRangeComponent text={false} />
+						</div>
+						<div className={style.action}>
+							<ButtonComponent type="delete" />
 						</div>
 					</div>
 				</div>

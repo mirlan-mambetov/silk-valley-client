@@ -13,10 +13,10 @@
 		-moz-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.04);
 		box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.04);
 		border-radius: 5px;
-		@include mediaLarge480px {
+		@include mediaLarge530px {
 			flex-direction: column;
 			align-items: flex-start;
-			gap: 5px;
+			gap: 12px;
 		}
 		.content,
 		.actions {
@@ -27,7 +27,9 @@
 		.content {
 			display: flex;
 			gap: 5px;
-
+			@include mediaLarge530px {
+				width: 100%;
+			}
 			.image {
 				position: relative;
 				width: 90px;
@@ -51,6 +53,48 @@
 					font-weight: 400;
 					line-height: 18px;
 					color: $darken;
+					@include mediaLarge440px {
+						font-size: 14px;
+					}
+				}
+				.price {
+					display: flex;
+					align-items: center;
+					gap: 12px;
+					@include mediaLarge440px {
+						flex-direction: column;
+						align-items: flex-start;
+						gap: 5px;
+					}
+					.number {
+						align-items: center;
+						min-height: unset !important;
+						flex-direction: row;
+						gap: 10px;
+					}
+					.promo {
+						gap: 3px;
+						align-items: baseline;
+						font-size: 10px;
+						text-align: center;
+						background-image: linear-gradient(
+							43deg,
+							#4158d0 0%,
+							#c850c0 46%,
+							#ffcc70 100%
+						);
+						background-size: 400% 400%;
+						color: $purple;
+						background-clip: text;
+						text-fill-color: transparent;
+						-webkit-background-clip: text;
+						-webkit-text-fill-color: transparent;
+						-webkit-animation: changeBackground 8.4s linear infinite;
+						animation: changeBackground 8.4s linear infinite;
+						span {
+							gap: 3px;
+						}
+					}
 				}
 				.items {
 					display: flex;
@@ -73,43 +117,16 @@
 						}
 					}
 				}
-				.promo {
-					gap: 3px;
-					align-items: baseline;
-					font-size: 10px;
-					text-align: center;
-					background: linear-gradient(
-						to right,
-						rgb(216, 46, 125) 20%,
-						rgb(192, 17, 236) 40%,
-						rgb(36, 157, 194) 60%,
-						#fff 80%
-					);
-					background-size: 200% auto;
-					color: $purple;
-					background-clip: text;
-					text-fill-color: transparent;
-					-webkit-background-clip: text;
-					-webkit-text-fill-color: transparent;
-					-webkit-animation: changeBackground 8.4s linear infinite;
-					animation: changeBackground 8.4s linear infinite;
-					span {
-						gap: 3px;
-					}
-				}
 			}
 		}
 		.actions {
 			display: flex;
 			justify-content: space-between;
-
-			@include mediaLarge640px {
-				flex-direction: column;
-				gap: 5px;
+			@include mediaLarge830px {
 				flex: 0.3;
 			}
-			@include mediaLarge480px {
-				flex-direction: row-reverse;
+			@include mediaLarge530px {
+				flex-direction: row;
 				flex: unset;
 				width: 100%;
 			}
@@ -118,31 +135,15 @@
 				display: flex;
 				align-items: center;
 				justify-content: center;
-
-				.price {
-					align-items: center;
-					min-height: unset !important;
-					@include mediaLarge480px {
-						flex-direction: row;
-						gap: 10px;
-					}
-				}
-				@include mediaLarge640px {
-					order: 1;
-				}
-				@include mediaLarge480px {
+				@include mediaLarge530px {
 					justify-content: flex-end;
 				}
 			}
 			.range {
-				@include mediaLarge640px {
-					margin-top: 12px;
-				}
-				@include mediaLarge480px {
-					margin-top: 0;
+				@include mediaLarge530px {
 					flex: 1;
 					justify-content: flex-start;
-					padding-left: 6px;
+					padding-left: 5px;
 				}
 				@include mediaLarge380px {
 					flex: 0.5;
@@ -154,12 +155,12 @@
 					align-items: center;
 					justify-content: center;
 				}
-				@include mediaLarge640px {
+				@include mediaLarge830px {
 					position: absolute;
 					left: 10px;
 					bottom: 12px;
 				}
-				@include mediaLarge480px {
+				@include mediaLarge530px {
 					top: 50%;
 					right: 5px;
 					transform: translateY(-50%);
