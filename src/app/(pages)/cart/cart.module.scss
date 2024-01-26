@@ -1,30 +1,7 @@
 @import "../../../styles/media.mixin";
 @import "../../../styles/vars";
 @import "../../../styles/mixin";
-.top_title {
-	margin-bottom: 10px;
-	@include mediaLarge530px {
-		margin-top: 30px;
-		margin-bottom: 5px;
-	}
-	span {
-		position: relative;
-		sup {
-			position: absolute;
-			top: -8px;
-			right: -15px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			background: $purple;
-			width: 15px;
-			color: $white;
-			font-size: 10px;
-			height: 15px;
-			border-radius: 50%;
-		}
-	}
-}
+
 .cart {
 	display: grid;
 	grid-template-columns: calc(100% / 3 * 2.1 - 20px) calc(100% / 6 * 1.9 - 20px);

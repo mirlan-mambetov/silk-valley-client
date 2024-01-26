@@ -3,6 +3,7 @@
 import {
 	ButtonComponent,
 	FeaturedComponent,
+	HeadingComponent,
 	ProductDiscountComponent,
 	ProductPriceComponent,
 } from "@/components"
@@ -29,7 +30,7 @@ export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 	const [isHover, setIsHover] = useState(false)
 	return (
 		<div className={style.cards}>
-			{title ? <h3 className="section-title">{title}</h3> : null}
+			{title ? <HeadingComponent text={title} /> : null}
 			<div className={cn(style.wrap, { [style.grid5]: grid === "5" })}>
 				{limitedData.map((product) => (
 					<div

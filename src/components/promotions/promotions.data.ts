@@ -1,6 +1,6 @@
 import { IPromotions } from "@/interfaces/promotions.interface"
 
-export const SHARES_DATA: IPromotions[] = [
+export const PROMOTION_DATA: IPromotions[] = [
 	{
 		id: 1,
 		name: "Подготовка к школе",

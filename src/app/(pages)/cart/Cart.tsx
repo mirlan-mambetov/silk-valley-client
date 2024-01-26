@@ -4,13 +4,13 @@ import {
 	ButtonComponent,
 	CartInfoComponent,
 	CartProductComponent,
+	HeadingComponent,
 } from "@/components"
 import { FC } from "react"
 
 import { FaUser } from "react-icons/fa6"
 import { CART_DATA } from "./cart.data"
 
-import cn from "classnames"
 import { FaMapMarkerAlt } from "react-icons/fa"
 import style from "./cart.module.scss"
 
@@ -18,12 +18,7 @@ export const Cart: FC = () => {
 	const data = CART_DATA
 	return (
 		<>
-			<h3 className={cn("section-title", style.top_title)}>
-				<span>
-					Корзина
-					<sup>3</sup>
-				</span>
-			</h3>
+			<HeadingComponent text="Корзина" length={3} />
 			<div className={style.cart}>
 				<CartProductComponent products={data} />
 				<CartInfoComponent />

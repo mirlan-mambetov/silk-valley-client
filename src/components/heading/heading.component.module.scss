@@ -1,0 +1,37 @@
+@import "../../styles/media.mixin";
+@import "../../styles/mixin";
+@import "../../styles/vars";
+
+.heading {
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 25px;
+	text-transform: uppercase;
+	margin-top: 10px;
+	margin-bottom: 30px;
+}
+.top {
+	margin-bottom: 10px;
+	@include mediaLarge530px {
+		margin-top: 30px;
+		margin-bottom: 5px;
+	}
+	span {
+		position: relative;
+		sup {
+			position: absolute;
+			top: -8px;
+			right: -15px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: $purple;
+			width: 15px;
+			color: $white;
+			font-size: 10px;
+			height: 15px;
+			border-radius: 50%;
+			z-index: 2;
+		}
+	}
+}
