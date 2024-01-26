@@ -1,6 +1,6 @@
+import { PROMOTION_DATA } from "@/app/(pages)/promotions/promotions.data"
 import { CardsComponent, PromotionComponent } from "@/components"
 import { CARDS_PRODUCT } from "@/components/product/product.data"
-import { PROMOTION_DATA } from "@/components/promotions/promotions.data"
 import { Banner } from "./Banner/Banner"
 import { BANNER_DATA } from "./Banner/banner.data"
 

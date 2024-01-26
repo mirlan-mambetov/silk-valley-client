@@ -1,13 +1,18 @@
-import { CardsComponent, Promotions } from "@/components"
+import { PROMOTION_DATA } from "@/app/(pages)/promotions/promotions.data"
+import {
+	CardsComponent,
+	HeadingComponent,
+	PromotionComponent,
+} from "@/components"
 import { CARDS_PRODUCT } from "@/components/product/product.data"
-import { PROMOTION_DATA } from "@/components/promotions/promotions.data"
 
 const PromotionsPage = () => {
 	return (
 		<>
 			<section>
 				<div className="container">
-					<Promotions data={PROMOTION_DATA} />
+					<HeadingComponent text="Акции недели" length={4} />
+					<PromotionComponent routes data={PROMOTION_DATA} size="xl3" />
 				</div>
 			</section>
 			<section>

@@ -11,15 +11,17 @@ import style from "./promotion.component.module.scss"
 interface IPromotionComponentProps {
 	data: IPromotions[]
 	size?: "xl1" | "xl2" | "xl3"
+	routes?: boolean
 }
 export const PromotionComponent: FC<IPromotionComponentProps> = ({
 	data,
 	size = "xl2",
+	routes = false,
 }) => {
 	const { push } = useRouter()
 	return (
 		<>
-			<RoutesHistoryComponent productName="Акции" />
+			{routes ? <RoutesHistoryComponent productName="Акции" /> : null}
 			<div className={style.promotion}>
 				<div
 					className={cn(style.wrap, {

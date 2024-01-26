@@ -1,4 +1,4 @@
-import { PROMOTION_DATA } from "@/components/promotions/promotions.data"
+import { PROMOTION_DATA } from "@/app/(pages)/promotions/promotions.data"
 import { IPageParams } from "@/interfaces/page.interface"
 import { Promotions } from "./Promotions"
 
