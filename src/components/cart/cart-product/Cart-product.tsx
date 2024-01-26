@@ -53,8 +53,10 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 								<ProductPriceComponent
 									className={style.number}
 									price={product.price}
+									discount={product.discount}
+									size="1xxl"
 								/>
-								<ButtonComponent className={style.promo} type="promo" />
+								<ButtonComponent type="promo" />
 							</div>
 						</div>
 					</div>

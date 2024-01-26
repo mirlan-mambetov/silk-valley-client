@@ -138,9 +138,8 @@
 				}
 			}
 			.price {
-				@include mediaLarge440px {
-					flex-direction: column;
-					align-items: flex-start;
+				@include mediaLarge360px {
+					min-height: unset !important;
 				}
 			}
 		}

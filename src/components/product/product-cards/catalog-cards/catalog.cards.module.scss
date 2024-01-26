@@ -6,35 +6,34 @@
 	.cards {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
-		grid-column-gap: 15px;
-		grid-row-gap: 15px;
+		grid-column-gap: 5px;
+		grid-row-gap: 5px;
 		@include mediaLarge640px {
 			grid-template-columns: repeat(3, 1fr);
-			grid-column-gap: 8px;
+			grid-column-gap: 4px;
+			grid-row-gap: 4px;
 		}
 		@include mediaLarge480px {
 			grid-template-columns: repeat(2, 1fr);
-			grid-column-gap: 4px;
 		}
 		&.grid4 {
 			grid-template-columns: repeat(6, 1fr);
-			@include mediaLarge1260px {
-				grid-column-gap: 5px;
-			}
 			@include mediaLarge1024px {
-				grid-template-columns: repeat(5, calc(100% / 5 - 5px / 5 * (5 - 1)));
+				grid-template-columns: repeat(5, calc(100% / 5 - 4px / 5 * (5 - 1)));
 			}
 			@include mediaLarge830px {
-				grid-template-columns: repeat(4, calc(100% / 4 - 5px / 4 * (4 - 1)));
+				grid-template-columns: repeat(4, calc(100% / 4 - 4px / 4 * (4 - 1)));
 			}
 			@include mediaLarge530px {
-				grid-template-columns: repeat(3, calc(100% / 3 - 5px / 3 * (3 - 1)));
+				grid-template-columns: repeat(3, calc(100% / 3 - 4px / 3 * (3 - 1)));
 			}
 			@include mediaLarge440px {
 				grid-column-gap: 2px;
+				grid-row-gap: 2px;
 				grid-template-columns: repeat(2, calc(100% / 2 - 2px / 2 * (2 - 1)));
 			}
 			.card {
+				position: relative;
 				&:nth-child(3) {
 					position: relative;
 					grid-column: unset;
@@ -91,8 +90,9 @@
 			-moz-box-shadow: 0px 10px 23px 3px rgba(34, 30, 40, 0.02);
 			box-shadow: 0px 10px 23px 3px rgba(34, 30, 40, 0.02);
 			border: 1px dashed $darkenRGBA;
-			border-radius: 4px;
 			padding: 4px;
+			border-radius: 5px;
+			overflow: hidden;
 			&:nth-child(3) {
 				grid-column: 3 / 5;
 				@include mediaLarge940px {
@@ -115,7 +115,8 @@
 .image {
 	position: relative;
 	padding-top: calc(100% * (120 / 90));
-
+	border-radius: 5px;
+	overflow: hidden;
 	img {
 		position: absolute;
 		top: 0;
@@ -140,7 +141,7 @@
 	color: $darken;
 	.title {
 		font-size: 16px;
-		font-weight: 500;
+		font-weight: 400;
 		line-height: 22px;
 		white-space: nowrap;
 		overflow: hidden;

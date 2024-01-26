@@ -29,11 +29,11 @@ export const ProductPriceComponent: FC<IPriceComponentProps> = ({
 		>
 			{discount ? (
 				<>
-					<div className={style.old}>
-						{formatPrice(price)} <span>KGS</span>
-					</div>
 					<div className={style.new}>
 						{calculateOldPrice(price, discount)} <span>KGS</span>
+					</div>
+					<div className={style.old}>
+						{formatPrice(price)} <span>KGS</span>
 					</div>
 				</>
 			) : (

@@ -25,18 +25,8 @@
 
 	.price {
 		display: flex;
-		align-items: baseline;
-		padding: 0 !important;
-		@include mediaLarge440px {
-			align-items: center;
-		}
-
-		> span {
-			color: $white;
-			background: $discount;
-			border-radius: 3px;
-			padding: 2px;
-		}
+		align-items: center;
+		gap: 10px;
 	}
 
 	.description {

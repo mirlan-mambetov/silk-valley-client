@@ -10,9 +10,10 @@ export const calculateOldPrice = (price: number, discount: number) => {
 }
 
 export function formatPrice(price: number) {
+	const roundedPrice = Math.ceil(price)
 	const formattedPrice = new Intl.NumberFormat("ru-RU", {
 		minimumFractionDigits: 0,
-	}).format(price)
+	}).format(roundedPrice)
 
 	return formattedPrice
 }

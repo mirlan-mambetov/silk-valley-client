@@ -3,6 +3,14 @@
 @import "../../styles/vars";
 
 .promotion {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	@include mediaLarge530px {
+		h3 {
+			margin-top: 10px;
+		}
+	}
 	.wrap {
 		&.xl2 {
 			display: grid;

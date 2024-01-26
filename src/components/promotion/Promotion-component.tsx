@@ -1,6 +1,10 @@
 "use client"
 
-import { ButtonComponent, RoutesHistoryComponent } from "@/components"
+import {
+	ButtonComponent,
+	HeadingComponent,
+	RoutesHistoryComponent,
+} from "@/components"
 import { IPromotions } from "@/interfaces/promotions.interface"
 import cn from "classnames"
 import { useRouter } from "next/navigation"
@@ -23,6 +27,7 @@ export const PromotionComponent: FC<IPromotionComponentProps> = ({
 		<>
 			{routes ? <RoutesHistoryComponent productName="Акции" /> : null}
 			<div className={style.promotion}>
+				<HeadingComponent text="Акции недели" length={4} />
 				<div
 					className={cn(style.wrap, {
 						[style.xl1]: size === "xl1",

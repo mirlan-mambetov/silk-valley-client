@@ -2,67 +2,73 @@
 @import "../../../styles/vars";
 .price {
 	display: flex;
-	flex-direction: column;
-	justify-content: flex-end;
-	gap: 2px;
-	&.column {
-		flex-direction: row;
-		justify-content: flex-start;
-		align-items: center;
-		gap: 7px;
-		min-height: unset;
-		width: 100%;
+	align-items: flex-end;
+	gap: 12px;
+	min-height: 15px;
+	.old {
+		text-decoration: line-through;
 	}
-	&.xxl1 {
-		.old {
-			font-size: 12px;
-		}
+	&.column {
+		min-height: unset;
+		.old,
 		.default,
 		.new {
+			display: flex;
+			gap: 5px;
+			align-items: center;
+		}
+	}
+	&.xxl1 {
+		.old,
+		.default,
+		.new {
+			display: flex;
+			gap: 5px;
+			align-items: center;
 			font-size: 14px;
+			font-weight: 500;
 			line-height: 16px;
+		}
+		.old {
+			font-size: 10px;
 		}
 	}
 	&.xl2 {
-		flex-direction: row;
-		justify-content: unset;
-		align-items: center;
-		gap: 12px;
-		.old {
-			font-size: 16px;
-		}
+		.old,
 		.default,
 		.new {
-			font-size: 20px;
-			line-height: 28px;
+			font-size: 18px;
+			font-weight: 500;
+			line-height: 18px;
+		}
+		.old {
+			font-size: 12px;
 		}
 	}
 	&.xl1 {
-		.old {
-			font-size: 14px;
-		}
+		.old,
 		.default,
 		.new {
+			position: relative;
+			display: flex;
+			align-items: baseline;
+			gap: 4px;
 			font-size: 16px;
+			font-weight: 500;
 			line-height: 18px;
 		}
-	}
-	min-height: 45px;
-	.old {
-		font-size: 12px;
-		text-decoration: line-through;
-		color: $gray;
-	}
-	.default,
-	.new {
-		font-size: 16px;
-		font-weight: bold;
-		line-height: 18px;
+		.old {
+			font-size: 12px;
+			font-weight: 300;
+		}
 	}
 	span {
-		font-size: 12px !important;
+		display: flex;
+		font-size: 10px !important;
 		font-weight: bold;
 		text-transform: uppercase;
 		color: inherit !important;
+		font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+			"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 	}
 }

@@ -33,7 +33,11 @@ export const CatalogCardsComponent: FC<ICatalogCardsComponentProps> = ({
 								height={1300}
 							/>
 							<div className={style.discount}>
-								<ProductDiscountComponent size="xl1" product={product} />
+								<ProductDiscountComponent
+									size="xl1"
+									product={product}
+									type="absolute"
+								/>
 							</div>
 						</div>
 						<div className={style.content}>

@@ -21,6 +21,17 @@ export const MobileMenuComponent: FC = () => {
 			<div className="container">
 				<div className={style.list}>
 					<div className={style.item}>
+						<ButtonComponent onClick={() => push("/")}>
+							<Image
+								src={"/icons/Home.svg"}
+								alt="search"
+								width={28}
+								height={28}
+							/>
+							{/* <span>Профиль</span> */}
+						</ButtonComponent>
+					</div>
+					<div className={style.item}>
 						<ButtonComponent
 							onClick={() =>
 								isOpen
@@ -31,8 +42,8 @@ export const MobileMenuComponent: FC = () => {
 							<Image
 								src={`/icons/Category.svg`}
 								alt="categories"
-								width={28}
-								height={28}
+								width={26}
+								height={26}
 							/>
 							{/* <span>Категории</span> */}
 						</ButtonComponent>
@@ -49,17 +60,7 @@ export const MobileMenuComponent: FC = () => {
 							{/* <span>Корзина</span> */}
 						</ButtonComponent>
 					</div>
-					<div className={style.item}>
-						<ButtonComponent>
-							<Image
-								src={"/icons/Heart.svg"}
-								alt="search"
-								width={28}
-								height={28}
-							/>
-							{/* <span>Профиль</span> */}
-						</ButtonComponent>
-					</div>
+
 					<div className={style.item}>
 						<ButtonComponent>
 							<Image

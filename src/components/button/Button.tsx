@@ -35,7 +35,7 @@ export const ButtonComponent: FC<IButtonComponentProps> = ({
 			return (
 				<button className={cn(style.button, style.promo, className)} {...props}>
 					<LuPercent />
-					<span>Есть промо-код ?</span>
+					<span>Промо-код</span>
 				</button>
 			)
 		case "cart":
