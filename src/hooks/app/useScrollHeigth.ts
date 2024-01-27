@@ -12,7 +12,7 @@ export const useScrollHeight = (point: number = 100) => {
 		return () => {
 			window.removeEventListener("scroll", handleScroll)
 		}
-	}, [])
+	}, [point])
 
 	return {
 		isStart,

@@ -6,8 +6,13 @@ import { motion } from "framer-motion"
 import { FC, PropsWithChildren } from "react"
 import style from "./sticky.header.module.scss"
 
-export const StickyHeaderComponent: FC<PropsWithChildren> = ({ children }) => {
-	const { isStart } = useScrollHeight(200)
+interface IStickyHeaderComponentProps {
+	start?: number
+}
+export const StickyHeaderComponent: FC<
+	PropsWithChildren<IStickyHeaderComponentProps>
+> = ({ children, start }) => {
+	const { isStart } = useScrollHeight(start)
 	return (
 		<motion.div
 			animate={isStart ? "open" : "closed"}

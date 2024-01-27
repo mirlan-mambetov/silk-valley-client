@@ -27,7 +27,7 @@ export const PromotionComponent: FC<IPromotionComponentProps> = ({
 		<>
 			{routes ? <RoutesHistoryComponent productName="Акции" /> : null}
 			<div className={style.promotion}>
-				<HeadingComponent text="Акции недели" length={4} />
+				{routes ? <HeadingComponent text="Акции недели" length={4} /> : null}
 				<div
 					className={cn(style.wrap, {
 						[style.xl1]: size === "xl1",

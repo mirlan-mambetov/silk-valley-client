@@ -14,7 +14,7 @@ const HomePage = () => {
 				</div>
 			</section>
 
-			{/* SHARES */}
+			{/* PROMOTIONS */}
 			<section>
 				<div className="container">
 					<PromotionComponent data={PROMOTION_DATA} />

@@ -67,7 +67,7 @@
 		position: relative;
 		width: calc(100% / 6 * 1.2 - 10px);
 		border: 1px dashed $darkenRGBA;
-
+		border-radius: 4px;
 		@include mediaLarge940px {
 			width: calc(100% / 7 * 1.2 - 10px);
 			border: none;
