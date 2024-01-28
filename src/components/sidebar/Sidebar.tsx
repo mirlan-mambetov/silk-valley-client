@@ -44,7 +44,7 @@ export const SidebarComponent: FC<ISidebarComponentProps> = ({
 					<small>Каталог</small>
 				</ButtonComponent>
 			) : null}
-			<div
+			<aside
 				className={cn(style.sidebar, { [style.isOpen]: isShow })}
 				{...props}
 				ref={elRef}
@@ -88,7 +88,7 @@ export const SidebarComponent: FC<ISidebarComponentProps> = ({
 				/>
 				<PriceRangeComponent /> */}
 				</div>
-			</div>
+			</aside>
 		</>
 	)
 }

@@ -55,6 +55,7 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 									price={product.price}
 									discount={product.discount}
 									size="1xxl"
+									orientation="column"
 								/>
 								<ButtonComponent type="promo" />
 							</div>
