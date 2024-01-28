@@ -7,9 +7,9 @@
 	.wrap {
 		position: relative;
 		display: grid;
-		grid-template-columns: repeat(6, calc(100% / 6 - 20px / 6 * (6 - 1)));
-		column-gap: 20px;
-		row-gap: 40px;
+		grid-template-columns: repeat(6, calc(100% / 6 - 8px / 6 * (6 - 1)));
+		column-gap: 8px;
+		row-gap: 12px;
 		@include mediaLarge1024px {
 			grid-template-columns: repeat(4, calc(100% / 4 - 20px / 4 * (4 - 1)));
 			row-gap: 5px;

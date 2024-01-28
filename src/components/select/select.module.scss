@@ -37,7 +37,7 @@
 	&_list {
 		display: flex;
 		flex-direction: column;
-		gap: 6px;
+		gap: 8px;
 		position: absolute;
 		width: 100%;
 		top: 100%;
@@ -50,18 +50,19 @@
 		overflow-y: scroll;
 		max-height: 200px;
 		@include mediaLarge480px {
-			gap: 12px;
+			gap: 7px;
 		}
 	}
 	&_item {
 		font-size: 14px;
-		font-weight: 400;
+		font-weight: 500;
 		border-radius: 3px;
 		cursor: pointer;
 		z-index: 8;
 		transition: background 0.2s ease;
+		padding-left: 25px;
 		@include mediaLarge480px {
-			font-weight: 500;
+			padding-left: 22px;
 		}
 		&:hover {
 			background: $gray;

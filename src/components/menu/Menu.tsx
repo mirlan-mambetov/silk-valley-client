@@ -32,7 +32,6 @@ export const MenuComponent: FC<IMenuComponentProps> = ({
 		<motion.div
 			className={cn(style.menu, className, {
 				[style.absolute]: type === "absolute",
-				// [style.active]: isShow,
 			})}
 		>
 			<motion.ul

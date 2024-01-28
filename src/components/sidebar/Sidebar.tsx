@@ -57,7 +57,7 @@ export const SidebarComponent: FC<ISidebarComponentProps> = ({
 								type="closed"
 							/>
 						) : (
-							<div className={style.title}>Каталог</div>
+							<h4 className={style.title}>Каталог</h4>
 						)}
 					</div>
 					<div className={style.content}>

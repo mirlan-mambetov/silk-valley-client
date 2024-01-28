@@ -23,10 +23,7 @@
 			font-size: 12px;
 			font-weight: 500;
 			text-transform: uppercase;
-			@include mediaLarge480px {
-				font-size: 14px;
-				font-weight: 400;
-			}
+
 			a {
 				color: $darken;
 			}
@@ -51,6 +48,8 @@
 
 			.list__item {
 				width: unset;
+				text-transform: unset;
+				font-size: 15px;
 			}
 		}
 

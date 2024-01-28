@@ -12,6 +12,7 @@ export const MenuCategoriesComponent: FC = () => {
 				className={style.list}
 				data={HEADER_MENU}
 				orientation="row-heigth"
+				size="1xl"
 			/>
 		</div>
 	)

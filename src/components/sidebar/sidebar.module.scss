@@ -28,13 +28,18 @@
 			font-size: 27px;
 			padding: 0;
 		}
+		.title {
+			font-size: 16px;
+			font-weight: 500;
+			line-height: 22px;
+		}
 	}
 
 	.wrap {
 		top: 12px;
 		display: flex;
 		flex-direction: column;
-		gap: 18px;
+		gap: 8px;
 		.content {
 			padding: 12px;
 			.menu {
