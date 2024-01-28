@@ -22,16 +22,14 @@ export const ScreenComponent: FC = () => {
 			className={style.screen}
 		>
 			<div className="container">
-				<div className={style.wrap}>
-					<ButtonComponent
-						className={style.close}
-						onClick={clearContentHandler}
-						type="closed"
-						size="xl2"
-					></ButtonComponent>
-					{/* CONTENT */}
-					<div className={style.content}>{content}</div>
-				</div>
+				<ButtonComponent
+					className={style.close}
+					onClick={clearContentHandler}
+					type="closed"
+					size="xl2"
+				></ButtonComponent>
+				{/* CONTENT */}
+				<div className={style.content}>{content}</div>
 			</div>
 		</motion.div>
 	)

@@ -2,6 +2,7 @@
 
 import { variants3, variants4 } from "@/framer-motion"
 import { useWindowWidth } from "@/hooks/app/useWindowWidth"
+import { useScreen } from "@/hooks/screen/useScreen"
 import useOutsiteClick from "@/hooks/useOutsideClick"
 import cn from "classnames"
 import { motion } from "framer-motion"
@@ -10,6 +11,7 @@ import { FaMapMarkerAlt } from "react-icons/fa"
 import { IoSearchOutline } from "react-icons/io5"
 import { SlHandbag } from "react-icons/sl"
 import {
+	AuthComponent,
 	ButtonComponent,
 	LogoComponent,
 	MenuComponent,
@@ -22,6 +24,7 @@ export const HeaderComponent = () => {
 	const { elRef, isShow, setIsShow } = useOutsiteClick(false)
 	const { push } = useRouter()
 	const { width } = useWindowWidth()
+	const { setContentHandler } = useScreen()
 
 	return (
 		<>
@@ -76,7 +79,11 @@ export const HeaderComponent = () => {
 						{/* ACTIONS */}
 						<div className={style.action}>
 							<div className={style.column}>
-								<ButtonComponent>Вход</ButtonComponent>
+								<ButtonComponent
+									onClick={() => setContentHandler(<AuthComponent />)}
+								>
+									Вход
+								</ButtonComponent>
 							</div>
 							<div className={style.column}>
 								<ButtonComponent className={style.search}>
