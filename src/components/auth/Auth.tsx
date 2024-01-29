@@ -1,26 +1,22 @@
 "use client"
 
-import { FC } from "react"
-import { IoLogInOutline } from "react-icons/io5"
-import { ButtonComponent, LoginComponent } from ".."
+import { FC, useState } from "react"
+import { LoginComponent, RegisterComponent } from ".."
 import style from "./auth.module.scss"
 
 export const AuthComponent: FC = () => {
+	const [choice, setChoice] = useState<"login" | "register">("login")
 	return (
 		<div className="container">
 			<div className={style.auth}>
-				<div className={style.wrap}>
-					<div className={style.top}>
-						<span>Нет аккаунта ? зарегистрируйтесь</span>
-						<ButtonComponent>
-							Регистрация
-							<span>
-								<IoLogInOutline />
-							</span>
-						</ButtonComponent>
-					</div>
-					<LoginComponent />
-				</div>
+				<LoginComponent
+					setChoice={(value) => setChoice(value)}
+					animate={choice === "login"}
+				/>
+				<RegisterComponent
+					setChoice={(value) => setChoice(value)}
+					animate={choice === "register"}
+				/>
 			</div>
 		</div>
 	)

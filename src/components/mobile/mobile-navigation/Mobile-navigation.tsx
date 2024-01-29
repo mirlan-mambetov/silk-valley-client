@@ -9,7 +9,7 @@ import { useScreen } from "@/hooks/screen/useScreen"
 import cn from "classnames"
 import { useRouter } from "next/navigation"
 import { FC } from "react"
-import style from "./mobile-menu.module.scss"
+import style from "./mobile-navigation.module.scss"
 
 export const MobileMenuComponent: FC = () => {
 	const { push } = useRouter()

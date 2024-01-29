@@ -28,106 +28,112 @@ export const HeaderComponent = () => {
 
 	return (
 		<>
-			<div className={style.header}>
-				{/* TOP HEADER */}
-				<div className={style.top}>
-					<div className="container">
-						<div className={style.wrap}>
-							<div className={style.row}>
-								<div className={style.deliver}>
-									<FaMapMarkerAlt />
-									<ButtonComponent>
-										<span>Доставка: Иссык - Кульская область. г. Каракол</span>
-									</ButtonComponent>
+			{/* MOBILE */}
+			{width > 530 ? (
+				<>
+					<div className={style.header}>
+						{/* TOP HEADER */}
+						<div className={style.top}>
+							<div className="container">
+								<div className={style.wrap}>
+									<div className={style.row}>
+										<div className={style.deliver}>
+											<FaMapMarkerAlt />
+											<ButtonComponent>
+												<span>
+													Доставка: Иссык - Кульская область. г. Каракол
+												</span>
+											</ButtonComponent>
+										</div>
+									</div>
+									<div className={style.row}>
+										<ButtonComponent>
+											<FaMapMarkerAlt />
+										</ButtonComponent>
+									</div>
 								</div>
 							</div>
-							<div className={style.row}>
-								<ButtonComponent>
-									<FaMapMarkerAlt />
-								</ButtonComponent>
+						</div>
+						{/* END TOP HEADER */}
+						<div className="container">
+							<div className={style.content}>
+								{/* MENU */}
+								<div className={cn(style.menu, { [style.active]: isShow })}>
+									<ButtonComponent
+										className={style.button}
+										onClick={() => setIsShow(!isShow)}
+									>
+										<span></span>
+										<span></span>
+										<span></span>
+									</ButtonComponent>
+									<MenuComponent
+										className={style.list}
+										orientation="column"
+										data={HEADER_MENU}
+										limit={3}
+										animate={false}
+									/>
+								</div>
+								{/* END MENU */}
+
+								{/* LOGO */}
+								<LogoComponent />
+								{/* END LOGO */}
+
+								{/* ACTIONS */}
+								<div className={style.action}>
+									<div className={style.column}>
+										<ButtonComponent
+											onClick={() => setContentHandler(<AuthComponent />)}
+										>
+											Вход
+										</ButtonComponent>
+									</div>
+									<div className={style.column}>
+										<ButtonComponent className={style.search}>
+											<IoSearchOutline />
+										</ButtonComponent>
+									</div>
+									<div className={style.column}>
+										<ButtonComponent
+											className={style.cart}
+											onClick={() => push("/cart")}
+										>
+											<SlHandbag />
+										</ButtonComponent>
+									</div>
+								</div>
+								{/* END ACTIONS */}
 							</div>
 						</div>
 					</div>
-				</div>
-				{/* END TOP HEADER */}
-				<div className="container">
-					<div className={style.content}>
-						{/* MENU */}
-						<div className={cn(style.menu, { [style.active]: isShow })}>
-							<ButtonComponent
-								className={style.button}
-								onClick={() => setIsShow(!isShow)}
-							>
-								<span></span>
-								<span></span>
-								<span></span>
-							</ButtonComponent>
+					<motion.div
+						variants={variants3}
+						animate={isShow ? "open" : "closed"}
+						className={style.navigation}
+						ref={elRef}
+					>
+						<motion.div
+							animate={isShow ? "active" : "closed"}
+							variants={variants4}
+							className={style.border}
+						></motion.div>
+						<div className="container">
 							<MenuComponent
-								className={style.list}
-								orientation="column"
+								orientation="row"
+								secondMenu={false}
 								data={HEADER_MENU}
-								limit={3}
-								animate={false}
 							/>
 						</div>
-						{/* END MENU */}
-
-						{/* LOGO */}
-						<LogoComponent />
-						{/* END LOGO */}
-
-						{/* ACTIONS */}
-						<div className={style.action}>
-							<div className={style.column}>
-								<ButtonComponent
-									onClick={() => setContentHandler(<AuthComponent />)}
-								>
-									Вход
-								</ButtonComponent>
-							</div>
-							<div className={style.column}>
-								<ButtonComponent className={style.search}>
-									<IoSearchOutline />
-								</ButtonComponent>
-							</div>
-							<div className={style.column}>
-								<ButtonComponent
-									className={style.cart}
-									onClick={() => push("/cart")}
-								>
-									<SlHandbag />
-								</ButtonComponent>
-							</div>
-						</div>
-						{/* END ACTIONS */}
-					</div>
-				</div>
-			</div>
-			{width > 530 ? (
-				<motion.div
-					variants={variants3}
-					animate={isShow ? "open" : "closed"}
-					className={style.navigation}
-					ref={elRef}
-				>
-					<motion.div
-						animate={isShow ? "active" : "closed"}
-						variants={variants4}
-						className={style.border}
-					></motion.div>
-					<div className="container">
-						<MenuComponent
-							orientation="row"
-							secondMenu={false}
-							data={HEADER_MENU}
-						/>
-					</div>
-				</motion.div>
-			) : null}
-			<div className={cn(style.overlay, { [style.transform]: isShow })}></div>
-
-			{/* MOBILE */}
-			{width < 530 ? <MobileHeaderComponent /> : null}
+					</motion.div>
+					<div
+						className={cn(style.overlay, { [style.transform]: isShow })}
+					></div>
+				</>
+			) : (
+				<MobileHeaderComponent />
+			)}
 		</>
 	)
 }

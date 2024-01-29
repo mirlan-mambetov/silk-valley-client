@@ -11,11 +11,11 @@
 		column-gap: 8px;
 		row-gap: 12px;
 		@include mediaLarge1024px {
-			grid-template-columns: repeat(4, calc(100% / 4 - 20px / 4 * (4 - 1)));
+			grid-template-columns: repeat(4, calc(100% / 4 - 20px / 4 * (4 - 3)));
 			row-gap: 5px;
 		}
 		@include mediaLarge776px {
-			grid-template-columns: repeat(3, calc(100% / 3 - 20px / 3 * (3 - 1)));
+			grid-template-columns: repeat(3, calc(100% / 3 - 20px / 3 * (3 - 2)));
 		}
 		@include mediaLarge530px {
 			grid-template-columns: repeat(2, calc(100% / 2 - 10px / 2 * (2 - 1)));
@@ -79,6 +79,7 @@
 				}
 			}
 		}
+
 		.featured {
 			position: absolute;
 			left: 0;
@@ -89,6 +90,9 @@
 			display: flex;
 			justify-content: flex-end;
 			opacity: 0;
+			@include mediaLarge1024px {
+				opacity: 1;
+			}
 		}
 		.top {
 			position: relative;
@@ -124,7 +128,6 @@
 					white-space: nowrap;
 					overflow: hidden;
 					text-overflow: ellipsis;
-
 					small {
 						color: $gray;
 						font-size: 10px;
@@ -145,6 +148,39 @@
 		}
 		.buttons {
 			display: none;
+			@include mediaLarge1024px {
+				display: block;
+			}
+		}
+		@include mediaLarge1024px {
+			&:hover {
+				content: "";
+				position: unset;
+				top: unset;
+				left: unset;
+				right: unset;
+				bottom: unset;
+				background: unset;
+				z-index: unset;
+				box-shadow: unset;
+				border-radius: unset;
+				padding: unset;
+				.buttons {
+					margin: unset;
+					display: unset;
+				}
+				.content {
+					.name {
+						display: unset;
+						flex-direction: unset;
+						gap: unset;
+						.title {
+							white-space: nowrap;
+							line-height: 18px;
+						}
+					}
+				}
+			}
 		}
 	}
 }
