@@ -1,30 +1,32 @@
-@import "../../../../../styles/media.mixin";
-@import "../../../../../styles/vars";
-@import "../../../../../styles/mixin";
+@import "../../../../styles/media.mixin";
+@import "../../../../styles/vars";
+@import "../../../../styles/mixin";
 
 .mobile {
 	.wrap {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+
 		.product {
 			display: flex;
 			align-items: center;
 			gap: 15px;
 			overflow: hidden;
-			width: calc(100% / 2 * 1.5);
 			@include mediaLarge480px {
 				flex-direction: column;
 				align-items: flex-start;
 				gap: 4px;
-				width: calc(100% / 3 * 1.8);
+			}
+			@include mediaLarge440px {
+				max-width: 200px;
 			}
 			.image {
 				position: relative;
 				width: 60px;
 				height: 80px;
 				// border: 1px dashed $darkenRGBA;
-				// border-radius: 4px;
+				border-radius: 4px;
 				overflow: hidden;
 				img {
 					position: absolute;
@@ -33,24 +35,42 @@
 					width: 100%;
 					height: 100%;
 				}
-				@include mediaLarge480px {
+				@include mediaLarge830px {
 					display: none;
 				}
 			}
-			.items {
+			.content {
 				display: flex;
-				flex-direction: column;
-				gap: 6px;
+				align-items: baseline;
+				gap: 30px;
+				width: 100%;
 				.item {
 					display: flex;
-					align-items: center;
-					gap: 20px;
+					flex-direction: column;
+					gap: 5px;
 					@include mediaLarge480px {
 						gap: 4px;
 					}
+					.attribute {
+						gap: 6px;
+						h5 {
+							margin: 0;
+							font-size: 12px;
+						}
+						> div {
+							button {
+								padding: 3px;
+								font-size: 12px;
+							}
+						}
+						@include mediaLarge776px {
+							display: none;
+						}
+					}
 					.name {
 						font-size: 14px;
-						font-weight: 500;
+						font-weight: 400;
+						line-height: 20px;
 						@include mediaLarge480px {
 							width: 200px;
 							overflow: hidden;
@@ -66,6 +86,7 @@
 		}
 		.button {
 			button {
+				@include buttonHover;
 				@include mediaLarge480px {
 					font-size: 12px;
 				}

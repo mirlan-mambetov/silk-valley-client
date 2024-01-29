@@ -36,6 +36,10 @@ section {
 	margin: 0 auto;
 	padding-left: 15px;
 	padding-right: 15px;
+	@include mediaLarge440px {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
 }
 ul {
 	list-style-type: none;

@@ -17,7 +17,8 @@
 			padding: 20px 0;
 		}
 		@include mediaLarge530px {
-			padding-bottom: 60px;
+			padding-bottom: 50px;
+			gap: 30px;
 		}
 		.column {
 			font-size: 10px;
