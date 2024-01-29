@@ -74,7 +74,7 @@ export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 								</div>
 							</Link>
 							<div className={style.buttons}>
-								<ButtonComponent type="cart" />
+								<ButtonComponent aria-label="В корзину" type="cart" />
 							</div>
 						</div>
 					</div>

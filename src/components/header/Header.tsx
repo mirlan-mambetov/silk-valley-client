@@ -39,10 +39,8 @@ export const HeaderComponent = () => {
 									<div className={style.row}>
 										<div className={style.deliver}>
 											<FaMapMarkerAlt />
-											<ButtonComponent>
-												<span>
-													Доставка: Иссык - Кульская область. г. Каракол
-												</span>
+											<ButtonComponent aria-label="Доставка">
+												<span>г. Каракол</span>
 											</ButtonComponent>
 										</div>
 									</div>
@@ -60,6 +58,7 @@ export const HeaderComponent = () => {
 								{/* MENU */}
 								<div className={cn(style.menu, { [style.active]: isShow })}>
 									<ButtonComponent
+										aria-label="Меню"
 										className={style.button}
 										onClick={() => setIsShow(!isShow)}
 									>
@@ -85,18 +84,23 @@ export const HeaderComponent = () => {
 								<div className={style.action}>
 									<div className={style.column}>
 										<ButtonComponent
+											aria-label="Вход"
 											onClick={() => setContentHandler(<AuthComponent />)}
 										>
 											Вход
 										</ButtonComponent>
 									</div>
 									<div className={style.column}>
-										<ButtonComponent className={style.search}>
+										<ButtonComponent
+											className={style.search}
+											aria-label="Поиск"
+										>
 											<IoSearchOutline />
 										</ButtonComponent>
 									</div>
 									<div className={style.column}>
 										<ButtonComponent
+											aria-label="Корзина"
 											className={style.cart}
 											onClick={() => push("/cart")}
 										>

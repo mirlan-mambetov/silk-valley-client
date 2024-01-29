@@ -54,6 +54,7 @@ export const PromotionComponent: FC<IPromotionComponentProps> = ({
 								</div>
 								<div className={style.action}>
 									<ButtonComponent
+										aria-label="Ссылка"
 										onClick={() => push(`/promotions/${promotion.alias}`)}
 									>
 										<IoArrowRedoOutline />

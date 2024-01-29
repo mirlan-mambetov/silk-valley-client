@@ -1,3 +1,4 @@
+import { usePathname } from "next/navigation"
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react"
 
 type TypeClickOute = {
@@ -9,6 +10,7 @@ type TypeClickOute = {
 const useOutsiteClick = (initialValue: boolean): TypeClickOute => {
 	const [isShow, setIsShow] = useState(initialValue)
 	const elRef = useRef<HTMLElement>(null)
+	const pathName = usePathname()
 
 	const handleClick = (e: any) => {
 		if (elRef.current && !elRef.current.contains(e.target)) {
@@ -27,6 +29,9 @@ const useOutsiteClick = (initialValue: boolean): TypeClickOute => {
 			document.removeEventListener("click", handleClick)
 		}
 	})
+	useEffect(() => {
+		if (isShow) setIsShow(false)
+	}, [pathName])
 	return {
 		isShow,
 		setIsShow,
