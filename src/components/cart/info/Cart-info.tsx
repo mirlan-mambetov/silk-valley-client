@@ -7,7 +7,12 @@ import { MdOutlineBorderColor } from "react-icons/md"
 
 import style from "./cart-info.module.scss"
 
-export const CartInfoComponent: FC = () => {
+interface ICartInfoComponentProps {
+	anchorHanlder: (id: string) => void
+}
+export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
+	anchorHanlder,
+}) => {
 	return (
 		<div className={style.info}>
 			<div className={style.wrap}>
@@ -29,7 +34,10 @@ export const CartInfoComponent: FC = () => {
 					<span>Итого</span>
 					<ProductPriceComponent className={style.total} price={23133} />
 				</div>
-				<ButtonComponent className={style.button}>
+				<ButtonComponent
+					className={style.button}
+					onClick={() => anchorHanlder("#section-authorization")}
+				>
 					<MdOutlineBorderColor />
 					<span>Заказать</span>
 				</ButtonComponent>

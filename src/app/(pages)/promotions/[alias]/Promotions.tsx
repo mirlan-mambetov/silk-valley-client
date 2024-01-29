@@ -1,7 +1,7 @@
 "use client"
 
 import {
-	CatalogCardsComponent,
+	DefaultCardsComponent,
 	FiltersComponent,
 	RoutesHistoryComponent,
 } from "@/components"
@@ -30,9 +30,7 @@ export const Promotions: FC<IPromotionsProps> = ({ data }) => {
 				</div>
 				<div className={style.promotions}>
 					<FiltersComponent />
-					{data.products && (
-						<CatalogCardsComponent data={data.products} gridSize="4" />
-					)}
+					{data.products && <DefaultCardsComponent data={data.products} />}
 				</div>
 			</div>
 		</div>

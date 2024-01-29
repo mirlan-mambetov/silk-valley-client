@@ -12,6 +12,7 @@ export const RegisterComponent: FC<IAuthProps> = ({ animate, setChoice }) => {
 	return (
 		<div className={style.auth}>
 			<motion.div
+				initial={false}
 				variants={animateLoginRegister}
 				animate={animate ? "open" : "closed"}
 				className={style.wrap}

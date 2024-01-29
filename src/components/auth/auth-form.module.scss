@@ -33,7 +33,7 @@
 			width: 70%;
 		}
 		@include mediaLarge480px {
-			width: 80%;
+			width: 90%;
 		}
 	}
 	.title {
@@ -64,7 +64,7 @@
 				line-height: 16px;
 			}
 			input {
-				border-radius: 4px;
+				border-radius: 10px;
 				padding: 10px;
 				border: 1px solid $darkenRGBA;
 				font-size: 14px;

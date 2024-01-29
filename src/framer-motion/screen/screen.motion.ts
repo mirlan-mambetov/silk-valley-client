@@ -2,21 +2,20 @@ import { Variants } from "framer-motion"
 
 export const screenMotionVariant: Variants = {
 	open: {
-		y: 0,
 		opacity: 1,
+		zIndex: 290,
+
 		pointerEvents: "all",
 		transition: {
-			y: { stiffness: 1000, velocity: -100 },
-			opacity: { stiffness: 400, velocity: -50 },
+			opacity: { duration: 0.6 },
 		},
 	},
 	closed: {
-		y: "-100%",
 		opacity: 0,
+		// zIndex: "-10",
 		pointerEvents: "none",
 		transition: {
-			y: { stiffness: 1000 },
-			opacity: { stiffness: 800 },
+			opacity: { duration: 0.6 },
 		},
 	},
 }
