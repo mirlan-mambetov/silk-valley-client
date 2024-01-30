@@ -7,7 +7,7 @@ export const screenMotionVariant: Variants = {
 
 		pointerEvents: "all",
 		transition: {
-			opacity: { duration: 0.6 },
+			opacity: { duration: 0.4 },
 		},
 	},
 	closed: {
@@ -15,7 +15,7 @@ export const screenMotionVariant: Variants = {
 		// zIndex: "-10",
 		pointerEvents: "none",
 		transition: {
-			opacity: { duration: 0.6 },
+			opacity: { duration: 0.4 },
 		},
 	},
 }
