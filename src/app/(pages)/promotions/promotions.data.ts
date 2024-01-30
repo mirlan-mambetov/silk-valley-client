@@ -1,4 +1,7 @@
-import { IPromotions } from "@/interfaces/promotions.interface"
+import {
+	IPromotions,
+	IUserSpecialPromotion,
+} from "@/interfaces/promotions.interface"
 
 export const PROMOTION_DATA: IPromotions[] = [
 	{
@@ -291,6 +294,169 @@ export const PROMOTION_DATA: IPromotions[] = [
 				discount: 34,
 				isHit: false,
 				new: true,
+			},
+		],
+	},
+]
+
+export const USER_SPECIAL_PROMOTION: IUserSpecialPromotion[] = [
+	{
+		name: "Специальная акция только для Вас! Ноутбуки по вашим требованиям и ценами специально для Вас!",
+		alias: "user-promo-1",
+		id: 1,
+		userId: 22,
+		background: "CDDC39",
+		image:
+			"https://cdn.iz.ru/sites/default/files/styles/1920x1080/public/article-2022-08/2022-06-06T190356Z_765158456_RC2IMU9YR922_RTRMADP_3_APPLE-DEVELOPER_0.JPG.jpg?itok=jK4DIHdY",
+		products: [
+			{
+				title: "Ноутбук Legion Pro 7 16IRX8 [82WR000VRK]",
+				description:
+					"Добро пожаловать на страницу Lenovo Legion Pro 7 16IRX8 - идеального ноутбука для профессиональных геймеров и требовательных пользователей! Это мощное устройство обеспечит вам невероятную производительность и великолепное игровое исполнение.",
+				poster:
+					"https://basket-13.wbbasket.ru/vol1960/part196045/196045521/images/big/1.webp",
+				images: [
+					"https://basket-13.wbbasket.ru/vol1960/part196045/196045521/images/big/1.webp",
+					"https://basket-13.wbbasket.ru/vol1960/part196045/196045521/images/big/4.webp",
+					"https://basket-13.wbbasket.ru/vol1960/part196045/196045521/images/big/2.webp",
+					"https://basket-13.wbbasket.ru/vol1960/part196045/196045521/images/big/3.webp",
+					"https://basket-13.wbbasket.ru/vol1960/part196045/196045521/images/big/5.webp",
+				],
+				alias: "notebook-legion",
+				article: 2341324243244,
+				id: 101,
+				price: 21312,
+				discount: 44,
+				rating: 4.5,
+				subtitle: "Ноутбук Legion Pro 7 16IRX8 [82WR000VRK]",
+			},
+			{
+				title: "Ноутбук Yoga Slim 7 ProX [82TK00BNRU]",
+				description:
+					"Ноутбук Yoga Slim 7 Pro X обеспечивает высокую производительность работы в любом месте благодаря платформе Intel Evo с процессором Intel Core серии H 12-го поколения (в максимальной комплектации)",
+				poster:
+					"https://basket-13.wbbasket.ru/vol1952/part195281/195281138/images/big/1.webp",
+				images: [
+					"https://basket-13.wbbasket.ru/vol1952/part195281/195281138/images/big/1.webp",
+					"https://basket-13.wbbasket.ru/vol1952/part195281/195281138/images/big/2.webp",
+					"https://basket-13.wbbasket.ru/vol1952/part195281/195281138/images/big/3.webp",
+					"https://basket-13.wbbasket.ru/vol1952/part195281/195281138/images/big/4.webp",
+					"https://basket-13.wbbasket.ru/vol1952/part195281/195281138/images/big/5.webp",
+				],
+				alias: "notebook-legion",
+				article: 2341324243244,
+				id: 102,
+				price: 121549,
+				discount: 34,
+				rating: 4.3,
+				subtitle: "Ноутбук Yoga Slim 7 ProX [82TK00BNRU]",
+			},
+		],
+	},
+
+	{
+		name: "Мы подобрали мужские зимние куртки по вашим предпочтениям! Взгляните, и выберите по самой низкой цене!",
+		alias: "user-promo-2",
+		id: 2,
+		userId: 22,
+		background: "9C27B0",
+		image:
+			"https://img.joomcdn.net/91d5fbe421f97bda06a4137e6f0b0560796aeb40_original.jpeg",
+		products: [
+			{
+				title: "Куртка утепленная с капюшоном зима весна мембрана",
+				description:
+					"Куртка мужская утепленная черного цвета – это идеальный выбор для всех мужчин, которые ценят не только стильную внешность, но и комфорт ",
+				poster:
+					"https://basket-12.wbbasket.ru/vol1909/part190965/190965190/images/big/1.webp",
+				images: [
+					"https://basket-12.wbbasket.ru/vol1909/part190965/190965190/images/big/1.webp",
+					"https://basket-12.wbbasket.ru/vol1909/part190965/190965190/images/big/3.webp",
+					"https://basket-12.wbbasket.ru/vol1909/part190965/190965190/images/big/7.webp",
+					"https://basket-12.wbbasket.ru/vol1909/part190965/190965190/images/big/11.webp",
+					"https://basket-12.wbbasket.ru/vol1909/part190965/190965190/images/big/12.webp",
+				],
+				alias: "kurtka-102",
+				article: 324265868982,
+				id: 103,
+				price: 23423,
+				discount: 30,
+				rating: 4.5,
+				subtitle: "Куртка утепленная с капюшоном зима весна мембрана",
+			},
+			{
+				title: "Куртка зимняя с капюшоном длинная",
+				description:
+					"Утепленная куртка мужская зимняя ИЗ МЕМБРАНЫ с капюшоном и карманами - идеальная находка для мужчин, ищущих комфорт и стиль в холодное время года. ",
+				poster:
+					"https://basket-12.wbbasket.ru/vol1903/part190393/190393685/images/big/1.webp",
+				images: [
+					"https://basket-12.wbbasket.ru/vol1903/part190393/190393685/images/big/1.webp",
+					"https://basket-12.wbbasket.ru/vol1903/part190393/190393685/images/big/4.webp",
+					"https://basket-12.wbbasket.ru/vol1903/part190393/190393685/images/big/5.webp",
+					"https://basket-12.wbbasket.ru/vol1903/part190393/190393685/images/big/6.webp",
+					"https://basket-12.wbbasket.ru/vol1903/part190393/190393685/images/big/7.webp",
+				],
+				alias: "kurtka-105",
+				article: 232384302423,
+				id: 104,
+				price: 3242,
+				discount: 20,
+				rating: 4.2,
+				subtitle: "Куртка зимняя с капюшоном длинная",
+			},
+		],
+	},
+
+	{
+		name: "Смартфоны для Вас! Выберите один, и мы подарим Вам промо-код на 40%!",
+		alias: "user-promo-2",
+		id: 3,
+		userId: 22,
+		background: "FF4081",
+		image: "https://www.spot.uz/media/img/2023/12/3sqGeV17024539176502_l.jpg",
+		products: [
+			{
+				title: "Смартфон S23 Ultra 12/512GB",
+				description:
+					"Смартфон S23 Ultra открывает новые возможности для фото- и видеосъемки. Основная камера устройства на 68 Мп с продвинутыми модулями делает отличные фотографии в темноте, а также помогает снимать яркие видеоролики с высоким разрешением. ",
+				poster:
+					"https://basket-13.wbbasket.ru/vol1989/part198920/198920006/images/big/1.webp",
+				images: [
+					"https://basket-13.wbbasket.ru/vol1989/part198920/198920006/images/big/1.webp",
+					"https://basket-13.wbbasket.ru/vol1989/part198920/198920006/images/big/2.webp",
+					"https://basket-13.wbbasket.ru/vol1989/part198920/198920006/images/big/3.webp",
+					"https://basket-13.wbbasket.ru/vol1989/part198920/198920006/images/big/4.webp",
+					"https://basket-13.wbbasket.ru/vol1989/part198920/198920006/images/big/5.webp",
+				],
+				alias: "smarphone-s23ultra",
+				article: 3422121345433,
+				id: 107,
+				price: 23423,
+				discount: 40,
+				rating: 4.8,
+				subtitle: "Смартфон S23 Ultra 12/512GB",
+			},
+			{
+				title: "Spark GO 2023 4+64GB",
+				description:
+					"Обновленный смартфон TECNO, который отличается бюджетной стоимостью и оптимальными характеристиками для работы базовых программ и приложений. На широком HD+ экране 6,6 удобно смотреть видеоролики и фото, а также набирать сообщения ",
+				poster:
+					"https://basket-12.wbbasket.ru/vol1685/part168587/168587703/images/big/1.webp",
+				images: [
+					"https://basket-12.wbbasket.ru/vol1685/part168587/168587703/images/big/1.webp",
+					"https://basket-12.wbbasket.ru/vol1685/part168587/168587703/images/big/8.webp",
+					"https://basket-12.wbbasket.ru/vol1685/part168587/168587703/images/big/9.webp",
+					"https://basket-12.wbbasket.ru/vol1685/part168587/168587703/images/big/10.webp",
+					"https://basket-12.wbbasket.ru/vol1685/part168587/168587703/images/big/11.webp",
+				],
+				alias: "smarphone-110",
+				article: 234234234234,
+				id: 116,
+				price: 32523,
+				discount: 20,
+				rating: 4.2,
+				subtitle: "Spark GO 2023 4+64GB",
 			},
 		],
 	},

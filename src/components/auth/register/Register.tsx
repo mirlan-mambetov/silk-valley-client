@@ -38,7 +38,9 @@ export const RegisterComponent: FC<IAuthProps> = ({ animate, setChoice }) => {
 						<FieldComponent id="password" type="text" />
 					</div>
 					<div className={style.button}>
-						<ButtonComponent aria-label="Войти">Вход</ButtonComponent>
+						<ButtonComponent aria-label="Регистрация">
+							Регистрация
+						</ButtonComponent>
 					</div>
 				</form>
 				<div className={style.bottom}>

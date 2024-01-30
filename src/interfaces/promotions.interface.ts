@@ -8,3 +8,11 @@ export interface IPromotions extends IBase {
 	image?: string
 	products?: IProduct[]
 }
+export interface IUserSpecialPromotion extends IBase {
+	name: string
+	userId: number
+	products?: IProduct[]
+	background?: string
+	image?: string
+	alias: string
+}

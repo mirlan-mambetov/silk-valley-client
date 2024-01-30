@@ -32,8 +32,9 @@ export const Cart: FC = () => {
 						<h5 className={style.title}>
 							<span>Детали доставки</span>
 						</h5>
-						<div className={style.out} id="#section-authorization">
+						<div className={style.out}>
 							<ButtonComponent
+								id="#section-authorization"
 								className={style.button}
 								onClick={() => setContentHandler(<AuthComponent />)}
 							>
