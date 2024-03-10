@@ -15,7 +15,7 @@
 		&.xl2 {
 			display: grid;
 			grid-template-columns: repeat(2, calc(100% / 2 - 20px / 2 * (2 - 1)));
-			grid-template-rows: repeat(2, calc(520px / 2 - 20px / 2 * (2 - 1)));
+			grid-template-rows: repeat(2, calc(360px / 2 - 20px / 2 * (2 - 1)));
 			column-gap: 20px;
 			row-gap: 20px;
 			user-select: none;
@@ -104,9 +104,9 @@
 					gap: 5px;
 					position: relative;
 					.name {
-						font-size: 40px;
+						font-size: 30px;
 						font-weight: bold;
-						line-height: 48px;
+						line-height: 36px;
 						text-transform: uppercase;
 						max-width: 400px;
 						cursor: pointer;
