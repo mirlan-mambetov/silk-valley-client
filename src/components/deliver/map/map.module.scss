@@ -27,3 +27,28 @@
 	z-index: 2000;
 	background: $white;
 }
+
+.navigation {
+	position: absolute;
+	top: 50px;
+	right: 10px;
+	z-index: 2000;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	.button {
+		button {
+			display: flex;
+			align-items: center;
+			gap: 4px;
+			font-size: 18px;
+			background: $white;
+			padding: 5px;
+			border-radius: 4px;
+			@include baseBoxShadow;
+			span {
+				font-size: 14px;
+			}
+		}
+	}
+}
