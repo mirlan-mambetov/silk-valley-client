@@ -1,3 +1,4 @@
+import { SILK_VALLEY_LOCATION } from "@/constants/Map.constants"
 import { LatLngExpression } from "leaflet"
 import { FC } from "react"
 import { Marker, Popup } from "react-leaflet"
@@ -11,7 +12,7 @@ interface IMarker {
 const MapMarkersComponent: FC<IMapProps> = ({ currentLocation }) => {
 	const markers: IMarker[] = [
 		{
-			position: { lat: 222, lng: 222 },
+			position: SILK_VALLEY_LOCATION,
 			name: "Silk Valley",
 		},
 		{

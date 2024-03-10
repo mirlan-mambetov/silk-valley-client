@@ -7,7 +7,9 @@ import { MapContainer } from "react-leaflet"
 import style from "./map.module.scss"
 
 import { ButtonComponent } from "@/components/button/Button"
-import { FC } from "react"
+import { SILK_VALLEY_LOCATION } from "@/constants/Map.constants"
+import { LatLngExpression } from "leaflet"
+import { FC, useState } from "react"
 import { IMapProps } from "./Map.props"
 
 const MapComponent = dynamic(
@@ -17,6 +19,10 @@ const MapComponent = dynamic(
 	}
 )
 const MapContainerComponent: FC<IMapProps> = ({ currentLocation }) => {
+	const [coordinates, setCoordinates] = useState<LatLngExpression | undefined>(
+		undefined
+	)
+
 	return (
 		<div className={style.map}>
 			<MapContainer
@@ -30,18 +36,21 @@ const MapContainerComponent: FC<IMapProps> = ({ currentLocation }) => {
 				zoomControl={false}
 				scrollWheelZoom={true}
 			>
-				<MapComponent currentLocation={currentLocation} />
+				<MapComponent
+					currentLocation={currentLocation}
+					coordinates={coordinates}
+				/>
 			</MapContainer>
 
 			<div className={style.navigation}>
 				<div className={style.button}>
-					<ButtonComponent>
+					<ButtonComponent onClick={() => setCoordinates(currentLocation)}>
 						<TbCurrentLocation />
 						<span>Где я ?</span>
 					</ButtonComponent>
 				</div>
 				<div className={style.button}>
-					<ButtonComponent>
+					<ButtonComponent onClick={() => setCoordinates(SILK_VALLEY_LOCATION)}>
 						<VscLocation />
 						<span>Silk Valley</span>
 					</ButtonComponent>

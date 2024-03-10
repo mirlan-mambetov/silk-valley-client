@@ -1,28 +1,32 @@
 "use client"
+import { LatLngExpression } from "leaflet"
 import "leaflet-defaulticon-compatibility"
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css"
 import "leaflet/dist/leaflet.css"
-import { FC, useState } from "react"
+import { FC, useEffect, useState } from "react"
 import { TileLayer, useMapEvents } from "react-leaflet"
 import { IMapProps } from "../Map.props"
 import style from "../map.module.scss"
 import MapMarkersComponent from "./Map-markers"
 
-const MapComponent: FC<IMapProps> = ({ currentLocation }) => {
-	const [position, setPosition] = useState<{ lat: number; lng: number } | null>(
-		null
-	)
+const MapComponent: FC<IMapProps> = ({ currentLocation, coordinates }) => {
+	const [clickPoint, setClickPoint] = useState<LatLngExpression | null>(null)
 
 	const map = useMapEvents({
-		click() {
-			map.locate()
-		},
-		locationfound(e) {
-			setPosition(e.latlng)
-			map.flyTo(e.latlng, map.getZoom())
+		click(e) {
+			setClickPoint(e.latlng)
 		},
 	})
-	console.log(position)
+
+	useEffect(() => {
+		if (coordinates) {
+			map.flyTo(coordinates)
+		}
+	}, [coordinates])
+
+	// useEffect(() => {
+	// 	console.log(clickPoint)
+	// }, [clickPoint])
 
 	return (
 		<>

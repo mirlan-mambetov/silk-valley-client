@@ -32,12 +32,13 @@
 	position: absolute;
 	top: 50px;
 	right: 10px;
-	z-index: 2000;
+	z-index: 3000;
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
 	.button {
 		button {
+			pointer-events: all;
 			display: flex;
 			align-items: center;
 			gap: 4px;
