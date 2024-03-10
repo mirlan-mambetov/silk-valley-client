@@ -1,0 +1,19 @@
+@import "../../styles/media.mixin";
+@import "../../styles/mixin";
+@import "../../styles/vars";
+.deliver {
+	position: relative;
+	height: 90vh;
+	.information {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: calc(100% / 4 * 1.2);
+		height: 100%;
+		background: $whiteRGBA;
+		-webkit-box-shadow: 9px 0px 13px -7px rgba(0, 0, 0, 0.08);
+		-moz-box-shadow: 9px 0px 13px -7px rgba(0, 0, 0, 0.08);
+		box-shadow: 9px 0px 13px -7px rgba(0, 0, 0, 0.08);
+		z-index: 2002;
+	}
+}
