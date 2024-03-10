@@ -4,9 +4,18 @@ import { useWindowWidth } from "@/hooks/app/useWindowWidth"
 import { IProduct } from "@/interfaces/product.interface"
 import Image from "next/image"
 import { FC, useEffect, useState } from "react"
+import {
+	MdOutlineKeyboardArrowDown,
+	MdOutlineKeyboardArrowUp,
+} from "react-icons/md"
 import ReactImageMagnify from "react-image-magnify"
 import "swiper/css"
+import "swiper/css/navigation"
+import "swiper/css/pagination"
+import { Navigation, Pagination } from "swiper/modules"
 import { Swiper, SwiperSlide } from "swiper/react"
+
+import { ButtonComponent } from "@/components/button/Button"
 import style from "./product-images.module.scss"
 
 interface IProductImagesComponent {
@@ -32,7 +41,6 @@ export const ProductImagesComponent: FC<IProductImagesComponent> = ({
 			{/* IMAGES */}
 			<div className={style.product_images}>
 				<Swiper
-					loop
 					className={style.slider}
 					direction={width > 640 ? "vertical" : "horizontal"}
 					breakpoints={{
@@ -47,6 +55,12 @@ export const ProductImagesComponent: FC<IProductImagesComponent> = ({
 							spaceBetween: 5,
 						},
 					}}
+					// effect="fade"
+					navigation={{
+						nextEl: `.${style.next}`,
+						prevEl: `.${style.prev}`,
+					}}
+					modules={[Navigation, Pagination]}
 				>
 					{data.images.map((image, i) => (
 						<SwiperSlide key={i} className={style.slide}>
@@ -63,26 +77,32 @@ export const ProductImagesComponent: FC<IProductImagesComponent> = ({
 							</div>
 						</SwiperSlide>
 					))}
+					<div className={style.navigation}>
+						<ButtonComponent className={style.prev}>
+							<MdOutlineKeyboardArrowUp />
+						</ButtonComponent>
+						<ButtonComponent className={style.next}>
+							<MdOutlineKeyboardArrowDown />
+						</ButtonComponent>
+					</div>
 				</Swiper>
 			</div>
 			{/* POSTER */}
 			<div className={style.product_poster}>
 				<div className={style.poster}>
 					<ReactImageMagnify
-						{...{
-							smallImage: {
-								width: 900,
-								height: 1000,
-								src: newSrc ? newSrc : data?.poster,
-								alt: data?.title,
-								isFluidWidth: true,
-							},
-							largeImage: {
-								width: 900,
-								height: 1000,
-								src: newSrc ? newSrc : data?.poster,
-								alt: data?.title,
-							},
+						smallImage={{
+							width: 400,
+							height: 600,
+							src: newSrc ? newSrc : data?.poster,
+							alt: data?.title,
+							isFluidWidth: true,
+						}}
+						largeImage={{
+							width: 900,
+							height: 1000,
+							src: newSrc ? newSrc : data?.poster,
+							alt: data?.title,
 						}}
 					/>
 				</div>
