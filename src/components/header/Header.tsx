@@ -13,6 +13,7 @@ import { SlHandbag } from "react-icons/sl"
 import {
 	AuthComponent,
 	ButtonComponent,
+	DeliverComponent,
 	LogoComponent,
 	MenuComponent,
 	MobileHeaderComponent,
@@ -39,15 +40,13 @@ export const HeaderComponent = () => {
 									<div className={style.row}>
 										<div className={style.deliver}>
 											<FaMapMarkerAlt />
-											<ButtonComponent aria-label="Доставка">
+											<ButtonComponent
+												aria-label="Доставка"
+												onClick={() => setContentHandler(<DeliverComponent />)}
+											>
 												<span>г. Каракол</span>
 											</ButtonComponent>
 										</div>
-									</div>
-									<div className={style.row}>
-										<ButtonComponent>
-											<FaMapMarkerAlt />
-										</ButtonComponent>
 									</div>
 								</div>
 							</div>
