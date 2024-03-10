@@ -1,0 +1,29 @@
+@import "../../../styles/media.mixin";
+@import "../../../styles/mixin";
+@import "../../../styles/vars";
+.map {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.leaflet {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	outline: none;
+	&:focus {
+		outline: none !important;
+	}
+}
+.copy {
+	position: absolute;
+	right: 20px;
+	bottom: 0;
+	z-index: 2000;
+	background: $white;
+}
