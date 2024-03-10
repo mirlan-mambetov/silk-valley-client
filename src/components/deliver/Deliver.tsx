@@ -18,10 +18,32 @@ export const DeliverComponent: FC = () => {
 	const { currentLocation } = useCurrentLocation()
 	return (
 		<div className={style.deliver}>
-			<div className={style.information}>information</div>
-			{currentLocation ? (
+			<div className={style.information}>
+				<h5 className={style.title}>
+					<span>Детали доставки</span>
+				</h5>
+				<div className={style.rows}>
+					<div className={style.row}>
+						<small>Город:</small>
+						<span>Каракол</span>
+					</div>
+					<div className={style.row}>
+						<small>Улица:</small>
+						<span>Ахунбаева</span>
+					</div>
+					<div className={style.row}>
+						<small>Дом №:</small>
+						<span>140 уточнить?</span>
+					</div>
+					<div className={style.row}>
+						<small>Почтовый индекс:</small>
+						<span>722200</span>
+					</div>
+				</div>
+			</div>
+			{/* {currentLocation ? (
 				<MapContainerComponent currentLocation={currentLocation} />
-			) : null}
+			) : null} */}
 		</div>
 	)
 }
