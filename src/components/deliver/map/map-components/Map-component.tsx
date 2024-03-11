@@ -1,16 +1,24 @@
 "use client"
 import { mapApi } from "@/api/map.api"
+import { useMapClickedBlock } from "@/hooks/map/useMapClickedBlock"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
+import { useStoreReducer } from "@/hooks/store/useStoreReducer"
+import { LatLngExpression } from "leaflet"
 import "leaflet-defaulticon-compatibility"
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css"
 import "leaflet/dist/leaflet.css"
 import { FC, useEffect, useState } from "react"
-import { TileLayer, useMapEvents } from "react-leaflet"
+import { Marker, Popup, TileLayer, useMapEvents } from "react-leaflet"
 import { IMapProps } from "../Map.props"
 import style from "../map.module.scss"
 import MapMarkersComponent from "./Map-markers"
 
 const MapComponent: FC<IMapProps> = ({ currentLocation, coordinates }) => {
+	const { clickBlocked, clickHandler } = useMapClickedBlock()
+	const { address } = useStoreReducer((state) => state.deliver)
+	const [selectedPoint, setSelectedPoint] = useState<LatLngExpression | null>(
+		null
+	)
 	const { addDeliverAddress } = useStoreActions()
 	const [clickPoint, setClickPoint] = useState<{
 		lat: number
@@ -19,7 +27,10 @@ const MapComponent: FC<IMapProps> = ({ currentLocation, coordinates }) => {
 
 	const map = useMapEvents({
 		click(e) {
+			clickHandler()
+			if (clickBlocked) return
 			setClickPoint(e.latlng)
+			setSelectedPoint(e.latlng)
 		},
 	})
 
@@ -54,6 +65,11 @@ const MapComponent: FC<IMapProps> = ({ currentLocation, coordinates }) => {
 	return (
 		<>
 			<TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+			{selectedPoint ? (
+				<Marker position={selectedPoint}>
+					<Popup>Доставка в {address.road}</Popup>
+				</Marker>
+			) : null}
 			<MapMarkersComponent currentLocation={currentLocation} />
 			<div className={style.copy}>
 				&copy;

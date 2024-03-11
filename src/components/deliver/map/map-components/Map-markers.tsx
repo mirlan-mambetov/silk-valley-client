@@ -9,7 +9,15 @@ interface IMarker {
 	name?: string
 }
 
-const MapMarkersComponent: FC<IMapProps> = ({ currentLocation }) => {
+const MapMarkersComponent: FC<IMapProps> = ({
+	currentLocation,
+	deliverPoint,
+}) => {
+	// const { address } = useStoreReducer((state) => state.deliver)
+	// const [selectedPoint, setSelectedPoint] = useState<LatLngExpression | null>(
+	// 	null
+	// )
+
 	const markers: IMarker[] = [
 		{
 			position: SILK_VALLEY_LOCATION,
@@ -20,6 +28,12 @@ const MapMarkersComponent: FC<IMapProps> = ({ currentLocation }) => {
 			name: "Ваше местоположение",
 		},
 	]
+
+	// useEffect(() => {
+	// 	if (deliverPoint) {
+	// 		setSelectedPoint(deliverPoint)
+	// 	}
+	// }, [deliverPoint])
 	return (
 		<>
 			{markers.map((marker, i) => (
@@ -27,6 +41,11 @@ const MapMarkersComponent: FC<IMapProps> = ({ currentLocation }) => {
 					<Popup>{marker.name}</Popup>
 				</Marker>
 			))}
+			{/* {selectedPoint ? (
+				<Marker position={selectedPoint}>
+					<Popup>Доставка в {address.road}</Popup>
+				</Marker>
+			) : null} */}
 		</>
 	)
 }

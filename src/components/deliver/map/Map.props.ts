@@ -6,4 +6,5 @@ export interface IMapProps {
 		lng: number
 	}
 	coordinates?: LatLngExpression
+	deliverPoint?: LatLngExpression
 }

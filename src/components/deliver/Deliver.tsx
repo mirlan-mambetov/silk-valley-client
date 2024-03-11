@@ -25,6 +25,12 @@ export const DeliverComponent: FC = () => {
 							<span>Координаты доставки</span>
 						</h5>
 						<div className={style.rows}>
+							{address.country && (
+								<div className={style.row}>
+									<small>Страна:</small>
+									<span>{address.country}</span>
+								</div>
+							)}
 							{address.state && (
 								<div className={style.row}>
 									<small>Область:</small>
