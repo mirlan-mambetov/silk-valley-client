@@ -19,31 +19,48 @@ export const DeliverComponent: FC = () => {
 	return (
 		<div className={style.deliver}>
 			<div className={style.information}>
-				<h5 className={style.title}>
-					<span>Детали доставки</span>
-				</h5>
-				<div className={style.rows}>
-					<div className={style.row}>
-						<small>Город:</small>
-						<span>Каракол</span>
+				<div className={style.wrap}>
+					<h5 className={style.title}>
+						<span>Координаты доставки</span>
+					</h5>
+					<div className={style.rows}>
+						<div className={style.row}>
+							<small>Город:</small>
+							<span>Каракол</span>
+						</div>
+						<div className={style.row}>
+							<small>Улица:</small>
+							<span>Ахунбаева</span>
+						</div>
+						<div className={style.row}>
+							<small>Дом №:</small>
+							<span>140 уточнить?</span>
+						</div>
+						<div className={style.row}>
+							<small>Почтовый индекс:</small>
+							<span>722200</span>
+						</div>
 					</div>
-					<div className={style.row}>
-						<small>Улица:</small>
-						<span>Ахунбаева</span>
-					</div>
-					<div className={style.row}>
-						<small>Дом №:</small>
-						<span>140 уточнить?</span>
-					</div>
-					<div className={style.row}>
-						<small>Почтовый индекс:</small>
-						<span>722200</span>
+				</div>
+				<div className={style.wrap}>
+					<h5 className={style.title}>
+						<span>Пункты выдачи</span>
+					</h5>
+					<div className={style.rows}>
+						<div className={style.row}>
+							<small>г. Каракол:</small>
+							<span>Тыныстанова 130</span>
+						</div>
+						<div className={style.row}>
+							<small>г. Бишкек:</small>
+							<span>Ахунбаева 140</span>
+						</div>
 					</div>
 				</div>
 			</div>
-			{/* {currentLocation ? (
+			{currentLocation ? (
 				<MapContainerComponent currentLocation={currentLocation} />
-			) : null} */}
+			) : null}
 		</div>
 	)
 }

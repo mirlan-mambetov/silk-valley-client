@@ -3,8 +3,10 @@
 import {
 	ButtonComponent,
 	CartRangeComponent,
+	DeliverComponent,
 	ProductPriceComponent,
 } from "@/components"
+import { useScreen } from "@/hooks/screen/useScreen"
 import { IProduct } from "@/interfaces/product.interface"
 import cn from "classnames"
 import { FC } from "react"
@@ -19,6 +21,7 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 	data,
 	type = "default",
 }) => {
+	const { setContentHandler } = useScreen()
 	return (
 		<div
 			className={cn(style.info, {
@@ -31,7 +34,10 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 					<small>Доставка</small>
 					<div className={style.box_item}>
 						<span> Иссык - Кульская область. г. Каракол</span>
-						<ButtonComponent title="Выбрать координаты доставки">
+						<ButtonComponent
+							title="Выбрать координаты доставки"
+							onClick={() => setContentHandler(<DeliverComponent />)}
+						>
 							<FiEdit2 />
 						</ButtonComponent>
 					</div>

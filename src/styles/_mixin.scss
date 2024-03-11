@@ -9,6 +9,11 @@
 	-moz-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.08);
 	box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.08);
 }
+@mixin lowBoxShadow {
+	-webkit-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.02);
+	-moz-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.02);
+	box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.02);
+}
 
 @mixin dashdeLine {
 	&::after {
