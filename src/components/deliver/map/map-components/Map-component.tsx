@@ -1,5 +1,6 @@
 "use client"
-import { LatLngExpression } from "leaflet"
+import { mapApi } from "@/api/map.api"
+import { useStoreActions } from "@/hooks/store/useStoreActions"
 import "leaflet-defaulticon-compatibility"
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css"
 import "leaflet/dist/leaflet.css"
@@ -10,7 +11,11 @@ import style from "../map.module.scss"
 import MapMarkersComponent from "./Map-markers"
 
 const MapComponent: FC<IMapProps> = ({ currentLocation, coordinates }) => {
-	const [clickPoint, setClickPoint] = useState<LatLngExpression | null>(null)
+	const { addDeliverAddress } = useStoreActions()
+	const [clickPoint, setClickPoint] = useState<{
+		lat: number
+		lng: number
+	} | null>(null)
 
 	const map = useMapEvents({
 		click(e) {
@@ -24,9 +29,27 @@ const MapComponent: FC<IMapProps> = ({ currentLocation, coordinates }) => {
 		}
 	}, [coordinates])
 
-	// useEffect(() => {
-	// 	console.log(clickPoint)
-	// }, [clickPoint])
+	useEffect(() => {
+		const getGeo = async (lat: number, lng: number) => {
+			const res = await mapApi.getGoeCode(lat, lng)
+			addDeliverAddress({
+				city: res.address?.city,
+				city_district: res.address?.city_district,
+				country: res.address?.country,
+				country_code: res.address?.country_code,
+				house_number: res.address?.house_number,
+				postCode: res.address?.postCode,
+				road: res.address?.road,
+				state: res.address?.state,
+				village: res.address?.village,
+				town: res.address?.town,
+			})
+		}
+
+		if (clickPoint) {
+			getGeo(clickPoint.lat, clickPoint.lng)
+		}
+	}, [clickPoint])
 
 	return (
 		<>
