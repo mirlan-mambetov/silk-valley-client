@@ -1,17 +1,21 @@
+import { isWindow } from "@/utils/isWindow"
 import { configureStore } from "@reduxjs/toolkit"
 import { FLUSH, PAUSE, PERSIST, PURGE, REHYDRATE } from "redux-persist"
-import persistReducer from "redux-persist/es/persistReducer"
 import persistStore from "redux-persist/es/persistStore"
-import storage from "redux-persist/lib/storage"
 import { rootReducer } from "./root-reducers"
 
-const persistedReducer = persistReducer(
-	{ key: "silkValley", storage, whitelist: ["deliver"] },
-	rootReducer
-)
+let mainReducer = rootReducer
 
+isWindow(() => {
+	const { persistReducer } = require("redux-persist")
+	const storage = require("redux-persist/lib/storage").default
+	mainReducer = persistReducer(
+		{ key: "silkValley", storage, whitelist: ["deliver"] },
+		rootReducer
+	)
+})
 export const appStore = configureStore({
-	reducer: persistedReducer,
+	reducer: mainReducer,
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware({
 			serializableCheck: {
