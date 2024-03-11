@@ -12,6 +12,7 @@
 		"@reduxjs/toolkit": "^2.2.1",
 		"classnames": "^2.5.1",
 		"framer-motion": "^10.16.16",
+		"leaflet": "^1.9.4",
 		"leaflet-defaulticon-compatibility": "^0.1.2",
 		"next": "14.0.4",
 		"react": "^18",
