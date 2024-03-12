@@ -4,11 +4,13 @@
 .deliver {
 	position: relative;
 	height: 90vh;
+	border: 1px solid $purpleFavorite;
+	border-radius: 6px;
 	.information {
 		position: absolute;
 		top: 0;
 		left: 0;
-		width: calc(100% / 4 * 1.2);
+		width: calc(100% / 5 * 1.5);
 		height: 100%;
 		background: $whiteRGBA;
 		-webkit-box-shadow: 9px 0px 13px -7px rgba(0, 0, 0, 0.08);
@@ -21,6 +23,8 @@
 		gap: 20px;
 		.title {
 			display: flex;
+			background: $purple;
+			color: $white;
 			span {
 				display: flex;
 				flex-direction: column;
@@ -41,8 +45,7 @@
 				display: flex;
 				flex-direction: column;
 				gap: 12px;
-				padding: 10px;
-
+				padding: 10px 0;
 				.row {
 					display: flex;
 					align-items: center;
@@ -53,6 +56,9 @@
 						line-height: 12px;
 					}
 					span {
+						display: flex;
+						flex-direction: column;
+						gap: 4px;
 						font-size: 14px;
 						font-weight: 400;
 						line-height: 16px;

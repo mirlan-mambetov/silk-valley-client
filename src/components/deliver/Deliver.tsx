@@ -34,13 +34,13 @@ export const DeliverComponent: FC = () => {
 							{address.state && (
 								<div className={style.row}>
 									<small>Область:</small>
-									<span>{address.state}</span>
+									<span>{address.state.replace("область", "")}</span>
 								</div>
 							)}
 							{address.city && (
 								<div className={style.row}>
 									<small>Город:</small>
-									<span>{address.city}</span>
+									<span>{address.city.replace("город", "")}</span>
 								</div>
 							)}
 							{address.village && (
@@ -63,14 +63,14 @@ export const DeliverComponent: FC = () => {
 							)}
 							{address.country_code && (
 								<div className={style.row}>
-									<small>Код странцы:</small>
-									<span>{address.country_code}</span>
+									<small>Код страны:</small>
+									<span>{address.country_code.toUpperCase()}</span>
 								</div>
 							)}
 							{address.road && (
 								<div className={style.row}>
 									<small>Улица:</small>
-									<span>{address.road}</span>
+									<span>{address.road.replace("улица", "")}</span>
 								</div>
 							)}
 							{address.house_number && (
