@@ -25,6 +25,7 @@ export const ProductPriceComponent: FC<IPriceComponentProps> = ({
 				[style.xl1]: size === "1xl",
 				[style.xxl1]: size === "1xxl",
 				[style.column]: orientation === "column",
+				[style.row]: orientation === "row",
 			})}
 		>
 			{discount ? (

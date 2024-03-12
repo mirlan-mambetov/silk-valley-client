@@ -4,28 +4,19 @@
 
 .cart {
 	.product {
-		position: relative;
-		display: flex;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
 		align-items: center;
+		position: relative;
 		padding: 10px;
 		-webkit-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.04);
 		-moz-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.04);
 		box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.04);
 		border-radius: 5px;
-		@include mediaLarge530px {
-			flex-direction: column;
-			align-items: flex-start;
-			gap: 12px;
-		}
-		.content,
-		.actions {
-			flex: 1;
-			display: flex;
-			align-items: center;
-		}
 		.content {
 			display: grid;
 			grid-template-columns: 0.3fr 1fr;
+			align-items: center;
 			@include mediaLarge530px {
 				width: 100%;
 			}
@@ -49,7 +40,7 @@
 			.description {
 				display: flex;
 				flex-direction: column;
-				gap: 10px;
+				gap: 18px;
 				@include mediaLarge480px {
 					justify-content: space-around;
 					gap: 10px;
@@ -63,15 +54,11 @@
 						font-size: 14px;
 					}
 				}
-				.price {
-					display: flex;
-					align-items: center;
-					gap: 12px;
-				}
+
 				.items {
 					display: flex;
 					flex-direction: column;
-					gap: 6px;
+					gap: 8px;
 					.item {
 						display: flex;
 						align-items: center;
@@ -92,15 +79,9 @@
 			}
 		}
 		.actions {
-			display: flex;
-			justify-content: space-between;
-			@include mediaLarge830px {
-				flex: 0.3;
-			}
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
 			@include mediaLarge530px {
-				flex-direction: row;
-				flex: unset;
-				width: 100%;
 				-webkit-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.03);
 				-moz-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.03);
 				box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.03);
@@ -129,23 +110,11 @@
 					flex: 0.5;
 				}
 			}
-			.discount {
-				> div {
-					display: flex;
-					align-items: center;
-					justify-content: center;
-				}
-				@include mediaLarge830px {
-					position: absolute;
-					left: 10px;
-					bottom: 12px;
-				}
-				@include mediaLarge530px {
-					top: 5px;
-					right: 0;
-					left: unset;
-					bottom: unset;
-				}
+			.price {
+				display: flex;
+				flex-direction: column-reverse;
+				align-items: center;
+				gap: 12px;
 			}
 		}
 	}

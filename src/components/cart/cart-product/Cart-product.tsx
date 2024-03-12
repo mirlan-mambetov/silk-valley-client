@@ -3,11 +3,10 @@
 import {
 	ButtonComponent,
 	CartRangeComponent,
-	ProductDiscountComponent,
 	ProductPriceComponent,
 } from "@/components"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
-import { ICartProducts } from "@/store/slices/cart/cart.slice"
+import { ICartProducts } from "@/interfaces/cart.interface"
 import cn from "classnames"
 import Image from "next/image"
 import { FC } from "react"
@@ -52,22 +51,12 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 										</span>
 									</div>
 								</div>
-								<div className={style.price}>
-									<ProductPriceComponent
-										className={style.number}
-										price={product.price}
-										discount={product.discount}
-										size="1xxl"
-										orientation="column"
-									/>
-									<ButtonComponent btnType="promo" />
-								</div>
 							</div>
 						</div>
 						<div className={style.actions}>
-							<div className={cn(style.action, style.discount)}>
+							{/* <div className={cn(style.action, style.discount)}>
 								<ProductDiscountComponent product={product} />
-							</div>
+							</div> */}
 							<div className={cn(style.action, style.range)}>
 								<CartRangeComponent
 									quantity={product.quantity}
@@ -80,6 +69,16 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 									btnType="delete"
 									onClick={() => removeFromCart({ id: product.id })}
 								/>
+							</div>
+							<div className={style.price}>
+								<ProductPriceComponent
+									className={style.number}
+									price={product.price * product.quantity}
+									discount={product.discount}
+									size="1xxl"
+									orientation="row"
+								/>
+								<ButtonComponent btnType="promo" />
 							</div>
 						</div>
 					</div>

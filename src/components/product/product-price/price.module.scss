@@ -11,7 +11,11 @@
 		color: $discount;
 		text-decoration: line-through;
 	}
-
+	&.row {
+		flex-direction: column;
+		align-items: center;
+		gap: 2px;
+	}
 	&.column {
 		min-height: unset;
 		.old,
