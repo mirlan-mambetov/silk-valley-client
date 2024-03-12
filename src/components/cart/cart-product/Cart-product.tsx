@@ -36,6 +36,16 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 								/>
 							</div>
 							<div className={style.description}>
+								<div className={style.description_price}>
+									<ProductPriceComponent
+										className={style.number}
+										price={product.price * product.quantity}
+										discount={product.discount}
+										size="1xxl"
+										orientation="column"
+									/>
+									<ButtonComponent btnType="promo" />
+								</div>
 								<h4 className={style.title}>{product.title}</h4>
 								<div className={style.items}>
 									<div className={style.item}>
