@@ -149,10 +149,16 @@
 		.buttons {
 			display: none;
 			@include mediaLarge1024px {
-				display: block;
+				display: flex;
+				button {
+					display: flex;
+					justify-content: center;
+					width: 100%;
+				}
 			}
 		}
 		@include mediaLarge1024px {
+			padding-bottom: 6px;
 			&:hover {
 				content: "";
 				position: unset;

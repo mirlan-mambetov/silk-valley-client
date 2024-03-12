@@ -56,3 +56,18 @@
 		}
 	}
 }
+.top {
+	display: flex;
+	align-items: center;
+	padding: 3px 0;
+	.row {
+		.deliver {
+			display: flex;
+			align-items: center;
+			gap: 5px;
+			button {
+				display: flex;
+			}
+		}
+	}
+}

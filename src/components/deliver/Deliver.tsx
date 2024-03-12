@@ -22,10 +22,11 @@ export const DeliverComponent: FC = () => {
 	const { address } = useStoreReducer((state) => state.deliver)
 	const { currentLocation } = useCurrentLocation()
 	const { width } = useWindowWidth()
+	console.log(!!address)
 	return (
 		<div className={style.deliver}>
 			<div className={cn(style.information, { [style.animate]: isAnimate })}>
-				{address && (
+				{Object.keys(address).length ? (
 					<div className={style.wrap}>
 						<h5 className={style.title}>
 							<span>Координаты доставки</span>
@@ -93,7 +94,7 @@ export const DeliverComponent: FC = () => {
 							)}
 						</div>
 					</div>
-				)}
+				) : null}
 				<div className={style.wrap}>
 					<h5 className={style.title}>
 						<span>Пункты выдачи</span>

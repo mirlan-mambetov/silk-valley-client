@@ -137,4 +137,21 @@
 		font-size: 30px;
 		mix-blend-mode: multiply;
 	}
+	@include mediaLarge640px {
+		flex-direction: row;
+		align-items: flex-start;
+		.prev,
+		.next {
+			position: absolute;
+			top: 50%;
+		}
+		.prev {
+			left: 0;
+			transform: rotate(-90deg);
+		}
+		.next {
+			right: 0;
+			transform: rotate(-90deg);
+		}
+	}
 }
