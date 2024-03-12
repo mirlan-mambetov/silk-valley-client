@@ -7,6 +7,7 @@ import {
 	ProductDiscountComponent,
 	ProductPriceComponent,
 } from "@/components"
+import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { IProduct } from "@/interfaces/product.interface"
 import cn from "classnames"
 import Image from "next/image"
@@ -28,6 +29,7 @@ export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 }) => {
 	const limitedData = data.slice(0, limit)
 	const [isHover, setIsHover] = useState(false)
+	const { addToCart } = useStoreActions()
 	return (
 		<div className={style.cards}>
 			{title ? <HeadingComponent text={title} /> : null}
@@ -74,7 +76,11 @@ export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 								</div>
 							</Link>
 							<div className={style.buttons}>
-								<ButtonComponent aria-label="В корзину" type="cart" />
+								<ButtonComponent
+									aria-label="В корзину"
+									type="cart"
+									onClick={() => addToCart({ product })}
+								/>
 							</div>
 						</div>
 					</div>
