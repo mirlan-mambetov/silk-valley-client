@@ -36,7 +36,7 @@ const MapComponent: FC<IMapProps> = ({ currentLocation, coordinates }) => {
 
 	useEffect(() => {
 		if (coordinates) {
-			map.flyTo(coordinates)
+			map.flyTo(coordinates).getZoom()
 		}
 	}, [coordinates])
 
