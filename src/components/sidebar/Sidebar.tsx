@@ -54,7 +54,7 @@ export const SidebarComponent: FC<ISidebarComponentProps> = ({
 						{width < 940 ? (
 							<ButtonComponent
 								onClick={() => setIsShow(!isShow)}
-								type="closed"
+								btnType="closed"
 							/>
 						) : (
 							<h4 className={style.title}>Каталог</h4>

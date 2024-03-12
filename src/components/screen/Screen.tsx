@@ -25,7 +25,7 @@ export const ScreenComponent: FC = () => {
 				<ButtonComponent
 					className={style.close}
 					onClick={clearContentHandler}
-					type="closed"
+					btnType="closed"
 					size="xl2"
 				></ButtonComponent>
 				{/* CONTENT */}
