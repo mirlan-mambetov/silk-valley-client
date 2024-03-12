@@ -6,6 +6,7 @@
 	align-items: center;
 	gap: 5px;
 	min-height: 15px;
+	transition: opacity 1.2s ease;
 	.old {
 		color: $discount;
 		text-decoration: line-through;

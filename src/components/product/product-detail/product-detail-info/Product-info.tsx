@@ -2,7 +2,6 @@
 
 import {
 	ButtonComponent,
-	CartRangeComponent,
 	DeliverComponent,
 	ProductPriceComponent,
 } from "@/components"
@@ -86,11 +85,11 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 					</div>
 				</div>
 
-				<CartRangeComponent />
+				{/* <CartRangeComponent product={pro}/> */}
 
 				<div className={style.buttons}>
-					<ButtonComponent type="cart" />
-					<ButtonComponent type="cart">Купить сейчас</ButtonComponent>
+					<ButtonComponent btnType="cart" />
+					<ButtonComponent btnType="cart">Купить сейчас</ButtonComponent>
 				</div>
 			</div>
 		</div>

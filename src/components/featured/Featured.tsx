@@ -12,7 +12,7 @@ interface IFeaturedComponentProps {
 export const FeaturedComponent: FC<IFeaturedComponentProps> = ({ type }) => {
 	return (
 		<div className={cn(style.featured, { [style.fixed]: type === "fixed" })}>
-			<ButtonComponent type="default">
+			<ButtonComponent btnType="default">
 				<GoHeart />
 			</ButtonComponent>
 		</div>

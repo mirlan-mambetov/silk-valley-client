@@ -78,8 +78,10 @@ export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 							<div className={style.buttons}>
 								<ButtonComponent
 									aria-label="В корзину"
-									type="cart"
-									onClick={() => addToCart({ product })}
+									btnType="cart"
+									onClick={() =>
+										addToCart({ product: { ...product, quantity: 1 } })
+									}
 								/>
 							</div>
 						</div>

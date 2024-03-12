@@ -6,7 +6,8 @@ import {
 	ProductDiscountComponent,
 	ProductPriceComponent,
 } from "@/components"
-import { IProduct } from "@/interfaces/product.interface"
+import { useStoreActions } from "@/hooks/store/useStoreActions"
+import { ICartProducts } from "@/store/slices/cart/cart.slice"
 import cn from "classnames"
 import Image from "next/image"
 import { FC } from "react"
@@ -15,11 +16,12 @@ import { MdInvertColors } from "react-icons/md"
 import style from "./cart-product.module.scss"
 
 interface ICartProductComponentProps {
-	products: IProduct[]
+	products: ICartProducts[]
 }
 export const CartProductComponent: FC<ICartProductComponentProps> = ({
 	products,
 }) => {
+	const { removeFromCart } = useStoreActions()
 	return (
 		<div className={style.cart}>
 			{products.length ? (
@@ -58,7 +60,7 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 										size="1xxl"
 										orientation="column"
 									/>
-									<ButtonComponent type="promo" />
+									<ButtonComponent btnType="promo" />
 								</div>
 							</div>
 						</div>
@@ -67,10 +69,17 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 								<ProductDiscountComponent product={product} />
 							</div>
 							<div className={cn(style.action, style.range)}>
-								<CartRangeComponent text={false} />
+								<CartRangeComponent
+									quantity={product.quantity}
+									text={false}
+									product={product}
+								/>
 							</div>
 							<div className={style.action}>
-								<ButtonComponent type="delete" />
+								<ButtonComponent
+									btnType="delete"
+									onClick={() => removeFromCart({ id: product.id })}
+								/>
 							</div>
 						</div>
 					</div>

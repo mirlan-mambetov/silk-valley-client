@@ -1,27 +1,33 @@
 "use client"
 
 import cn from "classnames"
-import { DetailsHTMLAttributes, FC, ReactNode } from "react"
+import {
+	ButtonHTMLAttributes,
+	DetailsHTMLAttributes,
+	FC,
+	ReactNode,
+} from "react"
 import { IoCloseOutline } from "react-icons/io5"
 import { LuPercent } from "react-icons/lu"
 
 import { CgRemove } from "react-icons/cg"
 import style from "./button.module.scss"
 
-interface IButtonComponentProps
-	extends DetailsHTMLAttributes<HTMLButtonElement> {
-	type?: "default" | "cart" | "closed" | "promo" | "delete"
+type IButtonComponentProps = {
+	btnType?: "default" | "cart" | "closed" | "promo" | "delete"
 	children?: ReactNode
 	size?: "xl1" | "xxl1" | "xl2"
-}
+} & ButtonHTMLAttributes<HTMLButtonElement> &
+	DetailsHTMLAttributes<HTMLButtonElement>
+
 export const ButtonComponent: FC<IButtonComponentProps> = ({
-	type,
+	btnType,
 	children,
 	className,
 	size = "xl1",
 	...props
 }) => {
-	switch (type) {
+	switch (btnType) {
 		case "delete":
 			return (
 				<button

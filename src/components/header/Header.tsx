@@ -1,5 +1,14 @@
 "use client"
 
+import {
+	AuthComponent,
+	ButtonComponent,
+	DeliverComponent,
+	LogoComponent,
+	MenuComponent,
+	MobileHeaderComponent,
+	NotifyPlaceholder,
+} from "@/components"
 import { variants3, variants4 } from "@/framer-motion"
 import { useWindowWidth } from "@/hooks/app/useWindowWidth"
 import { useCart } from "@/hooks/cart/useCart"
@@ -11,16 +20,7 @@ import { useRouter } from "next/navigation"
 import { FaMapMarkerAlt } from "react-icons/fa"
 import { IoSearchOutline } from "react-icons/io5"
 import { SlHandbag } from "react-icons/sl"
-import {
-	AuthComponent,
-	ButtonComponent,
-	DeliverComponent,
-	LogoComponent,
-	MenuComponent,
-	MobileHeaderComponent,
-} from "../"
 import { HEADER_MENU } from "../menu/menu.data"
-import NotifyPlaceholder from "../notify/notify-placeholder/Notify-placeholder"
 import style from "./header.module.scss"
 
 export const HeaderComponent = () => {

@@ -54,7 +54,7 @@ export const MobileDetailInfoComponent: FC<IMobileDetailInfoComponentProps> = ({
 					</div>
 				</div>
 				<div className={style.button}>
-					<ButtonComponent type="cart" />
+					<ButtonComponent btnType="cart" />
 				</div>
 			</div>
 		</div>

@@ -25,7 +25,10 @@ export const Cart: FC = () => {
 			<HeadingComponent text="Корзина" length={products.length} />
 			<div className={style.cart}>
 				<CartProductComponent products={products} />
-				<CartInfoComponent anchorHanlder={scrollToSection} />
+				<CartInfoComponent
+					anchorHanlder={scrollToSection}
+					products={products}
+				/>
 				<div className={style.order}>
 					<div className={style.box}>
 						<h5 className={style.title}>
