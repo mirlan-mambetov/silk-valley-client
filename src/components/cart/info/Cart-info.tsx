@@ -4,7 +4,9 @@ import { ButtonComponent, ProductPriceComponent } from "@/components"
 import { FC } from "react"
 import { FaMapMarkerAlt } from "react-icons/fa"
 import { MdOutlineBorderColor } from "react-icons/md"
+import { RiDeleteBin6Line } from "react-icons/ri"
 
+import { useStoreActions } from "@/hooks/store/useStoreActions"
 import style from "./cart-info.module.scss"
 
 interface ICartInfoComponentProps {
@@ -13,6 +15,7 @@ interface ICartInfoComponentProps {
 export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 	anchorHanlder,
 }) => {
+	const { clearCart } = useStoreActions()
 	return (
 		<div className={style.info}>
 			<div className={style.wrap}>
@@ -40,6 +43,10 @@ export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 				>
 					<MdOutlineBorderColor />
 					<span>Заказать</span>
+				</ButtonComponent>
+				<ButtonComponent className={style.button} onClick={() => clearCart()}>
+					<RiDeleteBin6Line />
+					<span>Очистить корзину</span>
 				</ButtonComponent>
 			</div>
 		</div>

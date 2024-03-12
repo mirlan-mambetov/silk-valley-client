@@ -22,58 +22,62 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 }) => {
 	return (
 		<div className={style.cart}>
-			{products.map((product) => (
-				<div className={style.product} key={product.id}>
-					<div className={style.content}>
-						<div className={style.image}>
-							<Image
-								src={product.poster}
-								alt={product.title}
-								width={90}
-								height={120}
-							/>
-						</div>
-						<div className={style.description}>
-							<h4 className={style.title}>{product.title}</h4>
-							<div className={style.items}>
-								<div className={style.item}>
-									<MdInvertColors />
-									<span>
-										Цвет: <small>Черный</small>
-									</span>
-								</div>
-								<div className={style.item}>
-									<IoResizeOutline />
-									<span>
-										Размер: <small>32x</small>
-									</span>
-								</div>
-							</div>
-							<div className={style.price}>
-								<ProductPriceComponent
-									className={style.number}
-									price={product.price}
-									discount={product.discount}
-									size="1xxl"
-									orientation="column"
+			{products.length ? (
+				products.map((product) => (
+					<div className={style.product} key={product.id}>
+						<div className={style.content}>
+							<div className={style.image}>
+								<Image
+									src={product.poster}
+									alt={product.title}
+									width={90}
+									height={120}
 								/>
-								<ButtonComponent type="promo" />
+							</div>
+							<div className={style.description}>
+								<h4 className={style.title}>{product.title}</h4>
+								<div className={style.items}>
+									<div className={style.item}>
+										<MdInvertColors />
+										<span>
+											Цвет: <small>Черный</small>
+										</span>
+									</div>
+									<div className={style.item}>
+										<IoResizeOutline />
+										<span>
+											Размер: <small>32x</small>
+										</span>
+									</div>
+								</div>
+								<div className={style.price}>
+									<ProductPriceComponent
+										className={style.number}
+										price={product.price}
+										discount={product.discount}
+										size="1xxl"
+										orientation="column"
+									/>
+									<ButtonComponent type="promo" />
+								</div>
+							</div>
+						</div>
+						<div className={style.actions}>
+							<div className={cn(style.action, style.discount)}>
+								<ProductDiscountComponent product={product} />
+							</div>
+							<div className={cn(style.action, style.range)}>
+								<CartRangeComponent text={false} />
+							</div>
+							<div className={style.action}>
+								<ButtonComponent type="delete" />
 							</div>
 						</div>
 					</div>
-					<div className={style.actions}>
-						<div className={cn(style.action, style.discount)}>
-							<ProductDiscountComponent product={product} />
-						</div>
-						<div className={cn(style.action, style.range)}>
-							<CartRangeComponent text={false} />
-						</div>
-						<div className={style.action}>
-							<ButtonComponent type="delete" />
-						</div>
-					</div>
-				</div>
-			))}
+				))
+			) : (
+				<span>Товаров нет</span>
+			)}
 		</div>
 	)
 }
