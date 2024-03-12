@@ -36,6 +36,9 @@
 			@include lowBoxShadow;
 			padding: 10px;
 			border-radius: 4px;
+			@include mediaLarge830px {
+				padding: 6px;
+			}
 		}
 		.wrap {
 			display: flex;
@@ -67,5 +70,54 @@
 				}
 			}
 		}
+		@include mediaLarge830px {
+			width: calc(100% / 4 * 1.5);
+			padding: 15px;
+		}
+		@include mediaLarge640px {
+			width: 320px;
+			transform: translateX(-105%);
+			transition: transform 0.1s ease;
+			&.animate {
+				transform: translateX(0);
+				pointer-events: none;
+				~ .mobile {
+					transform: translateX(340px);
+					left: unset;
+				}
+			}
+		}
+		@include mediaLarge440px {
+			width: 260px;
+			&.animate {
+				~ .mobile {
+					transform: translateX(280px);
+				}
+			}
+		}
+		@include mediaLarge380px {
+			width: 240px;
+			&.animate {
+				~ .mobile {
+					transform: translateX(260px);
+				}
+			}
+		}
+	}
+	.mobile {
+		position: absolute;
+		top: 10px;
+		left: 10px;
+		button {
+			display: flex;
+			padding: 10px;
+			background: $purple;
+			color: $white;
+			border-radius: 50px;
+			@include baseBoxShadow;
+		}
+	}
+	@include mediaLarge640px {
+		overflow: hidden;
 	}
 }

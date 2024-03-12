@@ -1,9 +1,13 @@
 "use client"
 
+import { useWindowWidth } from "@/hooks/app/useWindowWidth"
 import { useCurrentLocation } from "@/hooks/map/useCurrentLocation"
 import { useStoreReducer } from "@/hooks/store/useStoreReducer"
+import cn from "classnames"
 import dynamic from "next/dynamic"
-import { FC } from "react"
+import { FC, useState } from "react"
+import { FaMapMarkerAlt } from "react-icons/fa"
+import { ButtonComponent } from "../button/Button"
 import style from "./deliver.module.scss"
 
 const MapContainerComponent = dynamic(
@@ -14,11 +18,13 @@ const MapContainerComponent = dynamic(
 )
 
 export const DeliverComponent: FC = () => {
+	const [isAnimate, setAnimate] = useState(false)
 	const { address } = useStoreReducer((state) => state.deliver)
 	const { currentLocation } = useCurrentLocation()
+	const { width } = useWindowWidth()
 	return (
 		<div className={style.deliver}>
-			<div className={style.information}>
+			<div className={cn(style.information, { [style.animate]: isAnimate })}>
 				{address && (
 					<div className={style.wrap}>
 						<h5 className={style.title}>
@@ -104,9 +110,16 @@ export const DeliverComponent: FC = () => {
 					</div>
 				</div>
 			</div>
-			{currentLocation ? (
-				<MapContainerComponent currentLocation={currentLocation} />
+			{width < 640 ? (
+				<div className={style.mobile}>
+					<ButtonComponent onClick={() => setAnimate(!isAnimate)}>
+						<FaMapMarkerAlt />
+					</ButtonComponent>
+				</div>
 			) : null}
+			{/* {currentLocation ? (
+				<MapContainerComponent currentLocation={currentLocation} />
+			) : null} */}
 		</div>
 	)
 }
