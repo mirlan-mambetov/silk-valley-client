@@ -2,6 +2,7 @@
 
 import { variants3, variants4 } from "@/framer-motion"
 import { useWindowWidth } from "@/hooks/app/useWindowWidth"
+import { useCart } from "@/hooks/cart/useCart"
 import { useScreen } from "@/hooks/screen/useScreen"
 import useOutsiteClick from "@/hooks/useOutsideClick"
 import cn from "classnames"
@@ -19,6 +20,7 @@ import {
 	MobileHeaderComponent,
 } from "../"
 import { HEADER_MENU } from "../menu/menu.data"
+import NotifyPlaceholder from "../notify/notify-placeholder/Notify-placeholder"
 import style from "./header.module.scss"
 
 export const HeaderComponent = () => {
@@ -26,6 +28,7 @@ export const HeaderComponent = () => {
 	const { push } = useRouter()
 	const { width } = useWindowWidth()
 	const { setContentHandler } = useScreen()
+	const { products } = useCart()
 
 	return (
 		<>
@@ -98,6 +101,7 @@ export const HeaderComponent = () => {
 										</ButtonComponent>
 									</div>
 									<div className={style.column}>
+										<NotifyPlaceholder length={products?.length} />
 										<ButtonComponent
 											aria-label="Корзина"
 											className={style.cart}
