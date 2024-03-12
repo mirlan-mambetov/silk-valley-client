@@ -17,18 +17,14 @@
 			display: grid;
 			grid-template-columns: 0.3fr 1fr;
 			align-items: center;
-			@include mediaLarge530px {
-				width: 100%;
-			}
+
 			.image {
 				position: relative;
 				width: 90px;
 				height: 120px;
 				overflow: hidden;
 				border-radius: 5px;
-				@include mediaLarge480px {
-					border: 1px dashed $darkenRGBA;
-				}
+				border: 1px dashed $darkenRGBA;
 				img {
 					position: absolute;
 					top: 0;
@@ -40,15 +36,15 @@
 			.description {
 				display: flex;
 				flex-direction: column;
-				gap: 18px;
-				@include mediaLarge480px {
-					justify-content: space-around;
-					gap: 10px;
-				}
+				gap: 14px;
+				overflow: hidden;
 				.title {
-					font-size: 16px;
-					font-weight: 400;
+					font-size: 14px;
+					font-weight: 500;
 					line-height: 18px;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
 					color: $darken;
 					@include mediaLarge440px {
 						font-size: 14px;

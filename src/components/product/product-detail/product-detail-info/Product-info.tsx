@@ -6,6 +6,7 @@ import {
 	ProductPriceComponent,
 } from "@/components"
 import { useScreen } from "@/hooks/screen/useScreen"
+import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { IProduct } from "@/interfaces/product.interface"
 import cn from "classnames"
 import { FC } from "react"
@@ -21,6 +22,7 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 	type = "default",
 }) => {
 	const { setContentHandler } = useScreen()
+	const { addToCart } = useStoreActions()
 	return (
 		<div
 			className={cn(style.info, {
@@ -88,7 +90,10 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 				{/* <CartRangeComponent product={pro}/> */}
 
 				<div className={style.buttons}>
-					<ButtonComponent btnType="cart" />
+					<ButtonComponent
+						btnType="cart"
+						onClick={() => addToCart({ product: { ...data, quantity: 1 } })}
+					/>
 					<ButtonComponent btnType="cart">Купить сейчас</ButtonComponent>
 				</div>
 			</div>

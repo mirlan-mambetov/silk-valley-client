@@ -51,6 +51,7 @@
 		}
 		.old {
 			font-size: 12px;
+			line-height: 14px;
 		}
 	}
 	&.xl1 {
@@ -71,13 +72,7 @@
 		}
 	}
 	span {
-		// display: flex;
 		font-size: 10px !important;
 		line-height: 10px;
-		// font-weight: bold;
-		// text-transform: uppercase;
-		// color: inherit !important;
-		// font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-		// 	"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 	}
 }

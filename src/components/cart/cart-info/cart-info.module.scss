@@ -18,12 +18,13 @@
 	.wrap {
 		display: flex;
 		flex-direction: column;
-		gap: 20px;
+		gap: 12px;
 		.deliver {
 			color: $purple;
 			cursor: pointer;
 		}
 		.box,
+		.profit,
 		.deliver {
 			display: flex;
 			align-items: center;
@@ -36,9 +37,11 @@
 					color: $gray;
 				}
 			}
-			&:nth-child(3) {
+			&:nth-child(4) {
+				margin: 12px 0;
 				span {
 					font-size: 18px;
+					font-weight: 700;
 				}
 			}
 			.price {
@@ -51,6 +54,9 @@
 			.total {
 				min-height: unset !important;
 			}
+		}
+		.profit {
+			color: $skay;
 		}
 		.button {
 			display: flex;

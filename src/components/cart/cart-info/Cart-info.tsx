@@ -1,6 +1,7 @@
 "use client"
 
 import { ButtonComponent, ProductPriceComponent } from "@/components"
+import cn from "classnames"
 import { FC } from "react"
 import { FaMapMarkerAlt } from "react-icons/fa"
 import { MdOutlineBorderColor } from "react-icons/md"
@@ -17,7 +18,7 @@ export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 	anchorHanlder,
 	products,
 }) => {
-	const { totalPrice } = useCartPriceCalculate(products)
+	const { totalPrice, totalDiscount } = useCartPriceCalculate(products)
 
 	return (
 		<div className={style.info}>
@@ -34,6 +35,14 @@ export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 						size="1xxl"
 						className={style.price}
 						price={totalPrice}
+					/>
+				</div>
+				<div className={cn(style.box, style.profit)}>
+					<span>Выгода</span>
+					<ProductPriceComponent
+						className={style.total}
+						price={totalDiscount}
+						size="1xxl"
 					/>
 				</div>
 				<div className={style.box}>

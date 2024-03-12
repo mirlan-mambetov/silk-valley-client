@@ -54,9 +54,6 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 							</div>
 						</div>
 						<div className={style.actions}>
-							{/* <div className={cn(style.action, style.discount)}>
-								<ProductDiscountComponent product={product} />
-							</div> */}
 							<div className={cn(style.action, style.range)}>
 								<CartRangeComponent
 									quantity={product.quantity}
