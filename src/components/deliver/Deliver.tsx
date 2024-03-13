@@ -1,8 +1,8 @@
 "use client"
 
 import { useWindowWidth } from "@/hooks/app/useWindowWidth"
+import { useDeliver } from "@/hooks/deliver/useDeliver"
 import { useCurrentLocation } from "@/hooks/map/useCurrentLocation"
-import { useStoreReducer } from "@/hooks/store/useStoreReducer"
 import cn from "classnames"
 import dynamic from "next/dynamic"
 import { FC, useState } from "react"
@@ -19,7 +19,7 @@ const MapContainerComponent = dynamic(
 
 export const DeliverComponent: FC = () => {
 	const [isAnimate, setAnimate] = useState(false)
-	const { address } = useStoreReducer((state) => state.deliver)
+	const { address } = useDeliver()
 	const { currentLocation } = useCurrentLocation()
 	const { width } = useWindowWidth()
 	return (
