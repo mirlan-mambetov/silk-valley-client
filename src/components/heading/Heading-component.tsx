@@ -2,6 +2,7 @@
 
 import cn from "classnames"
 import { FC } from "react"
+import { NotifyPlaceholder } from "../notify/notify-placeholder/Notify-placeholder"
 import style from "./heading.component.module.scss"
 
 interface IHeadingComponentProps {
@@ -16,7 +17,7 @@ export const HeadingComponent: FC<IHeadingComponentProps> = ({
 		<h3 className={cn(style.heading, style.top)}>
 			<span>
 				{text}
-				{length ? <sup>{length}</sup> : null}
+				<NotifyPlaceholder length={length} />
 			</span>
 		</h3>
 	)

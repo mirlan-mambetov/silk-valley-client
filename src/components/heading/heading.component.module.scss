@@ -18,20 +18,5 @@
 	}
 	span {
 		position: relative;
-		sup {
-			position: absolute;
-			top: -12px;
-			right: -15px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			background: $purple;
-			width: 20px;
-			color: $white;
-			font-size: 10px;
-			height: 20px;
-			border-radius: 50%;
-			z-index: 2;
-		}
 	}
 }
