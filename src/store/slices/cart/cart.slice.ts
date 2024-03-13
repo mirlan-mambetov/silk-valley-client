@@ -38,6 +38,7 @@ export const cartSlice = createSlice({
 			state.products = state.products.filter(
 				(product) => product.id !== payload.id
 			)
+			state.isExist = false
 		},
 		changedQuantity: (
 			state,

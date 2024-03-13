@@ -7,6 +7,7 @@ import {
 	ProductDiscountComponent,
 	ProductPriceComponent,
 } from "@/components"
+import { useCart } from "@/hooks/cart/useCart"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { IProduct } from "@/interfaces/product.interface"
 import cn from "classnames"
@@ -30,6 +31,9 @@ export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 	const limitedData = data.slice(0, limit)
 	const [isHover, setIsHover] = useState(false)
 	const { addToCart } = useStoreActions()
+	const { products } = useCart()
+
+	console.log(products.some((product) => product.id === product.id))
 	return (
 		<div className={style.cards}>
 			{title ? <HeadingComponent text={title} /> : null}
@@ -76,15 +80,15 @@ export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 									/>
 								</div>
 							</Link>
-							<div className={style.buttons}>
-								<ButtonComponent
-									aria-label="В корзину"
-									btnType="cart"
-									onClick={() =>
-										addToCart({ product: { ...product, quantity: 1 } })
-									}
-								/>
-							</div>
+							<ButtonComponent
+								// isExistOnCart={}
+								className={style.button}
+								aria-label="В корзину"
+								btnType="cart"
+								onClick={() =>
+									addToCart({ product: { ...product, quantity: 1 } })
+								}
+							/>
 						</div>
 					</div>
 				))}
