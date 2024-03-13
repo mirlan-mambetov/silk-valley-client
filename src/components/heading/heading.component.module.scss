@@ -9,14 +9,14 @@
 	text-transform: uppercase;
 	margin-top: 10px;
 	margin-bottom: 30px;
-}
-.top {
-	margin-bottom: 10px;
-	@include mediaLarge530px {
-		margin-top: 30px;
-		margin-bottom: 5px;
-	}
-	span {
-		position: relative;
+	&.top {
+		margin-bottom: 10px;
+		@include mediaLarge530px {
+			margin-top: 30px;
+			margin-bottom: 5px;
+		}
+		span {
+			position: relative;
+		}
 	}
 }

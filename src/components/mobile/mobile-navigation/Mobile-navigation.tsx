@@ -124,7 +124,7 @@ export const MobileMenuComponent: FC = () => {
 									fill="#1C274C"
 								/>
 							</svg>
-							<NotifyPlaceholder length={products.length} />
+							<NotifyPlaceholder length={products.length} toUp="1" />
 						</ButtonComponent>
 					</div>
 

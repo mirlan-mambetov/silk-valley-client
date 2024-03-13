@@ -2,12 +2,14 @@
 
 import { ButtonComponent } from "@/components/button/Button"
 import { DeliverComponent } from "@/components/deliver/Deliver"
+import { useDeliver } from "@/hooks/deliver/useDeliver"
 import { useScreen } from "@/hooks/screen/useScreen"
 import { FaMapMarkerAlt } from "react-icons/fa"
 import style from "./header.top.module.scss"
 
 export const HeaderTopComponent = () => {
 	const { setContentHandler } = useScreen()
+	const { address } = useDeliver()
 	return (
 		<div className={style.top}>
 			<div className="container">
@@ -19,7 +21,10 @@ export const HeaderTopComponent = () => {
 								aria-label="Доставка"
 								onClick={() => setContentHandler(<DeliverComponent />)}
 							>
-								<span>г. Каракол</span>
+								<span>
+									{(address.city && address.town && address.state) ||
+										"г. Каракол"}
+								</span>
 							</ButtonComponent>
 						</div>
 					</div>
