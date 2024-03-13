@@ -15,11 +15,16 @@
 		top: 15px;
 		right: 15px;
 		z-index: 3000;
+		background: $white;
+		@include baseBoxShadow;
 	}
 	.content {
 		padding-top: 20px;
 		padding-left: 10px;
 		width: 100%;
 		min-height: 80vh;
+		@include mediaLarge530px {
+			padding-left: unset;
+		}
 	}
 }

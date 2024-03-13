@@ -71,52 +71,21 @@
 			}
 		}
 		@include mediaLarge830px {
-			width: calc(100% / 4 * 1.5);
-			padding: 15px;
+			width: 50%;
 		}
-		@include mediaLarge640px {
-			width: 320px;
-			transform: translateX(-105%);
-			transition: transform 0.1s ease;
-			&.animate {
-				transform: translateX(0);
-				pointer-events: none;
-				~ .mobile {
-					transform: translateX(340px);
-					left: unset;
-				}
-			}
-		}
-		@include mediaLarge440px {
-			width: 260px;
-			&.animate {
-				~ .mobile {
-					transform: translateX(270px);
-				}
-			}
-		}
-		@include mediaLarge380px {
-			width: 240px;
-			&.animate {
-				~ .mobile {
-					transform: translateX(260px);
-				}
-			}
+		@include mediaLarge530px {
+			position: unset;
+			width: 100%;
+			padding: unset;
 		}
 	}
-	.mobile {
-		position: absolute;
-		top: 10px;
-		left: 10px;
-		z-index: 2002;
-		button {
-			display: flex;
-			padding: 10px;
-			background: $purple;
-			color: $white;
-			border-radius: 50px;
-			@include baseBoxShadow;
-		}
+	@include mediaLarge530px {
+		display: flex;
+		flex-direction: column-reverse;
+		height: unset;
+		border: unset;
+		gap: 12px;
+		padding-bottom: 20px;
 	}
 	@include mediaLarge640px {
 		overflow: hidden;
