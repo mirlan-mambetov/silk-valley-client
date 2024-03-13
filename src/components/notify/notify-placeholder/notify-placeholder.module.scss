@@ -4,8 +4,7 @@
 
 .placeholder {
 	position: absolute;
-	top: -75%;
-	right: -10px;
+	right: -15px;
 	width: 20px;
 	height: 20px;
 	border-radius: 50%;
@@ -19,5 +18,11 @@
 	align-items: center;
 	justify-content: center;
 	z-index: 200;
+	&.default {
+		top: -76%;
+	}
+	&.one {
+		top: -40%;
+	}
 	@include baseBoxShadow;
 }
