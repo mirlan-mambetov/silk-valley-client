@@ -25,7 +25,7 @@ export const Cart: FC = () => {
 			<HeadingComponent
 				text="Корзина"
 				length={products.length}
-				style={{ marginTop: "22px" }}
+				style={{ marginTop: "40px" }}
 			/>
 			<div className={style.cart}>
 				<CartProductComponent products={products} />
