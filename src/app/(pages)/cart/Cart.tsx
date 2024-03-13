@@ -5,6 +5,7 @@ import {
 	ButtonComponent,
 	CartInfoComponent,
 	CartProductComponent,
+	DeliverComponent,
 	HeadingComponent,
 } from "@/components"
 import { FC } from "react"
@@ -50,7 +51,10 @@ export const Cart: FC = () => {
 							<span>Детали доставки </span>
 						</h5>
 						<div className={style.out}>
-							<ButtonComponent className={style.button}>
+							<ButtonComponent
+								className={style.button}
+								onClick={() => setContentHandler(<DeliverComponent />)}
+							>
 								<FaMapMarkerAlt />
 								Выберите координаты
 							</ButtonComponent>
