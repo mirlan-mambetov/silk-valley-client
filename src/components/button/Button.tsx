@@ -49,8 +49,8 @@ export const ButtonComponent: FC<IButtonComponentProps> = ({
 		case "cart":
 			return (
 				<button className={cn(style.button, style.cart, className)} {...props}>
-					{/* {children ? children : "В корзину"} */}
-					{isExistOnCart ? <>Перейти в корзину </> : "В корзину"}
+					{children ? children : "В корзину"}
+					{/* {isExistOnCart ? <>Перейти в корзину </> : "В корзину"} */}
 				</button>
 			)
 		case "closed":

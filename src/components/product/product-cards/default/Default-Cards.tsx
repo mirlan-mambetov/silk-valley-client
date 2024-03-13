@@ -81,17 +81,25 @@ export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 									/>
 								</div>
 							</Link>
-							<ButtonComponent
-								isExistOnCart={products.some((item) => item.id === product.id)}
-								className={style.button}
-								aria-label="В корзину"
-								btnType="cart"
-								onClick={() => {
-									products.some((item) => item.id === product.id)
-										? push("/cart")
-										: addToCart({ product: { ...product, quantity: 1 } })
-								}}
-							/>
+							{products.some((item) => item.id === product.id) ? (
+								<ButtonComponent
+									className={style.button}
+									aria-label="Перейти к корзине"
+									btnType="cart"
+									onClick={() => push("/cart")}
+								>
+									Перейти к корзине
+								</ButtonComponent>
+							) : (
+								<ButtonComponent
+									className={style.button}
+									aria-label="В корзину"
+									btnType="cart"
+									onClick={() =>
+										addToCart({ product: { ...product, quantity: 1 } })
+									}
+								/>
+							)}
 						</div>
 					</div>
 				))}
