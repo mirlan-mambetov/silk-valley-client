@@ -63,7 +63,7 @@
 			.featured {
 				opacity: 1;
 			}
-			.buttons {
+			.button {
 				margin: 5px 0;
 				display: block;
 			}
@@ -146,15 +146,12 @@
 				}
 			}
 		}
-		.buttons {
+
+		.button {
 			display: none;
 			@include mediaLarge1024px {
 				display: flex;
-				button {
-					display: flex;
-					justify-content: center;
-					width: 100%;
-				}
+				justify-content: center;
 			}
 		}
 		@include mediaLarge1024px {
