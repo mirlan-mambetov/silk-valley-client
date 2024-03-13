@@ -14,6 +14,7 @@ import { CgRemove } from "react-icons/cg"
 import style from "./button.module.scss"
 
 type IButtonComponentProps = {
+	isExistOnCart?: boolean
 	btnType?: "default" | "cart" | "closed" | "promo" | "delete"
 	children?: ReactNode
 	size?: "xl1" | "xxl1" | "xl2"
@@ -24,6 +25,7 @@ export const ButtonComponent: FC<IButtonComponentProps> = ({
 	btnType,
 	children,
 	className,
+	isExistOnCart,
 	size = "xl1",
 	...props
 }) => {
@@ -47,7 +49,8 @@ export const ButtonComponent: FC<IButtonComponentProps> = ({
 		case "cart":
 			return (
 				<button className={cn(style.button, style.cart, className)} {...props}>
-					{children ? children : "В корзину"}
+					{/* {children ? children : "В корзину"} */}
+					{isExistOnCart ? <>Перейти в корзину </> : "В корзину"}
 				</button>
 			)
 		case "closed":

@@ -54,16 +54,12 @@
 .cart {
 	display: flex;
 	align-items: center;
-	padding: 8px 17px;
+	padding: 10px 17px;
 	border-radius: 10px;
 	background: $black;
 	color: $white;
 	font-size: 14px;
 	font-weight: bold;
-	@include mediaLarge480px {
-		padding: 10px 17px;
-		border-radius: 20px;
-	}
 }
 
 @keyframes changeBackground {
