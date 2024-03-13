@@ -1,12 +1,17 @@
 "use client"
 
-import { ButtonComponent, ProductPriceComponent } from "@/components"
+import {
+	ButtonComponent,
+	DeliverComponent,
+	ProductPriceComponent,
+} from "@/components"
 import cn from "classnames"
 import { FC } from "react"
 import { FaMapMarkerAlt } from "react-icons/fa"
 import { MdOutlineBorderColor } from "react-icons/md"
 
 import { useCartPriceCalculate } from "@/hooks/cart/useCartPriceCalculate"
+import { useScreen } from "@/hooks/screen/useScreen"
 import { ICartProducts } from "@/interfaces/cart.interface"
 import style from "./cart-info.module.scss"
 
@@ -18,12 +23,16 @@ export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 	anchorHanlder,
 	products,
 }) => {
+	const { setContentHandler } = useScreen()
 	const { totalPrice, totalDiscount } = useCartPriceCalculate(products)
 
 	return (
 		<div className={style.info}>
 			<div className={style.wrap}>
-				<ButtonComponent className={style.deliver}>
+				<ButtonComponent
+					className={style.deliver}
+					onClick={() => setContentHandler(<DeliverComponent />)}
+				>
 					<span>Выбрать адрес доставки</span>
 					<small>
 						<FaMapMarkerAlt />

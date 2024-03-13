@@ -4,9 +4,11 @@
 
 .header {
 	position: sticky;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
 	top: 0;
-	padding: 10px 0;
-	z-index: 180;
+	z-index: 201;
 	background: $white;
 	-webkit-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.04);
 	-moz-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.04);
@@ -52,21 +54,6 @@
 				@include mediaLarge440px {
 					padding: 4px;
 				}
-			}
-		}
-	}
-}
-.top {
-	display: flex;
-	align-items: center;
-	padding: 3px 0;
-	.row {
-		.deliver {
-			display: flex;
-			align-items: center;
-			gap: 5px;
-			button {
-				display: flex;
 			}
 		}
 	}

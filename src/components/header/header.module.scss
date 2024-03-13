@@ -12,34 +12,6 @@
 	}
 }
 
-.top {
-	background: $darken;
-
-	.wrap {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		color: $white;
-		padding: 6px 0;
-
-		.row {
-			.deliver {
-				display: flex;
-				align-items: center;
-				gap: 8px;
-
-				button {
-					display: flex;
-
-					span {
-						font-size: 12px;
-					}
-				}
-			}
-		}
-	}
-}
-
 .content {
 	position: relative;
 	display: flex;

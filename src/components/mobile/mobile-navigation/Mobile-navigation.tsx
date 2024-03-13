@@ -4,7 +4,9 @@ import {
 	AuthComponent,
 	ButtonComponent,
 	MenuCategoriesComponent,
+	NotifyPlaceholder,
 } from "@/components"
+import { useCart } from "@/hooks/cart/useCart"
 import { useScreen } from "@/hooks/screen/useScreen"
 import cn from "classnames"
 import { useRouter } from "next/navigation"
@@ -14,6 +16,7 @@ import style from "./mobile-navigation.module.scss"
 export const MobileMenuComponent: FC = () => {
 	const { push } = useRouter()
 	const { setContentHandler, isOpen, clearContentHandler } = useScreen()
+	const { products } = useCart()
 
 	return (
 		<div
@@ -121,7 +124,7 @@ export const MobileMenuComponent: FC = () => {
 									fill="#1C274C"
 								/>
 							</svg>
-							{/* <span>Корзина</span> */}
+							<NotifyPlaceholder length={products.length} />
 						</ButtonComponent>
 					</div>
 

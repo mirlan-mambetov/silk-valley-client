@@ -22,7 +22,6 @@ export const DeliverComponent: FC = () => {
 	const { address } = useStoreReducer((state) => state.deliver)
 	const { currentLocation } = useCurrentLocation()
 	const { width } = useWindowWidth()
-	console.log(!!address)
 	return (
 		<div className={style.deliver}>
 			<div className={cn(style.information, { [style.animate]: isAnimate })}>
@@ -118,9 +117,9 @@ export const DeliverComponent: FC = () => {
 					</ButtonComponent>
 				</div>
 			) : null}
-			{/* {currentLocation ? (
+			{currentLocation ? (
 				<MapContainerComponent currentLocation={currentLocation} />
-			) : null} */}
+			) : null}
 		</div>
 	)
 }

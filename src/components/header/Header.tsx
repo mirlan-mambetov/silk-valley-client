@@ -3,7 +3,7 @@
 import {
 	AuthComponent,
 	ButtonComponent,
-	DeliverComponent,
+	HeaderTopComponent,
 	LogoComponent,
 	MenuComponent,
 	MobileHeaderComponent,
@@ -17,7 +17,6 @@ import useOutsiteClick from "@/hooks/useOutsideClick"
 import cn from "classnames"
 import { motion } from "framer-motion"
 import { useRouter } from "next/navigation"
-import { FaMapMarkerAlt } from "react-icons/fa"
 import { IoSearchOutline } from "react-icons/io5"
 import { SlHandbag } from "react-icons/sl"
 import { HEADER_MENU } from "../menu/menu.data"
@@ -37,23 +36,7 @@ export const HeaderComponent = () => {
 				<>
 					<div className={style.header}>
 						{/* TOP HEADER */}
-						<div className={style.top}>
-							<div className="container">
-								<div className={style.wrap}>
-									<div className={style.row}>
-										<div className={style.deliver}>
-											<FaMapMarkerAlt />
-											<ButtonComponent
-												aria-label="Доставка"
-												onClick={() => setContentHandler(<DeliverComponent />)}
-											>
-												<span>г. Каракол</span>
-											</ButtonComponent>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+						<HeaderTopComponent />
 						{/* END TOP HEADER */}
 						<div className="container">
 							<div className={style.content}>
