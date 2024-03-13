@@ -46,6 +46,7 @@ export const CatalogCardsComponent: FC<ICatalogCardsComponentProps> = ({
 								size="1xl"
 								price={product.price}
 								discount={product.discount}
+								orientation="column"
 							/>
 						</div>
 					</div>

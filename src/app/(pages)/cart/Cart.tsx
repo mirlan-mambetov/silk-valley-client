@@ -22,7 +22,11 @@ export const Cart: FC = () => {
 	const { products } = useCart()
 	return (
 		<>
-			<HeadingComponent text="Корзина" length={products.length} />
+			<HeadingComponent
+				text="Корзина"
+				length={products.length}
+				style={{ marginTop: "22px" }}
+			/>
 			<div className={style.cart}>
 				<CartProductComponent products={products} />
 				<CartInfoComponent
@@ -32,7 +36,7 @@ export const Cart: FC = () => {
 				<div className={style.order}>
 					<div className={style.box}>
 						<h5 className={style.title}>
-							<span>Детали доставки</span>
+							<span>Информация о получателе</span>
 						</h5>
 						<div className={style.out}>
 							<ButtonComponent
@@ -47,7 +51,7 @@ export const Cart: FC = () => {
 					</div>
 					<div className={style.box}>
 						<h5 className={style.title}>
-							<span>Информация о получателе</span>
+							<span>Детали доставки </span>
 						</h5>
 						<div className={style.out}>
 							<ButtonComponent className={style.button}>
