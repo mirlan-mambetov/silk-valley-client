@@ -13,6 +13,7 @@ import { IProduct } from "@/interfaces/product.interface"
 import cn from "classnames"
 import Image from "next/image"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { FC, useState } from "react"
 import style from "./default-cards.module.scss"
 
@@ -32,8 +33,8 @@ export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 	const [isHover, setIsHover] = useState(false)
 	const { addToCart } = useStoreActions()
 	const { products } = useCart()
+	const { push } = useRouter()
 
-	console.log(products.some((product) => product.id === product.id))
 	return (
 		<div className={style.cards}>
 			{title ? <HeadingComponent text={title} /> : null}
@@ -81,13 +82,15 @@ export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 								</div>
 							</Link>
 							<ButtonComponent
-								// isExistOnCart={}
+								isExistOnCart={products.some((item) => item.id === product.id)}
 								className={style.button}
 								aria-label="В корзину"
 								btnType="cart"
-								onClick={() =>
-									addToCart({ product: { ...product, quantity: 1 } })
-								}
+								onClick={() => {
+									products.some((item) => item.id === product.id)
+										? push("/cart")
+										: addToCart({ product: { ...product, quantity: 1 } })
+								}}
 							/>
 						</div>
 					</div>

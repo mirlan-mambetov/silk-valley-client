@@ -54,12 +54,12 @@
 .cart {
 	display: flex;
 	align-items: center;
-	padding: 10px 17px;
+	padding: 12px 17px;
 	border-radius: 10px;
 	background: $black;
 	color: $white;
 	font-size: 14px;
-	font-weight: bold;
+	font-weight: 500;
 }
 
 @keyframes changeBackground {
