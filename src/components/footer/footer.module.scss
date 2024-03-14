@@ -65,6 +65,9 @@
 			.item {
 				color: $gray;
 				font-size: 12px;
+				@include mediaLarge440px {
+					padding: 4px;
+				}
 			}
 			@include mediaLarge940px {
 				grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -75,7 +78,6 @@
 			}
 			@include mediaLarge440px {
 				grid-template-columns: 1fr;
-				row-gap: 8px;
 			}
 		}
 		@include mediaLarge830px {
@@ -89,5 +91,6 @@
 		display: flex;
 		flex-direction: column;
 		gap: 12px;
+		min-height: 20vh;
 	}
 }
