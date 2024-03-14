@@ -55,4 +55,10 @@
 			}
 		}
 	}
+	@include mediaLarge480px {
+		right: unset;
+		top: 10px;
+		left: 10px;
+		gap: 5px;
+	}
 }

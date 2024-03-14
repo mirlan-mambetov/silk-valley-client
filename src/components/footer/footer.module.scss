@@ -25,6 +25,10 @@
 				font-weight: 400;
 				height: 30px;
 				color: $purple;
+				@include mediaLarge480px {
+					font-size: 16px;
+					font-weight: 500;
+				}
 			}
 			.items {
 				display: flex;
@@ -37,6 +41,12 @@
 					font-size: 12px;
 					line-height: 15px;
 					color: $gray;
+					@include mediaLarge480px {
+						font-size: 14px;
+					}
+				}
+				@include mediaLarge480px {
+					gap: 8px;
 				}
 			}
 			.socials {
@@ -50,13 +60,11 @@
 			}
 			@include mediaLarge480px {
 				padding-left: 10px;
+				gap: 8px;
 			}
 		}
 		@include mediaLarge776px {
 			grid-template-columns: 1fr 1fr;
-		}
-		@include mediaLarge480px {
-			min-height: 20vh;
 		}
 	}
 	.bottom {
@@ -68,8 +76,8 @@
 			.item {
 				color: $gray;
 				font-size: 12px;
-				@include mediaLarge440px {
-					padding: 4px 0;
+				@include mediaLarge480px {
+					font-size: 14px;
 				}
 			}
 			@include mediaLarge940px {
@@ -77,7 +85,7 @@
 			}
 			@include mediaLarge830px {
 				grid-template-columns: 1fr 1fr;
-				row-gap: 5px;
+				row-gap: 6px;
 			}
 			@include mediaLarge440px {
 				grid-template-columns: 1fr;

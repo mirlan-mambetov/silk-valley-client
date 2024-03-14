@@ -67,6 +67,9 @@
 						line-height: 16px;
 						@include dashdeLine;
 					}
+					@include mediaLarge530px {
+						padding: 0 5px;
+					}
 				}
 			}
 		}

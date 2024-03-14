@@ -1,7 +1,7 @@
 import { LatLngExpression } from "leaflet"
 
 export interface IMapProps {
-	currentLocation: {
+	currentLocation?: {
 		lat: number
 		lng: number
 	}

@@ -19,28 +19,32 @@ const MapComponent = dynamic(
 	}
 )
 const MapContainerComponent: FC<IMapProps> = ({ currentLocation }) => {
+	const [loadingMap, setLoadingMap] = useState(false)
 	const [coordinates, setCoordinates] = useState<LatLngExpression | undefined>(
 		undefined
 	)
 
 	return (
 		<div className={style.map}>
-			<MapContainer
-				wheelPxPerZoomLevel={12}
-				className={style.leaflet}
-				center={{
-					lat: currentLocation?.lat,
-					lng: currentLocation?.lng,
-				}}
-				zoom={13}
-				zoomControl={false}
-				scrollWheelZoom={true}
-			>
-				<MapComponent
-					currentLocation={currentLocation}
-					coordinates={coordinates}
-				/>
-			</MapContainer>
+			{currentLocation ? (
+				<MapContainer
+					wheelPxPerZoomLevel={12}
+					className={style.leaflet}
+					center={{
+						lat: currentLocation?.lat,
+						lng: currentLocation?.lng,
+					}}
+					zoom={13}
+					zoomControl={false}
+					scrollWheelZoom={true}
+					whenReady={() => setLoadingMap(true)}
+				>
+					<MapComponent
+						currentLocation={currentLocation}
+						coordinates={coordinates}
+					/>
+				</MapContainer>
+			) : null}
 
 			<div className={style.navigation}>
 				<div className={style.button}>

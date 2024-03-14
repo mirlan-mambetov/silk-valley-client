@@ -16,7 +16,9 @@
 		right: 15px;
 		z-index: 3000;
 		background: $white;
-		@include baseBoxShadow;
+		-webkit-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.2);
+		-moz-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.2);
+		box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.2);
 	}
 	.content {
 		padding-top: 20px;

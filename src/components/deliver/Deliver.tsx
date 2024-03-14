@@ -1,6 +1,5 @@
 "use client"
 
-import { useWindowWidth } from "@/hooks/app/useWindowWidth"
 import { useDeliver } from "@/hooks/deliver/useDeliver"
 import { useCurrentLocation } from "@/hooks/map/useCurrentLocation"
 import dynamic from "next/dynamic"
@@ -17,7 +16,6 @@ const MapContainerComponent = dynamic(
 export const DeliverComponent: FC = () => {
 	const { address } = useDeliver()
 	const { currentLocation } = useCurrentLocation()
-	const { width } = useWindowWidth()
 	return (
 		<div className={style.deliver}>
 			<div className={style.information}>
@@ -106,9 +104,7 @@ export const DeliverComponent: FC = () => {
 					</div>
 				</div>
 			</div>
-			{currentLocation ? (
-				<MapContainerComponent currentLocation={currentLocation} />
-			) : null}
+			<MapContainerComponent currentLocation={currentLocation} />
 		</div>
 	)
 }
