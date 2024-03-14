@@ -4,7 +4,6 @@
 
 .footer {
 	padding-top: 20px;
-	background: $sectionColor;
 	@include sectionShadow;
 	.columns {
 		display: grid;
