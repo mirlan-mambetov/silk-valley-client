@@ -104,7 +104,9 @@ export const DeliverComponent: FC = () => {
 					</div>
 				</div>
 			</div>
-			<MapContainerComponent currentLocation={currentLocation} />
+			{currentLocation ? (
+				<MapContainerComponent currentLocation={currentLocation} />
+			) : null}
 		</div>
 	)
 }

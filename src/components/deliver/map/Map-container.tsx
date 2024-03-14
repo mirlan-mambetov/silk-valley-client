@@ -19,7 +19,6 @@ const MapComponent = dynamic(
 	}
 )
 const MapContainerComponent: FC<IMapProps> = ({ currentLocation }) => {
-	const [loadingMap, setLoadingMap] = useState(false)
 	const [coordinates, setCoordinates] = useState<LatLngExpression | undefined>(
 		undefined
 	)
@@ -37,7 +36,6 @@ const MapContainerComponent: FC<IMapProps> = ({ currentLocation }) => {
 					zoom={13}
 					zoomControl={false}
 					scrollWheelZoom={true}
-					whenReady={() => setLoadingMap(true)}
 				>
 					<MapComponent
 						currentLocation={currentLocation}
