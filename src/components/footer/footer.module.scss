@@ -3,70 +3,81 @@
 @import "../../styles/vars";
 
 .footer {
-	background: $darken;
-	.wrap {
+	padding-top: 20px;
+	background: $sectionColor;
+	@include sectionShadow;
+	.columns {
+		display: grid;
+		grid-template-columns: 0.8fr 1fr 1fr 1fr;
+		align-content: center;
 		width: 100%;
 		min-height: 30vh;
 		height: 100%;
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-end;
-		gap: 50px;
-		color: $gray;
-		@include mediaLarge1024px {
-			padding: 20px 0;
-		}
-		@include mediaLarge530px {
-			padding-bottom: 50px;
-			gap: 30px;
-		}
 		.column {
-			font-size: 10px;
-			line-height: 15px;
-			@include mediaLarge480px {
-				font-size: 14px;
-				line-height: 18px;
-			}
-			ul {
-				display: flex;
-				gap: 2px !important;
-				@include mediaLarge1024px {
-					flex-wrap: wrap;
-				}
-				@include mediaLarge480px {
-					flex-direction: column;
-					gap: 4px !important;
-				}
-				li {
-					width: 20% !important;
-					@include mediaLarge1024px {
-						width: 45% !important;
-					}
-					@include mediaLarge480px {
-						width: 100% !important;
-					}
-					a {
-						font-size: 10px !important;
-						line-height: 15px;
-						color: $gray !important;
-						text-transform: uppercase;
-						transition: all 0.1s ease;
-						@include mediaLarge480px {
-							font-size: 12px !important;
-							line-height: 17px;
-						}
-						&:hover {
-							color: $white !important;
-						}
-					}
-				}
-			}
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 5px;
 
-			&:nth-child(2) {
+			.title {
 				display: flex;
-				gap: 12px;
 				align-items: center;
+				font-size: 14px;
+				line-height: 12px;
+				font-weight: 400;
+				height: 30px;
+				color: $purple;
 			}
+			.items {
+				display: flex;
+				flex-direction: column;
+				gap: 6px;
+				.item {
+					display: flex;
+					align-items: center;
+					gap: 12px;
+					font-size: 12px;
+					line-height: 15px;
+					color: $gray;
+				}
+			}
+			.socials {
+				display: none;
+				align-items: center;
+				gap: 15px;
+				margin-top: 5px;
+				.social {
+					color: $gray;
+				}
+			}
+		}
+		@include mediaLarge776px {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+	.bottom {
+		padding: 10px;
+		border: 1px dashed $darkenRGBA;
+		.list {
+			display: grid;
+			grid-template-columns: 0.8fr 1fr 1fr 1fr;
+			.item {
+				color: $gray;
+				font-size: 12px;
+			}
+			@include mediaLarge940px {
+				grid-template-columns: 1fr 1fr 1fr 1fr;
+			}
+			@include mediaLarge830px {
+				grid-template-columns: 1fr 1fr;
+				row-gap: 5px;
+			}
+			@include mediaLarge440px {
+				grid-template-columns: 1fr;
+			}
+		}
+		@include mediaLarge830px {
+			padding: 10px 0;
 		}
 	}
 }

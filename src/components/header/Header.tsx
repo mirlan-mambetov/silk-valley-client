@@ -62,7 +62,7 @@ export const HeaderComponent = () => {
 								{/* END MENU */}
 
 								{/* LOGO */}
-								<LogoComponent />
+								<LogoComponent width={140} height={90} />
 								{/* END LOGO */}
 
 								{/* ACTIONS */}
