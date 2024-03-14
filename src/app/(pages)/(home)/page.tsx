@@ -1,6 +1,6 @@
-import { PROMOTION_DATA } from "@/app/(pages)/promotions/promotions.data"
-import { CardsComponent, PromotionComponent } from "@/components"
+import { CardsComponent } from "@/components"
 import { CARDS_PRODUCT } from "@/components/product/product.data"
+import { TestPromotion } from "@/components/promotion/Test-promotion"
 import { Banner } from "./Banner/Banner"
 import { BANNER_DATA } from "./Banner/banner.data"
 
@@ -17,7 +17,8 @@ const HomePage = () => {
 			{/* PROMOTIONS */}
 			<section>
 				<div className="container">
-					<PromotionComponent data={PROMOTION_DATA} />
+					<TestPromotion />
+					{/* <PromotionComponent data={PROMOTION_DATA} /> */}
 				</div>
 			</section>
 			{/* CARDS*/}
