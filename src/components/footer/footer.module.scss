@@ -66,6 +66,9 @@
 		@include mediaLarge776px {
 			grid-template-columns: 1fr 1fr;
 		}
+		@include mediaLarge480px {
+			min-height: unset;
+		}
 	}
 	.bottom {
 		padding: 10px;
