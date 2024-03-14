@@ -53,6 +53,10 @@
 		@include mediaLarge776px {
 			grid-template-columns: 1fr 1fr;
 		}
+		@include mediaLarge480px {
+			min-height: unset;
+			padding: 10px 0;
+		}
 	}
 	.bottom {
 		padding: 10px;
@@ -76,7 +80,13 @@
 			}
 		}
 		@include mediaLarge830px {
-			padding: 10px 0;
+			padding: 15px 0;
 		}
+	}
+	@include mediaLarge480px {
+		display: flex;
+		flex-direction: column;
+		gap: 17px;
+		padding-top: 12px;
 	}
 }
