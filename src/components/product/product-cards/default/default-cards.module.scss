@@ -62,9 +62,9 @@
 			.featured {
 				opacity: 1;
 			}
-			.button {
+			.buttons {
 				margin: 5px 0;
-				display: block;
+				display: flex;
 			}
 			.content {
 				.name {
@@ -146,8 +146,13 @@
 			}
 		}
 
-		.button {
+		.buttons {
 			display: none;
+			button {
+				display: flex;
+				justify-content: center;
+				width: 100%;
+			}
 			@include mediaLarge1024px {
 				display: flex;
 				justify-content: center;
@@ -167,7 +172,7 @@
 				box-shadow: unset;
 				border-radius: unset;
 				padding: unset;
-				.button {
+				.buttons {
 					margin: unset;
 					display: unset;
 				}

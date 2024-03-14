@@ -1,9 +1,9 @@
 "use client"
 
 import {
-	ButtonComponent,
 	FeaturedComponent,
 	HeadingComponent,
+	ProductActionsComponent,
 	ProductDiscountComponent,
 	ProductPriceComponent,
 } from "@/components"
@@ -81,25 +81,9 @@ export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 									/>
 								</div>
 							</Link>
-							{products.some((item) => item.id === product.id) ? (
-								<ButtonComponent
-									className={style.button}
-									aria-label="Перейти к корзине"
-									btnType="cart"
-									onClick={() => push("/cart")}
-								>
-									Перейти к корзине
-								</ButtonComponent>
-							) : (
-								<ButtonComponent
-									className={style.button}
-									aria-label="В корзину"
-									btnType="cart"
-									onClick={() =>
-										addToCart({ product: { ...product, quantity: 1 } })
-									}
-								/>
-							)}
+							<div className={style.buttons}>
+								<ProductActionsComponent data={product} />
+							</div>
 						</div>
 					</div>
 				))}

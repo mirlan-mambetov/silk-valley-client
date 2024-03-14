@@ -67,7 +67,7 @@
 			grid-template-columns: 1fr 1fr;
 		}
 		@include mediaLarge480px {
-			min-height: unset;
+			min-height: 17vh;
 		}
 	}
 	.bottom {
@@ -105,6 +105,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: 12px;
+		padding-top: 30px;
 		padding-bottom: 50px;
 	}
 }
