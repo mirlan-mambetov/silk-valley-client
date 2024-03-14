@@ -22,7 +22,9 @@ export const HeaderTopComponent = () => {
 								onClick={() => setContentHandler(<DeliverComponent />)}
 							>
 								<span>
-									{(address.city && address.town && address.state) ||
+									{address.city ||
+										address.town ||
+										address.state ||
 										"г. Каракол"}
 								</span>
 							</ButtonComponent>
