@@ -9,8 +9,10 @@ import { useScreen } from "@/hooks/screen/useScreen"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { IProduct } from "@/interfaces/product.interface"
 import cn from "classnames"
+import { useRouter } from "next/navigation"
 import { FC } from "react"
 import { FiEdit2 } from "react-icons/fi"
+import { MdOutlineBorderColor } from "react-icons/md"
 import style from "./product-info.module.scss"
 
 interface IProductInfoComponentProps {
@@ -22,6 +24,7 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 	type = "default",
 }) => {
 	const { setContentHandler } = useScreen()
+	const { push } = useRouter()
 	const { addToCart } = useStoreActions()
 	return (
 		<div
@@ -89,13 +92,16 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 
 				{/* <CartRangeComponent product={pro}/> */}
 
-				<div className={style.buttons}>
-					<ButtonComponent
-						btnType="cart"
-						onClick={() => addToCart({ product: { ...data, quantity: 1 } })}
-					/>
-					<ButtonComponent btnType="cart">Купить сейчас</ButtonComponent>
-				</div>
+				<ButtonComponent
+					className={style.button}
+					onClick={() => {
+						addToCart({ product: { ...data, quantity: 1 } })
+						push("/cart")
+					}}
+				>
+					<MdOutlineBorderColor />
+					<span>Заказать</span>
+				</ButtonComponent>
 			</div>
 		</div>
 	)

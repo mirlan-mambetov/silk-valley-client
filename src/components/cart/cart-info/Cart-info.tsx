@@ -64,7 +64,7 @@ export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 					onClick={() => anchorHanlder("#section-authorization")}
 				>
 					<MdOutlineBorderColor />
-					<span>Заказать</span>
+					<span>Оформить заказ</span>
 				</ButtonComponent>
 			</div>
 		</div>
