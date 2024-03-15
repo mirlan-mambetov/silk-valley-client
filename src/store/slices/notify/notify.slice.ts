@@ -1,5 +1,5 @@
 import { INotifyInitialState } from "@/interfaces/notify.interface"
-import { createSlice } from "@reduxjs/toolkit"
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
 const initialState: INotifyInitialState = {
 	isOpen: false,
@@ -9,8 +9,12 @@ export const notifySlice = createSlice({
 	name: "notify",
 	initialState,
 	reducers: {
-		openNotifyHandler: (state) => {
-			state.isOpen = true
+		openNotifyHandler: (
+			state,
+			{ payload }: PayloadAction<string | undefined>
+		) => {
+			state.isOpen = !state.isOpen
+			state.text = payload
 		},
 		closeNotifyHandler: (state) => {
 			state.isOpen = false

@@ -1,12 +1,14 @@
-import { FooterComponent, HeaderComponent, ScreenComponent } from "@/components"
-import { MobileMenuComponent } from "@/components/mobile/mobile-navigation/Mobile-navigation"
+import { SITE_NAME } from "@/constants/app.constants"
 import { AppProvider } from "@/providers/App.provider"
 import type { Metadata } from "next"
 import { ReactNode } from "react"
 import "../styles/global.scss"
 
 export const metadata: Metadata = {
-	title: "Silk Valley",
+	title: {
+		absolute: SITE_NAME,
+		template: `%s | ${SITE_NAME}`,
+	},
 	description: "Silk Valley. Модный интернет магазин.",
 }
 
@@ -14,13 +16,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
 	return (
 		<html lang="ru">
 			<body>
-				<AppProvider>
-					<HeaderComponent />
-					<MobileMenuComponent />
-					<ScreenComponent />
-					<main className="main">{children}</main>
-					<FooterComponent />
-				</AppProvider>
+				<AppProvider>{children}</AppProvider>
 			</body>
 		</html>
 	)

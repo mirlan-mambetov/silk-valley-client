@@ -2,9 +2,24 @@
 @import "../../styles/mixin";
 @import "../../styles/vars";
 .notify {
-	position: absolute;
+	position: fixed;
 	left: 50%;
 	transform: translateX(-50%);
 	bottom: 50px;
 	z-index: 3000;
+	background: $black;
+	color: $white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 16px;
+	padding: 12px 18px;
+	text-align: center;
+	font-size: 12px;
+	pointer-events: none;
+	@include baseBoxShadow;
+	@include mediaLarge530px {
+		top: 120px;
+		bottom: unset;
+	}
 }

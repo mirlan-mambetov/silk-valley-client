@@ -16,6 +16,8 @@ export const ProductActionsComponent: FC<IProductActionsComponentProps> = ({
 	const { push } = useRouter()
 	const { isExist } = useExistInCart(data)
 	const { addToCart } = useStoreActions()
+	const { openNotifyHandler } = useStoreActions()
+
 	return (
 		<>
 			{isExist ? (
@@ -30,7 +32,10 @@ export const ProductActionsComponent: FC<IProductActionsComponentProps> = ({
 				<ButtonComponent
 					aria-label="В корзину"
 					btnType="cart"
-					onClick={() => addToCart({ product: { ...data, quantity: 1 } })}
+					onClick={() => {
+						addToCart({ product: { ...data, quantity: 1 } })
+						openNotifyHandler("Товар добавлен в корзину")
+					}}
 				/>
 			)}
 		</>

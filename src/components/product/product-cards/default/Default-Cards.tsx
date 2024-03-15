@@ -7,13 +7,10 @@ import {
 	ProductDiscountComponent,
 	ProductPriceComponent,
 } from "@/components"
-import { useCart } from "@/hooks/cart/useCart"
-import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { IProduct } from "@/interfaces/product.interface"
 import cn from "classnames"
 import Image from "next/image"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
 import { FC, useState } from "react"
 import style from "./default-cards.module.scss"
 
@@ -31,9 +28,6 @@ export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 }) => {
 	const limitedData = data.slice(0, limit)
 	const [isHover, setIsHover] = useState(false)
-	const { addToCart } = useStoreActions()
-	const { products } = useCart()
-	const { push } = useRouter()
 
 	return (
 		<div className={style.cards}>

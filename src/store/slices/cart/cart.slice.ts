@@ -5,6 +5,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 interface ICartInitialState {
 	products: ICartProducts[]
 	isExist: boolean
+	isAdd: boolean
 }
 export interface IChangeQuantityPayload extends Pick<IProduct, "id"> {
 	type: "minus" | "plus"
@@ -13,6 +14,7 @@ export interface IChangeQuantityPayload extends Pick<IProduct, "id"> {
 const initialState: ICartInitialState = {
 	isExist: false,
 	products: [],
+	isAdd: false,
 }
 
 export const cartSlice = createSlice({
@@ -26,6 +28,7 @@ export const cartSlice = createSlice({
 			if (!isExist) {
 				state.products?.push({ ...payload.product })
 				state.isExist = false
+				state.isAdd = true
 			}
 			state.isExist = true
 			return
@@ -39,6 +42,7 @@ export const cartSlice = createSlice({
 				(product) => product.id !== payload.id
 			)
 			state.isExist = false
+			state.isAdd = false
 		},
 		changedQuantity: (
 			state,

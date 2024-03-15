@@ -5,7 +5,6 @@ import {
 	ProductActionsComponent,
 	ProductPriceComponent,
 } from "@/components"
-import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { IProduct } from "@/interfaces/product.interface"
 import Image from "next/image"
 import { FC } from "react"
@@ -17,7 +16,6 @@ interface IMobileDetailInfoComponentProps {
 export const MobileDetailInfoComponent: FC<IMobileDetailInfoComponentProps> = ({
 	data,
 }) => {
-	const { addToCart } = useStoreActions()
 	return (
 		<div className={style.mobile}>
 			<div className={style.wrap}>

@@ -21,6 +21,7 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 	products,
 }) => {
 	const { removeFromCart } = useStoreActions()
+	const { openNotifyHandler } = useStoreActions()
 	return (
 		<div className={style.cart}>
 			{products.length ? (
@@ -74,7 +75,10 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 							<div className={style.action}>
 								<ButtonComponent
 									btnType="delete"
-									onClick={() => removeFromCart({ id: product.id })}
+									onClick={() => {
+										removeFromCart({ id: product.id })
+										openNotifyHandler("Товар убран из корзины")
+									}}
 								/>
 							</div>
 							<div className={style.price}>
