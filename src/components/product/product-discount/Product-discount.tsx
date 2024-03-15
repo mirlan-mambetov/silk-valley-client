@@ -23,10 +23,10 @@ export const ProductDiscountComponent: FC<IProductDiscountComponentProps> = ({
 				[style.absolute]: type === "absolute",
 			})}
 		>
-			<div className={style.promotions}>
+			{/* <div className={style.promotions}>
 				{product?.new && <span className={style.new}>Новинка</span>}
 				{product?.isHit && <span className={style.hite}>Хит продаж</span>}
-			</div>
+			</div> */}
 			{product?.discount ? (
 				<div className={style.discount}>
 					<span>- {product.discount}%</span>

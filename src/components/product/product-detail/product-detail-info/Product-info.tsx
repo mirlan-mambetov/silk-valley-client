@@ -5,6 +5,7 @@ import {
 	DeliverComponent,
 	ProductPriceComponent,
 } from "@/components"
+import { useDeliver } from "@/hooks/deliver/useDeliver"
 import { useScreen } from "@/hooks/screen/useScreen"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { IProduct } from "@/interfaces/product.interface"
@@ -26,6 +27,8 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 	const { setContentHandler } = useScreen()
 	const { push } = useRouter()
 	const { addToCart } = useStoreActions()
+	const { address } = useDeliver()
+
 	return (
 		<div
 			className={cn(style.info, {
@@ -37,7 +40,12 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 				<div className={style.box}>
 					<small>Доставка</small>
 					<div className={style.box_item}>
-						<span> Иссык - Кульская область. г. Каракол</span>
+						<span>
+							{address.city ||
+								address.town ||
+								address.state ||
+								"Иссык - Кульская область. г. Каракол"}{" "}
+						</span>
 						<ButtonComponent
 							title="Выбрать координаты доставки"
 							onClick={() => setContentHandler(<DeliverComponent />)}
