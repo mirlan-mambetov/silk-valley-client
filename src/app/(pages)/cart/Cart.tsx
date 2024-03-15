@@ -6,6 +6,7 @@ import {
 	CartInfoComponent,
 	CartProductComponent,
 	DeliverComponent,
+	DeliverDetailComponent,
 	HeadingComponent,
 } from "@/components"
 import { FC } from "react"
@@ -13,6 +14,7 @@ import { FC } from "react"
 import { FaUser } from "react-icons/fa6"
 
 import { useCart } from "@/hooks/cart/useCart"
+import { useDeliver } from "@/hooks/deliver/useDeliver"
 import { useScreen } from "@/hooks/screen/useScreen"
 import { scrollToSection } from "@/utils/scrollToAnchor"
 import { FaMapMarkerAlt } from "react-icons/fa"
@@ -21,6 +23,8 @@ import style from "./cart.module.scss"
 export const Cart: FC = () => {
 	const { setContentHandler } = useScreen()
 	const { products } = useCart()
+	const { address } = useDeliver()
+
 	return (
 		<>
 			<HeadingComponent text="Корзина" length={products.length} />
@@ -50,15 +54,19 @@ export const Cart: FC = () => {
 						<h5 className={style.title}>
 							<span>Детали доставки </span>
 						</h5>
-						<div className={style.out}>
-							<ButtonComponent
-								className={style.button}
-								onClick={() => setContentHandler(<DeliverComponent />)}
-							>
-								<FaMapMarkerAlt />
-								Выберите координаты
-							</ButtonComponent>
-						</div>
+						{Object.keys(address).length ? (
+							<DeliverDetailComponent />
+						) : (
+							<div className={style.out}>
+								<ButtonComponent
+									className={style.button}
+									onClick={() => setContentHandler(<DeliverComponent />)}
+								>
+									<FaMapMarkerAlt />
+									Выберите координаты
+								</ButtonComponent>
+							</div>
+						)}
 					</div>
 				</div>
 			</div>
