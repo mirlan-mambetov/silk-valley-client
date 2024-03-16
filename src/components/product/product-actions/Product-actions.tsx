@@ -9,9 +9,15 @@ import { FC } from "react"
 
 interface IProductActionsComponentProps {
 	data: IProduct
+	disabled?: boolean
+	color?: string
+	size?: string
 }
 export const ProductActionsComponent: FC<IProductActionsComponentProps> = ({
 	data,
+	disabled,
+	color,
+	size,
 }) => {
 	const { push } = useRouter()
 	const { isExist } = useExistInCart(data)
@@ -22,6 +28,7 @@ export const ProductActionsComponent: FC<IProductActionsComponentProps> = ({
 		<>
 			{isExist ? (
 				<ButtonComponent
+					disabled={disabled}
 					aria-label="Перейти к корзине"
 					btnType="cart"
 					onClick={() => push("/cart")}
@@ -30,10 +37,11 @@ export const ProductActionsComponent: FC<IProductActionsComponentProps> = ({
 				</ButtonComponent>
 			) : (
 				<ButtonComponent
-					aria-label="В корзину"
+					disabled={disabled}
+					aria-label="Просмотр"
 					btnType="cart"
 					onClick={() => {
-						addToCart({ product: { ...data, quantity: 1 } })
+						addToCart({ product: { ...data, quantity: 1, size, color } })
 						openNotifyHandler("Товар добавлен в корзину")
 					}}
 				/>

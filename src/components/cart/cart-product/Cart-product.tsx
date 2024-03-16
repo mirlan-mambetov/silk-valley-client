@@ -52,13 +52,13 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 									<div className={style.item}>
 										<MdInvertColors />
 										<span>
-											Цвет: <small>Черный</small>
+											Цвет: <small>{product.color}</small>
 										</span>
 									</div>
 									<div className={style.item}>
 										<IoResizeOutline />
 										<span>
-											Размер: <small>32x</small>
+											Размер: <small>{product.size}</small>
 										</span>
 									</div>
 								</div>

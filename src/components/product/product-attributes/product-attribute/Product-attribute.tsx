@@ -1,6 +1,7 @@
 "use client"
 
 import { ButtonComponent } from "@/components"
+import { useSelectedAttributes } from "@/hooks/cart/useSelectedAttributes"
 import cn from "classnames"
 import { DetailsHTMLAttributes, FC, useState } from "react"
 import style from "./product.attribute.module.scss"
@@ -10,6 +11,7 @@ interface IProducAttributeProps extends DetailsHTMLAttributes<HTMLDivElement> {
 	data: string[]
 	orientation?: "row" | "column"
 	size?: "1xl" | "2xl"
+	selectedValueHandler: (value: string) => void
 }
 export const ProducAttributeComponent: FC<IProducAttributeProps> = ({
 	data,
@@ -17,8 +19,10 @@ export const ProducAttributeComponent: FC<IProducAttributeProps> = ({
 	orientation = "row",
 	size = "2xl",
 	className,
+	selectedValueHandler,
 }) => {
 	const [active, setActive] = useState(0)
+	const { size: stateSize, color } = useSelectedAttributes()
 
 	return (
 		<div
@@ -31,7 +35,10 @@ export const ProducAttributeComponent: FC<IProducAttributeProps> = ({
 			<div className={style.box}>
 				{data.map((item, i) => (
 					<ButtonComponent
-						onClick={() => setActive(i)}
+						onClick={() => {
+							setActive(i)
+							selectedValueHandler(item)
+						}}
 						className={cn({ [style.active_btn]: i === active })}
 						key={i}
 					>

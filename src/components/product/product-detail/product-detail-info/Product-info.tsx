@@ -5,6 +5,7 @@ import {
 	DeliverComponent,
 	ProductPriceComponent,
 } from "@/components"
+import { useSelectedAttributes } from "@/hooks/cart/useSelectedAttributes"
 import { useDeliver } from "@/hooks/deliver/useDeliver"
 import { useScreen } from "@/hooks/screen/useScreen"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
@@ -28,6 +29,7 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 	const { push } = useRouter()
 	const { addToCart } = useStoreActions()
 	const { address } = useDeliver()
+	const { size, color } = useSelectedAttributes()
 
 	return (
 		<div
@@ -44,7 +46,7 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 							{address.city ||
 								address.town ||
 								address.state ||
-								"Иссык - Кульская область. г. Каракол"}{" "}
+								"Иссык - Кульская область. г. Каракол"}
 						</span>
 						<ButtonComponent
 							title="Выбрать координаты доставки"
@@ -84,26 +86,31 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 					)}
 				</div>
 
-				<div className={style.box}>
-					<small>Цвет</small>
-					<div className={style.box_item}>
-						<span>White&Black</span>
+				{color && (
+					<div className={style.box}>
+						<small>Цвет</small>
+						<div className={style.box_item}>
+							<span>{color}</span>
+						</div>
 					</div>
-				</div>
+				)}
 
-				<div className={style.box}>
-					<small>Размеры</small>
-					<div className={style.box_item}>
-						<span>32X</span>
+				{size && (
+					<div className={style.box}>
+						<small>Размеры</small>
+						<div className={style.box_item}>
+							<span>{size}</span>
+						</div>
 					</div>
-				</div>
+				)}
 
 				{/* <CartRangeComponent product={pro}/> */}
 
 				<ButtonComponent
+					disabled={!color || !size}
 					className={style.button}
 					onClick={() => {
-						addToCart({ product: { ...data, quantity: 1 } })
+						addToCart({ product: { ...data, quantity: 1, color, size } })
 						push("/cart")
 					}}
 				>

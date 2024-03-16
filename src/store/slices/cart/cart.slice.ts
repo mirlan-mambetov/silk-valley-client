@@ -33,6 +33,23 @@ export const cartSlice = createSlice({
 			state.isExist = true
 			return
 		},
+		updateProductAttributeInCart: (
+			state,
+			{
+				payload,
+			}: PayloadAction<{ productId: number; color?: string; size?: string }>
+		) => {
+			const { productId, color, size } = payload
+			const productIndex = state.products.findIndex(
+				(product) => product.id === productId
+			)
+			if (productIndex !== -1) {
+				const updatedProduct = { ...state.products[productIndex] }
+				if (color) updatedProduct.color = color
+				if (size) updatedProduct.size = size
+				state.products[productIndex] = updatedProduct
+			}
+		},
 		clearCart: (state) => {
 			state.isExist = false
 			state.products = []
