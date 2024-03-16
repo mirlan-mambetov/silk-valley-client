@@ -39,7 +39,10 @@ export const ProducAttributeComponent: FC<IProducAttributeProps> = ({
 							setActive(i)
 							selectedValueHandler(item)
 						}}
-						className={cn({ [style.active_btn]: i === active })}
+						className={cn({
+							[style.active_btn]:
+								(color && item === color) || (stateSize && item === stateSize),
+						})}
 						key={i}
 					>
 						{item}
