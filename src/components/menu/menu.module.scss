@@ -32,7 +32,7 @@
 		&.row {
 			display: flex;
 			flex-wrap: wrap;
-			gap: 7px;
+			gap: 8px;
 			@include mediaLarge480px {
 				gap: 12px;
 			}
