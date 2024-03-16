@@ -1,31 +1,12 @@
 "use client"
 
 import { ButtonComponent } from "@/components/button/Button"
-import {
-	clearSessionStorage,
-	getSessionStorage,
-	setSessionStorage,
-} from "@/helpers/session.storage.helper"
-import { FC, useEffect, useState } from "react"
+import { useSessionVisited } from "@/hooks/session-storage/useSessionVisited"
+import { FC } from "react"
 import style from "./notify.header.module.scss"
 
 export const NotifyHeaderComponent: FC = () => {
-	const [isVisited, setIsVisited] = useState(false)
-
-	useEffect(() => {
-		const visited = getSessionStorage()
-		if (!visited) {
-			setIsVisited(true)
-			setSessionStorage("true")
-		}
-
-		return () => clearSessionStorage()
-	}, [])
-
-	const handleDismiss = () => {
-		clearSessionStorage()
-		setIsVisited(false)
-	}
+	const { handleDismiss, isVisited } = useSessionVisited()
 
 	return isVisited ? (
 		<div className={style.header}>

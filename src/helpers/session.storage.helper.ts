@@ -6,5 +6,5 @@ export const getSessionStorage = () => {
 	return isVisit
 }
 export const clearSessionStorage = () => {
-	sessionStorage.clear()
+	setSessionStorage("true")
 }
