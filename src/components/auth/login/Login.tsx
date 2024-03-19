@@ -30,7 +30,9 @@ export const LoginComponent: FC<IAuthProps> = ({ animate, setChoice }) => {
 						<FieldComponent id="password" type="text" />
 					</div>
 					<div className={style.button}>
-						<ButtonComponent aria-label="Войти">Вход</ButtonComponent>
+						<ButtonComponent aria-label="Войти" btnType="submit">
+							Вход
+						</ButtonComponent>
 					</div>
 				</form>
 				<div className={style.bottom}>

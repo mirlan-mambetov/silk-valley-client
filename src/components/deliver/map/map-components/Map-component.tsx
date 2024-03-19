@@ -27,8 +27,8 @@ const MapComponent: FC<IMapProps> = ({ currentLocation, coordinates }) => {
 
 	const map = useMapEvents({
 		click(e) {
-			clickHandler()
-			if (clickBlocked) return
+			// clickHandler()
+			// if (clickBlocked) return
 			setClickPoint(e.latlng)
 			setSelectedPoint(e.latlng)
 		},

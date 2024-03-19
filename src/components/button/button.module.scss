@@ -63,7 +63,23 @@
 		padding: 10px 6px;
 	}
 }
-
+.submit {
+	display: flex;
+	align-items: center;
+	gap: 7px;
+	justify-content: center;
+	width: 100%;
+	padding: 12px 22px;
+	background: $purple;
+	border-radius: 10px;
+	@include buttonHover;
+	font-size: 14px;
+	line-height: 18px;
+	color: $white;
+	span {
+		color: $white !important;
+	}
+}
 @-webkit-keyframes changeBackground {
 	0% {
 		background-position: 0% 50%;

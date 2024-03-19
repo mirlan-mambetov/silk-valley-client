@@ -32,6 +32,9 @@
 			font-weight: 400;
 			color: $darken;
 			span {
+				display: flex;
+				flex-direction: column;
+				gap: 4px;
 				@include dashdeLine;
 			}
 		}

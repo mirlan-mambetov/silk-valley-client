@@ -5,6 +5,13 @@
 .information {
 	display: flex;
 	flex-direction: column;
+	.button {
+		font-size: 12px;
+		border: 1px dashed $darkenRGBA;
+		padding: 10px 0;
+		border-radius: 8px;
+		color: $purple;
+	}
 	&.default {
 		position: unset;
 		gap: 12px;
@@ -43,7 +50,7 @@
 					}
 				}
 			}
-			&:nth-child(2) {
+			&:nth-child(3) {
 				display: none;
 			}
 		}
@@ -109,6 +116,9 @@
 						@include dashdeLine;
 					}
 				}
+			}
+			&:nth-child(3) {
+				display: flex;
 			}
 		}
 		@include mediaLarge830px {

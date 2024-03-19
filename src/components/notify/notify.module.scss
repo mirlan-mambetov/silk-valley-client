@@ -18,8 +18,4 @@
 	font-size: 12px;
 	pointer-events: none;
 	@include baseBoxShadow;
-	@include mediaLarge530px {
-		top: 120px;
-		bottom: unset;
-	}
 }

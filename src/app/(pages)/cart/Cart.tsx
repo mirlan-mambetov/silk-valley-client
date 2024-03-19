@@ -55,7 +55,7 @@ export const Cart: FC = () => {
 							<span>Детали доставки </span>
 						</h5>
 						{Object.keys(address).length ? (
-							<DeliverDetailComponent />
+							<DeliverDetailComponent position="default" />
 						) : (
 							<div className={style.out}>
 								<ButtonComponent

@@ -11,11 +11,12 @@ import { IoCloseOutline } from "react-icons/io5"
 import { LuPercent } from "react-icons/lu"
 
 import { CgRemove } from "react-icons/cg"
+import { IoMdSend } from "react-icons/io"
 import style from "./button.module.scss"
 
 type IButtonComponentProps = {
 	isExistOnCart?: boolean
-	btnType?: "default" | "cart" | "closed" | "promo" | "delete"
+	btnType?: "default" | "cart" | "closed" | "promo" | "delete" | "submit"
 	children?: ReactNode
 	size?: "xl1" | "xxl1" | "xl2"
 } & ButtonHTMLAttributes<HTMLButtonElement> &
@@ -30,6 +31,22 @@ export const ButtonComponent: FC<IButtonComponentProps> = ({
 	...props
 }) => {
 	switch (btnType) {
+		case "submit":
+			return (
+				<button
+					className={cn(style.button, style.submit, className)}
+					{...props}
+				>
+					{children ? (
+						children
+					) : (
+						<>
+							<IoMdSend />
+							<span>Отправить</span>
+						</>
+					)}
+				</button>
+			)
 		case "delete":
 			return (
 				<button

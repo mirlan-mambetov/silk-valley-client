@@ -6,7 +6,18 @@ interface IDeliverInitialState {
 }
 
 const initialState: IDeliverInitialState = {
-	address: {},
+	address: {
+		city: "",
+		city_district: "",
+		country: "",
+		country_code: "",
+		house_number: "",
+		postCode: "",
+		road: "",
+		state: "",
+		town: "",
+		village: "",
+	},
 }
 
 export const deliverSlice = createSlice({
@@ -15,6 +26,16 @@ export const deliverSlice = createSlice({
 	reducers: {
 		addDeliverAddress: (state, { payload }: PayloadAction<IDeliverPoint>) => {
 			state.address = payload
+		},
+		updateDeliverAddress: (
+			state,
+			{ payload }: PayloadAction<IDeliverPoint>
+		) => {
+			Object.entries(payload).forEach(([key, value]) => {
+				if (value !== undefined && value !== "") {
+					state.address[key] = value
+				}
+			})
 		},
 	},
 	extraReducers: (build) => {},
