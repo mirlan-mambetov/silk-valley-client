@@ -3,7 +3,7 @@
 import { ButtonComponent } from "@/components"
 import { useSelectedAttributes } from "@/hooks/cart/useSelectedAttributes"
 import cn from "classnames"
-import { DetailsHTMLAttributes, FC, useState } from "react"
+import { DetailsHTMLAttributes, FC } from "react"
 import style from "./product.attribute.module.scss"
 
 interface IProducAttributeProps extends DetailsHTMLAttributes<HTMLDivElement> {
@@ -21,7 +21,6 @@ export const ProducAttributeComponent: FC<IProducAttributeProps> = ({
 	className,
 	selectedValueHandler,
 }) => {
-	const [active, setActive] = useState(0)
 	const { size: stateSize, color } = useSelectedAttributes()
 
 	return (
@@ -36,7 +35,6 @@ export const ProducAttributeComponent: FC<IProducAttributeProps> = ({
 				{data.map((item, i) => (
 					<ButtonComponent
 						onClick={() => {
-							setActive(i)
 							selectedValueHandler(item)
 						}}
 						className={cn({

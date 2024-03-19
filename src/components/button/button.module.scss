@@ -61,6 +61,9 @@
 	font-size: 14px;
 	font-weight: 500;
 	@include buttonHover;
+	@include mediaLarge380px {
+		padding: 10px 6px;
+	}
 }
 
 @keyframes changeBackground {

@@ -49,17 +49,17 @@ export const MobileDetailInfoComponent: FC<IMobileDetailInfoComponentProps> = ({
 							<ProducAttributeComponent
 								selectedValueHandler={(value) => setColorHandler(value)}
 								className={style.attribute}
+								data={["Черный", "Белый", "Зеленый", "Черно&Белый"]}
 								title="Цвета"
-								data={["Черный", "Белый", "Зеленый", "Черно-белый"]}
 								size="1xl"
 							/>
 						</div>
 						<div className={style.item}>
 							<ProducAttributeComponent
 								selectedValueHandler={(value) => setSizeHandler(value)}
-								title="Размеры"
 								className={style.attribute}
-								data={["32x", "34x", "36x", "38x"]}
+								data={["32xl", "34xl", "38xl", "48XXL"]}
+								title="Размеры"
 								size="1xl"
 							/>
 						</div>

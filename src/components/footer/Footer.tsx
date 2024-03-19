@@ -11,6 +11,7 @@ import { IoLogoWhatsapp } from "react-icons/io"
 import style from "./footer.module.scss"
 
 export const FooterComponent: FC = () => {
+	const currentDate = new Date().getFullYear()
 	return (
 		<div className={style.footer}>
 			<div className="container">
@@ -67,7 +68,7 @@ export const FooterComponent: FC = () => {
 							</svg>
 						</h5>
 						<div className={style.items}>
-							<span className={style.item}>Silk Valley @2024</span>
+							<span className={style.item}>Silk Valley @{currentDate}</span>
 							<span className={style.item}>Все права защищены</span>
 						</div>
 						<div className={style.socials}>
