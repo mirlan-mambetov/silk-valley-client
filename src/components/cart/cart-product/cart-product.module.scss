@@ -9,14 +9,13 @@
 		align-items: center;
 		position: relative;
 		padding: 10px;
-		-webkit-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.04);
-		-moz-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.04);
 		box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.04);
 		border-radius: 5px;
 		.content {
 			display: grid;
 			grid-template-columns: 0.1fr 1fr;
 			align-items: center;
+			-moz-column-gap: 15px;
 			column-gap: 15px;
 			.image {
 				position: relative;
@@ -91,8 +90,6 @@
 				justify-content: flex-start;
 			}
 			@include mediaLarge530px {
-				-webkit-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.03);
-				-moz-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.03);
 				box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.03);
 				border-radius: 6px;
 				padding: 6px 0;

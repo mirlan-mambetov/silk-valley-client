@@ -5,6 +5,9 @@
 .select {
 	position: relative;
 	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
 	user-select: none;
 
 	&_placeholder {
@@ -56,16 +59,17 @@
 	&_item {
 		font-size: 14px;
 		font-weight: 500;
-		border-radius: 3px;
+		border-radius: 8px;
 		cursor: pointer;
 		z-index: 8;
 		transition: background 0.2s ease;
-		padding-left: 25px;
+		padding: 10px 0px 10px 25px;
 		@include mediaLarge480px {
 			padding-left: 22px;
 		}
 		&:hover {
 			background: $gray;
+			color: $white;
 		}
 		&.disabled {
 			pointer-events: none;

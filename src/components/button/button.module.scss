@@ -20,8 +20,6 @@
 	padding: 5px;
 	border-radius: 50px;
 	color: $purple;
-	-webkit-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.04);
-	-moz-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.04);
 	box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.04);
 }
 .promo {
@@ -63,6 +61,20 @@
 	@include buttonHover;
 	@include mediaLarge380px {
 		padding: 10px 6px;
+	}
+}
+
+@-webkit-keyframes changeBackground {
+	0% {
+		background-position: 0% 50%;
+	}
+
+	50% {
+		background-position: 100% 50%;
+	}
+
+	100% {
+		background-position: 0% 50%;
 	}
 }
 

@@ -2,6 +2,7 @@
 @import "../../../../styles/vars";
 @import "../../../../styles/media.mixin";
 .info {
+	position: -webkit-sticky;
 	position: sticky;
 	top: 20px;
 	@include baseBoxShadow;

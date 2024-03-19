@@ -14,16 +14,21 @@
 	.wrap {
 		&.xl2 {
 			display: grid;
-			grid-template-columns: repeat(2, calc(100% / 2 - 20px / 2 * (2 - 1)));
-			grid-template-rows: repeat(2, calc(360px / 2 - 20px / 2 * (2 - 1)));
-			column-gap: 20px;
-			row-gap: 20px;
+			grid-template-columns: repeat(2, calc(100% / 2 - 12px / 2 * (2 - 1)));
+			grid-template-rows: repeat(2, calc(360px / 2 - 12px / 2 * (2 - 1)));
+			-moz-column-gap: 12px;
+			column-gap: 12px;
+			row-gap: 12px;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
 			user-select: none;
 			@include mediaLarge1024px {
-				column-gap: 12px;
-				row-gap: 12px;
-				grid-template-columns: repeat(1, calc(100% / 1 - 12px / 1 * (1 - 1)));
-				grid-template-rows: repeat(4, calc(360px / 2 - 12px / 2 * (2 - 1)));
+				-moz-column-gap: 8px;
+				column-gap: 8px;
+				row-gap: 8px;
+				grid-template-columns: repeat(1, calc(100% / 1 - 8px / 1 * (1 - 1)));
+				grid-template-rows: repeat(4, calc(360px / 2 - 8px / 2 * (2 - 1)));
 			}
 			@include mediaLarge440px {
 				grid-template-rows: repeat(4, calc(300px / 2 - 12px / 2 * (2 - 1)));
@@ -31,8 +36,12 @@
 		}
 		&.xl3 {
 			display: grid;
+			-moz-column-gap: 12px;
 			column-gap: 12px;
 			row-gap: 12px;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
 			user-select: none;
 			grid-template-columns: repeat(3, calc(100% / 3 - 12px / 3 * (3 - 1)));
 			grid-template-rows: repeat(2, calc(300px / 2 - 12px / 2 * (2 - 1)));
@@ -68,6 +77,7 @@
 				}
 			}
 			@include mediaLarge1024px {
+				-moz-column-gap: 12px;
 				column-gap: 12px;
 				row-gap: 12px;
 				grid-template-columns: repeat(2, calc(100% / 2 - 12px / 2 * (2 - 1)));

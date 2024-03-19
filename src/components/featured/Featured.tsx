@@ -1,3 +1,5 @@
+"use client"
+
 import { GoHeart } from "react-icons/go"
 
 import cn from "classnames"

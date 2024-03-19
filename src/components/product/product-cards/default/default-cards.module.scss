@@ -8,6 +8,7 @@
 		position: relative;
 		display: grid;
 		grid-template-columns: repeat(6, calc(100% / 6 - 5px / 6 * (6 - 1)));
+		-moz-column-gap: 5px;
 		column-gap: 5px;
 		row-gap: 12px;
 		@include mediaLarge1024px {
@@ -19,10 +20,12 @@
 		}
 		@include mediaLarge530px {
 			grid-template-columns: repeat(2, calc(100% / 2 - 10px / 2 * (2 - 1)));
+			-moz-column-gap: 10px;
 			column-gap: 10px;
 		}
 		@include mediaLarge480px {
 			grid-template-columns: repeat(2, calc(100% / 2 - 4px / 2 * (2 - 1)));
+			-moz-column-gap: 4px;
 			column-gap: 4px;
 		}
 		&.grid5 {
@@ -37,8 +40,6 @@
 	gap: 12px;
 	padding: 5px;
 	border-radius: 5px;
-	-webkit-box-shadow: 0px 10px 23px 3px rgba(34, 30, 40, 0.02);
-	-moz-box-shadow: 0px 10px 23px 3px rgba(34, 30, 40, 0.02);
 	box-shadow: 0px 10px 23px 3px rgba(34, 30, 40, 0.02);
 	border: 1px dashed $darkenRGBA;
 	.card_wrap {
@@ -54,8 +55,6 @@
 			bottom: revert-layer;
 			background: $white;
 			z-index: 10;
-			-webkit-box-shadow: 0px 10px 23px 3px rgba(34, 60, 40, 0.07);
-			-moz-box-shadow: 0px 10px 23px 3px rgba(34, 60, 40, 0.07);
 			box-shadow: 0px 10px 23px 3px rgba(34, 60, 40, 0.07);
 			border-radius: 4px;
 			padding: 10px;
