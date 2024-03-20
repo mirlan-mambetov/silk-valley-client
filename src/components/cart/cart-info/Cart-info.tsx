@@ -11,6 +11,7 @@ import { FaMapMarkerAlt } from "react-icons/fa"
 import { MdOutlineBorderColor } from "react-icons/md"
 
 import { useCartPriceCalculate } from "@/hooks/cart/useCartPriceCalculate"
+import { useDeliver } from "@/hooks/deliver/useDeliver"
 import { useScreen } from "@/hooks/screen/useScreen"
 import { ICartProducts } from "@/interfaces/cart.interface"
 import style from "./cart-info.module.scss"
@@ -25,7 +26,7 @@ export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 }) => {
 	const { setContentHandler } = useScreen()
 	const { totalPrice, totalDiscount } = useCartPriceCalculate(products)
-
+	const { address } = useDeliver()
 	return (
 		<div className={style.info}>
 			<div className={style.wrap}>
@@ -33,7 +34,11 @@ export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 					className={style.deliver}
 					onClick={() => setContentHandler(<DeliverComponent />)}
 				>
-					<span>Выбрать адрес доставки</span>
+					<span>
+						{address.city || address.town || address.village
+							? address.city || address.town || address.village
+							: "Выбрать адрес доставки"}
+					</span>
 					<small>
 						<FaMapMarkerAlt />
 					</small>
