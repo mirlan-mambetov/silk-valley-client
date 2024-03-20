@@ -4,6 +4,7 @@ import { ButtonComponent } from "@/components/button/Button"
 import { useDeliver } from "@/hooks/deliver/useDeliver"
 import cn from "classnames"
 import { FC, useState } from "react"
+import { IoSettingsOutline } from "react-icons/io5"
 import style from "./deliver.detail.module.scss"
 import { DeliverDetailForm } from "./form/Deliver-detail-form"
 
@@ -31,62 +32,82 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 						<div className={style.rows}>
 							{address.country && (
 								<div className={style.row}>
-									<small>Страна:</small>
-									<span>{address.country}</span>
+									<div className={style.content}>
+										<small>Страна:</small>
+										<span>{address.country}</span>
+									</div>
 								</div>
 							)}
 							{address.state && (
 								<div className={style.row}>
-									<small>Область:</small>
-									<span>{address.state.replace("область", "")}</span>
+									<div className={style.content}>
+										<small>Область:</small>
+										<span>{address.state.replace("область", "")}</span>
+									</div>
 								</div>
 							)}
 							{address.city && (
 								<div className={style.row}>
-									<small>Город:</small>
-									<span>{address.city.replace("город", "")}</span>
+									<div className={style.content}>
+										<small>Город:</small>
+										<span>{address.city.replace("город", "")}</span>
+									</div>
 								</div>
 							)}
 							{address.village && (
 								<div className={style.row}>
-									<small>Село:</small>
-									<span>{address.village}</span>
+									<div className={style.content}>
+										<small>Село:</small>
+										<span>{address.village}</span>
+									</div>
 								</div>
 							)}
 							{address.town && (
 								<div className={style.row}>
-									<small>Районный центр:</small>
-									<span>{address.town}</span>
+									<div className={style.content}>
+										<small>Районный центр:</small>
+										<span>{address.town}</span>
+									</div>
 								</div>
 							)}
 							{address.city_district && (
 								<div className={style.row}>
-									<small>Район:</small>
-									<span>{address.city_district}</span>
+									<div className={style.content}>
+										<small>Район:</small>
+										<span>{address.city_district}</span>
+									</div>
 								</div>
 							)}
 							{address.country_code && (
 								<div className={style.row}>
-									<small>Код страны:</small>
-									<span>{address.country_code.toUpperCase()}</span>
+									<div className={style.content}>
+										<small>Код страны:</small>
+										<span>{address.country_code.toUpperCase()}</span>
+									</div>
 								</div>
 							)}
 							{address.road && (
 								<div className={style.row}>
-									<small>Улица:</small>
-									<span>{address.road.replace("улица", "")}</span>
+									<div className={style.content}>
+										<small>Улица:</small>
+										<span>{address.road.replace("улица", "")}</span>
+									</div>
 								</div>
 							)}
 							{address.house_number && (
 								<div className={style.row}>
-									<small>Дом №:</small>
-									<span>{address.house_number}</span>
+									<div className={style.content}>
+										<small>Дом №:</small>
+										<span>{address.house_number}</span>
+									</div>
 								</div>
 							)}
 							{address.postCode && (
 								<div className={style.row}>
-									<small>Почтовый индекс:</small>
-									<span>{address.postCode}</span>
+									<div className={style.content}>
+										<small>Почтовый индекс:</small>
+										<span>{address.postCode}</span>
+									</div>
 								</div>
 							)}
 						</div>
@@ -100,6 +121,7 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 				onClick={() => setRefine(!refine)}
 				className={style.button}
 			>
+				<IoSettingsOutline />
 				{!refine ? "Уточнить?" : "Готово"}
 			</ButtonComponent>
 			<div className={style.wrap}>
@@ -108,12 +130,16 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 				</h5>
 				<div className={style.rows}>
 					<div className={style.row}>
-						<small>г. Каракол:</small>
-						<span>Тыныстанова 130</span>
+						<div className={style.content}>
+							<small>г. Каракол:</small>
+							<span>Тыныстанова 130</span>
+						</div>
 					</div>
 					<div className={style.row}>
-						<small>г. Бишкек:</small>
-						<span>Ахунбаева 140</span>
+						<div className={style.content}>
+							<small>г. Бишкек:</small>
+							<span>Ахунбаева 140</span>
+						</div>
 					</div>
 				</div>
 			</div>

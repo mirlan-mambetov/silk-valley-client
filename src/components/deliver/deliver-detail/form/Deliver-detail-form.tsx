@@ -40,7 +40,9 @@ export const DeliverDetailForm: FC = () => {
 						{...register("postCode")}
 					/>
 				</div>
-				<ButtonComponent btnType="submit" children="Изменить" />
+				<div className={style.submit}>
+					<ButtonComponent btnType="submit" children="Изменить" />
+				</div>
 			</form>
 		</div>
 	)

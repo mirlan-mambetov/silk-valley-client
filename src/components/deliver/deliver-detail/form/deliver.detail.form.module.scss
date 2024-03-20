@@ -23,8 +23,8 @@
 		.field {
 			position: relative;
 			input {
-				border-radius: 5px;
-				padding: 6px;
+				border-radius: 12px;
+				padding: 12px;
 				border: 1px solid $darkenRGBA;
 				font-size: 14px;
 				font-weight: 400;
@@ -32,6 +32,16 @@
 				&::placeholder {
 					font-size: 10px;
 				}
+			}
+		}
+		.submit {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			button {
+				display: flex;
+				width: 100%;
+				padding: 10px 0;
 			}
 		}
 	}
