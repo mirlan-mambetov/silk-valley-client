@@ -1,6 +1,7 @@
 "use client"
 
 import { GeoSearchControl, OpenStreetMapProvider } from "leaflet-geosearch"
+import "leaflet-geosearch/dist/geosearch.css"
 import { useEffect } from "react"
 import { useMap } from "react-leaflet"
 
@@ -11,13 +12,13 @@ export const MapSearchComponent = () => {
 		provider: new OpenStreetMapProvider(),
 		style: "bar",
 		position: "topright",
-		showMarker: false,
-		showPopup: false,
+		showMarker: true,
+		showPopup: true,
 		autoClose: false,
 		retainZoomLevel: false,
 		animateZoom: true,
 		keepResult: false,
-		searchLabel: "Enter Address",
+		searchLabel: "Введите адрес",
 	})
 
 	useEffect(() => {
