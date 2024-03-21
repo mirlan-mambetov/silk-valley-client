@@ -21,16 +21,14 @@ export const ScreenComponent: FC = () => {
 			animate={isOpen ? "open" : "closed"}
 			className={style.screen}
 		>
-			<div className="container">
-				<ButtonComponent
-					className={style.close}
-					onClick={clearContentHandler}
-					btnType="closed"
-					size="xl2"
-				></ButtonComponent>
-				{/* CONTENT */}
-				<div className={style.content}>{content}</div>
-			</div>
+			<ButtonComponent
+				className={style.close}
+				onClick={clearContentHandler}
+				btnType="closed"
+				size="xl2"
+			></ButtonComponent>
+			{/* CONTENT */}
+			<div className={style.content}>{content}</div>
 		</motion.div>
 	)
 }

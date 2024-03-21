@@ -21,8 +21,7 @@
 		box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.2);
 	}
 	.content {
-		padding-top: 20px;
-		padding-left: 10px;
+		padding: 10px;
 		width: 100%;
 		min-height: 80vh;
 		@include mediaLarge530px {
