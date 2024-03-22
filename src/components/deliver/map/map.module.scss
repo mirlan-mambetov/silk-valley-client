@@ -15,10 +15,11 @@
 .leaflet {
 	position: absolute;
 	top: 0;
-	left: 0;
-	width: 100%;
+	left: 50px;
+	right: 50px;
 	height: 100%;
 	outline: none;
+	border-radius: 5px;
 	&:focus {
 		outline: none !important;
 	}
@@ -33,26 +34,25 @@
 
 .navigation {
 	position: absolute;
-	top: 100px;
-	right: 10px;
+	top: 20px;
+	left: 100px;
+	right: 100px;
 	z-index: 3000;
 	display: flex;
-	flex-direction: column;
+	justify-content: space-between;
 	gap: 12px;
 	.button {
-		button {
-			pointer-events: all;
-			display: flex;
-			align-items: center;
-			gap: 4px;
-			font-size: 18px;
-			background: $white;
-			padding: 5px;
-			border-radius: 4px;
-			@include baseBoxShadow;
-			span {
-				font-size: 14px;
-			}
+		pointer-events: all;
+		display: flex;
+		align-items: center;
+		gap: 4px;
+		font-size: 22px;
+		background: $white;
+		padding: 10px;
+		border-radius: 10px;
+		@include baseBoxShadow;
+		span {
+			font-size: 14px;
 		}
 	}
 	@include mediaLarge480px {

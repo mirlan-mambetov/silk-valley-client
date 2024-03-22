@@ -1,7 +1,5 @@
 "use client"
 
-import { ButtonComponent } from "@/components/button/Button"
-import { FieldComponent } from "@/components/field-component/Field-component"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { IDeliverForm } from "@/interfaces/deliver.interface"
 import { FC } from "react"
@@ -21,7 +19,12 @@ export const DeliverDetailForm: FC = () => {
 	return (
 		<div className={style.wrap}>
 			<span className="section-title">Уточнить адрес</span>
-			<form className={style.form} onSubmit={handleSubmit(submitHandler)}>
+			<div className={style.questions}>
+				<span>Улица</span>
+				<span>Город.(село)</span>
+				<span>Номер дома</span>
+			</div>
+			{/* <form className={style.form} onSubmit={handleSubmit(submitHandler)}>
 				<div className={style.field}>
 					<FieldComponent placeholder="Город.(село)" {...register("city")} />
 				</div>
@@ -43,7 +46,7 @@ export const DeliverDetailForm: FC = () => {
 				<div className={style.submit}>
 					<ButtonComponent btnType="submit" children="Изменить" />
 				</div>
-			</form>
+			</form> */}
 		</div>
 	)
 }

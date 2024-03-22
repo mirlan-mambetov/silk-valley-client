@@ -47,18 +47,20 @@ const MapContainerComponent: FC<IMapProps> = ({ currentLocation }) => {
 			) : null}
 
 			<div className={style.navigation}>
-				<div className={style.button}>
-					<ButtonComponent onClick={() => setCoordinates(currentLocation)}>
-						<TbCurrentLocation />
-						<span>Где я ?</span>
-					</ButtonComponent>
-				</div>
-				<div className={style.button}>
-					<ButtonComponent onClick={() => setCoordinates(SILK_VALLEY_LOCATION)}>
-						<VscLocation />
-						<span>Silk Valley</span>
-					</ButtonComponent>
-				</div>
+				<ButtonComponent
+					className={style.button}
+					onClick={() => setCoordinates(currentLocation)}
+				>
+					<TbCurrentLocation />
+					<span>Где я ?</span>
+				</ButtonComponent>
+				<ButtonComponent
+					className={style.button}
+					onClick={() => setCoordinates(SILK_VALLEY_LOCATION)}
+				>
+					<VscLocation />
+					<span>Silk Valley</span>
+				</ButtonComponent>
 			</div>
 		</div>
 	)

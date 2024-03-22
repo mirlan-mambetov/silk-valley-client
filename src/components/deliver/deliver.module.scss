@@ -4,18 +4,6 @@
 .deliver {
 	position: relative;
 	height: 90vh;
-	border: 1px solid $purpleFavorite;
+	// border: 1px solid $purpleFavorite;
 	border-radius: 6px;
-
-	@include mediaLarge530px {
-		display: flex;
-		flex-direction: column-reverse;
-		height: unset;
-		border: unset;
-		gap: 12px;
-		padding-bottom: 20px;
-	}
-	@include mediaLarge640px {
-		overflow: hidden;
-	}
 }

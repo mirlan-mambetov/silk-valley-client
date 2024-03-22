@@ -64,7 +64,7 @@ const MapComponent: FC<IMapProps> = ({ currentLocation, coordinates }) => {
 
 	return (
 		<>
-			<TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+			<TileLayer url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png" />
 			{selectedPoint ? (
 				<Marker position={selectedPoint}>
 					<Popup>Доставка в {address.road}</Popup>

@@ -5,142 +5,85 @@
 .information {
 	display: flex;
 	flex-direction: column;
-	.button {
+	.top {
 		display: flex;
 		align-items: center;
-		gap: 5px;
 		justify-content: center;
-		font-size: 12px;
-		border: 1px solid $darkenRGBA;
-		padding: 10px 0;
-		border-radius: 8px;
-		color: $purple;
-		&:hover {
-			@include baseBoxShadow;
+		button {
+			display: flex;
+			font-size: 22px;
+			color: $gray;
+			&:hover {
+				color: $darken;
+			}
 		}
 	}
+
 	&.default {
 		position: unset;
 		gap: 12px;
-		.title {
-			display: none;
-		}
-		.wrap {
-			display: flex;
-			flex-direction: column;
-			gap: 12px;
-			.rows {
-				display: flex;
-				flex-direction: column;
-				gap: 12px;
-				padding: 10px 0;
-
-				.row {
-					display: flex;
-					align-items: center;
-					justify-content: space-between;
-					padding: 0 5px;
-
-					small {
-						font-size: 12px;
-						font-weight: 300;
-						line-height: 12px;
-					}
-					span {
-						display: flex;
-						flex-direction: column;
-						gap: 4px;
-						font-size: 14px;
-						font-weight: 400;
-						line-height: 16px;
-					}
-				}
-			}
-			&:nth-child(3) {
-				display: none;
-			}
-		}
 	}
 	&.fixed {
 		position: absolute;
-		top: 0;
-		left: 0;
-		width: calc(100% / 5 * 1.5);
-		height: 100%;
+		left: 20px;
+		right: 20px;
+		bottom: 0;
 		z-index: 2002;
 		padding: 20px;
 		background: $white;
-		-webkit-box-shadow: 9px 0px 13px -7px rgba(0, 0, 0, 0.08);
-		-moz-box-shadow: 9px 0px 13px -7px rgba(0, 0, 0, 0.08);
-		box-shadow: 9px 0px 13px -7px rgba(0, 0, 0, 0.08);
+		-webkit-box-shadow: 0px -22px 56px -32px rgba(0, 0, 0, 0.48);
+		-moz-box-shadow: 0px -22px 56px -32px rgba(0, 0, 0, 0.48);
+		box-shadow: 0px -22px 56px -32px rgba(0, 0, 0, 0.48);
+		border-top-right-radius: 5px;
+		border-top-left-radius: 5px;
 		gap: 20px;
-		.title {
-			display: flex;
-			span {
-				display: flex;
-				flex-direction: column;
-				gap: 2px;
-				font-size: 14px;
-				font-weight: 500;
-				line-height: 20px;
-				color: $purple;
-			}
-			@include lowBoxShadow;
-			padding: 10px 0px;
-			border-radius: 4px;
-			@include mediaLarge830px {
-				padding: 6px;
-			}
-		}
-		.wrap {
+	}
+	.columns {
+		display: grid;
+		grid-template-columns: repeat(2, calc(100% / 2 - 15px / 2 * (2 - 1)));
+		column-gap: 15px;
+
+		.column {
 			display: flex;
 			flex-direction: column;
-			gap: 12px;
+			gap: 15px;
+			.title {
+				font-size: 16px;
+				font-weight: 300;
+				line-height: 20px;
+			}
 			.rows {
 				display: flex;
 				flex-direction: column;
-				gap: 12px;
-				padding: 10px 0;
+				gap: 7px;
 				.row {
-					display: flex;
-					flex-direction: column;
-					gap: 5px;
-					align-items: flex-start;
-					-webkit-box-shadow: 5px 5px 5px 5px rgba(34, 60, 80, 0.02);
-					-moz-box-shadow: 5px 5px 5px 5px rgba(34, 60, 80, 0.02);
-					box-shadow: 5px 5px 5px 5px rgba(34, 60, 80, 0.02);
-					padding: 10px;
-					border-radius: 10px;
 					.content {
-						width: 100%;
 						display: flex;
 						align-items: center;
 						justify-content: space-between;
 						small {
-							font-size: 12px;
-							font-weight: 300;
-							line-height: 12px;
 							color: $gray;
 						}
 						span {
-							display: flex;
-							flex-direction: column;
-							gap: 4px;
 							font-size: 14px;
 							font-weight: 400;
-							line-height: 16px;
+							line-height: 15px;
 						}
 					}
 				}
 			}
+			@include mediaLarge776px {
+				&:nth-child(2) {
+					border: 1px dashed $darkenRGBA;
+					padding: 10px;
+					border-radius: 6px;
+				}
+			}
 		}
-		@include mediaLarge830px {
-			width: 50%;
-		}
-		@include mediaLarge530px {
-			position: unset;
-			width: 100%;
-			padding: unset;
+
+		@include mediaLarge776px {
+			grid-template-columns: 1fr;
+			row-gap: 25px;
 		}
 	}
 }
