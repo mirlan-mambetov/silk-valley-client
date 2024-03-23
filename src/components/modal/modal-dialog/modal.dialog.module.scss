@@ -1,0 +1,48 @@
+@import "../../../styles/media.mixin";
+@import "../../../styles/mixin";
+@import "../../../styles/vars";
+.dialog {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: $darkenRGBA;
+	.content {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		background: $white;
+		padding: 18px;
+		border-radius: 8px;
+		pointer-events: none;
+		span {
+			font-size: 14px;
+			font-weight: 400;
+			line-height: 18px;
+		}
+		.buttons {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 20px;
+			button {
+				display: flex;
+				border: 1px solid $darkenRGBA;
+				padding: 5px 18px;
+				border-radius: 5px;
+				pointer-events: all;
+			}
+		}
+		@include mediaLarge530px {
+			gap: 18px;
+			span {
+				max-width: 250px;
+				text-align: center;
+			}
+		}
+	}
+}
