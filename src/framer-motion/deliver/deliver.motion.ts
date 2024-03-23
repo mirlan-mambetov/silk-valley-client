@@ -6,7 +6,6 @@ export const deliverInformationMotion: Variants = {
 		height: "100%",
 		transition: {
 			ease: "easeIn",
-			duration: 0.3,
 		},
 	},
 	closed: {
@@ -14,7 +13,6 @@ export const deliverInformationMotion: Variants = {
 		height: "unset",
 		transition: {
 			ease: "easeIn",
-			duration: 0.2,
 		},
 	},
 }

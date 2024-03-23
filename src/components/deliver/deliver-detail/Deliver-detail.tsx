@@ -9,8 +9,8 @@ import { ButtonComponent } from "@/components/button/Button"
 import { deliverInformationMotion } from "@/framer-motion/deliver/deliver.motion"
 import { useScreen } from "@/hooks/screen/useScreen"
 import { motion } from "framer-motion"
-import { HiBarsArrowDown, HiBarsArrowUp } from "react-icons/hi2"
 import { MdOutlineCheck } from "react-icons/md"
+
 import { DeliverDetailForm } from "./form/Deliver-detail-form"
 
 interface IDeliverDetailComponentProps {
@@ -20,9 +20,7 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 	position,
 }) => {
 	const [fullView, setFullView] = useState(false)
-	const [refine, setRefine] = useState(false)
 	const { address } = useDeliver()
-	console.log(fullView)
 	const [touchStartY, setTouchStartY] = useState(0)
 	const { clearContentHandler } = useScreen()
 
@@ -55,18 +53,17 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 			})}
 		>
 			<div className={style.top}>
-				<ButtonComponent onClick={() => setFullView(!fullView)}>
-					{!fullView ? <HiBarsArrowUp /> : <HiBarsArrowDown />}
+				<ButtonComponent
+					onClick={() => setFullView(!fullView)}
+					title={fullView ? "Скрыть" : "Показать больше"}
+				>
+					{/* {!fullView ? <TfiMore /> : <TfiMoreAlt />} */}
 				</ButtonComponent>
 			</div>
-			<motion.div
-				animate={
-					!fullView
-						? { opacity: 0, transition: { opacity: { duration: 0.2 } } }
-						: { opacity: 1, transition: { opacity: { duration: 0.3 } } }
-				}
-				className={style.columns}
-			>
+			<motion.div className={style.columns}>
+				<div className={style.column}>
+					<DeliverDetailForm />
+				</div>
 				<div className={style.column}>
 					<h5 className={style.title}>
 						<span>Координаты доставки</span>
@@ -155,13 +152,12 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 					</div>
 					<div className={style.button}>
 						<ButtonComponent onClick={() => clearContentHandler()}>
-							<MdOutlineCheck />
+							<span>
+								<MdOutlineCheck />
+							</span>
 							Потдвердить адрес
 						</ButtonComponent>
 					</div>
-				</div>
-				<div className={style.column}>
-					<DeliverDetailForm />
 				</div>
 			</motion.div>
 			{/* {Object.keys(address).length ? (
