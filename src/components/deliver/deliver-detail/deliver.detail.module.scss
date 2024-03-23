@@ -37,9 +37,9 @@
 		border-top-right-radius: 5px;
 		border-top-left-radius: 5px;
 		gap: 20px;
-		@include mediaLarge380px {
-			right: 10px;
-			left: 10px;
+		@include mediaLarge530px {
+			right: 0px;
+			left: 0px;
 		}
 	}
 	.columns {

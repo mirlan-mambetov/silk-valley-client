@@ -24,6 +24,8 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 
 	return (
 		<motion.div
+			onTouchStart={() => setFullView(true)}
+			onTouchEnd={() => setFullView(false)}
 			animate={fullView ? "open" : "closed"}
 			variants={deliverInformationMotion}
 			className={cn(style.information, style.default, {
