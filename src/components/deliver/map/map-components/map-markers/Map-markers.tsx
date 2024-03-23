@@ -2,7 +2,7 @@ import { SILK_VALLEY_LOCATION } from "@/constants/Map.constants"
 import { LatLngExpression } from "leaflet"
 import { FC } from "react"
 import { Marker, Popup } from "react-leaflet"
-import { IMapProps } from "../Map.props"
+import { IMapProps } from "../../Map.props"
 
 interface IMarker {
 	position: LatLngExpression

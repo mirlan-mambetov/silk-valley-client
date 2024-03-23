@@ -63,7 +63,10 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 					</ButtonComponent>
 				</div>
 			) : null}
-			<motion.div className={style.columns}>
+			<motion.div
+				className={style.columns}
+				animate={!fullView ? { y: "100%" } : { y: "0" }}
+			>
 				<div className={style.column}>
 					<DeliverDetailForm />
 				</div>

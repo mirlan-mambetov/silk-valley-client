@@ -11,10 +11,11 @@ import { FC, useEffect, useState } from "react"
 import { Marker, Popup, TileLayer, useMapEvents } from "react-leaflet"
 import { IMapProps } from "../Map.props"
 import style from "../map.module.scss"
-import MapMarkersComponent from "./Map-markers"
+import MapMarkersComponent from "./map-markers/Map-markers"
 
 const MapComponent: FC<IMapProps> = ({ currentLocation, coordinates }) => {
 	const { clickBlocked, clickHandler } = useMapClickedBlock()
+	const { openNotifyHandler } = useStoreActions()
 	const { address } = useStoreReducer((state) => state.deliver)
 	const [selectedPoint, setSelectedPoint] = useState<LatLngExpression | null>(
 		null
@@ -55,6 +56,7 @@ const MapComponent: FC<IMapProps> = ({ currentLocation, coordinates }) => {
 				village: res.address?.village,
 				town: res.address?.town,
 			})
+			openNotifyHandler("Координаты выбраны")
 		}
 
 		if (clickPoint) {
