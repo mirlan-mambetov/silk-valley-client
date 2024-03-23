@@ -9,6 +9,8 @@ import { ButtonComponent } from "@/components/button/Button"
 import { deliverInformationMotion } from "@/framer-motion/deliver/deliver.motion"
 import { useScreen } from "@/hooks/screen/useScreen"
 import { motion } from "framer-motion"
+import { BsQuestionCircle } from "react-icons/bs"
+import { CiLocationArrow1 } from "react-icons/ci"
 import { MdOutlineCheck } from "react-icons/md"
 import { TfiMore, TfiMoreAlt } from "react-icons/tfi"
 import { DeliverDetailForm } from "./form/Deliver-detail-form"
@@ -55,11 +57,17 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 		>
 			{position === "fixed" ? (
 				<div className={style.top}>
+					<ButtonComponent title="Помощь">
+						<BsQuestionCircle />
+					</ButtonComponent>
 					<ButtonComponent
 						onClick={() => setFullView(!fullView)}
 						title={fullView ? "Скрыть" : "Показать больше"}
 					>
 						{!fullView ? <TfiMore /> : <TfiMoreAlt />}
+					</ButtonComponent>
+					<ButtonComponent title="Текущее местоположение">
+						<CiLocationArrow1 />
 					</ButtonComponent>
 				</div>
 			) : null}

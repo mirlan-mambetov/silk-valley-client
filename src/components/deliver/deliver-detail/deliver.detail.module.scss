@@ -12,7 +12,10 @@
 		position: unset;
 		gap: 12px;
 		transform: unset !important;
+
 		.columns {
+			transform: unset !important;
+
 			.column {
 				min-width: 100%;
 				&:first-child {
@@ -57,10 +60,10 @@
 	.top {
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: space-between;
 		button {
 			display: flex;
-			font-size: 28px;
+			font-size: 22px;
 			color: $gray;
 		}
 	}
