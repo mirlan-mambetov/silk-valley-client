@@ -48,7 +48,6 @@ export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 									<div className={style.poster}>
 										<Image
 											priority
-											// layout="responsive"
 											width={900}
 											height={700}
 											src={product.poster}

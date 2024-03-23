@@ -4,7 +4,6 @@ import { useCurrentLocation } from "@/hooks/map/useCurrentLocation"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import dynamic from "next/dynamic"
 import { FC, useEffect } from "react"
-import { ModalDialogComponent } from "../modal/modal-dialog/Modal-dialog"
 import { DeliverDetailComponent } from "./deliver-detail/Deliver-detail"
 import style from "./deliver.module.scss"
 
@@ -30,7 +29,6 @@ export const DeliverComponent: FC = () => {
 			{currentLocation ? (
 				<MapContainerComponent currentLocation={currentLocation} />
 			) : null}
-			<ModalDialogComponent />
 		</div>
 	)
 }

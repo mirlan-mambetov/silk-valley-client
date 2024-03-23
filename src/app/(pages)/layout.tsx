@@ -8,6 +8,7 @@ import {
 	ScreenComponent,
 } from "@/components"
 import { MobileMenuComponent } from "@/components/mobile/mobile-navigation/Mobile-navigation"
+import { ModalDialogComponent } from "@/components/modal/modal-dialog/Modal-dialog"
 import { FC, PropsWithChildren } from "react"
 
 const HomeLayout: FC<PropsWithChildren> = ({ children }) => {
@@ -20,6 +21,7 @@ const HomeLayout: FC<PropsWithChildren> = ({ children }) => {
 			<main className="main">{children}</main>
 			<FooterComponent />
 			<NotifyComponent />
+			<ModalDialogComponent />
 		</>
 	)
 }
