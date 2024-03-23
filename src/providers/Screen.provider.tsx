@@ -11,11 +11,13 @@ export const ScreenProvider: FC<PropsWithChildren> = ({ children }) => {
 
 	const setContentHandler = (content: ReactNode) => {
 		setIsOpen(true)
+		document.body.style.overflow = "hidden"
 		setContent(content)
 	}
 	const clearContentHandler = () => {
 		setIsOpen(false)
 		setContent(null)
+		document.body.style.overflow = "visible"
 	}
 
 	useEffect(() => {

@@ -10,7 +10,7 @@ export const deliverInformationMotion: Variants = {
 		},
 	},
 	closed: {
-		transform: "translateY(80%)",
+		transform: "translateY(65%)",
 		height: "unset",
 		transition: {
 			ease: "easeIn",

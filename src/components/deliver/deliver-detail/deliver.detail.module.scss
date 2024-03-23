@@ -3,6 +3,8 @@
 @import "../../../styles/vars";
 
 .information {
+	position: absolute;
+	bottom: 0;
 	display: flex;
 	flex-direction: column;
 	.top {
@@ -56,8 +58,11 @@
 			gap: 15px;
 			.title {
 				font-size: 16px;
-				font-weight: 500;
+				font-weight: 400;
 				line-height: 20px;
+				@include mediaLarge480px {
+					font-size: 14px;
+				}
 			}
 			.rows {
 				display: flex;
@@ -75,25 +80,28 @@
 						}
 						span {
 							font-size: 14px;
-							font-weight: 300;
+							font-weight: 400;
 							line-height: 15px;
 						}
 					}
 				}
 			}
-			button {
+			.button {
 				display: flex;
-				align-items: center;
 				justify-content: center;
-				background: $purple;
-				padding: 12px 17px;
-				color: $white;
-				border-radius: 12px;
-				@include buttonHover;
-				@include mediaLarge480px {
-					padding: 8px 12px;
-					margin: 12px 0;
-					border-radius: 6px;
+				button {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					gap: 5px;
+					border: 1px solid $darkenRGBA;
+					border-radius: 8px;
+					padding: 10px 8px;
+					@include mediaLarge480px {
+						padding: 8px 12px;
+						margin: 12px 0;
+						border-radius: 6px;
+					}
 				}
 			}
 			@include mediaLarge776px {

@@ -10,6 +10,7 @@ import { deliverInformationMotion } from "@/framer-motion/deliver/deliver.motion
 import { useScreen } from "@/hooks/screen/useScreen"
 import { motion } from "framer-motion"
 import { HiBarsArrowDown, HiBarsArrowUp } from "react-icons/hi2"
+import { MdOutlineCheck } from "react-icons/md"
 import { DeliverDetailForm } from "./form/Deliver-detail-form"
 
 interface IDeliverDetailComponentProps {
@@ -152,12 +153,12 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 							</div>
 						)}
 					</div>
-					<ButtonComponent
-						className={style.button}
-						onClick={() => clearContentHandler()}
-					>
-						Потдвердить адрес
-					</ButtonComponent>
+					<div className={style.button}>
+						<ButtonComponent onClick={() => clearContentHandler()}>
+							<MdOutlineCheck />
+							Потдвердить адрес
+						</ButtonComponent>
+					</div>
 				</div>
 				<div className={style.column}>
 					<DeliverDetailForm />

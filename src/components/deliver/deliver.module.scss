@@ -3,7 +3,7 @@
 @import "../../styles/vars";
 .deliver {
 	position: relative;
-	height: 90vh;
-	// border: 1px solid $purpleFavorite;
 	border-radius: 6px;
+	overflow: hidden;
+	min-height: 100vh;
 }
