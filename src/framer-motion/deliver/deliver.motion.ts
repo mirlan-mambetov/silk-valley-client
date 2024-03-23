@@ -11,7 +11,7 @@ export const deliverInformationMotion: Variants = {
 		},
 	},
 	closed: {
-		transform: "translateY(100%)",
+		transform: "translateY(80%)",
 		transition: {
 			ease: "linear",
 			minHeight: {
