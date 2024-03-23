@@ -10,7 +10,7 @@ import { deliverInformationMotion } from "@/framer-motion/deliver/deliver.motion
 import { useScreen } from "@/hooks/screen/useScreen"
 import { motion } from "framer-motion"
 import { MdOutlineCheck } from "react-icons/md"
-
+import { TfiMore, TfiMoreAlt } from "react-icons/tfi"
 import { DeliverDetailForm } from "./form/Deliver-detail-form"
 
 interface IDeliverDetailComponentProps {
@@ -46,20 +46,23 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 		<motion.div
 			onTouchStart={handleTouchStart}
 			onTouchMove={handleTouchMove}
-			animate={fullView ? "open" : "closed"}
+			animate={fullView && position === "fixed" ? "open" : "closed"}
 			variants={deliverInformationMotion}
-			className={cn(style.information, style.default, {
+			className={cn(style.information, {
 				[style.fixed]: position === "fixed",
+				[style.default]: position === "default",
 			})}
 		>
-			<div className={style.top}>
-				<ButtonComponent
-					onClick={() => setFullView(!fullView)}
-					title={fullView ? "Скрыть" : "Показать больше"}
-				>
-					{/* {!fullView ? <TfiMore /> : <TfiMoreAlt />} */}
-				</ButtonComponent>
-			</div>
+			{position === "fixed" ? (
+				<div className={style.top}>
+					<ButtonComponent
+						onClick={() => setFullView(!fullView)}
+						title={fullView ? "Скрыть" : "Показать больше"}
+					>
+						{!fullView ? <TfiMore /> : <TfiMoreAlt />}
+					</ButtonComponent>
+				</div>
+			) : null}
 			<motion.div className={style.columns}>
 				<div className={style.column}>
 					<DeliverDetailForm />
