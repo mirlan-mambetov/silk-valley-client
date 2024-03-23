@@ -64,10 +64,13 @@
 		}
 	}
 	@include mediaLarge830px {
+		right: 30px;
+		left: 30px;
+	}
+	@include mediaLarge530px {
 		justify-content: unset;
-		right: unset;
-		top: 20%;
-		left: 10px;
 		flex-direction: column;
+		align-items: flex-start;
+		left: 10px;
 	}
 }

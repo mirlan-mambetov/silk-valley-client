@@ -2,11 +2,12 @@
 
 import { useDeliver } from "@/hooks/deliver/useDeliver"
 import cn from "classnames"
-import { FC, useState } from "react"
+import { FC, TouchEventHandler, useState } from "react"
 import style from "./deliver.detail.module.scss"
 // import { MdKeyboardDoubleArrowDown } from "react-icons/md";
 import { ButtonComponent } from "@/components/button/Button"
 import { deliverInformationMotion } from "@/framer-motion/deliver/deliver.motion"
+import { useScreen } from "@/hooks/screen/useScreen"
 import { motion } from "framer-motion"
 import { HiBarsArrowDown, HiBarsArrowUp } from "react-icons/hi2"
 import { DeliverDetailForm } from "./form/Deliver-detail-form"
@@ -21,11 +22,31 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 	const [refine, setRefine] = useState(false)
 	const { address } = useDeliver()
 	console.log(fullView)
+	const [touchStartY, setTouchStartY] = useState(0)
+	const { clearContentHandler } = useScreen()
+
+	const handleTouchStart: TouchEventHandler<HTMLDivElement> = (event) => {
+		setTouchStartY(event.touches[0].clientY)
+	}
+
+	const handleTouchMove: TouchEventHandler<HTMLDivElement> = (event) => {
+		const touchEndY = event.touches[0].clientY
+		const deltaY = touchEndY - touchStartY
+		const sensitivity = 50 // Чувствительность для определения направления
+
+		if (deltaY > sensitivity) {
+			// Перемещение пальца вниз
+			setFullView(false)
+		} else if (deltaY < -sensitivity) {
+			// Перемещение пальца вверх
+			setFullView(true)
+		}
+	}
 
 	return (
 		<motion.div
-			onTouchStart={() => setFullView(true)}
-			onTouchEnd={() => setFullView(false)}
+			onTouchStart={handleTouchStart}
+			onTouchMove={handleTouchMove}
 			animate={fullView ? "open" : "closed"}
 			variants={deliverInformationMotion}
 			className={cn(style.information, style.default, {
@@ -37,7 +58,14 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 					{!fullView ? <HiBarsArrowUp /> : <HiBarsArrowDown />}
 				</ButtonComponent>
 			</div>
-			<div className={style.columns}>
+			<motion.div
+				animate={
+					!fullView
+						? { opacity: 0, transition: { opacity: { duration: 0.2 } } }
+						: { opacity: 1, transition: { opacity: { duration: 0.3 } } }
+				}
+				className={style.columns}
+			>
 				<div className={style.column}>
 					<h5 className={style.title}>
 						<span>Координаты доставки</span>
@@ -124,11 +152,17 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 							</div>
 						)}
 					</div>
+					<ButtonComponent
+						className={style.button}
+						onClick={() => clearContentHandler()}
+					>
+						Потдвердить адрес
+					</ButtonComponent>
 				</div>
 				<div className={style.column}>
 					<DeliverDetailForm />
 				</div>
-			</div>
+			</motion.div>
 			{/* {Object.keys(address).length ? (
 				<div className={style.wrap}>
 				

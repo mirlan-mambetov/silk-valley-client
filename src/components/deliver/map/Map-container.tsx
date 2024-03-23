@@ -8,7 +8,6 @@ import { FC, useState } from "react"
 import { TbCurrentLocation } from "react-icons/tb"
 import { VscLocation } from "react-icons/vsc"
 import { MapContainer } from "react-leaflet"
-import { MapSearchComponent } from "./map-components/map-search/Map-search"
 import style from "./map.module.scss"
 import { IMapProps } from "./Map.props"
 
@@ -42,7 +41,7 @@ const MapContainerComponent: FC<IMapProps> = ({ currentLocation }) => {
 						currentLocation={currentLocation}
 						coordinates={coordinates}
 					/>
-					<MapSearchComponent />
+					{/* <MapSearchComponent /> */}
 				</MapContainer>
 			) : null}
 

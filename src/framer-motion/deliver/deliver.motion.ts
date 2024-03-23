@@ -5,20 +5,16 @@ export const deliverInformationMotion: Variants = {
 		transform: "translateY(0%)",
 		height: "100%",
 		transition: {
-			ease: "linear",
-			transform: {
-				duration: 0.5,
-			},
+			ease: "easeIn",
+			duration: 0.3,
 		},
 	},
 	closed: {
 		transform: "translateY(80%)",
 		height: "unset",
 		transition: {
-			ease: "linear",
-			transform: {
-				duration: 0.5,
-			},
+			ease: "easeIn",
+			duration: 0.2,
 		},
 	},
 }
