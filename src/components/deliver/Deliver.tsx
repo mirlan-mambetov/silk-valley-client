@@ -18,9 +18,9 @@ export const DeliverComponent: FC = () => {
 	return (
 		<div className={style.deliver}>
 			<DeliverDetailComponent position="fixed" />
-			{currentLocation ? (
+			{/* {currentLocation ? (
 				<MapContainerComponent currentLocation={currentLocation} />
-			) : null}
+			) : null} */}
 		</div>
 	)
 }
