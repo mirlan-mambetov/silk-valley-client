@@ -22,7 +22,7 @@ export const HeadingComponent: FC<IHeadingComponentProps> = ({
 		<h3 className={cn(style.heading, style.top)} {...props}>
 			<span>
 				{text}
-				<NotifyPlaceholder length={length} />
+				<NotifyPlaceholder length={length} toUp="1" />
 			</span>
 		</h3>
 	)

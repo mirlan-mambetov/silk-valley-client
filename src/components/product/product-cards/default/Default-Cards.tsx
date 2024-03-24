@@ -13,6 +13,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { FC, useState } from "react"
+import { TfiMore } from "react-icons/tfi"
 import style from "./default-cards.module.scss"
 
 interface IDefaultCardsComponentProps {
@@ -82,6 +83,9 @@ export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 									btnType="cart"
 									onClick={() => push(`/product/${product.alias}`)}
 								>
+									<span>
+										<TfiMore />
+									</span>
 									Просмотр
 								</ButtonComponent>
 							</div>

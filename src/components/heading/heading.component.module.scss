@@ -3,20 +3,23 @@
 @import "../../styles/vars";
 
 .heading {
-	font-size: 16px;
-	font-weight: 400;
-	line-height: 25px;
-	text-transform: uppercase;
+	// text-transform: uppercase;
 	margin-top: 10px;
 	margin-bottom: 30px;
 	&.top {
 		margin-bottom: 10px;
 		@include mediaLarge530px {
+			font-size: 18px;
 			margin-top: 30px;
 			margin-bottom: 5px;
 		}
 		span {
 			position: relative;
+			display: inline-flex;
+			align-items: center;
+			font-size: 20px;
+			font-weight: 500;
+			line-height: 34px;
 		}
 	}
 }
