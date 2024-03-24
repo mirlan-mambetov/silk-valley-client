@@ -1,9 +1,9 @@
 "use client"
 
 import {
-	ButtonComponent,
 	FeaturedComponent,
 	HeadingComponent,
+	ProductActionsComponent,
 	ProductDiscountComponent,
 	ProductPriceComponent,
 } from "@/components"
@@ -13,7 +13,6 @@ import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { FC, useState } from "react"
-import { TfiMore } from "react-icons/tfi"
 import style from "./default-cards.module.scss"
 
 interface IDefaultCardsComponentProps {
@@ -78,16 +77,7 @@ export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 								</div>
 							</Link>
 							<div className={style.buttons}>
-								<ButtonComponent
-									aria-label="Просмотр"
-									btnType="cart"
-									onClick={() => push(`/product/${product.alias}`)}
-								>
-									<span>
-										<TfiMore />
-									</span>
-									Просмотр
-								</ButtonComponent>
+								<ProductActionsComponent alias={product.alias} />
 							</div>
 						</div>
 					</div>

@@ -57,7 +57,9 @@ button:disabled {
 		box-shadow: unset !important;
 	}
 }
-
+.swiper-wrapper {
+	transition-timing-function: linear;
+}
 /* global styling */
 .leaflet-control-geosearch *,
 .leaflet-control-geosearch *:before,

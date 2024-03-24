@@ -28,7 +28,9 @@
 					font-size: 10px;
 				}
 				@include mediaLarge480px {
-					width: 200px;
+					&::placeholder {
+						font-size: 12px;
+					}
 				}
 			}
 		}
