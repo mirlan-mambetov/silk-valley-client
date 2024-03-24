@@ -21,8 +21,7 @@ export const ProductActionsComponent: FC<IProductActionsComponentProps> = ({
 }) => {
 	const { push } = useRouter()
 	const { isExist } = useExistInCart(data)
-	const { addToCart } = useStoreActions()
-	const { openNotifyHandler } = useStoreActions()
+	const { openNotifyHandler, addToCart } = useStoreActions()
 
 	return (
 		<>

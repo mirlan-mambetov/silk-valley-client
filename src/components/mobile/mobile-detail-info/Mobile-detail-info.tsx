@@ -1,14 +1,16 @@
 "use client"
 
 import {
+	ButtonComponent,
 	ProducAttributeComponent,
-	ProductActionsComponent,
 	ProductPriceComponent,
 } from "@/components"
+import { useExistInCart } from "@/hooks/cart/useExistInCart"
 import { useSelectedAttributes } from "@/hooks/cart/useSelectedAttributes"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { IProduct } from "@/interfaces/product.interface"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 import { FC, useEffect } from "react"
 import style from "./mobile-detail-info.module.scss"
 
@@ -18,9 +20,13 @@ interface IMobileDetailInfoComponentProps {
 export const MobileDetailInfoComponent: FC<IMobileDetailInfoComponentProps> = ({
 	data,
 }) => {
+	const { isExist } = useExistInCart(data)
+	const { push } = useRouter()
+
 	const { setColorHandler, setSizeHandler, color, size } =
 		useSelectedAttributes()
-	const { updateProductAttributeInCart } = useStoreActions()
+	const { updateProductAttributeInCart, addToCart, openNotifyHandler } =
+		useStoreActions()
 
 	useEffect(() => {
 		updateProductAttributeInCart({ productId: data.id, color, size })
@@ -66,12 +72,25 @@ export const MobileDetailInfoComponent: FC<IMobileDetailInfoComponentProps> = ({
 					</div>
 				</div>
 				<div className={style.button}>
-					<ProductActionsComponent
-						color={color}
-						size={size}
-						data={data}
-						disabled={!color || !size}
-					/>
+					{isExist ? (
+						<ButtonComponent
+							aria-label="Перейти к корзине"
+							btnType="cart"
+							onClick={() => push("/cart")}
+						>
+							Перейти к корзине
+						</ButtonComponent>
+					) : (
+						<ButtonComponent
+							disabled={!color && !size}
+							aria-label="Просмотр"
+							btnType="cart"
+							onClick={() => {
+								addToCart({ product: { ...data, quantity: 1, size, color } })
+								openNotifyHandler("Товар добавлен в корзину")
+							}}
+						/>
+					)}
 				</div>
 			</div>
 		</div>
