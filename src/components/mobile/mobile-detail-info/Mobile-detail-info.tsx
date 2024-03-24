@@ -82,7 +82,7 @@ export const MobileDetailInfoComponent: FC<IMobileDetailInfoComponentProps> = ({
 						</ButtonComponent>
 					) : (
 						<ButtonComponent
-							disabled={!color && !size}
+							disabled={!color || !size}
 							aria-label="Просмотр"
 							btnType="cart"
 							onClick={() => {
