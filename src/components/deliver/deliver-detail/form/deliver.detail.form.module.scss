@@ -8,33 +8,16 @@
 	flex-direction: column;
 	width: 100%;
 	gap: 12px;
-	> span {
-		display: flex;
-		flex-direction: column;
-		gap: 4px;
-		color: $purple;
-		font-size: 14px;
-	}
-	.questions {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 12px;
-		color: $purple;
-		span {
-			cursor: pointer;
-			font-size: 12px;
-			font-weight: 500;
-		}
-	}
+
 	.form {
 		width: 100%;
 		display: flex;
 		flex-direction: column;
-		gap: 8px;
+		gap: 12px;
 		.field {
 			position: relative;
 			input {
+				width: 300px;
 				border-radius: 5px;
 				padding: 10px;
 				border: 1px solid $darkenRGBA;
@@ -43,6 +26,9 @@
 				line-height: 17px;
 				&::placeholder {
 					font-size: 10px;
+				}
+				@include mediaLarge480px {
+					width: 200px;
 				}
 			}
 		}
@@ -53,7 +39,12 @@
 			button {
 				display: flex;
 				width: 100%;
-				padding: 10px 0;
+				background: transparent;
+				color: $darken;
+				border: 1px solid $darkenRGBA;
+				&:hover {
+					box-shadow: unset;
+				}
 			}
 		}
 	}

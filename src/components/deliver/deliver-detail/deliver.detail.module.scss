@@ -72,6 +72,26 @@
 			display: flex;
 			flex-direction: column;
 			gap: 15px;
+			> span {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 4px;
+				color: $purple;
+				font-size: 14px;
+			}
+			.questions {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 12px;
+				color: $purple;
+				span {
+					cursor: pointer;
+					font-size: 12px;
+					font-weight: 500;
+				}
+			}
 			.title {
 				font-size: 14px;
 				font-weight: 400;

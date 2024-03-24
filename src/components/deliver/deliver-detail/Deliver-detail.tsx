@@ -8,10 +8,11 @@ import style from "./deliver.detail.module.scss"
 import { ButtonComponent } from "@/components/button/Button"
 import { deliverInformationMotion } from "@/framer-motion/deliver/deliver.motion"
 import { useScreen } from "@/hooks/screen/useScreen"
+import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { motion } from "framer-motion"
 import { BsQuestionCircle } from "react-icons/bs"
-import { CiLocationArrow1 } from "react-icons/ci"
 import { MdOutlineCheck } from "react-icons/md"
+import { TbCurrentLocation } from "react-icons/tb"
 import { TfiMore, TfiMoreAlt } from "react-icons/tfi"
 import { DeliverDetailForm } from "./form/Deliver-detail-form"
 
@@ -25,6 +26,7 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 	const { address } = useDeliver()
 	const [touchStartY, setTouchStartY] = useState(0)
 	const { clearContentHandler } = useScreen()
+	const { openModalHandler } = useStoreActions()
 
 	const handleTouchStart: TouchEventHandler<HTMLDivElement> = (event) => {
 		setTouchStartY(event.touches[0].clientY)
@@ -66,8 +68,8 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 					>
 						{!fullView ? <TfiMore /> : <TfiMoreAlt />}
 					</ButtonComponent>
-					<ButtonComponent title="Текущее местоположение">
-						<CiLocationArrow1 />
+					<ButtonComponent title="Текущее местоположение" disabled>
+						<TbCurrentLocation />
 					</ButtonComponent>
 				</div>
 			) : null}
@@ -76,7 +78,45 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 				animate={!fullView ? { y: "100%" } : { y: "0" }}
 			>
 				<div className={style.column}>
-					<DeliverDetailForm />
+					<span className="section-title">Уточнить адрес</span>
+					<div className={style.questions}>
+						<span
+							onClick={() =>
+								openModalHandler({
+									children: <DeliverDetailForm fields="road" />,
+								})
+							}
+						>
+							Улица
+						</span>
+						<span
+							onClick={() =>
+								openModalHandler({
+									children: <DeliverDetailForm fields="city" />,
+								})
+							}
+						>
+							Город.(село)
+						</span>
+						<span
+							onClick={() =>
+								openModalHandler({
+									children: <DeliverDetailForm fields="house_number" />,
+								})
+							}
+						>
+							Номер дома
+						</span>
+						<span
+							onClick={() =>
+								openModalHandler({
+									children: <DeliverDetailForm fields="postCode" />,
+								})
+							}
+						>
+							Почтовый индекс
+						</span>
+					</div>
 				</div>
 				<div className={style.column}>
 					<h5 className={style.title}>

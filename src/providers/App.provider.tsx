@@ -10,7 +10,7 @@ import { SelectedAttributeProvider } from "./Selected.attribute.provider"
 export const AppProvider: FC<PropsWithChildren> = ({ children }) => {
 	return (
 		<Provider store={appStore}>
-			<PersistGate persistor={persist}>
+			<PersistGate persistor={persist} loading={null}>
 				<ScreenProvider>
 					<SelectedAttributeProvider>{children}</SelectedAttributeProvider>
 				</ScreenProvider>
