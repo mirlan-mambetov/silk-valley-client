@@ -8,12 +8,14 @@ import style from "./product-discount.module.scss"
 interface IProductDiscountComponentProps {
 	product: Pick<IProduct, "discount" | "new" | "isHit">
 	type?: "default" | "extension" | "absolute"
+	position?: "top" | "down"
 	size?: "xl1" | "xl2"
 }
 export const ProductDiscountComponent: FC<IProductDiscountComponentProps> = ({
 	product,
 	type = "default",
 	size = "xl1",
+	position,
 }) => {
 	return (
 		<div
@@ -21,6 +23,7 @@ export const ProductDiscountComponent: FC<IProductDiscountComponentProps> = ({
 				[style.extension]: type === "extension",
 				[style.default]: type === "default",
 				[style.absolute]: type === "absolute",
+				[style.top]: position === "top",
 			})}
 		>
 			{/* <div className={style.promotions}>

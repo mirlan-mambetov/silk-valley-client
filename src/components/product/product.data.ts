@@ -174,7 +174,7 @@ export const CARDS_PRODUCT: IProduct[] = [
 		description:
 			"РАЗМЕР ПРОИЗВОДИТЕЛЯ = UK РАЗМЕР. ОРИГИНАЛЬНАЯ ПРОДУКЦИЯ ADIDAS. Эти кеды в теннисном стиле от adidas сочетают классический внешний вид с современным комфортом. Шнуровка обеспечивает мягкую, но плотную посадку, которая естественно облегает вашу ногу. Уверенно ступайте с надежным сцеплением на любой поверхности. Обычная посадка. Синтетический верх. Текстильная подкладка. Удобная стелька Cloudfoam. Резиновая подошва.    ",
 		poster:
-			"https://basket-11.wbbasket.ru/vol1618/part161824/161824021/images/big/4.webp",
+			"https://shoebizz.co.nz/cdn/shop/products/WOX1-Edited.png?v=1710665478&width=1445",
 		article: 1324234234234,
 		images: [
 			"https://basket-11.wbbasket.ru/vol1618/part161824/161824021/images/big/3.webp",
@@ -197,7 +197,7 @@ export const CARDS_PRODUCT: IProduct[] = [
 		description:
 			"Вся информация основывается на последних сведениях от производителя    ",
 		poster:
-			"https://basket-11.wbbasket.ru/vol1612/part161286/161286292/images/big/1.webp",
+			"https://www.ycsports.com/image/cache/data/Aimee/untitled%20folder%203/Screenshot__527_-removebg-preview-525x479.png",
 		article: 1324234234234,
 		images: [
 			"https://basket-11.wbbasket.ru/vol1612/part161286/161286292/images/big/2.webp",
@@ -218,10 +218,12 @@ export const CARDS_PRODUCT: IProduct[] = [
 		description:
 			"Американская версия - клавиатура без русских букв, американская вилка (переходник на евро вилку в комплект не входит). Супербыстрые процессоры M2, разработанные специально для профессионалов. Они дают феноменальную производительность и обеспечивают удивительно долгое время работы без подзарядки. Прибавьте к этому потрясающий дисплей Retina, превосходную камеру и звук. С этим ноутбуком всё становится возможным. Невероятная детализация в темных областях, более глубокий черный, а остальные цвета - яркие как никогда.    ",
 		poster:
-			"https://basket-12.wbbasket.ru/vol1722/part172232/172232336/images/big/1.webp",
+			"https://media.croma.com/image/upload/v1685968816/Croma%20Assets/Computers%20Peripherals/Laptop/Images/256604_sg1d1b.png",
 		article: 1324234234234,
 		images: [
-			"https://basket-12.wbbasket.ru/vol1722/part172232/172232336/images/big/7.webp",
+			"https://upload.wikimedia.org/wikipedia/commons/8/87/MacBook_Air_%283rd_generation%2C_space_gray%29.png",
+			"https://www.pngall.com/wp-content/uploads/12/Macbook-PNG-Image.png",
+			"https://media.croma.com/image/upload/v1685968816/Croma%20Assets/Computers%20Peripherals/Laptop/Images/256604_sg1d1b.png",
 		],
 		price: 3022,
 		rating: 3.2,
@@ -300,10 +302,12 @@ export const CARDS_PRODUCT: IProduct[] = [
 		description:
 			"Американская версия - клавиатура без русских букв, американская вилка (переходник на евро вилку в комплект не входит). Супербыстрые процессоры M2, разработанные специально для профессионалов. Они дают феноменальную производительность и обеспечивают удивительно долгое время работы без подзарядки. Прибавьте к этому потрясающий дисплей Retina, превосходную камеру и звук. С этим ноутбуком всё становится возможным. Невероятная детализация в темных областях, более глубокий черный, а остальные цвета - яркие как никогда.    ",
 		poster:
-			"https://basket-12.wbbasket.ru/vol1722/part172232/172232336/images/big/1.webp",
+			"https://media.croma.com/image/upload/v1685968816/Croma%20Assets/Computers%20Peripherals/Laptop/Images/256604_sg1d1b.png",
 		article: 1324234234234,
 		images: [
-			"https://basket-12.wbbasket.ru/vol1722/part172232/172232336/images/big/7.webp",
+			"https://upload.wikimedia.org/wikipedia/commons/8/87/MacBook_Air_%283rd_generation%2C_space_gray%29.png",
+			"https://www.pngall.com/wp-content/uploads/12/Macbook-PNG-Image.png",
+			"https://media.croma.com/image/upload/v1685968816/Croma%20Assets/Computers%20Peripherals/Laptop/Images/256604_sg1d1b.png",
 		],
 		price: 3022,
 		rating: 3.2,

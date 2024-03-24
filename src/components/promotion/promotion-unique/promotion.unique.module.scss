@@ -12,6 +12,7 @@
 	.columns {
 		position: relative;
 		.column {
+			position: relative;
 			border: 1px dashed $darkenRGBA;
 			border-radius: 5px;
 			padding: 10px;
@@ -33,13 +34,13 @@
 				gap: 15px;
 				.top {
 					display: flex;
-					align-items: center;
-					justify-content: space-between;
+					flex-direction: column;
+					gap: 5px;
 					.title {
 						color: $black;
 						font-size: 12px;
 						line-height: 18px;
-						max-width: 120px;
+						max-width: 180px;
 						white-space: nowrap;
 						overflow: hidden;
 						text-overflow: ellipsis;

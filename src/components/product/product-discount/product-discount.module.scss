@@ -46,6 +46,10 @@
 			}
 		}
 	}
+	&.top {
+		display: flex;
+		justify-content: flex-start;
+	}
 	span {
 		border-radius: 3px;
 		color: $white;

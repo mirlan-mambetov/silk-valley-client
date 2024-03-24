@@ -1,6 +1,10 @@
 "use client"
 
-import { ProductActionsComponent, ProductPriceComponent } from "@/components"
+import {
+	ProductActionsComponent,
+	ProductDiscountComponent,
+	ProductPriceComponent,
+} from "@/components"
 import { SwiperComponent } from "@/components/swiper-component/Swiper-component"
 import { motion } from "framer-motion"
 import Image from "next/image"
@@ -47,6 +51,12 @@ export const PromotionUniqueComponent: FC = () => {
 				>
 					{PROMOTION_NEW_DATA.map((promotion) => (
 						<SwiperSlide className={style.column} key={promotion.id}>
+							<ProductDiscountComponent
+								product={promotion}
+								type="absolute"
+								size="xl1"
+								position="top"
+							/>
 							<div className={style.poster}>
 								<Image
 									src={promotion.poster}
@@ -59,7 +69,12 @@ export const PromotionUniqueComponent: FC = () => {
 							<div className={style.content}>
 								<div className={style.top}>
 									<h2 className={style.title}>{promotion.title}</h2>
-									<ProductPriceComponent size="1xxl" price={promotion.price} />
+									<ProductPriceComponent
+										size="1xxl"
+										price={promotion.price}
+										discount={promotion.discount}
+										orientation="column"
+									/>
 								</div>
 								<ProductActionsComponent disable alias={promotion.alias} />
 							</div>
