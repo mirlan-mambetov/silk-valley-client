@@ -10,7 +10,9 @@
 	top: 0;
 	z-index: 201;
 	background: $white;
-	box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.04);
+	-webkit-box-shadow: 0px 33px 38px -5px rgba(0, 0, 0, 0.08);
+	-moz-box-shadow: 0px 33px 38px -5px rgba(0, 0, 0, 0.08);
+	box-shadow: 0px 33px 38px -5px rgba(0, 0, 0, 0.08);
 	&.strech {
 		position: unset;
 	}
@@ -50,10 +52,7 @@
 			input {
 				border: 1px solid $darkenRGBA;
 				border-radius: 8px;
-				padding: 10px 0;
-				@include mediaLarge440px {
-					padding: 4px;
-				}
+				padding: 8px 0;
 			}
 		}
 	}
