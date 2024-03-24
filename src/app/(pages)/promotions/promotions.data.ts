@@ -10,7 +10,7 @@ export const PROMOTION_DATA: IPromotions[] = [
 		alias: "promotion-1",
 		description: "Все в одном месте, все, что нужно вам!",
 		image:
-			"https://images.pexels.com/photos/21696/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+			"https://umnyasha.me/assets/cache_image/upload/blog/podgotovka_k_shkole_01_1200x630_e8d.webp",
 
 		products: [
 			{
@@ -85,7 +85,7 @@ export const PROMOTION_DATA: IPromotions[] = [
 		name: "Черная пятница",
 		description: "Выберите что вам хочется в черную пятницу!",
 		image:
-			"https://images.pexels.com/photos/5868272/pexels-photo-5868272.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+			"https://russianjeweller.ru/uploads/2023/011/24/%D0%B4%D1%80%D0%B0%D0%B3%D0%BC%D0%B5%D1%82/%D0%A7%D0%B5%D1%80%D0%BD%D0%B0%D1%8F%20%D0%BF%D1%8F%D1%82%D0%BD%D0%B8%D1%86%D0%B0%202023.png",
 		products: [
 			{
 				id: 1,
@@ -227,7 +227,7 @@ export const PROMOTION_DATA: IPromotions[] = [
 		alias: "promotion-4",
 		description: "Скидки до 55% в честь 8-го марта!",
 		image:
-			"https://images.pexels.com/photos/4149012/pexels-photo-4149012.jpeg?auto=compress&cs=tinysrgb&w=600",
+			"https://mir-s3-cdn-cf.behance.net/project_modules/fs/8c4c8c94589003.5e82ab7e45e13.jpg",
 		products: [
 			{
 				id: 1,

@@ -1,6 +1,5 @@
-import { CardsComponent, PromotionComponent } from "@/components"
+import { CardsComponent } from "@/components"
 import { CARDS_PRODUCT } from "@/components/product/product.data"
-import { PROMOTION_DATA } from "../promotions/promotions.data"
 import { Banner } from "./Banner/Banner"
 import { BANNER_DATA } from "./Banner/banner.data"
 
@@ -15,18 +14,11 @@ const HomePage = () => {
 			</section>
 
 			{/* PROMOTIONS */}
-			<section>
+			{/* <section>
 				<div className="container">
-					{/* <TestPromotion /> */}
 					<PromotionComponent data={PROMOTION_DATA} />
 				</div>
-			</section>
-			{/* CARDS*/}
-			<section>
-				<div className="container">
-					<CardsComponent products={CARDS_PRODUCT} limit={6} />
-				</div>
-			</section>
+			</section> */}
 			{/* CARDS*/}
 			<section>
 				<div className="container">
@@ -37,6 +29,13 @@ const HomePage = () => {
 					/>
 				</div>
 			</section>
+			<section>
+				<div className="container">
+					<CardsComponent products={CARDS_PRODUCT} limit={6} />
+				</div>
+			</section>
+			{/* CARDS*/}
+
 			{/* WOMANS */}
 			{/* <CardsComponent type="woman" products={WOMANS_PRODUCT} /> */}
 		</>

@@ -43,7 +43,7 @@ export const PromotionComponent: FC<IPromotionComponentProps> = ({
 						>
 							<div className={style.overlay}></div>
 							<div className={style.content}>
-								<div className={style.title}>
+								{/* <div className={style.title}>
 									<h2
 										className={style.name}
 										onClick={() => push(`/promotions/${promotion.alias}`)}
@@ -51,7 +51,7 @@ export const PromotionComponent: FC<IPromotionComponentProps> = ({
 										{promotion.name}
 									</h2>
 									<p className={style.description}>{promotion.description}</p>
-								</div>
+								</div> */}
 								<div className={style.action}>
 									<ButtonComponent
 										aria-label="Ссылка"
