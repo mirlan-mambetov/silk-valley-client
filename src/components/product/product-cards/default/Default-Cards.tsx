@@ -1,9 +1,9 @@
 "use client"
 
 import {
+	ButtonComponent,
 	FeaturedComponent,
 	HeadingComponent,
-	ProductActionsComponent,
 	ProductDiscountComponent,
 	ProductPriceComponent,
 } from "@/components"
@@ -11,6 +11,7 @@ import { IProduct } from "@/interfaces/product.interface"
 import cn from "classnames"
 import Image from "next/image"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { FC, useState } from "react"
 import style from "./default-cards.module.scss"
 
@@ -28,6 +29,7 @@ export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 }) => {
 	const limitedData = data.slice(0, limit)
 	const [isHover, setIsHover] = useState(false)
+	const { push } = useRouter()
 
 	return (
 		<div className={style.cards}>
@@ -75,7 +77,13 @@ export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 								</div>
 							</Link>
 							<div className={style.buttons}>
-								<ProductActionsComponent data={product} />
+								<ButtonComponent
+									aria-label="Просмотр"
+									btnType="cart"
+									onClick={() => push(`/product/${product.alias}`)}
+								>
+									Просмотр
+								</ButtonComponent>
 							</div>
 						</div>
 					</div>

@@ -13,6 +13,10 @@ interface IProductActionsComponentProps {
 	color?: string
 	size?: string
 }
+
+/**
+ * @deprecated This Component is deprecated on next updating
+ */
 export const ProductActionsComponent: FC<IProductActionsComponentProps> = ({
 	data,
 	disabled,
