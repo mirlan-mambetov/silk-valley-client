@@ -32,7 +32,7 @@ export const PromotionUniqueComponent: FC = () => {
 						spaceBetween: 10,
 						loop: true,
 						modules: [Autoplay],
-						autoplay: { delay: 300, pauseOnMouseEnter: true },
+						autoplay: { delay: 100, pauseOnMouseEnter: true },
 						breakpoints: {
 							320: {
 								slidesPerView: 2,
