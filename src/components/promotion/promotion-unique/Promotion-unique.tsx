@@ -76,7 +76,12 @@ export const PromotionUniqueComponent: FC = () => {
 										orientation="column"
 									/>
 								</div>
-								<ProductActionsComponent disable alias={promotion.alias} />
+								<ProductActionsComponent
+									actionType="toView"
+									disable
+									alias={promotion.alias}
+									product={promotion}
+								/>
 							</div>
 						</SwiperSlide>
 					))}

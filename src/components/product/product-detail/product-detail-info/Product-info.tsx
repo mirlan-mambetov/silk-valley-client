@@ -3,6 +3,7 @@
 import {
 	ButtonComponent,
 	DeliverComponent,
+	ProductActionsComponent,
 	ProductPriceComponent,
 } from "@/components"
 import { useSelectedAttributes } from "@/hooks/cart/useSelectedAttributes"
@@ -14,7 +15,6 @@ import cn from "classnames"
 import { useRouter } from "next/navigation"
 import { FC } from "react"
 import { FiEdit2 } from "react-icons/fi"
-import { MdOutlineBorderColor } from "react-icons/md"
 import style from "./product-info.module.scss"
 
 interface IProductInfoComponentProps {
@@ -104,19 +104,11 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 					</div>
 				)}
 
-				{/* <CartRangeComponent product={pro}/> */}
-
-				<ButtonComponent
-					disabled={!color || !size}
-					className={style.button}
-					onClick={() => {
-						addToCart({ product: { ...data, quantity: 1, color, size } })
-						push("/cart")
-					}}
-				>
-					<MdOutlineBorderColor />
-					<span>Заказать</span>
-				</ButtonComponent>
+				<ProductActionsComponent
+					actionType="toCart"
+					alias={data.alias}
+					product={data}
+				/>
 			</div>
 		</div>
 	)

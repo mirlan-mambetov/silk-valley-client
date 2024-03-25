@@ -71,17 +71,5 @@
 				}
 			}
 		}
-
-		.button {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			gap: 5px;
-			background: $purple;
-			color: $white;
-			padding: 12px 12px;
-			border-radius: 14px;
-			@include buttonHover;
-		}
 	}
 }

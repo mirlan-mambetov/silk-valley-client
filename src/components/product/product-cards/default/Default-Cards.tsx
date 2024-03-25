@@ -77,7 +77,11 @@ export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
 								</div>
 							</Link>
 							<div className={style.buttons}>
-								<ProductActionsComponent alias={product.alias} />
+								<ProductActionsComponent
+									actionType="toView"
+									alias={product.alias}
+									product={product}
+								/>
 							</div>
 						</div>
 					</div>

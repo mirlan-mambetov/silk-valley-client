@@ -1,8 +1,8 @@
 "use client"
 
 import {
-	ButtonComponent,
 	ProducAttributeComponent,
+	ProductActionsComponent,
 	ProductPriceComponent,
 } from "@/components"
 import { useExistInCart } from "@/hooks/cart/useExistInCart"
@@ -72,25 +72,11 @@ export const MobileDetailInfoComponent: FC<IMobileDetailInfoComponentProps> = ({
 					</div>
 				</div>
 				<div className={style.button}>
-					{isExist ? (
-						<ButtonComponent
-							aria-label="Перейти к корзине"
-							btnType="cart"
-							onClick={() => push("/cart")}
-						>
-							Перейти к корзине
-						</ButtonComponent>
-					) : (
-						<ButtonComponent
-							disabled={!color || !size}
-							aria-label="Просмотр"
-							btnType="cart"
-							onClick={() => {
-								addToCart({ product: { ...data, quantity: 1, size, color } })
-								openNotifyHandler("Товар добавлен в корзину")
-							}}
-						/>
-					)}
+					<ProductActionsComponent
+						actionType="toCart"
+						alias={data.alias}
+						product={data}
+					/>
 				</div>
 			</div>
 		</div>
