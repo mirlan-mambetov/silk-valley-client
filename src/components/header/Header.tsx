@@ -97,26 +97,27 @@ export const HeaderComponent = () => {
 								{/* END ACTIONS */}
 							</div>
 						</div>
-					</div>
-					<motion.div
-						variants={variants3}
-						animate={isShow ? "open" : "closed"}
-						className={style.navigation}
-						ref={elRef}
-					>
 						<motion.div
-							animate={isShow ? "active" : "closed"}
-							variants={variants4}
-							className={style.border}
-						></motion.div>
-						<div className="container">
-							<MenuComponent
-								orientation="row"
-								secondMenu={false}
-								data={HEADER_MENU}
-							/>
-						</div>
-					</motion.div>
+							variants={variants3}
+							animate={isShow ? "open" : "closed"}
+							className={style.navigation}
+							ref={elRef}
+						>
+							<motion.div
+								animate={isShow ? "active" : "closed"}
+								variants={variants4}
+								className={style.border}
+							></motion.div>
+							<div className="container">
+								<MenuComponent
+									orientation="row"
+									secondMenu={false}
+									data={HEADER_MENU}
+								/>
+							</div>
+						</motion.div>
+					</div>
+
 					<div
 						className={cn(style.overlay, { [style.transform]: isShow })}
 					></div>
