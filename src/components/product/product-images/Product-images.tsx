@@ -62,14 +62,14 @@ export const ProductImagesComponent: FC<IProductImagesComponent> = ({
 					}}
 					modules={[Navigation, Pagination]}
 				>
-					{data.images.map((image, i) => (
+					{data.images[0].image.map((image, i) => (
 						<SwiperSlide key={i} className={style.slide}>
 							<div className={style.image}>
 								<Image
 									priority
 									onMouseEnter={(e) => setImgSrc(e.currentTarget.src)}
 									onMouseLeave={() => setImgSrc(null)}
-									src={image}
+									src={`${process.env.NEXT_PUBLIC_API_STATIC}/${image}`}
 									alt={data.title}
 									width={900}
 									height={1300}
@@ -94,14 +94,18 @@ export const ProductImagesComponent: FC<IProductImagesComponent> = ({
 						smallImage={{
 							width: 400,
 							height: 600,
-							src: newSrc ? newSrc : data?.poster,
+							src: newSrc
+								? newSrc
+								: `${process.env.NEXT_PUBLIC_API_STATIC}/${data?.poster}`,
 							alt: data?.title,
 							isFluidWidth: true,
 						}}
 						largeImage={{
 							width: 900,
 							height: 1000,
-							src: newSrc ? newSrc : data?.poster,
+							src: newSrc
+								? newSrc
+								: `${process.env.NEXT_PUBLIC_API_STATIC}/${data?.poster}`,
 							alt: data?.title,
 						}}
 					/>

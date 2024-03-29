@@ -21,6 +21,8 @@ interface IDetailProps {
 }
 export const Detail: FC<IDetailProps> = ({ data }) => {
 	const { width } = useWindowWidth()
+
+	console.log(data)
 	return (
 		<div className={style.detail}>
 			{/* STICY INFORMATION */}
@@ -40,7 +42,7 @@ export const Detail: FC<IDetailProps> = ({ data }) => {
 					<div className={style.product_content}>
 						<h2 className={style.product_name}>{data?.title}</h2>
 						<div className={style.product_id}>
-							<span>ID: {data?.article}</span>
+							<span>ID: {data?.articleNumber}</span>
 							<ButtonComponent title="Нажмите скопировать">
 								<MdContentCopy />
 							</ButtonComponent>
@@ -51,9 +53,8 @@ export const Detail: FC<IDetailProps> = ({ data }) => {
 				</div>
 				{/* ORDER INFO */}
 				{width > 940 ? <ProductInfoComponent data={data} /> : null}
-				<ProductSpecificationsComponent />
+				<ProductSpecificationsComponent specifications={data.specifications} />
 			</div>
-			{/* <StickyHeaderComponent start={900}>Product</StickyHeaderComponent> */}
 		</div>
 	)
 }
