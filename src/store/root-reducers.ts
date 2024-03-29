@@ -1,3 +1,4 @@
+import { appApi } from "@/api/api"
 import { combineReducers } from "@reduxjs/toolkit"
 import { cartReducer } from "./slices/cart/cart.slice"
 import { deliverReducer } from "./slices/deliver/deliver.slice"
@@ -11,4 +12,5 @@ export const rootReducer = combineReducers({
 	notify: notifyReducer,
 	dialog: dialogReducer,
 	modal: modalReducer,
+	[appApi.reducerPath]: appApi.reducer,
 })
