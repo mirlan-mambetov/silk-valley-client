@@ -19,9 +19,7 @@ export const ProductSpecificationsComponent: FC<
 			<div className={style.wrap}>
 				{specifications?.attributes.map((attribute) => (
 					<div className={style.column} key={attribute.id}>
-						<div className={style.row}>
-							<span>{attribute.name}</span>
-						</div>
+						<small>{attribute.name}</small>
 						<span>{attribute.value}</span>
 					</div>
 				))}
