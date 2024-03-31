@@ -7,7 +7,6 @@ import {
 	ProductRatingComponent,
 } from "@/components"
 import { SwiperComponent } from "@/components/swiper-component/Swiper-component"
-import { useSelectedAttributes } from "@/hooks/cart/useSelectedAttributes"
 import { IProduct } from "@/interfaces/product.interface"
 import cn from "classnames"
 import Image from "next/image"
@@ -27,12 +26,10 @@ export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 	setSelectedColor,
 	setSelectedSize,
 }) => {
-	const { isClick, setColorHandler, setSizeHandler } = useSelectedAttributes()
-
 	return (
 		<div className={style.attributes}>
 			{/* COLORS */}
-			<div className={cn(style.colors, { [style.active]: isClick })}>
+			<div className={cn(style.colors)}>
 				<span>
 					Цвет:
 					<b>{selectedColor ? selectedColor : data.images[0].color}</b>
@@ -52,7 +49,6 @@ export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 							})}
 							key={color.id}
 							onClick={() => {
-								setColorHandler(color.color)
 								setSelectedColor(color.color)
 							}}
 						>

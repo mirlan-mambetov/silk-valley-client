@@ -13,6 +13,7 @@ export const StickyHeaderComponent: FC<
 	PropsWithChildren<IStickyHeaderComponentProps>
 > = ({ children, start }) => {
 	const { isStart } = useScrollHeight(start)
+
 	return (
 		<motion.div
 			animate={isStart ? "open" : "closed"}

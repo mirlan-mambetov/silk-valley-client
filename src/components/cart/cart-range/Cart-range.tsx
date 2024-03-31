@@ -27,7 +27,6 @@ export const CartRangeComponent: FC<ICartRangeComponentProps> = ({
 			{text && <small>Количество</small>}
 			<div className={style.quantity_item}>
 				<ButtonComponent
-					// disabled={	quantity === 1}
 					onClick={() => changedQuantity({ type: "minus", id: product.id })}
 				>
 					<LuMinus />

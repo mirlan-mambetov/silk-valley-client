@@ -5,34 +5,47 @@ import {
 	ProductActionsComponent,
 	ProductPriceComponent,
 } from "@/components"
-import { useSelectedAttributes } from "@/hooks/cart/useSelectedAttributes"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { IProduct } from "@/interfaces/product.interface"
 import Image from "next/image"
-import { FC, useEffect } from "react"
+import { Dispatch, FC, SetStateAction, useEffect } from "react"
 import style from "./mobile-detail-info.module.scss"
 
 interface IMobileDetailInfoComponentProps {
 	data: IProduct
+	selectedColor: string | undefined
+	selectedSize: string | undefined
+	setSelectedColor: Dispatch<SetStateAction<string | undefined>>
+	setSelectedSize: Dispatch<SetStateAction<string | undefined>>
 }
 export const MobileDetailInfoComponent: FC<IMobileDetailInfoComponentProps> = ({
 	data,
+	selectedColor,
+	selectedSize,
+	setSelectedColor,
+	setSelectedSize,
 }) => {
-	const { setColorHandler, setSizeHandler, color, size } =
-		useSelectedAttributes()
-	const { updateProductAttributeInCart, addToCart, openNotifyHandler } =
-		useStoreActions()
+	const { updateProductAttributeInCart } = useStoreActions()
 
 	useEffect(() => {
-		updateProductAttributeInCart({ productId: data.id, color, size })
-	}, [color, size])
+		updateProductAttributeInCart({
+			productId: data.id,
+			color: selectedColor,
+			size: selectedSize,
+		})
+	}, [selectedColor, selectedSize])
 
 	return (
 		<div className={style.mobile}>
 			<div className={style.wrap}>
 				<div className={style.product}>
 					<div className={style.image}>
-						<Image src={data.poster} alt={data.title} width={90} height={150} />
+						<Image
+							src={`${process.env.NEXT_PUBLIC_API_STATIC}/${data.poster}`}
+							alt={data.title}
+							width={90}
+							height={150}
+						/>
 					</div>
 					<div className={style.content}>
 						<div className={style.item}>
@@ -48,26 +61,30 @@ export const MobileDetailInfoComponent: FC<IMobileDetailInfoComponentProps> = ({
 
 						<div className={style.item}>
 							<ProducAttributeComponent
-								selectedValueHandler={(value) => setColorHandler(value)}
+								selectedValueHandler={(value) => setSelectedColor(value)}
 								className={style.attribute}
-								data={["Черный", "Белый", "Зеленый", "Черно&Белый"]}
+								data={data.images.map((color) => color.color)}
 								title="Цвета"
 								size="1xl"
 							/>
 						</div>
-						<div className={style.item}>
-							<ProducAttributeComponent
-								selectedValueHandler={(value) => setSizeHandler(value)}
-								className={style.attribute}
-								data={["32xl", "34xl", "38xl", "48XXL"]}
-								title="Размеры"
-								size="1xl"
-							/>
-						</div>
+						{data.sizes?.length ? (
+							<div className={style.item}>
+								<ProducAttributeComponent
+									selectedValueHandler={(value) => setSelectedSize(value)}
+									className={style.attribute}
+									data={data.sizes}
+									title="Размеры"
+									size="1xl"
+								/>
+							</div>
+						) : null}
 					</div>
 				</div>
 				<div className={style.button}>
 					<ProductActionsComponent
+						size={selectedSize}
+						color={selectedColor}
 						actionType="toCart"
 						alias={data.alias}
 						product={data}

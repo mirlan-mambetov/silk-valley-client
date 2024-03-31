@@ -57,6 +57,7 @@ export const ProductActionsComponent: FC<IProductActionsComponentProps> = ({
 											...product,
 											selectedColor: color,
 											selectedSize: size,
+											productQuantity: 1,
 										},
 									})
 									openNotifyHandler("Товар добавлен в корзину")

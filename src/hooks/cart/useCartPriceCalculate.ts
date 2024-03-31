@@ -1,6 +1,6 @@
-import { ICartProducts } from "@/interfaces/cart.interface"
+import { ICartProduct } from "@/interfaces/cart.interface"
 
-export const useCartPriceCalculate = (products: ICartProducts[]) => {
+export const useCartPriceCalculate = (products: ICartProduct[]) => {
 	let totalDiscount = 0
 	const totalPrice = products.reduce((acc, product) => {
 		let total = acc + product.price * product.quantity // Умножаем цену товара на его количество

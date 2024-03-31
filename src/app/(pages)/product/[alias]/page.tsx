@@ -12,16 +12,10 @@ import { Detail } from "./detail/Detail"
 // }
 
 async function fetchProduct({ params }: IPageParams) {
-	// try {
 	const { alias } = params
-	console.log(alias)
 	const response = await fetch(`${APP_URI}/product/by-alias/${alias}`)
-	console.log(response.status)
 	if (response.status === 404) redirect("/not-found", RedirectType.replace)
 	return response.json()
-	// } catch (err) {
-	// 	throw new Error(`Произошла ошибка при запросе товаров ${err}`)
-	// }
 }
 
 const ProductPage = async ({ params }: IPageParams) => {

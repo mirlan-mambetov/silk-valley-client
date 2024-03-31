@@ -7,11 +7,9 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
 interface ICartInitialState {
 	products: ICartProduct[]
-	isExist: boolean
 }
 
 const initialState: ICartInitialState = {
-	isExist: false,
 	products: [],
 }
 
@@ -26,11 +24,9 @@ export const cartSlice = createSlice({
 			if (!isExist) {
 				state.products?.push({
 					...payload.product,
-					quantity: 1,
+					productQuantity: payload.product.quantity,
 				})
-				state.isExist = false
 			}
-			state.isExist = true
 		},
 
 		updateProductAttributeInCart: (
@@ -51,14 +47,12 @@ export const cartSlice = createSlice({
 			}
 		},
 		clearCart: (state) => {
-			state.isExist = false
 			state.products = []
 		},
 		removeFromCart: (state, { payload }: PayloadAction<{ id: number }>) => {
 			state.products = state.products.filter(
 				(product) => product.id !== payload.id
 			)
-			state.isExist = false
 		},
 		changedQuantity: (
 			state,
@@ -67,8 +61,13 @@ export const cartSlice = createSlice({
 			const { id, type } = payload
 			const product = state.products.find((product) => product.id === id)
 			if (product) {
-				if (type === "plus" || (type === "minus" && product.quantity > 1)) {
-					type === "plus" ? product.quantity++ : product.quantity--
+				if (
+					(type === "plus" && product.quantity < 1) ||
+					(type === "minus" && product.quantity > 1)
+				) {
+					type === "plus"
+						? product.productQuantity++
+						: product.productQuantity--
 				}
 			}
 		},

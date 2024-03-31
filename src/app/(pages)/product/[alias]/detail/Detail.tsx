@@ -20,15 +20,21 @@ interface IDetailProps {
 	data: IProduct
 }
 export const Detail: FC<IDetailProps> = ({ data }) => {
+	// FOR SELECTED IMAGE WITH COLOR
 	const [selectedImages, setSelectedImages] = useState<
 		IProductImages | undefined
 	>(undefined)
+
+	// SELECTED COLOR PRODUCT
 	const [selectedColor, setSelectedColor] = useState<string | undefined>(
 		undefined
 	)
+
+	// SELECTED SIZE PRODUCT
 	const [selectedSize, setSelectedSize] = useState<string | undefined>(
 		undefined
 	)
+
 	const { width } = useWindowWidth()
 
 	useEffect(() => {
@@ -42,7 +48,13 @@ export const Detail: FC<IDetailProps> = ({ data }) => {
 		<div className={style.detail}>
 			{/* STICKY INFORMATION */}
 			<StickyHeaderComponent start={width < 940 ? 200 : 900}>
-				<MobileDetailInfoComponent data={data} />
+				<MobileDetailInfoComponent
+					data={data}
+					selectedColor={selectedColor}
+					selectedSize={selectedSize}
+					setSelectedColor={(value) => setSelectedColor(value)}
+					setSelectedSize={(value) => setSelectedSize(value)}
+				/>
 			</StickyHeaderComponent>
 			{/* ROUTES HISTORY */}
 			<RoutesHistoryComponent productName={data.title} />
@@ -65,7 +77,6 @@ export const Detail: FC<IDetailProps> = ({ data }) => {
 								<MdContentCopy />
 							</ButtonComponent>
 						</div>
-
 						<ProductAttributesComponent
 							data={data}
 							selectedColor={selectedColor}

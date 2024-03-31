@@ -1,7 +1,6 @@
 "use client"
 
 import { ButtonComponent } from "@/components"
-import { useSelectedAttributes } from "@/hooks/cart/useSelectedAttributes"
 import cn from "classnames"
 import { DetailsHTMLAttributes, FC } from "react"
 import style from "./product.attribute.module.scss"
@@ -21,8 +20,6 @@ export const ProducAttributeComponent: FC<IProducAttributeProps> = ({
 	className,
 	selectedValueHandler,
 }) => {
-	const { size: stateSize, color } = useSelectedAttributes()
-
 	return (
 		<div
 			className={cn(style.wrap, className, {
@@ -37,11 +34,6 @@ export const ProducAttributeComponent: FC<IProducAttributeProps> = ({
 						onClick={() => {
 							selectedValueHandler(item)
 						}}
-						className={cn({
-							[style.active_btn]:
-								(color && item === color) || (stateSize && item === stateSize),
-						})}
-						key={i}
 					>
 						{item}
 					</ButtonComponent>
