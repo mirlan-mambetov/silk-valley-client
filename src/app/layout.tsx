@@ -12,7 +12,11 @@ export const metadata: Metadata = {
 	description: "Silk Valley. Модный интернет магазин.",
 }
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
+export default function RootLayout({
+	children,
+}: {
+	children: React.ReactNode
+}) {
 	return (
 		<html lang="ru">
 			<body>
@@ -23,5 +27,3 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
 		</html>
 	)
 }
-
-export default RootLayout

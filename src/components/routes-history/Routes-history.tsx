@@ -17,10 +17,7 @@ export const RoutesHistoryComponent: FC<IRoutesHistoryProps> = ({
 	links,
 	productName,
 }) => {
-	// const [active, setActive] = useState(false)
 	const pathName = usePathname()
-	// const replcaseString = pathName.replace(/^\/[^\/]+\//, "")
-
 	return (
 		<div className={style.history}>
 			<div className={style.list}>

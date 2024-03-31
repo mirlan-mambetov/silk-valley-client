@@ -12,8 +12,8 @@ interface IProductActionsComponentProps {
 	alias: string
 	disable?: boolean
 	actionType: "toCart" | "toView"
-	size: string | undefined
-	color: string | undefined
+	size?: string | undefined
+	color?: string | undefined
 	product: IProduct
 }
 export const ProductActionsComponent: FC<IProductActionsComponentProps> = ({

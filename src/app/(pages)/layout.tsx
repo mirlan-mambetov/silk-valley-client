@@ -10,9 +10,13 @@ import {
 import { MobileMenuComponent } from "@/components/mobile/mobile-navigation/Mobile-navigation"
 import { ModalComponent } from "@/components/modal/Modal"
 import { ModalDialogComponent } from "@/components/modal/modal-dialog/Modal-dialog"
-import { FC, PropsWithChildren, Suspense } from "react"
+import React, { Suspense } from "react"
 
-const HomeLayout: FC<PropsWithChildren> = ({ children }) => {
+export default function HomeLayout({
+	children,
+}: {
+	children: React.ReactNode
+}) {
 	return (
 		<>
 			<NotifyHeaderComponent />
@@ -29,5 +33,3 @@ const HomeLayout: FC<PropsWithChildren> = ({ children }) => {
 		</>
 	)
 }
-
-export default HomeLayout

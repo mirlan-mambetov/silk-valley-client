@@ -1,27 +1,21 @@
 import { APP_URI } from "@/api/config/api-config"
-import { CardsComponent } from "@/components"
-import { CARDS_PRODUCT } from "@/components/product/product.data"
+import { ProductCardsComponent } from "@/components"
 
 export const revalidate = 3600
 
 async function fetchProducts() {
-	try {
-		const response = await fetch(`${APP_URI}/product`)
-
-		return response.json()
-	} catch (err) {
-		throw new Error("Произошла ошибка при запросе товаров")
-	}
+	const response = await fetch(`${APP_URI}/product`)
+	return response.json()
 }
 
-const HomePage = async () => {
+export default async function HomePage() {
 	const data = await fetchProducts()
 	return (
 		<>
 			{/* BANNER HERO */}
-			<section>
-				<div className="container">{/* <Banner data={BANNER_DATA} /> */}</div>
-			</section>
+			{/* <section>
+				<div className="container"><Banner data={BANNER_DATA} /></div>
+			</section> */}
 
 			{/* PROMOTIONS */}
 			{/* <section>
@@ -30,18 +24,22 @@ const HomePage = async () => {
 				</div>
 			</section> */}
 			{/* CARDS*/}
-			<section>{/* <PromotionUniqueComponent /> */}</section>
+			{/* <section><PromotionUniqueComponent /></section> */}
 			<section>
 				<div className="container">
-					<CardsComponent products={data || []} limit={6} title="Хиты продаж" />
+					<ProductCardsComponent
+						products={data || []}
+						limit={6}
+						title="Хиты продаж"
+					/>
 				</div>
 			</section>
 
-			<section>
+			{/* <section>
 				<div className="container">
-					<CardsComponent products={data || CARDS_PRODUCT} />
+					<ProductCardsComponent products={data || CARDS_PRODUCT} />
 				</div>
-			</section>
+			</section> */}
 			{/* CARDS*/}
 
 			{/* WOMANS */}
@@ -49,5 +47,3 @@ const HomePage = async () => {
 		</>
 	)
 }
-
-export default HomePage

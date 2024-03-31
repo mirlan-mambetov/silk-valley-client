@@ -11,36 +11,29 @@ import { IProduct } from "@/interfaces/product.interface"
 import cn from "classnames"
 import Image from "next/image"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
-import { FC, useState } from "react"
-import style from "./default-cards.module.scss"
+import { FC } from "react"
+import style from "./product-cards.module.scss"
 
 interface IDefaultCardsComponentProps {
-	data: IProduct[]
+	products: IProduct[]
 	limit?: number
 	title?: string
 	grid?: "6" | "5"
 }
-export const DefaultCardsComponent: FC<IDefaultCardsComponentProps> = ({
-	data,
+export const ProductCardsComponent: FC<IDefaultCardsComponentProps> = ({
+	products,
 	limit,
 	title,
 	grid,
 }) => {
-	const limitedData = data.slice(0, limit)
-	const [isHover, setIsHover] = useState(false)
-	const { push } = useRouter()
+	const limitedData = products.slice(0, limit)
 
 	return (
 		<div className={style.cards}>
 			{title ? <HeadingComponent text={title} /> : null}
 			<div className={cn(style.wrap, { [style.grid5]: grid === "5" })}>
 				{limitedData.map((product) => (
-					<div
-						className={style.card}
-						key={product.id}
-						onMouseEnter={() => setIsHover(!isHover)}
-					>
+					<div className={style.card} key={product.id}>
 						<div className={style.card_wrap}>
 							<div className={style.featured}>
 								<FeaturedComponent />
