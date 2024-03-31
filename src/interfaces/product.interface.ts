@@ -12,9 +12,11 @@ export interface IProduct extends IBase {
 	articleNumber: number
 	rating: number
 	new?: boolean
+	sizes?: string[]
 	discount?: number
 	isHit?: boolean
 	specifications?: IProductSpecifications
+	quantity: number
 }
 
 export interface IProductImages extends IBase {

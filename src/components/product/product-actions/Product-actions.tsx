@@ -2,7 +2,6 @@
 
 import { ButtonComponent } from "@/components/button/Button"
 import { useExistInCart } from "@/hooks/cart/useExistInCart"
-import { useSelectedAttributes } from "@/hooks/cart/useSelectedAttributes"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { IProduct } from "@/interfaces/product.interface"
 import { useRouter } from "next/navigation"
@@ -13,6 +12,8 @@ interface IProductActionsComponentProps {
 	alias: string
 	disable?: boolean
 	actionType: "toCart" | "toView"
+	size: string | undefined
+	color: string | undefined
 	product: IProduct
 }
 export const ProductActionsComponent: FC<IProductActionsComponentProps> = ({
@@ -20,11 +21,12 @@ export const ProductActionsComponent: FC<IProductActionsComponentProps> = ({
 	disable,
 	actionType,
 	product,
+	size,
+	color,
 }) => {
 	const { push } = useRouter()
 	const { isExist } = useExistInCart(product)
 	const { addToCart, openNotifyHandler } = useStoreActions()
-	const { color, size } = useSelectedAttributes()
 
 	switch (actionType) {
 		case "toCart":
@@ -41,13 +43,24 @@ export const ProductActionsComponent: FC<IProductActionsComponentProps> = ({
 						</ButtonComponent>
 					) : (
 						<ButtonComponent
-							disabled={!color || !size}
 							aria-label="Просмотр"
 							className={style.button}
 							btnType="cart"
 							onClick={() => {
-								addToCart({ product: { ...product, quantity: 1, size, color } })
-								openNotifyHandler("Товар добавлен в корзину")
+								if (product.sizes?.length && typeof size === "undefined") {
+									openNotifyHandler("Выберите размеры")
+								} else if (typeof color === "undefined") {
+									openNotifyHandler("Выберите цвет")
+								} else {
+									addToCart({
+										product: {
+											...product,
+											selectedColor: color,
+											selectedSize: size,
+										},
+									})
+									openNotifyHandler("Товар добавлен в корзину")
+								}
 							}}
 						/>
 					)}

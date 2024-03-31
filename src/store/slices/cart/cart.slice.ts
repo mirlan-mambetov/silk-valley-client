@@ -1,38 +1,38 @@
-import { AddToCartPayload, ICartProducts } from "@/interfaces/cart.interface"
-import { IProduct } from "@/interfaces/product.interface"
+import {
+	ICartPayload,
+	ICartProduct,
+	IChangeQuantityPayload,
+} from "@/interfaces/cart.interface"
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
 interface ICartInitialState {
-	products: ICartProducts[]
+	products: ICartProduct[]
 	isExist: boolean
-	isAdd: boolean
-}
-export interface IChangeQuantityPayload extends Pick<IProduct, "id"> {
-	type: "minus" | "plus"
 }
 
 const initialState: ICartInitialState = {
 	isExist: false,
 	products: [],
-	isAdd: false,
 }
 
 export const cartSlice = createSlice({
 	name: "cart",
 	initialState,
 	reducers: {
-		addToCart: (state, { payload }: PayloadAction<AddToCartPayload>) => {
+		addToCart: (state, { payload }: PayloadAction<ICartPayload>) => {
 			const isExist = state.products?.some(
 				(item) => item.id === payload.product.id
 			)
 			if (!isExist) {
-				state.products?.push({ ...payload.product })
+				state.products?.push({
+					...payload.product,
+					quantity: 1,
+				})
 				state.isExist = false
-				state.isAdd = true
 			}
 			state.isExist = true
-			return
 		},
+
 		updateProductAttributeInCart: (
 			state,
 			{
@@ -45,8 +45,8 @@ export const cartSlice = createSlice({
 			)
 			if (productIndex !== -1) {
 				const updatedProduct = { ...state.products[productIndex] }
-				if (color) updatedProduct.color = color
-				if (size) updatedProduct.size = size
+				if (color) updatedProduct.selectedColor = color
+				if (size) updatedProduct.selectedSize = size
 				state.products[productIndex] = updatedProduct
 			}
 		},
@@ -59,7 +59,6 @@ export const cartSlice = createSlice({
 				(product) => product.id !== payload.id
 			)
 			state.isExist = false
-			state.isAdd = false
 		},
 		changedQuantity: (
 			state,

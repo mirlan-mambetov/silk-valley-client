@@ -8,17 +8,36 @@ export const SelectedAttributeProvider: FC<PropsWithChildren> = ({
 }) => {
 	const [color, setColor] = useState<string | undefined>(undefined)
 	const [size, setSize] = useState<string | undefined>(undefined)
+	const [isClick, setIsClick] = useState<boolean>(false)
 
-	const setColorHandler = (color: string) => {
-		setColor(color)
+	const setColorHandler = (color: string | undefined) => {
+		if (color) {
+			setColor(color)
+		}
 	}
-	const setSizeHandler = (size: string) => {
-		setSize(size)
+	const setSizeHandler = (size: string | undefined) => {
+		if (size) {
+			setSize(size)
+		}
+	}
+
+	const setClickHandler = () => setIsClick(!isClick)
+	const clearHandler = () => {
+		setColor(undefined)
+		setSize(undefined)
 	}
 
 	return (
 		<SelectedAttributeContext.Provider
-			value={{ color, size, setColorHandler, setSizeHandler }}
+			value={{
+				color,
+				size,
+				setColorHandler,
+				setSizeHandler,
+				isClick,
+				setClickHandler,
+				clearHandler,
+			}}
 		>
 			{children}
 		</SelectedAttributeContext.Provider>

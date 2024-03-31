@@ -1,14 +1,13 @@
 "use client"
 
 import { useWindowWidth } from "@/hooks/app/useWindowWidth"
-import { IProduct } from "@/interfaces/product.interface"
+import { IProductImages } from "@/interfaces/product.interface"
 import Image from "next/image"
 import { FC, useEffect, useState } from "react"
 import {
 	MdOutlineKeyboardArrowDown,
 	MdOutlineKeyboardArrowUp,
 } from "react-icons/md"
-import ReactImageMagnify from "react-image-magnify"
 import "swiper/css"
 import "swiper/css/navigation"
 import "swiper/css/pagination"
@@ -16,10 +15,14 @@ import { Navigation, Pagination } from "swiper/modules"
 import { Swiper, SwiperSlide } from "swiper/react"
 
 import { ButtonComponent } from "@/components/button/Button"
+import ReactImageMagnify from "react-image-magnify"
 import style from "./product-images.module.scss"
 
 interface IProductImagesComponent {
-	data: IProduct
+	data: {
+		poster: string
+		images: Pick<IProductImages, "image">
+	}
 }
 export const ProductImagesComponent: FC<IProductImagesComponent> = ({
 	data,
@@ -35,6 +38,10 @@ export const ProductImagesComponent: FC<IProductImagesComponent> = ({
 			setNewSrc(decodeURIComponent(finalUrl))
 		}
 	}, [imgSrc])
+
+	useEffect(() => {
+		setNewSrc(`${process.env.NEXT_PUBLIC_API_STATIC}/${data?.poster}`)
+	}, [data.poster])
 
 	return (
 		<div className={style.product_image}>
@@ -62,7 +69,7 @@ export const ProductImagesComponent: FC<IProductImagesComponent> = ({
 					}}
 					modules={[Navigation, Pagination]}
 				>
-					{data.images[0].image.map((image, i) => (
+					{data.images.image.map((image, i) => (
 						<SwiperSlide key={i} className={style.slide}>
 							<div className={style.image}>
 								<Image
@@ -70,7 +77,7 @@ export const ProductImagesComponent: FC<IProductImagesComponent> = ({
 									onMouseEnter={(e) => setImgSrc(e.currentTarget.src)}
 									onMouseLeave={() => setImgSrc(null)}
 									src={`${process.env.NEXT_PUBLIC_API_STATIC}/${image}`}
-									alt={data.title}
+									alt={"product-poster"}
 									width={900}
 									height={1300}
 								/>
@@ -91,22 +98,24 @@ export const ProductImagesComponent: FC<IProductImagesComponent> = ({
 			<div className={style.product_poster}>
 				<div className={style.poster}>
 					<ReactImageMagnify
+						className={style.zoom}
 						smallImage={{
-							width: 400,
-							height: 600,
+							// @ts-ignore
 							src: newSrc
 								? newSrc
 								: `${process.env.NEXT_PUBLIC_API_STATIC}/${data?.poster}`,
-							alt: data?.title,
+							alt: "product-poster",
 							isFluidWidth: true,
+							// sizes:
+							// 	"(max-width: 480px) 100vw, (max-width: 1200px) 30vw, 360px",
 						}}
 						largeImage={{
 							width: 900,
-							height: 1000,
+							height: 1300,
+							// @ts-ignore
 							src: newSrc
 								? newSrc
 								: `${process.env.NEXT_PUBLIC_API_STATIC}/${data?.poster}`,
-							alt: data?.title,
 						}}
 					/>
 				</div>

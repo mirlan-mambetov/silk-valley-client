@@ -5,12 +5,10 @@ import {
 	ProductActionsComponent,
 	ProductPriceComponent,
 } from "@/components"
-import { useExistInCart } from "@/hooks/cart/useExistInCart"
 import { useSelectedAttributes } from "@/hooks/cart/useSelectedAttributes"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { IProduct } from "@/interfaces/product.interface"
 import Image from "next/image"
-import { useRouter } from "next/navigation"
 import { FC, useEffect } from "react"
 import style from "./mobile-detail-info.module.scss"
 
@@ -20,9 +18,6 @@ interface IMobileDetailInfoComponentProps {
 export const MobileDetailInfoComponent: FC<IMobileDetailInfoComponentProps> = ({
 	data,
 }) => {
-	const { isExist } = useExistInCart(data)
-	const { push } = useRouter()
-
 	const { setColorHandler, setSizeHandler, color, size } =
 		useSelectedAttributes()
 	const { updateProductAttributeInCart, addToCart, openNotifyHandler } =

@@ -1,26 +1,96 @@
 "use client"
 
 import {
-	ProducAttributeComponent,
+	ButtonComponent,
 	ProductDiscountComponent,
 	ProductPriceComponent,
 	ProductRatingComponent,
 } from "@/components"
+import { SwiperComponent } from "@/components/swiper-component/Swiper-component"
 import { useSelectedAttributes } from "@/hooks/cart/useSelectedAttributes"
 import { IProduct } from "@/interfaces/product.interface"
-import { FC } from "react"
+import cn from "classnames"
+import Image from "next/image"
+import { Dispatch, FC, SetStateAction } from "react"
+import { SwiperSlide } from "swiper/react"
 import style from "./product-attributes.module.scss"
 
 interface IAttributesComponentProps {
 	data: IProduct
+	selectedColor: string | undefined
+	setSelectedColor: Dispatch<SetStateAction<string | undefined>>
+	setSelectedSize: Dispatch<SetStateAction<string | undefined>>
 }
 export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 	data,
+	selectedColor,
+	setSelectedColor,
+	setSelectedSize,
 }) => {
-	const { setColorHandler, setSizeHandler } = useSelectedAttributes()
+	const { isClick, setColorHandler, setSizeHandler } = useSelectedAttributes()
 
 	return (
 		<div className={style.attributes}>
+			{/* COLORS */}
+			<div className={cn(style.colors, { [style.active]: isClick })}>
+				<span>
+					Цвет:
+					<b>{selectedColor ? selectedColor : data.images[0].color}</b>
+				</span>
+				<SwiperComponent
+					options={{
+						className: style.slider,
+						slidesPerView: 6,
+						spaceBetween: 5,
+					}}
+				>
+					{data.images.map((color) => (
+						<SwiperSlide
+							title={`Цвет: ${color.color}`}
+							className={cn(style.color, {
+								[style.active_color]: selectedColor === color.color,
+							})}
+							key={color.id}
+							onClick={() => {
+								setColorHandler(color.color)
+								setSelectedColor(color.color)
+							}}
+						>
+							<Image
+								src={`${process.env.NEXT_PUBLIC_API_STATIC}/${color.image[0]}`}
+								width={80}
+								height={110}
+								alt={color.color}
+							/>
+						</SwiperSlide>
+					))}
+				</SwiperComponent>
+			</div>
+
+			{/* SIZES */}
+			{data.sizes?.length ? (
+				<div className={style.sizes}>
+					<h5 className={style.title}>Размеры</h5>
+					<div className={style.size}>
+						{data.sizes.map((size, i) => (
+							<ButtonComponent
+								key={i}
+								onClick={() => {
+									setSelectedSize(size)
+								}}
+								// className={cn({
+								// 	[style.active_btn]:
+								// 		(color && item === color) || (stateSize && item === stateSize),
+								// })}
+								// key={i}
+							>
+								{size}
+							</ButtonComponent>
+						))}
+					</div>
+				</div>
+			) : null}
+
 			<ProductRatingComponent
 				rating={data?.rating || 0}
 				className={style.rating}
@@ -34,18 +104,6 @@ export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 				/>
 				<ProductDiscountComponent product={data} type="extension" size="xl2" />
 			</div>
-			<ProducAttributeComponent
-				selectedValueHandler={(value) => setColorHandler(value)}
-				data={["Черный", "Белый", "Зеленый", "Черно&Белый"]}
-				title="Цвета"
-				size="1xl"
-			/>
-			<ProducAttributeComponent
-				selectedValueHandler={(value) => setSizeHandler(value)}
-				data={["32xl", "34xl", "38xl", "48XXL"]}
-				title="Размеры"
-				size="1xl"
-			/>
 			<div className={style.description}>
 				<h5 className={style.title}>Описание</h5>
 				<p>{data?.description}</p>

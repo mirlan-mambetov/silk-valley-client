@@ -6,7 +6,7 @@ import {
 	ProductPriceComponent,
 } from "@/components"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
-import { ICartProducts } from "@/interfaces/cart.interface"
+import { ICartProduct } from "@/interfaces/cart.interface"
 import cn from "classnames"
 import Image from "next/image"
 import { FC } from "react"
@@ -15,13 +15,14 @@ import { MdInvertColors } from "react-icons/md"
 import style from "./cart-product.module.scss"
 
 interface ICartProductComponentProps {
-	products: ICartProducts[]
+	products: ICartProduct[]
 }
 export const CartProductComponent: FC<ICartProductComponentProps> = ({
 	products,
 }) => {
 	const { removeFromCart } = useStoreActions()
 	const { openNotifyHandler } = useStoreActions()
+
 	return (
 		<div className={style.cart}>
 			{products.length ? (
@@ -30,7 +31,7 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 						<div className={style.content}>
 							<div className={style.image}>
 								<Image
-									src={product.poster}
+									src={`${process.env.NEXT_PUBLIC_API_STATIC}/${product.poster}`}
 									alt={product.title}
 									width={90}
 									height={120}
@@ -49,18 +50,23 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 								</div>
 								<h4 className={style.title}>{product.title}</h4>
 								<div className={style.items}>
-									<div className={style.item}>
-										<MdInvertColors />
-										<span>
-											Цвет: <small>{product.color}</small>
-										</span>
-									</div>
-									<div className={style.item}>
-										<IoResizeOutline />
-										<span>
-											Размер: <small>{product.size}</small>
-										</span>
-									</div>
+									{product.selectedColor && (
+										<div className={style.item}>
+											<MdInvertColors />
+											<span>
+												Цвет: <small>{product.selectedColor}</small>
+											</span>
+										</div>
+									)}
+									{product.selectedSize && (
+										<div className={style.item}>
+											<IoResizeOutline />
+											<span>
+												Размер:
+												<small>{product.selectedSize}</small>
+											</span>
+										</div>
+									)}
 								</div>
 							</div>
 						</div>

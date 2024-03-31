@@ -6,30 +6,38 @@ import {
 	ProductActionsComponent,
 	ProductPriceComponent,
 } from "@/components"
-import { useSelectedAttributes } from "@/hooks/cart/useSelectedAttributes"
+import { useCart } from "@/hooks/cart/useCart"
 import { useDeliver } from "@/hooks/deliver/useDeliver"
 import { useScreen } from "@/hooks/screen/useScreen"
-import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { IProduct } from "@/interfaces/product.interface"
 import cn from "classnames"
-import { useRouter } from "next/navigation"
-import { FC } from "react"
+import { FC, useEffect, useState } from "react"
 import { FiEdit2 } from "react-icons/fi"
 import style from "./product-info.module.scss"
 
 interface IProductInfoComponentProps {
 	data: IProduct
 	type?: "sticky" | "default"
+	size: string | undefined
+	color: string | undefined
 }
 export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 	data,
 	type = "default",
+	color,
+	size,
 }) => {
+	const [isExistColor, setIsExistColor] = useState<string | undefined>(
+		undefined
+	)
 	const { setContentHandler } = useScreen()
-	const { push } = useRouter()
-	const { addToCart } = useStoreActions()
 	const { address } = useDeliver()
-	const { size, color } = useSelectedAttributes()
+	const { products } = useCart()
+
+	useEffect(() => {
+		const isExist = products.find((product) => product.id === data.id)
+		setIsExistColor(isExist?.selectedColor)
+	}, [])
 
 	return (
 		<div
@@ -86,14 +94,21 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 					)}
 				</div>
 
-				{color && (
+				{color ? (
 					<div className={style.box}>
 						<small>Цвет</small>
 						<div className={style.box_item}>
 							<span>{color}</span>
 						</div>
 					</div>
-				)}
+				) : isExistColor ? (
+					<div className={style.box}>
+						<small>Цвет</small>
+						<div className={style.box_item}>
+							<span>{isExistColor}</span>
+						</div>
+					</div>
+				) : null}
 
 				{size && (
 					<div className={style.box}>
@@ -105,6 +120,8 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 				)}
 
 				<ProductActionsComponent
+					color={color}
+					size={size}
 					actionType="toCart"
 					alias={data.alias}
 					product={data}
