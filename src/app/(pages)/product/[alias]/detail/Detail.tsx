@@ -11,8 +11,8 @@ import {
 	StickyHeaderComponent,
 } from "@/components"
 import { useWindowWidth } from "@/hooks/app/useWindowWidth"
-import { IProduct } from "@/interfaces/product.interface"
-import { FC } from "react"
+import { IProduct, IProductImages } from "@/interfaces/product.interface"
+import { FC, useEffect, useState } from "react"
 import { MdContentCopy } from "react-icons/md"
 import style from "./detail.module.scss"
 
@@ -20,24 +20,42 @@ interface IDetailProps {
 	data: IProduct
 }
 export const Detail: FC<IDetailProps> = ({ data }) => {
+	const [selectedImages, setSelectedImages] = useState<
+		IProductImages | undefined
+	>(undefined)
+	const [selectedColor, setSelectedColor] = useState<string | undefined>(
+		undefined
+	)
+	const [selectedSize, setSelectedSize] = useState<string | undefined>(
+		undefined
+	)
 	const { width } = useWindowWidth()
 
-	console.log(data)
+	useEffect(() => {
+		if (selectedColor) {
+			const images = data.images.find((itemt) => itemt.color === selectedColor)
+			setSelectedImages(images)
+		}
+	}, [selectedColor])
+
 	return (
 		<div className={style.detail}>
-			{/* STICY INFORMATION */}
-			{/* {width < 940 ? ( */}
+			{/* STICKY INFORMATION */}
 			<StickyHeaderComponent start={width < 940 ? 200 : 900}>
 				<MobileDetailInfoComponent data={data} />
 			</StickyHeaderComponent>
-			{/* ) : null} */}
 			{/* ROUTES HISTORY */}
 			<RoutesHistoryComponent productName={data.title} />
 			<div className={style.wrap}>
 				{/* PRODUCT */}
 				<div className={style.product}>
 					{/* IMAGES */}
-					<ProductImagesComponent data={data} />
+					<ProductImagesComponent
+						data={{
+							poster: selectedImages ? selectedImages.image[0] : data.poster,
+							images: selectedImages ? selectedImages : data.images[0],
+						}}
+					/>
 					{/* PRODUCT CONTENT */}
 					<div className={style.product_content}>
 						<h2 className={style.product_name}>{data?.title}</h2>
@@ -47,12 +65,23 @@ export const Detail: FC<IDetailProps> = ({ data }) => {
 								<MdContentCopy />
 							</ButtonComponent>
 						</div>
-						{/* ATTRIBUTES */}
-						<ProductAttributesComponent data={data} />
+
+						<ProductAttributesComponent
+							data={data}
+							selectedColor={selectedColor}
+							setSelectedColor={(value) => setSelectedColor(value)}
+							setSelectedSize={(value) => setSelectedSize(value)}
+						/>
 					</div>
 				</div>
 				{/* ORDER INFO */}
-				{width > 940 ? <ProductInfoComponent data={data} /> : null}
+				{width > 940 ? (
+					<ProductInfoComponent
+						data={data}
+						size={selectedSize}
+						color={selectedColor}
+					/>
+				) : null}
 				<ProductSpecificationsComponent specifications={data.specifications} />
 			</div>
 		</div>
