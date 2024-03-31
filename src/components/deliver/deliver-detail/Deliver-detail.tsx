@@ -214,32 +214,6 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 					</div>
 				</div>
 			</motion.div>
-			{/* {Object.keys(address).length ? (
-				<div className={style.wrap}>
-				
-					
-				</div>
-			) : null} */}
-			{/* <div className={style.wrap}>
-				<h5 className={style.title}>
-					<span>Пункты выдачи</span>
-				</h5>
-				<div className={style.rows}>
-					<div className={style.row}>
-						<div className={style.content}>
-							<small>г. Каракол:</small>
-							<span>Тыныстанова 130</span>
-						</div>
-					</div>
-					<div className={style.row}>
-						<div className={style.content}>
-							<small>г. Бишкек:</small>
-							<span>Ахунбаева 140</span>
-						</div>
-					</div>
-				</div>
-			</div> */}
-			{/*  */}
 		</motion.div>
 	)
 }

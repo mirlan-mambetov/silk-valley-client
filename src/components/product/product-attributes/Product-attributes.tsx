@@ -74,11 +74,6 @@ export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 								onClick={() => {
 									setSelectedSize(size)
 								}}
-								// className={cn({
-								// 	[style.active_btn]:
-								// 		(color && item === color) || (stateSize && item === stateSize),
-								// })}
-								// key={i}
 							>
 								{size}
 							</ButtonComponent>
@@ -86,7 +81,6 @@ export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 					</div>
 				</div>
 			) : null}
-
 			<ProductRatingComponent
 				rating={data?.rating || 0}
 				className={style.rating}

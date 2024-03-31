@@ -1,5 +1,7 @@
 "use client"
 
+import { ButtonComponent } from "@/components/button/Button"
+import { SwiperComponent } from "@/components/swiper-component/Swiper-component"
 import { useWindowWidth } from "@/hooks/app/useWindowWidth"
 import { IProductImages } from "@/interfaces/product.interface"
 import Image from "next/image"
@@ -8,14 +10,9 @@ import {
 	MdOutlineKeyboardArrowDown,
 	MdOutlineKeyboardArrowUp,
 } from "react-icons/md"
-import "swiper/css"
-import "swiper/css/navigation"
-import "swiper/css/pagination"
-import { Navigation, Pagination } from "swiper/modules"
-import { Swiper, SwiperSlide } from "swiper/react"
-
-import { ButtonComponent } from "@/components/button/Button"
 import ReactImageMagnify from "react-image-magnify"
+import { Navigation, Pagination } from "swiper/modules"
+import { SwiperSlide } from "swiper/react"
 import style from "./product-images.module.scss"
 
 interface IProductImagesComponent {
@@ -47,27 +44,28 @@ export const ProductImagesComponent: FC<IProductImagesComponent> = ({
 		<div className={style.product_image}>
 			{/* IMAGES */}
 			<div className={style.product_images}>
-				<Swiper
-					className={style.slider}
-					direction={width > 640 ? "vertical" : "horizontal"}
-					breakpoints={{
-						320: {
-							slidesPerView: 1,
+				<SwiperComponent
+					options={{
+						className: style.slider,
+						direction: width > 640 ? "vertical" : "horizontal",
+						modules: [Navigation, Pagination],
+						navigation: {
+							nextEl: `.${style.next}`,
+							prevEl: `.${style.prev}`,
 						},
-						640: {
-							slidesPerView: 2.7,
-						},
-						1024: {
-							slidesPerView: 3.6,
-							spaceBetween: 5,
+						breakpoints: {
+							320: {
+								slidesPerView: 1,
+							},
+							640: {
+								slidesPerView: 2.7,
+							},
+							1024: {
+								slidesPerView: 3.6,
+								spaceBetween: 5,
+							},
 						},
 					}}
-					// effect="fade"
-					navigation={{
-						nextEl: `.${style.next}`,
-						prevEl: `.${style.prev}`,
-					}}
-					modules={[Navigation, Pagination]}
 				>
 					{data.images.image.map((image, i) => (
 						<SwiperSlide key={i} className={style.slide}>
@@ -92,7 +90,7 @@ export const ProductImagesComponent: FC<IProductImagesComponent> = ({
 							<MdOutlineKeyboardArrowDown />
 						</ButtonComponent>
 					</div>
-				</Swiper>
+				</SwiperComponent>
 			</div>
 			{/* POSTER */}
 			<div className={style.product_poster}>

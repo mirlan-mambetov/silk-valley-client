@@ -31,6 +31,7 @@ export const ProducAttributeComponent: FC<IProducAttributeProps> = ({
 			<div className={style.box}>
 				{data.map((item, i) => (
 					<ButtonComponent
+						key={i}
 						onClick={() => {
 							selectedValueHandler(item)
 						}}
