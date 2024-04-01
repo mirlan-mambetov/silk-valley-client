@@ -45,8 +45,37 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 				[style.sticky]: type === "sticky",
 			})}
 		>
-			<h3 className={style.total}>Общие детали</h3>
 			<div className={style.wrap}>
+				<div className={style.box}>
+					{data.discount ? (
+						<>
+							<small>
+								Цена
+								<>с учетом скидки</>
+							</small>
+							<div className={style.box_item}>
+								<ProductPriceComponent
+									price={data.price}
+									discount={data.discount}
+									orientation="column"
+									size="3xxl"
+								/>
+							</div>
+						</>
+					) : (
+						<>
+							<small>Цена</small>
+							<div className={style.box_item}>
+								<ProductPriceComponent
+									price={data.price}
+									discount={data.discount}
+									orientation="column"
+									size="3xxl"
+								/>
+							</div>
+						</>
+					)}
+				</div>
 				<div className={style.box}>
 					<small>Доставка</small>
 					<div className={style.box_item}>
@@ -63,35 +92,6 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 							<FiEdit2 />
 						</ButtonComponent>
 					</div>
-				</div>
-
-				<div className={style.box}>
-					{data.discount ? (
-						<>
-							<small>
-								Цена
-								<>с учетом скидки</>
-							</small>
-							<div className={style.box_item}>
-								<ProductPriceComponent
-									price={data.price}
-									discount={data.discount}
-									orientation="column"
-								/>
-							</div>
-						</>
-					) : (
-						<>
-							<small>Цена</small>
-							<div className={style.box_item}>
-								<ProductPriceComponent
-									price={data.price}
-									discount={data.discount}
-									orientation="column"
-								/>
-							</div>
-						</>
-					)}
 				</div>
 
 				{color ? (
@@ -120,6 +120,7 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 				)}
 
 				<ProductActionsComponent
+					btnSize="2xl"
 					color={color}
 					size={size}
 					actionType="toCart"

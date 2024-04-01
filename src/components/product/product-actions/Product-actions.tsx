@@ -4,6 +4,7 @@ import { ButtonComponent } from "@/components/button/Button"
 import { useExistInCart } from "@/hooks/cart/useExistInCart"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { IProduct } from "@/interfaces/product.interface"
+import cn from "classnames"
 import { useRouter } from "next/navigation"
 import { FC } from "react"
 import style from "./product.actions.module.scss"
@@ -15,6 +16,7 @@ interface IProductActionsComponentProps {
 	size?: string | undefined
 	color?: string | undefined
 	product: IProduct
+	btnSize?: "1xl" | "2xl"
 }
 export const ProductActionsComponent: FC<IProductActionsComponentProps> = ({
 	alias,
@@ -23,6 +25,7 @@ export const ProductActionsComponent: FC<IProductActionsComponentProps> = ({
 	product,
 	size,
 	color,
+	btnSize,
 }) => {
 	const { push } = useRouter()
 	const { isExist } = useExistInCart(product)
@@ -34,7 +37,10 @@ export const ProductActionsComponent: FC<IProductActionsComponentProps> = ({
 				<>
 					{isExist ? (
 						<ButtonComponent
-							className={style.button}
+							className={cn(style.button, {
+								[style.xl1]: btnSize === "1xl",
+								[style.xl2]: btnSize === "2xl",
+							})}
 							aria-label="Перейти к корзине"
 							btnType="cart"
 							onClick={() => push("/cart")}
@@ -44,7 +50,10 @@ export const ProductActionsComponent: FC<IProductActionsComponentProps> = ({
 					) : (
 						<ButtonComponent
 							aria-label="Просмотр"
-							className={style.button}
+							className={cn(style.button, {
+								[style.xl1]: btnSize === "1xl",
+								[style.xl2]: btnSize === "2xl",
+							})}
 							btnType="cart"
 							onClick={() => {
 								if (product.sizes?.length && typeof size === "undefined") {
@@ -72,7 +81,10 @@ export const ProductActionsComponent: FC<IProductActionsComponentProps> = ({
 			return (
 				<ButtonComponent
 					disabled={disable}
-					className={style.button}
+					className={cn(style.button, {
+						[style.xl1]: btnSize === "1xl",
+						[style.xl2]: btnSize === "2xl",
+					})}
 					aria-label="Просмотр"
 					btnType="cart"
 					onClick={() => push(`/product/${alias}`)}
@@ -84,7 +96,10 @@ export const ProductActionsComponent: FC<IProductActionsComponentProps> = ({
 			return (
 				<ButtonComponent
 					disabled={disable}
-					className={style.button}
+					className={cn(style.button, {
+						[style.xl1]: btnSize === "1xl",
+						[style.xl2]: btnSize === "2xl",
+					})}
 					aria-label="Просмотр"
 					btnType="cart"
 					onClick={() => push(`/product/${alias}`)}

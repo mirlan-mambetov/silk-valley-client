@@ -13,12 +13,12 @@ import { MdOutlineBorderColor } from "react-icons/md"
 import { useCartPriceCalculate } from "@/hooks/cart/useCartPriceCalculate"
 import { useDeliver } from "@/hooks/deliver/useDeliver"
 import { useScreen } from "@/hooks/screen/useScreen"
-import { ICartProducts } from "@/interfaces/cart.interface"
+import { ICartProduct } from "@/interfaces/cart.interface"
 import style from "./cart-info.module.scss"
 
 interface ICartInfoComponentProps {
 	anchorHanlder: (id: string) => void
-	products: ICartProducts[]
+	products: ICartProduct[]
 }
 export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 	anchorHanlder,
@@ -35,8 +35,12 @@ export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 					onClick={() => setContentHandler(<DeliverComponent />)}
 				>
 					<span>
-						{address.city || address.town || address.village
-							? address.city || address.town || address.village
+						{address.city && address.road
+							? `${address.city.replace("город", "г.")}. ${address.road}`
+							: address.town && address.road
+							? `${address.town}. ${address.road}`
+							: address.village && address.road
+							? `${address.village}. ${address.road}`
 							: "Выбрать адрес доставки"}
 					</span>
 					<small>

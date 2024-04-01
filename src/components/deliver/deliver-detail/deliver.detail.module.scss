@@ -27,6 +27,17 @@
 				.button {
 					display: none;
 				}
+				.rows {
+					.row {
+						display: flex;
+						flex-direction: column;
+						gap: 5px;
+						@include dashdeLine;
+						.content {
+							padding: 0;
+						}
+					}
+				}
 			}
 		}
 	}

@@ -29,12 +29,12 @@
 			display: flex;
 			font-size: 16px;
 			line-height: 24px;
-			font-weight: 400;
+			font-weight: 500;
 			color: $darken;
 			span {
 				display: flex;
 				flex-direction: column;
-				gap: 4px;
+				gap: 2px;
 				@include dashdeLine;
 			}
 		}

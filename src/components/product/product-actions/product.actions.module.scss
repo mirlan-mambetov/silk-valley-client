@@ -6,4 +6,10 @@
 	width: 100%;
 	font-size: 12px;
 	line-height: 8px;
+	&.xl1 {
+		padding: 8px 12px;
+	}
+	&.xl2 {
+		padding: 18px 10px;
+	}
 }
