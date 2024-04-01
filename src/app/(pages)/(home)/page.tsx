@@ -27,11 +27,7 @@ export default async function HomePage() {
 			{/* <section><PromotionUniqueComponent /></section> */}
 			<section>
 				<div className="container">
-					<ProductCardsComponent
-						products={data || []}
-						limit={6}
-						title="Хиты продаж"
-					/>
+					<ProductCardsComponent products={data || []} title="Хиты продаж" />
 				</div>
 			</section>
 

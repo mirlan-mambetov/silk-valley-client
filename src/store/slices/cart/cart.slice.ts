@@ -24,7 +24,7 @@ export const cartSlice = createSlice({
 			if (!isExist) {
 				state.products?.push({
 					...payload.product,
-					productQuantity: payload.product.quantity,
+					productQuantity: 1,
 				})
 			}
 		},
@@ -61,13 +61,10 @@ export const cartSlice = createSlice({
 			const { id, type } = payload
 			const product = state.products.find((product) => product.id === id)
 			if (product) {
-				if (
-					(type === "plus" && product.quantity < 1) ||
-					(type === "minus" && product.quantity > 1)
-				) {
-					type === "plus"
-						? product.productQuantity++
-						: product.productQuantity--
+				if (type === "plus" && product.productQuantity < product.quantity) {
+					product.productQuantity++
+				} else if (type === "minus" && product.productQuantity > 1) {
+					product.productQuantity--
 				}
 			}
 		},

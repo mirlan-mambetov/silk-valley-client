@@ -73,7 +73,7 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 						<div className={style.actions}>
 							<div className={cn(style.action, style.range)}>
 								<CartRangeComponent
-									quantity={product.quantity}
+									quantity={product.productQuantity}
 									text={false}
 									product={product}
 								/>
