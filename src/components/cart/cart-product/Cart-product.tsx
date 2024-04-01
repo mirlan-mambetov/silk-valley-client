@@ -80,6 +80,7 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 							</div>
 							<div className={style.action}>
 								<ButtonComponent
+									title="Убрать из корзины"
 									btnType="delete"
 									onClick={() => {
 										removeFromCart({ id: product.id })

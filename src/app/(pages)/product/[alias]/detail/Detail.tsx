@@ -27,7 +27,7 @@ export const Detail: FC<IDetailProps> = ({ data }) => {
 
 	// SELECTED COLOR PRODUCT
 	const [selectedColor, setSelectedColor] = useState<string | undefined>(
-		undefined
+		data.images[0].color
 	)
 
 	// SELECTED SIZE PRODUCT

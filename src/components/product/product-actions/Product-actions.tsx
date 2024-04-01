@@ -58,8 +58,6 @@ export const ProductActionsComponent: FC<IProductActionsComponentProps> = ({
 							onClick={() => {
 								if (product.sizes?.length && typeof size === "undefined") {
 									openNotifyHandler("Выберите размеры")
-								} else if (typeof color === "undefined") {
-									openNotifyHandler("Выберите цвет")
 								} else {
 									addToCart({
 										product: {

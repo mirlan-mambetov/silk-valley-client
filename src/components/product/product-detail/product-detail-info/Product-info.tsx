@@ -27,16 +27,20 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 	color,
 	size,
 }) => {
-	const [isExistColor, setIsExistColor] = useState<string | undefined>(
-		undefined
-	)
+	const [isExistAttributes, setIsExistAttributes] = useState<
+		| { existColor: string | undefined; existSize: string | undefined }
+		| undefined
+	>(undefined)
 	const { setContentHandler } = useScreen()
 	const { address } = useDeliver()
 	const { products } = useCart()
 
 	useEffect(() => {
 		const isExist = products.find((product) => product.id === data.id)
-		setIsExistColor(isExist?.selectedColor)
+		setIsExistAttributes({
+			existColor: isExist?.selectedColor,
+			existSize: isExist?.selectedSize,
+		})
 	}, [])
 
 	return (
@@ -80,10 +84,13 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 					<small>Доставка</small>
 					<div className={style.box_item}>
 						<span>
-							{address.city ||
-								address.town ||
-								address.state ||
-								"Иссык - Кульская область. г. Каракол"}
+							{address.city && address.road
+								? `${address.city.replace("город", "г.")}. ${address.road}`
+								: address.town && address.road
+								? `${address.town}. ${address.road}`
+								: address.village && address.road
+								? `${address.village}. ${address.road}`
+								: "Выбрать адрес доставки"}
 						</span>
 						<ButtonComponent
 							title="Выбрать координаты доставки"
@@ -101,20 +108,27 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 							<span>{color}</span>
 						</div>
 					</div>
-				) : isExistColor ? (
+				) : isExistAttributes?.existColor ? (
 					<div className={style.box}>
 						<small>Цвет</small>
 						<div className={style.box_item}>
-							<span>{isExistColor}</span>
+							<span>{isExistAttributes?.existColor}</span>
 						</div>
 					</div>
 				) : null}
 
-				{size && (
+				{size ? (
 					<div className={style.box}>
 						<small>Размеры</small>
 						<div className={style.box_item}>
 							<span>{size}</span>
+						</div>
+					</div>
+				) : (
+					<div className={style.box}>
+						<small>Размеры</small>
+						<div className={style.box_item}>
+							<span>{isExistAttributes?.existSize}</span>
 						</div>
 					</div>
 				)}

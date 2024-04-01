@@ -27,12 +27,14 @@ export const CartRangeComponent: FC<ICartRangeComponentProps> = ({
 			{text && <small>Количество</small>}
 			<div className={style.quantity_item}>
 				<ButtonComponent
+					title="Убрать"
 					onClick={() => changedQuantity({ type: "minus", id: product.id })}
 				>
 					<LuMinus />
 				</ButtonComponent>
 				<span>{quantity}</span>
 				<ButtonComponent
+					title="Добавить"
 					onClick={() => changedQuantity({ type: "plus", id: product.id })}
 				>
 					<LuPlus />
