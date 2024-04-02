@@ -1,15 +1,13 @@
+import { productFetchAxios } from "@/api/api-product/api-product"
 import { ProductCardsComponent } from "@/components"
 
 export const revalidate = 3600
 
 async function fetchProducts() {
-	const response = await fetch(`http://localhost:5000/api/v1/product`)
-	if (!response.ok) {
-		return response.json()
-	}
-	return response.json()
+	const response = await productFetchAxios()
+	if (!response.data) return
+	return response.data
 }
-
 export default async function HomePage() {
 	const data = await fetchProducts()
 	return (

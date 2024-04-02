@@ -1,4 +1,4 @@
-import { APP_URI } from "@/api/config/api-config"
+import { productFetchByAlias } from "@/api/api-product/api-product"
 import { IPageParams } from "@/interfaces/page.interface"
 import { notFound } from "next/navigation"
 import { Suspense } from "react"
@@ -6,9 +6,9 @@ import { Detail } from "./detail/Detail"
 
 async function fetchProduct({ params }: IPageParams) {
 	const { alias } = params
-	const response = await fetch(`${APP_URI}/product/by-alias/${alias}`)
-	if (response.status === 404) notFound()
-	return response.json()
+	const response = await productFetchByAlias({ slug: alias })
+	if (!response?.data) notFound()
+	return response.data
 }
 
 const ProductPage = async ({ params }: IPageParams) => {
