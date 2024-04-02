@@ -54,7 +54,7 @@ export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 								slidesPerView: 12,
 							},
 							1024: {
-								slidesPerView: 5,
+								slidesPerView: 4,
 								spaceBetween: 7,
 							},
 						},

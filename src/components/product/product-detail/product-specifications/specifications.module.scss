@@ -25,9 +25,9 @@
 			display: flex;
 			align-items: baseline;
 			justify-content: space-between;
-			padding: 5px 0;
+			padding: 2px 0;
 			small {
-				font-size: 14px;
+				font-size: 12px;
 				line-height: 18px;
 				font-weight: 300;
 				color: $gray;
@@ -39,6 +39,7 @@
 				font-size: 12px;
 				line-height: 18px;
 				font-weight: 500;
+				text-align: right;
 			}
 			&::after {
 				position: absolute;
@@ -52,7 +53,7 @@
 					rgba(116, 50, 112, 0) 0%
 				);
 				background-position: bottom;
-				background-size: 5px 1px;
+				background-size: 3px 1px;
 				background-repeat: repeat-x;
 			}
 		}

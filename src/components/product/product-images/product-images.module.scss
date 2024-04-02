@@ -11,7 +11,7 @@
 	z-index: 3;
 	.images {
 		position: relative;
-		flex: 0.24;
+		flex: 0.2;
 		height: 100%;
 		overflow: hidden;
 		.slider {
@@ -96,6 +96,7 @@
 	pointer-events: none;
 	align-items: center;
 	z-index: 33;
+	padding: 10px 0;
 	.prev,
 	.next {
 		width: 30px;
@@ -112,6 +113,8 @@
 	@include mediaLarge1024px {
 		flex-direction: row;
 		align-items: flex-start;
+		padding: unset;
+
 		.prev,
 		.next {
 			position: absolute;

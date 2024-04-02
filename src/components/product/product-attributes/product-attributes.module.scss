@@ -43,10 +43,11 @@
 	.sizes {
 		display: flex;
 		flex-direction: column;
-		gap: 12px;
+		gap: 8px;
 		.title {
+			display: flex;
 			font-size: 14px;
-			font-weight: 300;
+			font-weight: 400;
 			font-weight: 18px;
 		}
 		.size {
@@ -78,7 +79,7 @@
 		.slider {
 			.color {
 				position: relative;
-				padding-top: calc(100% * (60 / 250));
+				padding-top: calc(100% * (60 / 210));
 				border-radius: 6px;
 				overflow: hidden;
 				cursor: pointer;
