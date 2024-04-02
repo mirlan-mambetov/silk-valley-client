@@ -30,6 +30,19 @@ export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 }) => {
 	return (
 		<div className={style.attributes}>
+			<ProductRatingComponent
+				rating={data?.rating || 0}
+				className={style.rating}
+			/>
+			<div className={style.price}>
+				<ProductPriceComponent
+					price={data.price}
+					discount={data.discount}
+					orientation="column"
+					size="2xl"
+				/>
+				<ProductDiscountComponent product={data} type="extension" size="xl2" />
+			</div>
 			{/* COLORS */}
 			<div className={cn(style.colors)}>
 				<span>
@@ -54,7 +67,7 @@ export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 								slidesPerView: 12,
 							},
 							1024: {
-								slidesPerView: 4,
+								slidesPerView: 6,
 								spaceBetween: 7,
 							},
 						},
@@ -103,19 +116,7 @@ export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 					</div>
 				</div>
 			) : null}
-			<ProductRatingComponent
-				rating={data?.rating || 0}
-				className={style.rating}
-			/>
-			<div className={style.price}>
-				<ProductPriceComponent
-					price={data.price}
-					discount={data.discount}
-					orientation="column"
-					size="2xl"
-				/>
-				<ProductDiscountComponent product={data} type="extension" size="xl2" />
-			</div>
+
 			<div className={style.description}>
 				<h5 className={style.title}>Описание</h5>
 				<p>{data?.description}</p>

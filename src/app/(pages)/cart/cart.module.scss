@@ -9,6 +9,7 @@
 	row-gap: 20px;
 	align-items: start;
 	padding-top: 15px;
+
 	@include mediaLarge1024px {
 		grid-template-columns: 1fr;
 	}

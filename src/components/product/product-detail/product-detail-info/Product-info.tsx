@@ -3,6 +3,7 @@
 import {
 	ButtonComponent,
 	DeliverComponent,
+	FeaturedComponent,
 	ProductActionsComponent,
 	ProductPriceComponent,
 } from "@/components"
@@ -13,6 +14,7 @@ import { IProduct } from "@/interfaces/product.interface"
 import cn from "classnames"
 import { FC, useEffect, useState } from "react"
 import { FiEdit2 } from "react-icons/fi"
+import { SlHandbag } from "react-icons/sl"
 import style from "./product-info.module.scss"
 
 interface IProductInfoComponentProps {
@@ -45,11 +47,11 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 
 	return (
 		<div
-			className={cn(style.info, {
+			className={cn(style.wrap, {
 				[style.sticky]: type === "sticky",
 			})}
 		>
-			<div className={style.wrap}>
+			<div className={style.info}>
 				<div className={style.box}>
 					{data.discount ? (
 						<>
@@ -76,6 +78,7 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 									orientation="column"
 									size="3xxl"
 								/>
+								<FeaturedComponent size={18} type="fixed" />
 							</div>
 						</>
 					)}
@@ -141,6 +144,14 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 					alias={data.alias}
 					product={data}
 				/>
+			</div>
+
+			<div className={style.cart}>
+				<ButtonComponent>
+					<SlHandbag />
+					Корзина
+				</ButtonComponent>
+				<span>Товары, {products.length}шт</span>
 			</div>
 		</div>
 	)

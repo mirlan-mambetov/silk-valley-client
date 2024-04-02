@@ -1,13 +1,10 @@
 @import "../../../../styles/mixin";
 @import "../../../../styles/vars";
 @import "../../../../styles/media.mixin";
-.info {
+.wrap {
 	position: -webkit-sticky;
 	position: sticky;
 	top: 20px;
-	box-shadow: 0 2px 16px rgba(0, 0, 0, 0.03);
-	border-radius: 5px;
-	padding: 12px;
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
@@ -21,11 +18,18 @@
 		min-width: 300px;
 	}
 
-	.wrap {
+	.info,
+	.cart {
+		border-radius: 5px;
+		box-shadow: 0 2px 16px rgba(0, 0, 0, 0.03);
+	}
+	.info {
 		display: flex;
 		flex-direction: column;
 		gap: 17px;
-		padding: 10px 0;
+		border-radius: 5px;
+		padding: 20px;
+		box-shadow: 0 2px 16px rgba(0, 0, 0, 0.03);
 		.box {
 			display: flex;
 			flex-direction: column;
@@ -54,6 +58,21 @@
 					font-size: 12px;
 				}
 			}
+		}
+	}
+
+	.cart {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 15px;
+		button {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+		}
+		span {
+			font-size: 14px;
 		}
 	}
 }
