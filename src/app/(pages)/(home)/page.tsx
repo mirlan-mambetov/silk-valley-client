@@ -1,10 +1,9 @@
-import { APP_URI } from "@/api/config/api-config"
 import { ProductCardsComponent } from "@/components"
 
 export const revalidate = 3600
 
 async function fetchProducts() {
-	const response = await fetch(`${APP_URI}/product`)
+	const response = await fetch(`http://localhost:5000/api/v1/product`)
 	return response.json()
 }
 

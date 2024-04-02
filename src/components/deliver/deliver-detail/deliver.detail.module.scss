@@ -33,14 +33,14 @@
 						}
 					}
 				}
-				&:nth-child(1) {
-					@include mediaLarge530px {
-						gap: 7px;
+				@include mediaLarge1024px {
+					&:nth-child(1) {
+						display: none;
 					}
 				}
 			}
 			@include mediaLarge830px {
-				flex-direction: column-reverse;
+				flex-direction: column;
 				gap: 15px;
 			}
 		}

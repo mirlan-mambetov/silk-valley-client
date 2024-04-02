@@ -12,14 +12,6 @@
 			align-items: center;
 			gap: 15px;
 			overflow: hidden;
-			@include mediaLarge480px {
-				flex-direction: column;
-				align-items: flex-start;
-				gap: 4px;
-			}
-			@include mediaLarge440px {
-				max-width: 200px;
-			}
 			.image {
 				position: relative;
 				width: 60px;
@@ -46,9 +38,6 @@
 					display: flex;
 					flex-direction: column;
 					gap: 5px;
-					@include mediaLarge480px {
-						gap: 4px;
-					}
 					.attribute {
 						gap: 6px;
 						h5 {
@@ -69,48 +58,17 @@
 						font-size: 14px;
 						font-weight: 400;
 						line-height: 20px;
-						@include mediaLarge480px {
-							width: 200px;
-							overflow: hidden;
-							white-space: nowrap;
-							text-overflow: ellipsis;
-						}
-						@include mediaLarge380px {
-							white-space: unset;
-							width: 100%;
-						}
 					}
 					.price {
 						min-height: unset;
 					}
 				}
 			}
-			@include mediaLarge380px {
-				width: 100%;
-				max-width: unset;
-			}
 		}
 		.button {
 			button {
 				@include buttonHover;
-				@include mediaLarge480px {
-					font-size: 12px;
-				}
-				@include mediaLarge380px {
-					width: 100%;
-					display: flex;
-					align-items: center;
-					justify-content: center;
-				}
 			}
-			@include mediaLarge380px {
-				width: 100%;
-			}
-		}
-		@include mediaLarge380px {
-			flex-direction: column;
-			align-items: flex-start;
-			gap: 12px;
 		}
 	}
 }

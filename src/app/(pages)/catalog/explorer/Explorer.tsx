@@ -1,7 +1,6 @@
 "use client"
 
-import { CatalogCardsComponent, FiltersComponent } from "@/components"
-import { CARDS_PRODUCT } from "@/components/product/product.data"
+import { FiltersComponent } from "@/components"
 import style from "./explorer.module.scss"
 
 export const Explorer = () => {
@@ -12,11 +11,6 @@ export const Explorer = () => {
 					{/* FILTERS */}
 					<FiltersComponent />
 					{/* CATALOG CARDS */}
-					<CatalogCardsComponent
-						gridSize="4"
-						data={CARDS_PRODUCT}
-						limited={10}
-					/>
 				</div>
 			</div>
 		</div>
