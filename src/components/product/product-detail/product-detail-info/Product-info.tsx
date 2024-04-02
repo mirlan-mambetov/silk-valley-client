@@ -147,11 +147,10 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 			</div>
 
 			<div className={style.cart}>
+				<span>Товары, {products.length}шт</span>
 				<ButtonComponent>
 					<SlHandbag />
-					Корзина
 				</ButtonComponent>
-				<span>Товары, {products.length}шт</span>
 			</div>
 		</div>
 	)

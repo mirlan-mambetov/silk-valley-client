@@ -4,6 +4,7 @@
 
 .footer {
 	padding-top: 20px;
+	background: $black;
 	@include sectionShadow;
 	.columns {
 		display: grid;
@@ -24,7 +25,7 @@
 				line-height: 12px;
 				font-weight: 400;
 				height: 30px;
-				color: $purple;
+				color: $white;
 				@include mediaLarge480px {
 					font-size: 16px;
 					font-weight: 500;

@@ -30,10 +30,6 @@ export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 }) => {
 	return (
 		<div className={style.attributes}>
-			<ProductRatingComponent
-				rating={data?.rating || 0}
-				className={style.rating}
-			/>
 			<div className={style.price}>
 				<ProductPriceComponent
 					price={data.price}
@@ -43,6 +39,10 @@ export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 				/>
 				<ProductDiscountComponent product={data} type="extension" size="xl2" />
 			</div>
+			<ProductRatingComponent
+				rating={data?.rating || 0}
+				className={style.rating}
+			/>
 			{/* COLORS */}
 			<div className={cn(style.colors)}>
 				<span>

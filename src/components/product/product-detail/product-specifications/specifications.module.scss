@@ -6,13 +6,18 @@
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
-	padding-top: 12px;
+	padding-top: 20px;
 	.title {
 		display: flex;
-		font-size: 14px;
+		font-size: 12px;
 		line-height: 24px;
 		font-weight: 500;
-		color: $darken;
+		text-transform: uppercase;
+		span {
+			display: flex;
+			flex-direction: column;
+			@include dashdeLine;
+		}
 	}
 	.wrap {
 		display: grid;
