@@ -79,7 +79,7 @@
 				width: 100%;
 				padding: 12px 22px;
 				color: $white;
-				background: $purple;
+				background: $black;
 				border-radius: 10px;
 				@include buttonHover;
 				font-size: 14px;
@@ -99,7 +99,7 @@
 			gap: 4px;
 			font-size: 14px;
 			line-height: 120%;
-			color: $purple;
+			color: $black;
 			span {
 				display: flex;
 			}
