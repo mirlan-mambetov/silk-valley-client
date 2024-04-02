@@ -124,14 +124,14 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 							<span>{size}</span>
 						</div>
 					</div>
-				) : (
+				) : isExistAttributes?.existSize ? (
 					<div className={style.box}>
 						<small>Размеры</small>
 						<div className={style.box_item}>
 							<span>{isExistAttributes?.existSize}</span>
 						</div>
 					</div>
-				)}
+				) : null}
 
 				<ProductActionsComponent
 					btnSize="2xl"

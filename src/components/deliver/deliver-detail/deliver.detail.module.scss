@@ -27,14 +27,9 @@
 				}
 				.rows {
 					.row {
-						display: flex;
-						flex-direction: column;
-						gap: 5px;
-						.content {
-							padding: 0;
-							span {
-								font-weight: 300;
-							}
+						padding: 0;
+						span {
+							font-weight: 400;
 						}
 					}
 				}
@@ -69,6 +64,14 @@
 			.column {
 				max-width: 550px;
 				width: 100%;
+				.rows {
+					.row {
+						smal,
+						span {
+							flex: 0.4;
+						}
+					}
+				}
 			}
 		}
 		@include mediaLarge530px {
@@ -127,19 +130,25 @@
 				flex-direction: column;
 				gap: 12px;
 				.row {
-					.content {
+					display: flex;
+					align-items: center;
+					padding: 0 4px;
+					small {
+						flex: 1;
+						color: $gray;
+						font-size: 12px;
+					}
+					span {
+						flex: 1;
 						display: flex;
 						align-items: center;
-						justify-content: space-between;
-						padding: 0 4px;
-						small {
+						gap: 6px;
+						font-size: 14px;
+						font-weight: 400;
+						line-height: 15px;
+						b {
+							font-size: 16px;
 							color: $gray;
-							font-size: 12px;
-						}
-						span {
-							font-size: 14px;
-							font-weight: 400;
-							line-height: 15px;
 						}
 					}
 				}

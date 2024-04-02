@@ -1,19 +1,19 @@
 "use client"
 
-import { useDeliver } from "@/hooks/deliver/useDeliver"
-import cn from "classnames"
-import { FC, TouchEventHandler, useState } from "react"
-import style from "./deliver.detail.module.scss"
-// import { MdKeyboardDoubleArrowDown } from "react-icons/md";
 import { ButtonComponent } from "@/components/button/Button"
 import { deliverInformationMotion } from "@/framer-motion/deliver/deliver.motion"
+import { useDeliver } from "@/hooks/deliver/useDeliver"
 import { useScreen } from "@/hooks/screen/useScreen"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
+import cn from "classnames"
 import { motion } from "framer-motion"
+import { FC, TouchEventHandler, useState } from "react"
 import { BsQuestionCircle } from "react-icons/bs"
+import { IoCheckmarkCircleOutline } from "react-icons/io5"
 import { MdOutlineCheck } from "react-icons/md"
 import { TbCurrentLocation } from "react-icons/tb"
 import { TfiMore, TfiMoreAlt } from "react-icons/tfi"
+import style from "./deliver.detail.module.scss"
 import { DeliverDetailForm } from "./form/Deliver-detail-form"
 
 interface IDeliverDetailComponentProps {
@@ -125,82 +125,112 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 					<div className={style.rows}>
 						{address.country && (
 							<div className={style.row}>
-								<div className={style.content}>
-									<small>Страна:</small>
-									<span>{address.country}</span>
-								</div>
+								<small>Страна:</small>
+								<span>
+									<b title="Подтверждено">
+										<IoCheckmarkCircleOutline />
+									</b>
+									{address.country}
+								</span>
 							</div>
 						)}
 						{address.state && (
 							<div className={style.row}>
-								<div className={style.content}>
-									<small>Область:</small>
-									<span>{address.state.replace("область", "")}</span>
-								</div>
+								<small>Область:</small>
+								<span>
+									<b title="Подтверждено">
+										<IoCheckmarkCircleOutline />
+									</b>
+									{address.state.replace("область", "")}
+								</span>
 							</div>
 						)}
 						{address.city && (
 							<div className={style.row}>
-								<div className={style.content}>
-									<small>Город:</small>
-									<span>{address.city.replace("город", "")}</span>
-								</div>
+								<small>Город:</small>
+								<span>
+									<b title="Подтверждено">
+										<IoCheckmarkCircleOutline />
+									</b>
+									{address.city.replace("город", "")}
+								</span>
 							</div>
 						)}
 						{address.village && (
 							<div className={style.row}>
-								<div className={style.content}>
-									<small>Село:</small>
-									<span>{address.village}</span>
-								</div>
+								<small>Село:</small>
+								<span>
+									<b title="Подтверждено">
+										<IoCheckmarkCircleOutline />
+									</b>
+									{address.village}
+								</span>
 							</div>
 						)}
 						{address.town && (
 							<div className={style.row}>
-								<div className={style.content}>
-									<small>Районный центр:</small>
-									<span>{address.town}</span>
-								</div>
+								<small>Районный центр:</small>
+								<span>
+									<b title="Подтверждено">
+										<IoCheckmarkCircleOutline />
+									</b>
+									{address.town}
+								</span>
 							</div>
 						)}
 						{address.city_district && (
 							<div className={style.row}>
-								<div className={style.content}>
-									<small>Район:</small>
-									<span>{address.city_district}</span>
-								</div>
+								<small>Район:</small>
+								<span>
+									<b title="Подтверждено">
+										<IoCheckmarkCircleOutline />
+									</b>
+									{address.city_district}
+								</span>
 							</div>
 						)}
 						{address.country_code && (
 							<div className={style.row}>
-								<div className={style.content}>
-									<small>Код страны:</small>
-									<span>{address.country_code.toUpperCase()}</span>
-								</div>
+								<small>Код страны:</small>
+								<span>
+									<b title="Подтверждено">
+										<IoCheckmarkCircleOutline />
+									</b>
+									{address.country_code.toUpperCase()}
+								</span>
 							</div>
 						)}
 						{address.road && (
 							<div className={style.row}>
-								<div className={style.content}>
-									<small>Улица:</small>
-									<span>{address.road.replace("улица", "")}</span>
-								</div>
+								<small>Улица:</small>
+								<span>
+									<b title="Подтверждено">
+										<IoCheckmarkCircleOutline />
+									</b>
+									{address.road.replace("улица", "")}
+								</span>
 							</div>
 						)}
 						{address.house_number && (
 							<div className={style.row}>
-								<div className={style.content}>
-									<small>Дом №:</small>
-									<span>{address.house_number}</span>
-								</div>
+								<small>Дом №:</small>
+								<span>
+									<b title="Подтверждено">
+										<IoCheckmarkCircleOutline />
+									</b>
+									{address.house_number}
+								</span>
 							</div>
 						)}
 						{address.postCode && (
 							<div className={style.row}>
-								<div className={style.content}>
-									<small>Почтовый индекс:</small>
-									<span>{address.postCode}</span>
-								</div>
+								<small>Почтовый индекс:</small>
+								<span>
+									<b title="Подтверждено">
+										<IoCheckmarkCircleOutline />
+									</b>
+									{address.postCode}
+								</span>
 							</div>
 						)}
 					</div>

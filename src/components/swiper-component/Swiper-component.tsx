@@ -2,7 +2,6 @@
 
 import { FC, PropsWithChildren } from "react"
 import "swiper/css"
-import "swiper/css/effect-fade"
 import "swiper/css/navigation"
 import "swiper/css/pagination"
 import { Swiper, SwiperProps } from "swiper/react"

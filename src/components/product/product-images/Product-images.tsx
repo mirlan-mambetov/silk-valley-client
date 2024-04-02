@@ -43,11 +43,13 @@ export const ProductImagesComponent: FC<IProductImagesComponent> = ({
 	return (
 		<div className={style.product_image}>
 			{/* IMAGES */}
-			<div className={style.product_images}>
+			<div className={style.images}>
 				<SwiperComponent
 					options={{
+						slidesPerView: 4,
+						spaceBetween: 4,
 						className: style.slider,
-						direction: width > 640 ? "vertical" : "horizontal",
+						direction: width > 1024 ? "vertical" : "horizontal",
 						modules: [Navigation, Pagination],
 						navigation: {
 							nextEl: `.${style.next}`,
@@ -57,11 +59,15 @@ export const ProductImagesComponent: FC<IProductImagesComponent> = ({
 							320: {
 								slidesPerView: 1,
 							},
+							530: {
+								slidesPerView: 2,
+							},
 							640: {
-								slidesPerView: 2.7,
+								slidesPerView: 3,
+								spaceBetween: 10,
 							},
 							1024: {
-								slidesPerView: 3.6,
+								slidesPerView: 4,
 								spaceBetween: 5,
 							},
 						},
@@ -69,17 +75,16 @@ export const ProductImagesComponent: FC<IProductImagesComponent> = ({
 				>
 					{data.images.image.map((image, i) => (
 						<SwiperSlide key={i} className={style.slide}>
-							<div className={style.image}>
-								<Image
-									priority
-									onMouseEnter={(e) => setImgSrc(e.currentTarget.src)}
-									onMouseLeave={() => setImgSrc(null)}
-									src={`${process.env.NEXT_PUBLIC_API_STATIC}/${image}`}
-									alt={"product-poster"}
-									width={900}
-									height={1300}
-								/>
-							</div>
+							<Image
+								className={style.image}
+								priority
+								onMouseEnter={(e) => setImgSrc(e.currentTarget.src)}
+								onMouseLeave={() => setImgSrc(null)}
+								src={`${process.env.NEXT_PUBLIC_API_STATIC}/${image}`}
+								alt={"product-poster"}
+								width={500}
+								height={500}
+							/>
 						</SwiperSlide>
 					))}
 					<div className={style.navigation}>
@@ -96,7 +101,6 @@ export const ProductImagesComponent: FC<IProductImagesComponent> = ({
 			<div className={style.product_poster}>
 				<div className={style.poster}>
 					<ReactImageMagnify
-						className={style.zoom}
 						smallImage={{
 							// @ts-ignore
 							src: newSrc
@@ -104,8 +108,6 @@ export const ProductImagesComponent: FC<IProductImagesComponent> = ({
 								: `${process.env.NEXT_PUBLIC_API_STATIC}/${data?.poster}`,
 							alt: "product-poster",
 							isFluidWidth: true,
-							// sizes:
-							// 	"(max-width: 480px) 100vw, (max-width: 1200px) 30vw, 360px",
 						}}
 						largeImage={{
 							width: 900,

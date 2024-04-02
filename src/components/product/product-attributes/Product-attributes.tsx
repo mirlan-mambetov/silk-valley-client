@@ -17,12 +17,14 @@ import style from "./product-attributes.module.scss"
 interface IAttributesComponentProps {
 	data: IProduct
 	selectedColor: string | undefined
+	selectedSize: string | undefined
 	setSelectedColor: Dispatch<SetStateAction<string | undefined>>
 	setSelectedSize: Dispatch<SetStateAction<string | undefined>>
 }
 export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 	data,
 	selectedColor,
+	selectedSize,
 	setSelectedColor,
 	setSelectedSize,
 }) => {
@@ -37,8 +39,25 @@ export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 				<SwiperComponent
 					options={{
 						className: style.slider,
-						slidesPerView: 6,
-						spaceBetween: 5,
+						breakpoints: {
+							300: {
+								slidesPerView: 5,
+								spaceBetween: 10,
+							},
+							640: {
+								slidesPerView: 8,
+							},
+							760: {
+								slidesPerView: 10,
+							},
+							830: {
+								slidesPerView: 12,
+							},
+							1024: {
+								slidesPerView: 5,
+								spaceBetween: 7,
+							},
+						},
 					}}
 				>
 					{data.images.map((color) => (
@@ -70,6 +89,9 @@ export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 					<div className={style.size}>
 						{data.sizes.map((size, i) => (
 							<ButtonComponent
+								className={cn(style.button, {
+									[style.active_color]: selectedSize === size,
+								})}
 								key={i}
 								onClick={() => {
 									setSelectedSize(size)

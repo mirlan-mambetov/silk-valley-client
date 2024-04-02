@@ -32,7 +32,7 @@ export const Detail: FC<IDetailProps> = ({ data }) => {
 
 	// SELECTED SIZE PRODUCT
 	const [selectedSize, setSelectedSize] = useState<string | undefined>(
-		undefined
+		data.sizes ? data.sizes[0] : undefined
 	)
 
 	const { width } = useWindowWidth()
@@ -80,6 +80,7 @@ export const Detail: FC<IDetailProps> = ({ data }) => {
 						<ProductAttributesComponent
 							data={data}
 							selectedColor={selectedColor}
+							selectedSize={selectedSize}
 							setSelectedColor={(value) => setSelectedColor(value)}
 							setSelectedSize={(value) => setSelectedSize(value)}
 						/>

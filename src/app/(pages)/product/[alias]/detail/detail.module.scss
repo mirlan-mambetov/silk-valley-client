@@ -16,7 +16,7 @@
 		row-gap: 20px;
 		align-items: start;
 
-		@include mediaLarge1200px {
+		@include mediaLarge1024px {
 			grid-template-columns: 1fr;
 		}
 		@include mediaLarge940px {
@@ -35,7 +35,7 @@
 				100% / 3 * 1.4 - 10px
 			);
 	}
-	@include mediaLarge940px {
+	@include mediaLarge1024px {
 		grid-template-columns: 1fr;
 		row-gap: 20px;
 	}
