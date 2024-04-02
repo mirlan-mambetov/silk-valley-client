@@ -26,6 +26,7 @@
 		"react-simple-star-rating": "^5.1.7",
 		"redux-persist": "^6.0.0",
 		"sass": "^1.69.6",
+		"sharp": "^0.33.3",
 		"swiper": "^11.0.5"
 	},
 	"devDependencies": {
