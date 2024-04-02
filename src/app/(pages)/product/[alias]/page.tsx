@@ -1,21 +1,90 @@
-import { productFetchByAlias } from "@/api/api-product/api-product"
+import { APP_URI } from "@/api/config/api-config"
 import { IPageParams } from "@/interfaces/page.interface"
+import { IProduct } from "@/interfaces/product.interface"
+import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { Suspense } from "react"
 import { Detail } from "./detail/Detail"
 
-async function fetchProduct({ params }: IPageParams) {
+// GENERATE STATIC PARAMS
+export async function generateStaticParams() {
+	const response: Response = await fetch(`${APP_URI}/product`)
+	const promise: Promise<IProduct[]> = response.json()
+	const products = await promise
+	const paths = products.map((product) => {
+		return {
+			params: { alias: product.alias },
+		}
+	})
+	return paths
+}
+
+// FETCH PRODUCT BY ALIAS
+export async function fetchProduct({ params }: IPageParams): Promise<IProduct> {
+	const { alias } = params
 	try {
-		const { alias } = params
-		const response = await productFetchByAlias({ slug: alias })
-		if (!response?.data) notFound()
-		return response.data
-	} catch (error) {
-		console.log(error)
+		const response = await fetch(`${APP_URI}/product/by-alias/${alias}`)
+		if (!response.ok) notFound()
+		return response.json()
+	} catch (err) {
+		throw new Error(String(err))
 	}
 }
 
-const ProductPage = async ({ params }: IPageParams) => {
+// GENERATE META DATA
+export async function generateMetadata({
+	params,
+}: IPageParams): Promise<Metadata> {
+	const product = await fetchProduct({ params })
+
+	return {
+		title: `${product.title} В магазине`,
+		description: `${product.description}`,
+		openGraph: {
+			title: `${product.title}`,
+			siteName: "Silk Valley",
+			url: "https://slkvalley.com",
+			images: {
+				width: 32,
+				height: 32,
+				href: `${process.env.NEXT_PUBLIC_API_STATIC}/${product.poster}`,
+				alt: `${product.title}`,
+				url: `${process.env.NEXT_PUBLIC_API_STATIC}`,
+			},
+			locale: "ru_RU",
+			type: "website",
+		},
+		twitter: {
+			card: "app",
+			title: `${product.title}`,
+			description: `${product.description}`,
+			images: {
+				width: 32,
+				height: 32,
+				href: `${process.env.NEXT_PUBLIC_API_STATIC}/${product.poster}`,
+				alt: `${product.title}`,
+				url: `${process.env.NEXT_PUBLIC_API_STATIC}`,
+			},
+			app: {
+				name: "twitter_app",
+				id: {
+					iphone: "twitter_app://iphone",
+					ipad: "twitter_app://ipad",
+					googleplay: "twitter_app://googleplay",
+				},
+				url: {
+					iphone: "https://iphone_url",
+					ipad: "https://ipad_url",
+				},
+			},
+		},
+		alternates: {
+			canonical: ``,
+		},
+	}
+}
+
+export default async function ProductPage({ params }: IPageParams) {
 	const product = await fetchProduct({ params })
 	return (
 		<>
@@ -23,7 +92,9 @@ const ProductPage = async ({ params }: IPageParams) => {
 				{/* DETAIL */}
 				<div className="container">
 					{/* <Suspense fallback={<>Загрузка...</>}> */}
-					<Suspense>{product && <Detail data={product} />}</Suspense>
+					<Suspense>
+						<Detail data={product} />
+					</Suspense>
 					{/* </Suspense> */}
 				</div>
 			</section>
@@ -35,5 +106,3 @@ const ProductPage = async ({ params }: IPageParams) => {
 		</>
 	)
 }
-
-export default ProductPage

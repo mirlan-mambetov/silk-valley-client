@@ -1,21 +1,21 @@
-import { productFetchAxios } from "@/api/api-product/api-product"
+import { APP_URI } from "@/api/config/api-config"
 import { ProductCardsComponent } from "@/components"
+import { IProduct } from "@/interfaces/product.interface"
 
 export const revalidate = 3600
 
-async function fetchProducts() {
+// FETCH ALL PRODUCTS
+export async function fetchProduct(): Promise<IProduct[]> {
 	try {
-		const response = await productFetchAxios()
-		if (!response.data) {
-			throw new Error("Failed to fetch data")
-		}
-		return response.data
-	} catch (error) {
-		console.log(error)
+		const response = await fetch(`${APP_URI}/product`)
+		return response.json()
+	} catch (err) {
+		throw new Error(String(err))
 	}
 }
+
 export default async function HomePage() {
-	const data = await fetchProducts()
+	const products = await fetchProduct()
 	return (
 		<>
 			{/* BANNER HERO */}
@@ -33,7 +33,7 @@ export default async function HomePage() {
 			{/* <section><PromotionUniqueComponent /></section> */}
 			<section>
 				<div className="container">
-					<ProductCardsComponent products={data || []} title="Хиты продаж" />
+					<ProductCardsComponent products={products} title="Хиты продаж" />
 				</div>
 			</section>
 

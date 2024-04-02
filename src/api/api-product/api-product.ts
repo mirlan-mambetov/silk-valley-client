@@ -1,33 +1,22 @@
 import { IProduct } from "@/interfaces/product.interface"
 import { appApi } from "../api"
-import { axiosApi } from "../axios.api"
 
 export const apiProduct = appApi.injectEndpoints({
 	endpoints: (build) => ({
 		fetchAllProducts: build.query<IProduct[], null>({
 			query: () => ({
 				url: "/product",
+				method: "Get",
+			}),
+		}),
+		fetchBySlug: build.query<IProduct, { slug: string }>({
+			query: ({ slug }) => ({
+				url: `/product/by-alias/${slug}`,
+				method: "Get",
 			}),
 		}),
 	}),
 })
 
 export const { useFetchAllProductsQuery } = apiProduct
-
-export const productFetchAxios = async () => {
-	const response = await axiosApi<IProduct[]>({
-		url: `/product`,
-		method: "Get",
-	})
-	return response
-}
-export const productFetchByAlias = async ({ slug }: { slug?: string }) => {
-	if (slug) {
-		const response = await axiosApi<IProduct>({
-			url: `/product/by-alias/${slug}`,
-			method: "Get",
-		})
-		return response
-	}
-	return null
-}
+export const { useFetchBySlugQuery } = apiProduct
