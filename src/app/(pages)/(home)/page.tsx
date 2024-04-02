@@ -4,6 +4,10 @@ export const revalidate = 3600
 
 async function fetchProducts() {
 	const response = await fetch(`http://localhost:5000/api/v1/product`)
+	if (!response.ok) {
+		// This will activate the closest `error.js` Error Boundary
+		throw new Error("Failed to fetch data")
+	}
 	return response.json()
 }
 
