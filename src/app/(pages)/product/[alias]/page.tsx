@@ -5,10 +5,14 @@ import { Suspense } from "react"
 import { Detail } from "./detail/Detail"
 
 async function fetchProduct({ params }: IPageParams) {
-	const { alias } = params
-	const response = await productFetchByAlias({ slug: alias })
-	if (!response?.data) notFound()
-	return response.data
+	try {
+		const { alias } = params
+		const response = await productFetchByAlias({ slug: alias })
+		if (!response?.data) notFound()
+		return response.data
+	} catch (error) {
+		console.log(error)
+	}
 }
 
 const ProductPage = async ({ params }: IPageParams) => {
@@ -19,9 +23,7 @@ const ProductPage = async ({ params }: IPageParams) => {
 				{/* DETAIL */}
 				<div className="container">
 					{/* <Suspense fallback={<>Загрузка...</>}> */}
-					<Suspense>
-						<Detail data={product} />
-					</Suspense>
+					<Suspense>{product && <Detail data={product} />}</Suspense>
 					{/* </Suspense> */}
 				</div>
 			</section>

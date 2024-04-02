@@ -4,9 +4,15 @@ import { ProductCardsComponent } from "@/components"
 export const revalidate = 3600
 
 async function fetchProducts() {
-	const response = await productFetchAxios()
-	if (!response.data) return
-	return response.data
+	try {
+		const response = await productFetchAxios()
+		if (!response.data) {
+			throw new Error("Failed to fetch data")
+		}
+		return response.data
+	} catch (error) {
+		console.log(error)
+	}
 }
 export default async function HomePage() {
 	const data = await fetchProducts()
