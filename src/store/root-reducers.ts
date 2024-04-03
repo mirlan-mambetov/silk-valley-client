@@ -5,6 +5,7 @@ import { deliverReducer } from "./slices/deliver/deliver.slice"
 import { dialogReducer } from "./slices/dialog/dialog.slice"
 import { modalReducer } from "./slices/modal/modal.slice"
 import { notifyReducer } from "./slices/notify/notify.slice"
+import { userReducer } from "./slices/user/user.slice"
 
 export const rootReducer = combineReducers({
 	deliver: deliverReducer,
@@ -12,5 +13,6 @@ export const rootReducer = combineReducers({
 	notify: notifyReducer,
 	dialog: dialogReducer,
 	modal: modalReducer,
+	user: userReducer,
 	[appApi.reducerPath]: appApi.reducer,
 })
