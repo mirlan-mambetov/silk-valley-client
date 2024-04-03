@@ -19,6 +19,7 @@ type IButtonComponentProps = {
 	btnType?: "default" | "cart" | "closed" | "promo" | "delete" | "submit"
 	children?: ReactNode
 	size?: "xl1" | "xxl1" | "xl2"
+	isLoading?: boolean
 } & ButtonHTMLAttributes<HTMLButtonElement> &
 	DetailsHTMLAttributes<HTMLButtonElement>
 
@@ -28,6 +29,7 @@ export const ButtonComponent: FC<IButtonComponentProps> = ({
 	className,
 	isExistOnCart,
 	size = "xl1",
+	isLoading,
 	...props
 }) => {
 	switch (btnType) {
@@ -38,7 +40,7 @@ export const ButtonComponent: FC<IButtonComponentProps> = ({
 					{...props}
 				>
 					{children ? (
-						children
+						<>{isLoading ? "Загрузка.." : children}</>
 					) : (
 						<>
 							<IoMdSend />

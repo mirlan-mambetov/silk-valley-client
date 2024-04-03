@@ -4,6 +4,7 @@ import { useLoginUserMutation } from "@/api/api-user/api-user"
 import { IUserLoginDTO } from "@/api/api-user/data.transfer"
 import { ButtonComponent, FieldComponent } from "@/components"
 import { animateLoginRegister } from "@/framer-motion/auth/auth.animate"
+import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { motion } from "framer-motion"
 import { FC } from "react"
 import { useForm } from "react-hook-form"
@@ -13,6 +14,7 @@ import { IAuthProps } from "../auth.props"
 
 export const LoginComponent: FC<IAuthProps> = ({ animate, setChoice }) => {
 	const [loginUser, result] = useLoginUserMutation()
+	const { openNotifyHandler } = useStoreActions()
 	const {
 		register,
 		handleSubmit,
@@ -22,7 +24,25 @@ export const LoginComponent: FC<IAuthProps> = ({ animate, setChoice }) => {
 	const loginHandler = async (data: IUserLoginDTO) => {
 		try {
 			await loginUser(data)
-			console.log(result.error?.data?.message)
+			if (result.isError) {
+				return openNotifyHandler({
+					text: result.error.data.message,
+					options: {
+						size: "xl2",
+						timeOut: 3000,
+					},
+					type: "error",
+				})
+			}
+			openNotifyHandler({
+				text: "Вход выполнен успешно",
+				options: {
+					size: "xl2",
+					timeOut: 3000,
+					position: "topRight",
+				},
+				type: "success",
+			})
 		} catch (err) {
 			console.log(result)
 		}
@@ -52,7 +72,11 @@ export const LoginComponent: FC<IAuthProps> = ({ animate, setChoice }) => {
 						/>
 					</div>
 					<div className={style.button}>
-						<ButtonComponent aria-label="Войти" btnType="submit">
+						<ButtonComponent
+							aria-label="Войти"
+							btnType="submit"
+							isLoading={result.isLoading}
+						>
 							Вход
 						</ButtonComponent>
 					</div>
