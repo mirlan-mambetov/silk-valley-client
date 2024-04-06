@@ -84,7 +84,7 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 									btnType="delete"
 									onClick={() => {
 										removeFromCart({ id: product.id })
-										openNotifyHandler("Товар убран из корзины")
+										openNotifyHandler({ text: "Товар убран из корзины" })
 									}}
 								/>
 							</div>

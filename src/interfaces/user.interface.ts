@@ -5,6 +5,7 @@ export interface IUser extends IBase {
 	email: string
 	phoneNumber: number
 	password: string
+	avatar: string
 }
 export interface IUserTokens {
 	accessToken: string

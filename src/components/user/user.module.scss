@@ -1,0 +1,69 @@
+@import "../../styles/media.mixin";
+@import "../../styles/mixin";
+@import "../../styles/vars";
+.user {
+	position: relative;
+	margin-bottom: 5px;
+	.avatar {
+		position: relative;
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+		overflow: hidden;
+		cursor: pointer;
+		img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+	}
+	.drop {
+		position: absolute;
+		top: 110%;
+		right: -10px;
+		padding: 16px 20px;
+		@include middleBoxShadow;
+		border-radius: 6px;
+		opacity: 0;
+		transition: opacity 0.2s ease;
+		pointer-events: none;
+		&.show {
+			opacity: 1;
+			pointer-events: all;
+		}
+		.list {
+			display: flex;
+			flex-direction: column;
+			gap: 6px;
+			min-width: 200px;
+			.item {
+				a,
+				button {
+					display: flex;
+					align-items: center;
+					gap: 10px;
+					font-size: 16px;
+					line-height: 22px;
+					font-weight: 400;
+					text-transform: capitalize;
+				}
+			}
+		}
+		&::after {
+			height: 0;
+			width: 0;
+			position: absolute;
+			right: 15px;
+			bottom: 100%;
+			display: block;
+			opacity: 1;
+			z-index: 3;
+			border: 10px solid transparent;
+			content: "";
+			overflow: visible;
+			border-bottom-color: $white;
+		}
+	}
+}

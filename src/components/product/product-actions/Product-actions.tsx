@@ -57,7 +57,7 @@ export const ProductActionsComponent: FC<IProductActionsComponentProps> = ({
 							btnType="cart"
 							onClick={() => {
 								if (product.sizes?.length && typeof size === "undefined") {
-									openNotifyHandler("Выберите размеры")
+									openNotifyHandler({ text: "Выберите размеры" })
 								} else {
 									addToCart({
 										product: {
@@ -67,7 +67,7 @@ export const ProductActionsComponent: FC<IProductActionsComponentProps> = ({
 											productQuantity: 1,
 										},
 									})
-									openNotifyHandler("Товар добавлен в корзину")
+									openNotifyHandler({ text: "Товар добавлен в корзину" })
 								}
 							}}
 						/>

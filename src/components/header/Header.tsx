@@ -8,9 +8,11 @@ import {
 	MenuComponent,
 	MobileHeaderComponent,
 	NotifyPlaceholder,
+	UserComponent,
 } from "@/components"
 import { variants3, variants4 } from "@/framer-motion"
 import { useWindowWidth } from "@/hooks/app/useWindowWidth"
+import { useAuth } from "@/hooks/auth/useAuth"
 import { useCart } from "@/hooks/cart/useCart"
 import { useScreen } from "@/hooks/screen/useScreen"
 import useOutsiteClick from "@/hooks/useOutsideClick"
@@ -29,6 +31,7 @@ export const HeaderComponent = () => {
 	const { width } = useWindowWidth()
 	const { setContentHandler } = useScreen()
 	const { products } = useCart()
+	const { isAuthentificated } = useAuth()
 	const user = useGetUserProfile()
 
 	return (
@@ -70,12 +73,16 @@ export const HeaderComponent = () => {
 								{/* ACTIONS */}
 								<div className={style.action}>
 									<div className={style.column}>
-										<ButtonComponent
-											aria-label="Вход"
-											onClick={() => setContentHandler(<AuthComponent />)}
-										>
-											Вход
-										</ButtonComponent>
+										{isAuthentificated && user ? (
+											<UserComponent user={user} />
+										) : (
+											<ButtonComponent
+												aria-label="Вход"
+												onClick={() => setContentHandler(<AuthComponent />)}
+											>
+												Вход
+											</ButtonComponent>
+										)}
 									</div>
 									<div className={style.column}>
 										<ButtonComponent
