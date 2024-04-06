@@ -14,6 +14,7 @@ import { useWindowWidth } from "@/hooks/app/useWindowWidth"
 import { useCart } from "@/hooks/cart/useCart"
 import { useScreen } from "@/hooks/screen/useScreen"
 import useOutsiteClick from "@/hooks/useOutsideClick"
+import { useGetUserProfile } from "@/hooks/user/useGetUserProfile"
 import cn from "classnames"
 import { motion } from "framer-motion"
 import { useRouter } from "next/navigation"
@@ -28,6 +29,7 @@ export const HeaderComponent = () => {
 	const { width } = useWindowWidth()
 	const { setContentHandler } = useScreen()
 	const { products } = useCart()
+	const user = useGetUserProfile()
 
 	return (
 		<>

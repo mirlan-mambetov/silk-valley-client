@@ -1,20 +1,25 @@
 import { IUser } from "@/interfaces/user.interface"
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 interface IUserInitialState {
 	user: IUser | undefined | null
-	isAuthtentificated: boolean
 }
 
 const initialState: IUserInitialState = {
-	isAuthtentificated: false,
 	user: undefined,
 }
 
 export const userSlice = createSlice({
 	name: "user",
 	initialState,
-	reducers: {},
+	reducers: {
+		addUser: (state, { payload }: PayloadAction<{ data: IUser }>) => {
+			state.user = payload.data
+		},
+		clearUser: (state) => {
+			state.user = undefined
+		},
+	},
 	extraReducers: (build) => ({}),
 })
 

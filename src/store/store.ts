@@ -17,7 +17,7 @@ let mainReducer = rootReducer
 const persistConfig = {
 	key: "silkValley",
 	storage,
-	whitelist: ["deliver", "cart"],
+	whitelist: ["deliver", "cart", "user", "auth"],
 }
 if (typeof window !== "undefined") {
 	const { persistReducer } = require("redux-persist")

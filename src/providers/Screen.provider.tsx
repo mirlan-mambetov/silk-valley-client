@@ -16,6 +16,9 @@ export const ScreenProvider: FC<PropsWithChildren> = ({ children }) => {
 	}
 	const clearContentHandler = () => {
 		setIsOpen(false)
+		setTimeout(() => {
+			setContent(null)
+		}, 300)
 		document.body.style.overflow = "visible"
 	}
 

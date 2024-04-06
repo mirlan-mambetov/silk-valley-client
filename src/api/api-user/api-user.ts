@@ -1,17 +1,16 @@
-import { IAuthResponse } from "@/interfaces/auth.interface"
+import { IUser } from "@/interfaces/user.interface"
 import { appApi } from "../api"
-import { IUserLoginDTO } from "./data.transfer"
 
 export const apiUser = appApi.injectEndpoints({
 	endpoints: (build) => ({
-		loginUser: build.mutation<IAuthResponse, IUserLoginDTO>({
-			query: (body) => ({
-				url: "/auth/login",
-				method: "Post",
-				body,
+		// LOGIN USER
+		fetchUserProfle: build.query<IUser, null>({
+			query: () => ({
+				url: "/user/profile",
+				method: "Get",
 			}),
 		}),
 	}),
 })
 
-export const { useLoginUserMutation } = apiUser
+export const { useFetchUserProfleQuery } = apiUser

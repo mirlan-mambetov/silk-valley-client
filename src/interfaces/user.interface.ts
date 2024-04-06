@@ -6,3 +6,7 @@ export interface IUser extends IBase {
 	phoneNumber: number
 	password: string
 }
+export interface IUserTokens {
+	accessToken: string
+	refreshToken: string
+}

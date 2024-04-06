@@ -1,9 +1,11 @@
 "use client"
 
-import { useLoginUserMutation } from "@/api/api-user/api-user"
+import { useLoginUserMutation } from "@/api/api-auth/api-auth"
 import { IUserLoginDTO } from "@/api/api-user/data.transfer"
 import { ButtonComponent, FieldComponent } from "@/components"
 import { animateLoginRegister } from "@/framer-motion/auth/auth.animate"
+import { saveTokensToStorage } from "@/helpers/local.storage.helper"
+import { useScreen } from "@/hooks/screen/useScreen"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { motion } from "framer-motion"
 import { FC } from "react"
@@ -13,8 +15,11 @@ import style from "../auth-form.module.scss"
 import { IAuthProps } from "../auth.props"
 
 export const LoginComponent: FC<IAuthProps> = ({ animate, setChoice }) => {
+	const { openNotifyHandler, loginPending, loginSuccess, loginRejected } =
+		useStoreActions()
 	const [loginUser, result] = useLoginUserMutation()
-	const { openNotifyHandler } = useStoreActions()
+	const { clearContentHandler } = useScreen()
+
 	const {
 		register,
 		handleSubmit,
@@ -22,31 +27,38 @@ export const LoginComponent: FC<IAuthProps> = ({ animate, setChoice }) => {
 	} = useForm<IUserLoginDTO>({ mode: "onChange" })
 
 	const loginHandler = async (data: IUserLoginDTO) => {
-		try {
-			await loginUser(data)
-			if (result.isError) {
-				return openNotifyHandler({
-					text: result.error.data.message,
+		loginPending()
+		await loginUser(data)
+			.unwrap()
+			.then((res) => {
+				if (res.accessToken && res.refreshToken) {
+					loginSuccess()
+					openNotifyHandler({
+						text: "Вход выполнен успешно",
+						options: {
+							size: "xl2",
+							timeOut: 3000,
+							position: "topRight",
+						},
+						type: "success",
+					})
+					saveTokensToStorage(res)
+					clearContentHandler()
+				}
+			})
+			.catch((err) => {
+				loginRejected()
+				openNotifyHandler({
+					text: err.data.message,
 					options: {
 						size: "xl2",
 						timeOut: 3000,
 					},
 					type: "error",
 				})
-			}
-			openNotifyHandler({
-				text: "Вход выполнен успешно",
-				options: {
-					size: "xl2",
-					timeOut: 3000,
-					position: "topRight",
-				},
-				type: "success",
 			})
-		} catch (err) {
-			console.log(result)
-		}
 	}
+
 	return (
 		<div className={style.auth}>
 			<motion.div
@@ -76,6 +88,7 @@ export const LoginComponent: FC<IAuthProps> = ({ animate, setChoice }) => {
 							aria-label="Войти"
 							btnType="submit"
 							isLoading={result.isLoading}
+							disabled={result.isLoading}
 						>
 							Вход
 						</ButtonComponent>

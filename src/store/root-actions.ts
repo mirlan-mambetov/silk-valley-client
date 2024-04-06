@@ -1,3 +1,4 @@
+import { authActions } from "./slices/auth/auth.slice"
 import { cartActions } from "./slices/cart/cart.slice"
 import { deliverActions } from "./slices/deliver/deliver.slice"
 import { dialogActions } from "./slices/dialog/dialog.slice"
@@ -12,4 +13,5 @@ export const rootActions = {
 	...dialogActions,
 	...modalActions,
 	...userActions,
+	...authActions,
 }
