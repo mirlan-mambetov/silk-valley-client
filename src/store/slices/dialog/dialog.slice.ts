@@ -1,24 +1,29 @@
+import { IDialogInitial, IDialogPayload } from "@/interfaces/dialog.interface"
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
-const initialState = {
-	isActive: false,
+const initialState: IDialogInitial = {
 	dialogContent: { message: "" },
-	confirmed: false,
+	isActive: false,
+	isConfirm: false,
+	type: "notify",
 }
 export const dialogSlice = createSlice({
 	name: "dialog",
 	initialState,
 	reducers: {
-		openDialogHandler: (
-			state,
-			{ payload }: PayloadAction<{ message: string }>
-		) => {
+		openDialogHandler: (state, { payload }: PayloadAction<IDialogPayload>) => {
 			state.isActive = true
 			state.dialogContent.message = payload.message
+			state.type = payload.type
 		},
 		closeDialogHandler: (state) => {
 			state.isActive = false
-			state.dialogContent.message = ""
+		},
+		isConfirmDialogHandler: (state) => {
+			state.isConfirm = true
+		},
+		isCanceConfirmDialogHandler: (state) => {
+			state.isConfirm = false
 		},
 	},
 	extraReducers: (build) => {},

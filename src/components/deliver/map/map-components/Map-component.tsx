@@ -56,7 +56,11 @@ const MapComponent: FC<IMapProps> = ({ currentLocation, coordinates }) => {
 				village: res.address?.village,
 				town: res.address?.town,
 			})
-			openNotifyHandler("Координаты выбраны")
+			openNotifyHandler({
+				text: "Координаты выбраны",
+				type: "success",
+				options: { position: "bottomCenter" },
+			})
 		}
 
 		if (clickPoint) {

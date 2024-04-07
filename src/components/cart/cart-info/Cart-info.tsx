@@ -6,14 +6,17 @@ import {
 	ProductPriceComponent,
 } from "@/components"
 import cn from "classnames"
-import { FC } from "react"
+import { FC, useEffect } from "react"
 import { FaMapMarkerAlt } from "react-icons/fa"
 import { MdOutlineBorderColor } from "react-icons/md"
 
 import { useCartPriceCalculate } from "@/hooks/cart/useCartPriceCalculate"
 import { useDeliver } from "@/hooks/deliver/useDeliver"
+import { useDialog } from "@/hooks/dialog/useDialog"
 import { useScreen } from "@/hooks/screen/useScreen"
+import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { ICartProduct } from "@/interfaces/cart.interface"
+import { useRouter } from "next/navigation"
 import style from "./cart-info.module.scss"
 
 interface ICartInfoComponentProps {
@@ -26,7 +29,16 @@ export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 }) => {
 	const { setContentHandler } = useScreen()
 	const { totalPrice, totalDiscount } = useCartPriceCalculate(products)
-	const { address } = useDeliver()
+	const { address, isConfirm } = useDeliver()
+	const { openDialogHandler } = useStoreActions()
+	const { isConfirm: confirmDialog } = useDialog()
+	const { push } = useRouter()
+
+	useEffect(() => {
+		if (confirmDialog) {
+			push("/checkout")
+		}
+	}, [confirmDialog])
 	return (
 		<div className={style.info}>
 			<div className={style.wrap}>
@@ -69,8 +81,15 @@ export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 				</div>
 
 				<ButtonComponent
+					disabled={!isConfirm}
 					className={style.button}
-					onClick={() => anchorHanlder("#section-authorization")}
+					onClick={() => {
+						openDialogHandler({
+							message: "Вы уверены в правильности данных?",
+							type: "dialog",
+						})
+						anchorHanlder("#section-authorization")
+					}}
 				>
 					<MdOutlineBorderColor />
 					<span>Оформить заказ</span>

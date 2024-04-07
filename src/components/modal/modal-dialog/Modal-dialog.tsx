@@ -8,8 +8,13 @@ import { FC } from "react"
 import style from "./modal.dialog.module.scss"
 
 export const ModalDialogComponent: FC = () => {
-	const { dialogContent, isActive } = useDialog()
-	const { closeDialogHandler } = useStoreActions()
+	const { dialogContent, isActive, isConfirm, type } = useDialog()
+	const {
+		closeDialogHandler,
+		isConfirmDialogHandler,
+		isCanceConfirmDialogHandler,
+	} = useStoreActions()
+
 	return (
 		<motion.div
 			className={style.dialog}
@@ -20,10 +25,30 @@ export const ModalDialogComponent: FC = () => {
 			<div className={style.content}>
 				<span>{dialogContent.message}</span>
 				<div className={style.buttons}>
-					{/* <ButtonComponent>Да</ButtonComponent> */}
-					<ButtonComponent onClick={() => closeDialogHandler()}>
-						Понятно
-					</ButtonComponent>
+					{type === "dialog" ? (
+						<>
+							<ButtonComponent
+								onClick={() => {
+									isConfirmDialogHandler()
+									closeDialogHandler()
+								}}
+							>
+								Да
+							</ButtonComponent>
+							<ButtonComponent
+								onClick={() => {
+									isCanceConfirmDialogHandler()
+									closeDialogHandler()
+								}}
+							>
+								Нет
+							</ButtonComponent>
+						</>
+					) : (
+						<ButtonComponent onClick={() => closeDialogHandler()}>
+							Понятно
+						</ButtonComponent>
+					)}
 				</div>
 			</div>
 		</motion.div>

@@ -77,47 +77,49 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 				className={style.columns}
 				animate={!fullView ? { y: "100%" } : { y: "0" }}
 			>
-				<div className={style.column}>
-					<span className="section-title">Уточнить адрес</span>
-					<div className={style.questions}>
-						<span
-							onClick={() =>
-								openModalHandler({
-									children: <DeliverDetailForm fields="road" />,
-								})
-							}
-						>
-							Улица
-						</span>
-						<span
-							onClick={() =>
-								openModalHandler({
-									children: <DeliverDetailForm fields="city" />,
-								})
-							}
-						>
-							Город.(село)
-						</span>
-						<span
-							onClick={() =>
-								openModalHandler({
-									children: <DeliverDetailForm fields="house_number" />,
-								})
-							}
-						>
-							Номер дома
-						</span>
-						<span
-							onClick={() =>
-								openModalHandler({
-									children: <DeliverDetailForm fields="postCode" />,
-								})
-							}
-						>
-							Почтовый индекс
-						</span>
+				{Object.values(address).some((value) => value?.length) ? (
+					<div className={style.column}>
+						<span className="section-title">Уточнить адрес</span>
+						<div className={style.questions}>
+							<span
+								onClick={() =>
+									openModalHandler({
+										children: <DeliverDetailForm fields="road" />,
+									})
+								}
+							>
+								Улица
+							</span>
+							<span
+								onClick={() =>
+									openModalHandler({
+										children: <DeliverDetailForm fields="city" />,
+									})
+								}
+							>
+								Город.(село)
+							</span>
+							<span
+								onClick={() =>
+									openModalHandler({
+										children: <DeliverDetailForm fields="house_number" />,
+									})
+								}
+							>
+								Номер дома
+							</span>
+							<span
+								onClick={() =>
+									openModalHandler({
+										children: <DeliverDetailForm fields="postCode" />,
+									})
+								}
+							>
+								Почтовый индекс
+							</span>
+						</div>
 					</div>
-				</div>
+				) : null}
 				<div className={style.column}>
 					<h5 className={style.title}>
 						<span>Координаты доставки</span>

@@ -20,19 +20,19 @@
 		border-radius: 8px;
 		pointer-events: none;
 		span {
-			font-size: 14px;
+			font-size: 16px;
 			font-weight: 400;
-			line-height: 18px;
+			line-height: 22px;
 		}
 		.buttons {
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			gap: 20px;
+			gap: 12px;
 			button {
 				display: flex;
 				border: 1px solid $darkenRGBA;
-				padding: 5px 18px;
+				padding: 5px 10px;
 				border-radius: 5px;
 				pointer-events: all;
 			}

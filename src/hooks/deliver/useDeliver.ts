@@ -1,7 +1,7 @@
 import { useStoreReducer } from "../store/useStoreReducer"
 
 export const useDeliver = () => {
-	const { address } = useStoreReducer((state) => state.deliver)
+	const { address, isConfirm } = useStoreReducer((state) => state.deliver)
 
-	return { address }
+	return { address, isConfirm }
 }

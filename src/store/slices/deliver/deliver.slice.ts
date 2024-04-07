@@ -3,6 +3,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
 interface IDeliverInitialState {
 	address: IDeliverPoint
+	isConfirm: boolean
 }
 
 const initialState: IDeliverInitialState = {
@@ -18,6 +19,7 @@ const initialState: IDeliverInitialState = {
 		town: "",
 		village: "",
 	},
+	isConfirm: false,
 }
 
 export const deliverSlice = createSlice({
@@ -36,6 +38,9 @@ export const deliverSlice = createSlice({
 					state.address[key] = value
 				}
 			})
+		},
+		confirmDeliver: (state) => {
+			state.isConfirm = !state.isConfirm
 		},
 	},
 	extraReducers: (build) => {},
