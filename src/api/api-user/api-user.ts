@@ -8,6 +8,7 @@ export const apiUser = appApi.injectEndpoints({
 			query: () => ({
 				url: "/user/profile",
 				method: "Get",
+				cache: "no-cache",
 			}),
 		}),
 	}),
