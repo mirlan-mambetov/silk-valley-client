@@ -109,9 +109,9 @@ export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 
 			{/* SIZES */}
 			<div className={style.attribute}>
+				<h5 className={style.title}>Размеры</h5>
 				{data.sizes?.length ? (
 					<div className={style.sizes}>
-						<h5 className={style.title}>Размеры</h5>
 						<div className={style.size}>
 							{data.sizes.map((size, i) => (
 								<ButtonComponent
