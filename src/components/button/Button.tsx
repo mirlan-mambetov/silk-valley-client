@@ -7,11 +7,10 @@ import {
 	FC,
 	ReactNode,
 } from "react"
+import { IoIosRemoveCircleOutline, IoMdSend } from "react-icons/io"
 import { IoCloseOutline } from "react-icons/io5"
 import { LuPercent } from "react-icons/lu"
-
-import { CgRemove } from "react-icons/cg"
-import { IoMdSend } from "react-icons/io"
+import { LoaderComponent } from "../loader/Loader"
 import style from "./button.module.scss"
 
 type IButtonComponentProps = {
@@ -40,7 +39,7 @@ export const ButtonComponent: FC<IButtonComponentProps> = ({
 					{...props}
 				>
 					{children ? (
-						<>{isLoading ? "Загрузка.." : children}</>
+						<>{isLoading ? <LoaderComponent /> : children}</>
 					) : (
 						<>
 							<IoMdSend />
@@ -52,10 +51,13 @@ export const ButtonComponent: FC<IButtonComponentProps> = ({
 		case "delete":
 			return (
 				<button
-					className={cn(style.button, style.delete, className)}
+					className={cn(style.button, style.delete, className, {
+						[style.xl2]: size === "xl2",
+						[style.xxl1]: size === "xxl1",
+					})}
 					{...props}
 				>
-					<CgRemove />
+					<IoIosRemoveCircleOutline />
 				</button>
 			)
 		case "promo":
@@ -68,8 +70,7 @@ export const ButtonComponent: FC<IButtonComponentProps> = ({
 		case "cart":
 			return (
 				<button className={cn(style.button, style.cart, className)} {...props}>
-					{children ? children : "В корзину"}
-					{/* {isExistOnCart ? <>Перейти в корзину </> : "В корзину"} */}
+					{isLoading ? <LoaderComponent /> : children ? children : "В корзину"}
 				</button>
 			)
 		case "closed":

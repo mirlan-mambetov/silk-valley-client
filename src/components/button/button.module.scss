@@ -7,12 +7,14 @@
 	border: none;
 	cursor: pointer;
 	color: inherit;
-
 	&:focus {
 		outline: none;
 	}
 	&.xl2 {
 		font-size: 28px;
+	}
+	&.xxl1 {
+		font-size: 14px;
 	}
 }
 .close {
@@ -62,6 +64,9 @@
 	@include mediaLarge380px {
 		padding: 10px 6px;
 	}
+}
+.delete {
+	color: $gray;
 }
 .submit {
 	display: flex;

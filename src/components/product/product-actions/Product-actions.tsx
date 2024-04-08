@@ -1,6 +1,7 @@
 "use client"
 
 import { ButtonComponent } from "@/components/button/Button"
+import { useLoader } from "@/hooks/app/useLoader"
 import { useExistInCart } from "@/hooks/cart/useExistInCart"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { IProduct } from "@/interfaces/product.interface"
@@ -30,12 +31,30 @@ export const ProductActionsComponent: FC<IProductActionsComponentProps> = ({
 	const { push } = useRouter()
 	const { isExist } = useExistInCart(product)
 	const { addToCart, openNotifyHandler } = useStoreActions()
+	const { isLoading, setLoadingHandler } = useLoader()
 
+	const addToCartHandler = async () => {
+		setLoadingHandler()
+		await new Promise<void>((resolve) => {
+			setTimeout(() => {
+				addToCart({
+					product: {
+						...product,
+						selectedColor: color,
+						selectedSize: size,
+						productQuantity: 1,
+					},
+				})
+				resolve()
+			}, 3000)
+		})
+		openNotifyHandler({ text: "Товар добавлен в корзину" })
+	}
 	switch (actionType) {
 		case "toCart":
 			return (
 				<>
-					{isExist ? (
+					{isExist && !isLoading ? (
 						<ButtonComponent
 							className={cn(style.button, {
 								[style.xl1]: btnSize === "1xl",
@@ -49,27 +68,14 @@ export const ProductActionsComponent: FC<IProductActionsComponentProps> = ({
 						</ButtonComponent>
 					) : (
 						<ButtonComponent
+							isLoading={isLoading}
 							aria-label="Просмотр"
 							className={cn(style.button, {
 								[style.xl1]: btnSize === "1xl",
 								[style.xl2]: btnSize === "2xl",
 							})}
 							btnType="cart"
-							onClick={() => {
-								if (product.sizes?.length && typeof size === "undefined") {
-									openNotifyHandler({ text: "Выберите размеры" })
-								} else {
-									addToCart({
-										product: {
-											...product,
-											selectedColor: color,
-											selectedSize: size,
-											productQuantity: 1,
-										},
-									})
-									openNotifyHandler({ text: "Товар добавлен в корзину" })
-								}
-							}}
+							onClick={addToCartHandler}
 						/>
 					)}
 				</>
