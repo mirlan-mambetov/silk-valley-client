@@ -5,9 +5,12 @@ import {
 	ButtonComponent,
 	MenuCategoriesComponent,
 	NotifyPlaceholder,
+	UserComponent,
 } from "@/components"
+import { useAuth } from "@/hooks/auth/useAuth"
 import { useCart } from "@/hooks/cart/useCart"
 import { useScreen } from "@/hooks/screen/useScreen"
+import { useUser } from "@/hooks/user/useUser"
 import cn from "classnames"
 import { useRouter } from "next/navigation"
 import { FC } from "react"
@@ -17,6 +20,8 @@ export const MobileMenuComponent: FC = () => {
 	const { push } = useRouter()
 	const { setContentHandler, isOpen, clearContentHandler } = useScreen()
 	const { products } = useCart()
+	const { user } = useUser()
+	const { isAuthentificated } = useAuth()
 
 	return (
 		<div
@@ -129,32 +134,36 @@ export const MobileMenuComponent: FC = () => {
 					</div>
 
 					<div className={style.item}>
-						<ButtonComponent
-							onClick={() => setContentHandler(<AuthComponent />)}
-						>
-							<svg
-								width="30"
-								height="30"
-								viewBox="0 0 25 25"
-								role="img"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
+						{isAuthentificated && user ? (
+							<UserComponent user={user} />
+						) : (
+							<ButtonComponent
+								onClick={() => setContentHandler(<AuthComponent />)}
 							>
-								<circle
-									cx="12"
-									cy="6"
-									r="4"
-									stroke="#1C274C"
-									strokeWidth="1.5"
-								/>
-								<path
-									d="M20 17.5C20 19.9853 20 22 12 22C4 22 4 19.9853 4 17.5C4 15.0147 7.58172 13 12 13C16.4183 13 20 15.0147 20 17.5Z"
-									stroke="#1C274C"
-									strokeWidth="1.5"
-								/>
-							</svg>
-							{/* <span>Профиль</span> */}
-						</ButtonComponent>
+								<svg
+									width="30"
+									height="30"
+									viewBox="0 0 25 25"
+									role="img"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<circle
+										cx="12"
+										cy="6"
+										r="4"
+										stroke="#1C274C"
+										strokeWidth="1.5"
+									/>
+									<path
+										d="M20 17.5C20 19.9853 20 22 12 22C4 22 4 19.9853 4 17.5C4 15.0147 7.58172 13 12 13C16.4183 13 20 15.0147 20 17.5Z"
+										stroke="#1C274C"
+										strokeWidth="1.5"
+									/>
+								</svg>
+								{/* <span>Профиль</span> */}
+							</ButtonComponent>
+						)}
 					</div>
 				</div>
 			</div>

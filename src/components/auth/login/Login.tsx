@@ -37,7 +37,7 @@ export const LoginComponent: FC<IAuthProps> = ({ animate, setChoice }) => {
 						text: "Вход выполнен успешно",
 						options: {
 							size: "xl2",
-							timeOut: 3000,
+							timeOut: 2000,
 							position: "topRight",
 						},
 						type: "success",

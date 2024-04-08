@@ -6,7 +6,7 @@ import {
 	ProductPriceComponent,
 } from "@/components"
 import cn from "classnames"
-import { FC, useEffect } from "react"
+import { FC } from "react"
 import { FaMapMarkerAlt } from "react-icons/fa"
 import { MdOutlineBorderColor } from "react-icons/md"
 
@@ -34,11 +34,11 @@ export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 	const { isConfirm: confirmDialog } = useDialog()
 	const { push } = useRouter()
 
-	useEffect(() => {
-		if (confirmDialog) {
-			push("/checkout")
-		}
-	}, [confirmDialog])
+	// useEffect(() => {
+	// 	if (confirmDialog) {
+	// 		push("/checkout")
+	// 	}
+	// }, [confirmDialog])
 	return (
 		<div className={style.info}>
 			<div className={style.wrap}>
@@ -84,11 +84,12 @@ export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 					disabled={!isConfirm}
 					className={style.button}
 					onClick={() => {
-						openDialogHandler({
-							message: "Вы уверены в правильности данных?",
-							type: "dialog",
-						})
-						anchorHanlder("#section-authorization")
+						!isConfirm
+							? openDialogHandler({
+									message: "Вы уверены в правильности данных?",
+									type: "dialog",
+							  }) && anchorHanlder("#section-authorization")
+							: push("/checkout")
 					}}
 				>
 					<MdOutlineBorderColor />

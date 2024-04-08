@@ -3,12 +3,14 @@ import { ICartProduct } from "@/interfaces/cart.interface"
 export const useCartPriceCalculate = (products: ICartProduct[]) => {
 	let totalDiscount = 0
 	const totalPrice = products.reduce((acc, product) => {
-		let total = acc + product.price * product.quantity // Умножаем цену товара на его количество
+		let total = acc + product.price * product.productQuantity // Умножаем цену товара на его количество
 		if (product.discount) {
 			total -=
-				calculateDiscount(product.price, product.discount) * product.quantity // Вычитаем скидку из общей цены товара
+				calculateDiscount(product.price, product.discount) *
+				product.productQuantity // Вычитаем скидку из общей цены товара
 			totalDiscount +=
-				calculateDiscount(product.price, product.discount) * product.quantity
+				calculateDiscount(product.price, product.discount) *
+				product.productQuantity
 		}
 		return total
 	}, 0)

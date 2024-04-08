@@ -1,16 +1,11 @@
 @import "../../../styles/mixin";
 @import "../../../styles/vars";
 @import "../../../styles/media.mixin";
-.title {
-	font-size: 14px;
-	font-weight: 500;
-	color: $gray;
-	margin: 5px 0;
-}
+
 .attributes {
 	display: flex;
 	flex-direction: column;
-	gap: 10px;
+	gap: 15px;
 	&::before {
 		display: block;
 		content: "";
@@ -18,111 +13,111 @@
 		border-bottom: 1px dashed $darkenRGBA;
 	}
 
-	.rating {
-		justify-content: unset;
-		gap: 10px;
-	}
-
-	.price {
-		display: flex;
-		align-items: center;
-		gap: 10px;
-	}
-
-	.description {
-		p {
-			font-size: 14px;
-			line-height: 20px;
-			font-weight: 400;
-			display: -webkit-box;
-			-webkit-line-clamp: 10;
-			overflow: hidden;
-			-webkit-box-orient: vertical;
-		}
-	}
-	.sizes {
+	.attribute {
 		display: flex;
 		flex-direction: column;
-		gap: 8px;
+		gap: 4px;
 		.title {
 			display: flex;
-			font-size: 14px;
-			font-weight: 400;
-			font-weight: 18px;
-		}
-		.size {
-			display: flex;
 			align-items: center;
-			gap: 8px;
-			.button {
-				position: relative;
-				border: 1px solid $purpleDarken;
-				padding: 10px;
-				border-radius: 3px;
-				&.active_color {
-					border: none;
-					&::after {
-						content: "";
-						position: absolute;
-						top: 0px;
-						left: 0px;
-						right: 0;
-						bottom: 0;
-						border: 2px solid $purple;
-						border-radius: 4px;
-					}
-				}
-			}
-		}
-	}
-
-	.colors {
-		position: relative;
-		width: 100%;
-		span {
-			display: flex;
-			align-items: center;
-			gap: 5px;
-			margin: 10px 0;
-			font-size: 14px;
-			font-weight: 300;
+			gap: 6px;
+			font-size: 12px;
+			font-weight: 500;
+			color: $gray;
 			b {
-				font-weight: 600;
+				font-weight: 400;
 			}
 		}
-		.slider {
-			.color {
-				position: relative;
-				padding-top: calc(100% * (45 / 220));
-				cursor: pointer;
-				&.active_color {
-					&::after {
-						content: "";
-						position: absolute;
-						top: 0px;
-						left: 0px;
-						right: 0;
-						bottom: 0;
-						border: 2px solid $purple;
-						border-radius: 4px;
+		.rating {
+			justify-content: unset;
+			gap: 10px;
+		}
+
+		.price {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+		}
+
+		.description {
+			p {
+				font-size: 14px;
+				line-height: 20px;
+				font-weight: 400;
+				display: -webkit-box;
+				-webkit-line-clamp: 5;
+				overflow: hidden;
+				-webkit-box-orient: vertical;
+			}
+		}
+		.sizes {
+			display: flex;
+			flex-direction: column;
+			gap: 5px;
+			.size {
+				display: flex;
+				align-items: center;
+				gap: 8px;
+				.button {
+					position: relative;
+					border: 1px solid $purpleDarken;
+					padding: 10px;
+					border-radius: 3px;
+					&.active_color {
+						border: none;
+						&::after {
+							content: "";
+							position: absolute;
+							top: 0px;
+							left: 0px;
+							right: 0;
+							bottom: 0;
+							border: 2px solid $purple;
+							border-radius: 4px;
+						}
 					}
 				}
-				img {
-					position: absolute;
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: 100%;
-					border-radius: 4px;
-				}
-				@include mediaLarge1024px {
-					padding-top: calc(100% * (30 / 270));
-				}
-				@include mediaLarge776px {
-					padding-top: calc(100% * (40 / 270));
-				}
-				@include mediaLarge640px {
-					padding-top: calc(100% * (40 / 160));
+			}
+		}
+
+		.colors {
+			position: relative;
+			width: 100%;
+
+			.slider {
+				.color {
+					position: relative;
+					padding-top: calc(100% * (45 / 220));
+					cursor: pointer;
+					&.active_color {
+						&::after {
+							content: "";
+							position: absolute;
+							top: 0px;
+							left: 0px;
+							right: 0;
+							bottom: 0;
+							border: 2px solid $purple;
+							border-radius: 4px;
+						}
+					}
+					img {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						border-radius: 4px;
+					}
+					@include mediaLarge1024px {
+						padding-top: calc(100% * (30 / 270));
+					}
+					@include mediaLarge776px {
+						padding-top: calc(100% * (40 / 270));
+					}
+					@include mediaLarge640px {
+						padding-top: calc(100% * (40 / 160));
+					}
 				}
 			}
 		}

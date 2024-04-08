@@ -11,7 +11,6 @@ export const metadata: Metadata = {
 	},
 	description: "Silk Valley. Модный интернет магазин.",
 }
-
 export default function RootLayout({
 	children,
 }: {
