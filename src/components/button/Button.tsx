@@ -15,7 +15,14 @@ import style from "./button.module.scss"
 
 type IButtonComponentProps = {
 	isExistOnCart?: boolean
-	btnType?: "default" | "cart" | "closed" | "promo" | "delete" | "submit"
+	btnType?:
+		| "default"
+		| "cart"
+		| "closed"
+		| "promo"
+		| "delete"
+		| "submit"
+		| "rangeButton"
 	children?: ReactNode
 	size?: "xl1" | "xxl1" | "xl2"
 	isLoading?: boolean
@@ -73,6 +80,12 @@ export const ButtonComponent: FC<IButtonComponentProps> = ({
 					{isLoading ? <LoaderComponent /> : children ? children : "В корзину"}
 				</button>
 			)
+		case "rangeButton":
+			return (
+				<button className={cn(style.button, style.range, className)} {...props}>
+					{isLoading ? <LoaderComponent /> : children}
+				</button>
+			)
 		case "closed":
 			return (
 				<button
@@ -87,7 +100,7 @@ export const ButtonComponent: FC<IButtonComponentProps> = ({
 		default:
 			return (
 				<button className={cn(style.button, className)} {...props}>
-					{children}
+					{isLoading ? <LoaderComponent /> : children}
 				</button>
 			)
 	}

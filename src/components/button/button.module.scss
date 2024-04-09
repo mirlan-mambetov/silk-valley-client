@@ -84,6 +84,23 @@
 		margin-bottom: -2px;
 	}
 }
+.range {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 25px;
+	height: 25px;
+	min-height: 20px;
+	border: 1px solid $darkenRGBA;
+	> div {
+		> div {
+			width: 18px !important;
+			aspect-ratio: 4 !important;
+			background: radial-gradient(circle closest-side, #080808 90%, #c2c2c200) 0 /
+				calc(100% / 3) 100% space !important;
+		}
+	}
+}
 @-webkit-keyframes changeBackground {
 	0% {
 		background-position: 0% 50%;
