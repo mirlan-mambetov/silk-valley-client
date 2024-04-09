@@ -11,7 +11,7 @@ import cn from "classnames"
 import Image from "next/image"
 import { FC } from "react"
 import { IoResizeOutline } from "react-icons/io5"
-import { MdInvertColors } from "react-icons/md"
+import { MdInvertColors, MdOutlineDiscount } from "react-icons/md"
 import style from "./cart-product.module.scss"
 
 interface ICartProductComponentProps {
@@ -67,6 +67,13 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 											</span>
 										</div>
 									)}
+									<div className={style.item}>
+										<MdOutlineDiscount />
+										<span>
+											На складе:
+											<small>{product.quantity}</small>
+										</span>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -102,7 +109,7 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 					</div>
 				))
 			) : (
-				<span>Товаров нет</span>
+				<span className={style.empty}>Корзина пуста</span>
 			)}
 		</div>
 	)
