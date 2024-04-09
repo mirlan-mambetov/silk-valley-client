@@ -6,33 +6,36 @@ import {
 	ProductPriceComponent,
 } from "@/components"
 import { SwiperComponent } from "@/components/swiper-component/Swiper-component"
+import { IProduct } from "@/interfaces/product.interface"
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { FC } from "react"
 import { Autoplay } from "swiper/modules"
 import { SwiperSlide } from "swiper/react"
-import { PROMOTION_NEW_DATA } from "./promotion.data"
 import style from "./promotion.unique.module.scss"
 
-export const PromotionUniqueComponent: FC = () => {
+interface IPromotionUniqueComponentProps {
+	data: IProduct[]
+}
+export const PromotionUniqueComponent: FC<IPromotionUniqueComponentProps> = ({
+	data,
+}) => {
 	return (
-		<motion.div
-			className={style.promotion}
-			// style={{
-			// 	backgroundImage: `url('https://img.freepik.com/premium-photo/psd-flawless-beauty-cosmetics-banner_605905-28618.jpg')`,
-			// }}
-		>
+		<motion.div className={style.promotion}>
 			<div className="container">
-				{/* <h4 className={style.title}>Электроника</h4> */}
 				<SwiperComponent
 					options={{
 						className: style.columns,
-						slidesPerView: 5,
+						slidesPerView: 6,
 						speed: 3000,
 						spaceBetween: 10,
 						loop: true,
 						modules: [Autoplay],
-						autoplay: { delay: 100, pauseOnMouseEnter: true },
+						autoplay: {
+							delay: 100,
+							pauseOnMouseEnter: true,
+							disableOnInteraction: false,
+						},
 						breakpoints: {
 							320: {
 								slidesPerView: 2,
@@ -44,12 +47,12 @@ export const PromotionUniqueComponent: FC = () => {
 								slidesPerView: 4,
 							},
 							1024: {
-								slidesPerView: 5,
+								slidesPerView: 6,
 							},
 						},
 					}}
 				>
-					{PROMOTION_NEW_DATA.map((promotion) => (
+					{data.map((promotion) => (
 						<SwiperSlide className={style.column} key={promotion.id}>
 							<ProductDiscountComponent
 								product={promotion}
@@ -59,7 +62,7 @@ export const PromotionUniqueComponent: FC = () => {
 							/>
 							<div className={style.poster}>
 								<Image
-									src={promotion.poster}
+									src={`${process.env.NEXT_PUBLIC_API_STATIC}/${promotion.poster}`}
 									alt={promotion.title}
 									width={400}
 									height={400}
@@ -78,8 +81,7 @@ export const PromotionUniqueComponent: FC = () => {
 								</div>
 								<ProductActionsComponent
 									actionType="toView"
-									disable
-									alias={promotion.alias}
+									alias={`${promotion.alias}`}
 									product={promotion}
 								/>
 							</div>
