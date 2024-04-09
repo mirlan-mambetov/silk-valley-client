@@ -8,8 +8,8 @@ import Link from "next/link"
 import { FC } from "react"
 import { GoHeart, GoStar } from "react-icons/go"
 import { IoLogOutOutline } from "react-icons/io5"
-import { LuUser } from "react-icons/lu"
 import { ButtonComponent } from "../button/Button"
+import { UserIconComponent } from "../icon/user/User-icon"
 import style from "./user.module.scss"
 
 export const UserComponent: FC<{ user: IUser }> = ({ user }) => {
@@ -32,7 +32,7 @@ export const UserComponent: FC<{ user: IUser }> = ({ user }) => {
 				<ul className={style.list}>
 					<li className={style.item}>
 						<Link href={"#"}>
-							<LuUser size={20} />
+							<UserIconComponent fontSize={20} />
 							Личный кабинет
 						</Link>
 					</li>

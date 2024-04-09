@@ -2,9 +2,9 @@
 
 import { ButtonComponent } from "@/components/button/Button"
 import { DeliverComponent } from "@/components/deliver/Deliver"
+import { MapIconComponent } from "@/components/icon/map/Map-icon"
 import { useDeliver } from "@/hooks/deliver/useDeliver"
 import { useScreen } from "@/hooks/screen/useScreen"
-import { FaMapMarkerAlt } from "react-icons/fa"
 import style from "./header.top.module.scss"
 
 export const HeaderTopComponent = () => {
@@ -16,7 +16,7 @@ export const HeaderTopComponent = () => {
 				<div className={style.wrap}>
 					<div className={style.row}>
 						<div className={style.deliver}>
-							<FaMapMarkerAlt />
+							<MapIconComponent fill="white" color="white" iconVersion="v2" />
 							<ButtonComponent
 								aria-label="Доставка"
 								onClick={() => setContentHandler(<DeliverComponent />)}

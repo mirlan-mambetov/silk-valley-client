@@ -1,12 +1,11 @@
 "use client"
 
-import { ButtonComponent } from "@/components/button/Button"
+import { ButtonComponent, MapIconComponent } from "@/components"
 import { SILK_VALLEY_LOCATION } from "@/constants/Map.constants"
 import { LatLngExpression } from "leaflet"
 import dynamic from "next/dynamic"
 import { FC, useState } from "react"
 import { TbCurrentLocation } from "react-icons/tb"
-import { VscLocation } from "react-icons/vsc"
 import { MapContainer } from "react-leaflet"
 import style from "./map.module.scss"
 import { IMapProps } from "./Map.props"
@@ -57,7 +56,7 @@ const MapContainerComponent: FC<IMapProps> = ({ currentLocation }) => {
 					className={style.button}
 					onClick={() => setCoordinates(SILK_VALLEY_LOCATION)}
 				>
-					<VscLocation />
+					<MapIconComponent fontSize={18} />
 					<span>Silk Valley</span>
 				</ButtonComponent>
 			</div>
