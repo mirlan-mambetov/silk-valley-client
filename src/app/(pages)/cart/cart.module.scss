@@ -28,14 +28,15 @@
 		border-radius: 5px;
 		.title {
 			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 6px;
 			font-size: 14px;
 			line-height: 22px;
 			font-weight: 400;
 			color: $darken;
+			overflow: hidden;
 			span {
-				display: flex;
-				flex-direction: column;
-				gap: 2px;
 				@include dashdeLine;
 			}
 		}

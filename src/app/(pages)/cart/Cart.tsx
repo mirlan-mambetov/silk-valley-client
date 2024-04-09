@@ -8,6 +8,8 @@ import {
 	DeliverComponent,
 	DeliverDetailComponent,
 	HeadingComponent,
+	MapIconComponent,
+	UserIconComponent,
 } from "@/components"
 import { FC } from "react"
 
@@ -18,7 +20,6 @@ import { useDeliver } from "@/hooks/deliver/useDeliver"
 import { useScreen } from "@/hooks/screen/useScreen"
 import { useUser } from "@/hooks/user/useUser"
 import { scrollToSection } from "@/utils/scrollToAnchor"
-import { FaMapMarkerAlt } from "react-icons/fa"
 import style from "./cart.module.scss"
 
 export const Cart: FC = () => {
@@ -39,7 +40,8 @@ export const Cart: FC = () => {
 				<div className={style.order}>
 					<div className={style.box}>
 						<h5 className={style.title}>
-							<span>Информация о получателе</span>
+							<span>Получатель</span>
+							<UserIconComponent />
 						</h5>
 						<div className={style.out}>
 							{user ? (
@@ -72,6 +74,7 @@ export const Cart: FC = () => {
 					<div className={style.box}>
 						<h5 className={style.title}>
 							<span>Детали доставки </span>
+							<MapIconComponent />
 						</h5>
 						{Object.values(address).some((value) => value?.length) ? (
 							<DeliverDetailComponent position="default" />
@@ -81,7 +84,7 @@ export const Cart: FC = () => {
 									className={style.button}
 									onClick={() => setContentHandler(<DeliverComponent />)}
 								>
-									<FaMapMarkerAlt />
+									<MapIconComponent />
 									Выберите координаты
 								</ButtonComponent>
 							</div>
