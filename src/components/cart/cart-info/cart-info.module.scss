@@ -38,22 +38,22 @@
 					color: $gray;
 				}
 			}
-			&:nth-child(4) {
-				margin: 12px 0;
-				span {
-					font-size: 18px;
-					font-weight: 700;
-				}
-			}
 			.price {
 				color: $gray;
 				div {
 					font-size: 12px !important;
 				}
 			}
-			.price,
 			.total {
-				min-height: unset !important;
+				margin: 5px 0;
+				font-size: 18px;
+				font-weight: 700;
+			}
+			.price,
+			.profit {
+				.profitPrice {
+					min-height: unset !important;
+				}
 			}
 		}
 		.profit {

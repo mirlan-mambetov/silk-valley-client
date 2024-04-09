@@ -3,11 +3,11 @@
 import {
 	ButtonComponent,
 	DeliverComponent,
+	MapIconComponent,
 	ProductPriceComponent,
 } from "@/components"
 import cn from "classnames"
 import { FC } from "react"
-import { FaMapMarkerAlt } from "react-icons/fa"
 import { MdOutlineBorderColor } from "react-icons/md"
 
 import { useCartPriceCalculate } from "@/hooks/cart/useCartPriceCalculate"
@@ -48,9 +48,7 @@ export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 							? `${address.village}. ${address.road}`
 							: "Выбрать адрес доставки"}
 					</span>
-					<small>
-						<FaMapMarkerAlt />
-					</small>
+					<MapIconComponent />
 				</ButtonComponent>
 				<div className={style.box}>
 					<span>Товары, {products.length}шт</span>
@@ -60,16 +58,18 @@ export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 						price={totalPrice}
 					/>
 				</div>
-				<div className={cn(style.box, style.profit)}>
-					<span>Выгода</span>
-					<ProductPriceComponent
-						className={style.total}
-						price={totalDiscount}
-						size="1xxl"
-					/>
-				</div>
+				{totalDiscount ? (
+					<div className={cn(style.box, style.profit)}>
+						<span>Выгода</span>
+						<ProductPriceComponent
+							className={style.profitPrice}
+							price={totalDiscount}
+							size="1xxl"
+						/>
+					</div>
+				) : null}
 				<div className={style.box}>
-					<span>Итого</span>
+					<span className={style.total}>Итого</span>
 					<ProductPriceComponent className={style.total} price={totalPrice} />
 				</div>
 
