@@ -74,11 +74,12 @@
 	justify-content: center;
 	gap: 7px;
 	padding: 12px 22px;
-	background: $purple;
+	background: $black;
 	border-radius: 10px;
 	@include buttonHover;
 	font-size: 14px;
 	line-height: 18px;
+	min-height: 40px;
 	color: $white;
 	span {
 		margin-bottom: -2px;

@@ -83,16 +83,14 @@ export const LoginComponent: FC<IAuthProps> = ({ animate, setChoice }) => {
 							{...register("password")}
 						/>
 					</div>
-					<div className={style.button}>
-						<ButtonComponent
-							aria-label="Войти"
-							btnType="submit"
-							isLoading={result.isLoading}
-							disabled={result.isLoading}
-						>
-							Вход
-						</ButtonComponent>
-					</div>
+					<ButtonComponent
+						aria-label="Войти"
+						btnType="submit"
+						isLoading={result.isLoading}
+						disabled={result.isLoading}
+					>
+						Вход
+					</ButtonComponent>
 				</form>
 				<div className={style.bottom}>
 					<ButtonComponent onClick={() => setChoice("register")}>

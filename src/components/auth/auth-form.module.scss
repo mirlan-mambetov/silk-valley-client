@@ -72,20 +72,6 @@
 				}
 			}
 		}
-		.button {
-			display: flex;
-			margin: 10px 0;
-			button {
-				width: 100%;
-				padding: 12px 22px;
-				color: $white;
-				background: $black;
-				border-radius: 10px;
-				@include buttonHover;
-				font-size: 14px;
-				line-height: 18px;
-			}
-		}
 	}
 
 	.bottom {
