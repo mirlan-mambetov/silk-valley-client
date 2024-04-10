@@ -8,10 +8,10 @@ import { IUserTokens } from "@/interfaces/user.interface"
 import { logOutUser } from "@/store/slices/auth/auth.slice"
 import {
 	BaseQueryFn,
-	createApi,
 	FetchArgs,
-	fetchBaseQuery,
 	FetchBaseQueryError,
+	createApi,
+	fetchBaseQuery,
 } from "@reduxjs/toolkit/query/react"
 import { Mutex } from "async-mutex"
 import { APP_URI } from "./config/api-config"
@@ -23,6 +23,7 @@ const baseQuery = fetchBaseQuery({
 	prepareHeaders: (headers) => {
 		const token = getAccessTokenFromStorage()
 		if (token) headers.set("Authorization", `Bearer ${token}`)
+		headers.set("ngrok-skip-browser-warning", "69420")
 		return headers
 	},
 })
