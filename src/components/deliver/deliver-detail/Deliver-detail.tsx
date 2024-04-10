@@ -26,7 +26,8 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 	const { address } = useDeliver()
 	const [touchStartY, setTouchStartY] = useState(0)
 	const { clearContentHandler } = useScreen()
-	const { openModalHandler } = useStoreActions()
+	const { openModalHandler, openNotifyHandler, confirmDeliver } =
+		useStoreActions()
 
 	const handleTouchStart: TouchEventHandler<HTMLDivElement> = (event) => {
 		setTouchStartY(event.touches[0].clientY)
@@ -46,6 +47,18 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 		}
 	}
 
+	const confirmHandler = async () => {
+		await new Promise<void>((resolve) => {
+			setTimeout(() => {
+				openNotifyHandler({
+					text: "Адрес потдвержден",
+				})
+				resolve()
+			}, 1200)
+		})
+		confirmDeliver()
+		clearContentHandler()
+	}
 	return (
 		<motion.div
 			onTouchStart={handleTouchStart}
@@ -237,7 +250,7 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 						)}
 					</div>
 					<div className={style.button}>
-						<ButtonComponent onClick={() => clearContentHandler()}>
+						<ButtonComponent onClick={confirmHandler}>
 							<span>
 								<MdOutlineCheck />
 							</span>

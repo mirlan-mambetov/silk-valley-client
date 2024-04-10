@@ -14,6 +14,7 @@
 		transform: unset !important;
 
 		.columns {
+			position: relative;
 			display: flex;
 			flex-direction: row-reverse;
 			transform: unset !important;
@@ -23,7 +24,12 @@
 					display: none;
 				}
 				.button {
-					display: none;
+					position: absolute;
+					right: 10px;
+					bottom: 10px;
+					button {
+						padding: 10px;
+					}
 				}
 				.rows {
 					.row {

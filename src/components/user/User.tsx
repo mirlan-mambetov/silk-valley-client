@@ -40,13 +40,13 @@ export const UserComponent: FC<IUserComponentProps> = ({ user }) => {
 						</Link>
 					</li>
 					<li className={style.item}>
-						<Link href={"#"}>
+						<Link href={"/user/orders"}>
 							<GoStar size={20} />
 							Мои заказы
 						</Link>
 					</li>
 					<li className={style.item}>
-						<Link href={"#"}>
+						<Link href={"/user/featured"}>
 							<GoHeart size={18} />
 							Избранные
 						</Link>

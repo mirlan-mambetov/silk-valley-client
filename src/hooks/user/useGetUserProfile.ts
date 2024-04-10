@@ -13,6 +13,8 @@ export const useGetUserProfile = () => {
 	useEffect(() => {
 		if (isAuthentificated) {
 			refetch()
+		} else {
+			clearUser()
 		}
 	}, [isAuthentificated])
 

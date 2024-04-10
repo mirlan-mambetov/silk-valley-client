@@ -48,7 +48,12 @@ export const ProductActionsComponent: FC<IProductActionsComponentProps> = ({
 				resolve()
 			}, 3000)
 		})
-		openNotifyHandler({ text: "Товар добавлен в корзину" })
+		openNotifyHandler({
+			text: "Товар добавлен в корзину",
+			options: {
+				position: "bottomCenter",
+			},
+		})
 	}
 	switch (actionType) {
 		case "toCart":

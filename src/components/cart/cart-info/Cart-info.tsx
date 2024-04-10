@@ -73,7 +73,7 @@ export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 				</div>
 
 				<ButtonComponent
-					disabled={!isConfirm || !user}
+					disabled={!user || !isConfirm || !products.length}
 					className={style.button}
 					onClick={() => push("/checkout")}
 				>
