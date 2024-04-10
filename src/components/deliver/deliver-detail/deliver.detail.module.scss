@@ -64,14 +64,6 @@
 			.column {
 				max-width: 550px;
 				width: 100%;
-				.rows {
-					.row {
-						smal,
-						span {
-							flex: 0.4;
-						}
-					}
-				}
 			}
 		}
 		@include mediaLarge530px {
@@ -148,6 +140,16 @@
 						line-height: 10px;
 						b {
 							color: $gray;
+						}
+					}
+					@include mediaLarge530px {
+						smal,
+						span {
+							flex: 1;
+							&:nth-child(2) {
+								justify-content: flex-start;
+								flex-direction: row-reverse;
+							}
 						}
 					}
 				}

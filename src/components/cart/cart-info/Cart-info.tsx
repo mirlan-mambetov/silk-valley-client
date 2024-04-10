@@ -23,7 +23,6 @@ interface ICartInfoComponentProps {
 	products: ICartProduct[]
 }
 export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
-	anchorHanlder,
 	products,
 }) => {
 	const { setContentHandler } = useScreen()

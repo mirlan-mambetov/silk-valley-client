@@ -101,6 +101,9 @@
 				calc(100% / 3) 100% space !important;
 		}
 	}
+	&.isloading {
+		border: none;
+	}
 }
 @-webkit-keyframes changeBackground {
 	0% {

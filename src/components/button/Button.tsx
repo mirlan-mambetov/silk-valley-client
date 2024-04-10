@@ -82,7 +82,12 @@ export const ButtonComponent: FC<IButtonComponentProps> = ({
 			)
 		case "rangeButton":
 			return (
-				<button className={cn(style.button, style.range, className)} {...props}>
+				<button
+					className={cn(style.button, style.range, className, {
+						[style.isloading]: isLoading,
+					})}
+					{...props}
+				>
 					{isLoading ? <LoaderComponent /> : children}
 				</button>
 			)
