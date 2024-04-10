@@ -79,7 +79,7 @@ export async function generateMetadata({
 			},
 		},
 		alternates: {
-			canonical: ``,
+			canonical: `/${product.alias}`,
 		},
 	}
 }

@@ -5,6 +5,7 @@ import React, { Suspense } from "react"
 import "../styles/global.scss"
 
 export const metadata: Metadata = {
+	metadataBase: new URL("http://localhost:3000"),
 	title: {
 		absolute: SITE_NAME,
 		template: `%s | ${SITE_NAME}`,
