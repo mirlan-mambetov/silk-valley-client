@@ -3,6 +3,7 @@
 import { formatDateString } from "@/helpers/formate.data.helper"
 import { useUser } from "@/hooks/user/useUser"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 import { FC } from "react"
 import { BiLineChart } from "react-icons/bi"
 import { BsBoxSeam } from "react-icons/bs"
@@ -12,6 +13,7 @@ import style from "./user.module.scss"
 
 export const User: FC = () => {
 	const { user } = useUser()
+	const { push } = useRouter()
 	return (
 		<>
 			<section>
@@ -44,7 +46,12 @@ export const User: FC = () => {
 									<span>
 										<BsBoxSeam />
 									</span>
-									<h5 className={style.name}>Мои заказы</h5>
+									<h5
+										className={style.name}
+										onClick={() => push("/user/orders")}
+									>
+										Мои заказы
+									</h5>
 								</div>
 							</div>
 							<div className={style.row}>
@@ -52,18 +59,37 @@ export const User: FC = () => {
 									<span>
 										<GoHeart />
 									</span>
-									<h5 className={style.name}>Избранное</h5>
+									<h5
+										className={style.name}
+										onClick={() => push("/user/featured")}
+									>
+										Избранное
+									</h5>
 								</div>
 							</div>
 						</div>
 						<div className={style.wrap}>
 							<div className={style.box}>
-								<span><BiLineChart /></span>
-								<h5 className={style.title}>Мои покупки</h5>
+								<span>
+									<BiLineChart />
+								</span>
+								<h5
+									className={style.title}
+									onClick={() => push("/user/purchases")}
+								>
+									Мои покупки
+								</h5>
 							</div>
 							<div className={style.box}>
-								<span><MdOutlineViewStream /></span>
-								<h5 className={style.title}>Просмотренные</h5>
+								<span>
+									<MdOutlineViewStream />
+								</span>
+								<h5
+									className={style.title}
+									onClick={() => push("/user/remaining")}
+								>
+									Просмотренные
+								</h5>
 							</div>
 						</div>
 						<div className={style.data}>

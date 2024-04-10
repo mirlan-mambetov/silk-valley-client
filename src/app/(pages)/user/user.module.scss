@@ -21,7 +21,6 @@
 			box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.03);
 			padding: 10px;
 			border-radius: 8px;
-			cursor: pointer;
 			.top {
 				display: flex;
 				align-items: center;
@@ -44,6 +43,7 @@
 					font-size: 16px;
 					font-weight: 500;
 					line-height: 22px;
+					cursor: pointer;
 				}
 				span {
 					font-size: 20px;
@@ -92,6 +92,7 @@
 				font-size: 16px;
 				font-weight: 500;
 				line-height: 22px;
+				cursor: pointer;
 			}
 		}
 		@include mediaLarge530px {
