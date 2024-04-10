@@ -1,7 +1,7 @@
 "use client"
 
+import { LoginComponent, RegisterComponent } from "@/components"
 import { FC, useState } from "react"
-import { LoginComponent, RegisterComponent } from ".."
 import style from "./auth.module.scss"
 
 export const AuthComponent: FC = () => {

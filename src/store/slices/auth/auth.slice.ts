@@ -30,6 +30,15 @@ export const authSlice = createSlice({
 			state.loading = false
 			clearTokensFromStorage()
 		},
+		registerPending: (state) => {
+			state.loading = true
+		},
+		registerSuccess: (state) => {
+			state.loading = false
+		},
+		registerRejected: (state) => {
+			state.loading = false
+		},
 	},
 	extraReducers: (build) => {},
 })

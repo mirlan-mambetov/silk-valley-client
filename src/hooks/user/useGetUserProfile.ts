@@ -8,18 +8,19 @@ export const useGetUserProfile = () => {
 	const { user } = useUser()
 	const { addUser, clearUser } = useStoreActions()
 	const { isAuthentificated } = useAuth()
-	const { data, refetch, isSuccess } = useFetchUserProfleQuery(null)
+	const { data, refetch } = useFetchUserProfleQuery(null)
 
 	useEffect(() => {
 		if (isAuthentificated) {
 			refetch()
-			if (isSuccess) {
-				addUser({ data })
-			}
-		} else {
-			clearUser()
 		}
-	}, [isAuthentificated, isSuccess])
+	}, [isAuthentificated])
+
+	useEffect(() => {
+		if (data) {
+			addUser({ data })
+		}
+	}, [data])
 
 	return user
 }
