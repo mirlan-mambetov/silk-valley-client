@@ -11,6 +11,7 @@ import { IProduct } from "@/interfaces/product.interface"
 import cn from "classnames"
 import Image from "next/image"
 import { Dispatch, FC, SetStateAction } from "react"
+import { MdContentCopy } from "react-icons/md"
 import { SwiperSlide } from "swiper/react"
 import style from "./product-attributes.module.scss"
 
@@ -30,6 +31,15 @@ export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 }) => {
 	return (
 		<div className={style.attributes}>
+			<div className={style.attribute}>
+				<h2 className={style.product_name}>{data?.title}</h2>
+				<div className={style.product_id}>
+					<span>ID: {data?.articleNumber}</span>
+					<ButtonComponent title="Нажмите скопировать">
+						<MdContentCopy />
+					</ButtonComponent>
+				</div>
+			</div>
 			<div className={style.attribute}>
 				<h5 className={style.title}>Оценка</h5>
 				<ProductRatingComponent
@@ -108,9 +118,9 @@ export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 			</div>
 
 			{/* SIZES */}
-			<div className={style.attribute}>
-				<h5 className={style.title}>Размеры</h5>
-				{data.sizes?.length ? (
+			{data.sizes?.length ? (
+				<div className={style.attribute}>
+					<h5 className={style.title}>Размеры</h5>
 					<div className={style.sizes}>
 						<div className={style.size}>
 							{data.sizes.map((size, i) => (
@@ -128,8 +138,8 @@ export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 							))}
 						</div>
 					</div>
-				) : null}
-			</div>
+				</div>
+			) : null}
 
 			<div className={style.attribute}>
 				<h5 className={style.title}>Описание</h5>

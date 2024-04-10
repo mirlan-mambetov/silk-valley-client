@@ -1,10 +1,6 @@
 "use client"
 
-import {
-	ButtonComponent,
-	HeadingComponent,
-	RoutesHistoryComponent,
-} from "@/components"
+import { ButtonComponent, HeadingComponent } from "@/components"
 import { IPromotions } from "@/interfaces/promotions.interface"
 import cn from "classnames"
 import { useRouter } from "next/navigation"
@@ -25,7 +21,6 @@ export const PromotionComponent: FC<IPromotionComponentProps> = ({
 	const { push } = useRouter()
 	return (
 		<>
-			{routes ? <RoutesHistoryComponent productName="Акции" /> : null}
 			<div className={style.promotion}>
 				{routes ? <HeadingComponent text="Акции недели" length={4} /> : null}
 				<div

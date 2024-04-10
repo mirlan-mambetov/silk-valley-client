@@ -1,10 +1,6 @@
 "use client"
 
-import {
-	FiltersComponent,
-	ProductCardsComponent,
-	RoutesHistoryComponent,
-} from "@/components"
+import { FiltersComponent, ProductCardsComponent } from "@/components"
 import { IPromotions } from "@/interfaces/promotions.interface"
 import { FC } from "react"
 import style from "./pomotion.module.scss"
@@ -16,18 +12,7 @@ export const Promotions: FC<IPromotionsProps> = ({ data }) => {
 	return (
 		<div className="container">
 			<div className={style.wrap}>
-				<div className={style.title}>
-					<RoutesHistoryComponent
-						links={[
-							{
-								href: `/promotions`,
-								name: "Акции",
-							},
-						]}
-						productName={data.name}
-					/>
-					{/* <h2>Акция! {data.name}</h2> */}
-				</div>
+				<div className={style.title}>{/* <h2>Акция! {data.name}</h2> */}</div>
 				<div className={style.promotions}>
 					<FiltersComponent />
 					{data.products && <ProductCardsComponent products={data.products} />}

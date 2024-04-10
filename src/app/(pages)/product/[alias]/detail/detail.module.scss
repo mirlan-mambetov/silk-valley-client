@@ -41,31 +41,5 @@
 		display: flex;
 		flex-direction: column;
 		gap: 8px;
-
-		.product_name {
-			display: flex;
-			flex-direction: column;
-			gap: 12px;
-			font-size: 20px;
-			font-weight: 700;
-			line-height: 25px;
-			max-width: 500px;
-		}
-
-		.product_id {
-			display: flex;
-			align-items: center;
-			gap: 7px;
-			span,
-			button {
-				color: $discount;
-				border-radius: 4px;
-				background: $white;
-				padding: 4px;
-				box-shadow: 0px 10px 23px 3px rgba(34, 60, 40, 0.03);
-				font-size: 12px;
-				font-weight: 500;
-			}
-		}
 	}
 }

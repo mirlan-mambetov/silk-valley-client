@@ -1,6 +1,7 @@
 "use client"
 
 import {
+	FeaturedComponent,
 	ProducAttributeComponent,
 	ProductActionsComponent,
 	ProductPriceComponent,
@@ -81,7 +82,8 @@ export const MobileDetailInfoComponent: FC<IMobileDetailInfoComponentProps> = ({
 						) : null}
 					</div>
 				</div>
-				<div className={style.button}>
+				<div className={style.actions}>
+					<FeaturedComponent size={20} />
 					<ProductActionsComponent
 						size={selectedSize}
 						color={selectedColor}

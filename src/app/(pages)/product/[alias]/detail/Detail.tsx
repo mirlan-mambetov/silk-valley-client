@@ -1,19 +1,16 @@
 "use client"
 
 import {
-	ButtonComponent,
 	MobileDetailInfoComponent,
 	ProductAttributesComponent,
 	ProductImagesComponent,
 	ProductInfoComponent,
 	ProductSpecificationsComponent,
-	RoutesHistoryComponent,
 	StickyHeaderComponent,
 } from "@/components"
 import { useWindowWidth } from "@/hooks/app/useWindowWidth"
 import { IProduct, IProductImages } from "@/interfaces/product.interface"
 import { FC, useEffect, useState } from "react"
-import { MdContentCopy } from "react-icons/md"
 import style from "./detail.module.scss"
 
 interface IDetailProps {
@@ -56,8 +53,6 @@ export const Detail: FC<IDetailProps> = ({ data }) => {
 					setSelectedSize={(value) => setSelectedSize(value)}
 				/>
 			</StickyHeaderComponent>
-			{/* ROUTES HISTORY */}
-			<RoutesHistoryComponent productName={data.title} />
 			<div className={style.wrap}>
 				{/* PRODUCT */}
 				<div className={style.product}>
@@ -70,13 +65,6 @@ export const Detail: FC<IDetailProps> = ({ data }) => {
 					/>
 					{/* PRODUCT CONTENT */}
 					<div className={style.product_content}>
-						<h2 className={style.product_name}>{data?.title}</h2>
-						<div className={style.product_id}>
-							<span>ID: {data?.articleNumber}</span>
-							<ButtonComponent title="Нажмите скопировать">
-								<MdContentCopy />
-							</ButtonComponent>
-						</div>
 						<ProductAttributesComponent
 							data={data}
 							selectedColor={selectedColor}

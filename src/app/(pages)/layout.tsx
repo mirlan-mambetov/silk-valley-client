@@ -4,7 +4,6 @@ import {
 	FooterComponent,
 	HeaderComponent,
 	NotifyComponent,
-	NotifyHeaderComponent,
 	ScreenComponent,
 } from "@/components"
 import { MobileMenuComponent } from "@/components/mobile/mobile-navigation/Mobile-navigation"
@@ -19,7 +18,6 @@ export default function HomeLayout({
 }) {
 	return (
 		<>
-			<NotifyHeaderComponent />
 			<HeaderComponent />
 			<MobileMenuComponent />
 			<ScreenComponent />
