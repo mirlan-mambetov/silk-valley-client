@@ -29,17 +29,11 @@ export const UserComponent: FC<{ user: IUser }> = ({ user }) => {
 				/>
 			</div>
 			<div className={cn(style.drop, { [style.show]: isShow })} ref={elRef}>
-				<ButtonComponent
-					className={style.close}
-					onClick={() => setIsShow(!isShow)}
-					btnType="closed"
-					size="xl2"
-				></ButtonComponent>
 				<ul className={style.list}>
 					<li className={style.item}>
 						<Link href={"#"}>
 							<UserIconComponent fontSize={20} />
-							Личный кабинет
+							Профиль
 						</Link>
 					</li>
 					<li className={style.item}>

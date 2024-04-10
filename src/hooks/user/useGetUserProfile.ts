@@ -11,15 +11,15 @@ export const useGetUserProfile = () => {
 	const { data, refetch, isSuccess } = useFetchUserProfleQuery(null)
 
 	useEffect(() => {
-		if (isAuthentificated && isSuccess) {
+		if (isAuthentificated) {
 			refetch()
-			if (data) {
+			if (isSuccess) {
 				addUser({ data })
 			}
 		} else {
 			clearUser()
 		}
-	}, [isAuthentificated, data, isSuccess])
+	}, [isAuthentificated, isSuccess])
 
 	return user
 }
