@@ -5,14 +5,17 @@ import useOutsiteClick from "@/hooks/useOutsideClick"
 import { IUser } from "@/interfaces/user.interface"
 import cn from "classnames"
 import Link from "next/link"
-import { FC } from "react"
+import { DetailsHTMLAttributes, FC } from "react"
 import { GoHeart, GoStar } from "react-icons/go"
 import { IoLogOutOutline } from "react-icons/io5"
 import { ButtonComponent } from "../button/Button"
 import { UserIconComponent } from "../icon/user/User-icon"
 import style from "./user.module.scss"
 
-export const UserComponent: FC<{ user: IUser }> = ({ user }) => {
+interface IUserComponentProps extends DetailsHTMLAttributes<HTMLDivElement> {
+	user: IUser
+}
+export const UserComponent: FC<IUserComponentProps> = ({ user }) => {
 	const { elRef, isShow, setIsShow } = useOutsiteClick(false)
 	const { logOutUser } = useStoreActions()
 
@@ -31,7 +34,7 @@ export const UserComponent: FC<{ user: IUser }> = ({ user }) => {
 			<div className={cn(style.drop, { [style.show]: isShow })} ref={elRef}>
 				<ul className={style.list}>
 					<li className={style.item}>
-						<Link href={"#"}>
+						<Link href={"/user"}>
 							<UserIconComponent fontSize={20} />
 							Профиль
 						</Link>

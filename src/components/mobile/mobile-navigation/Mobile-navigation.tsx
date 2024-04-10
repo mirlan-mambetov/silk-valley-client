@@ -135,7 +135,7 @@ export const MobileMenuComponent: FC = () => {
 
 					<div className={style.item}>
 						{isAuthentificated && user ? (
-							<UserComponent user={user} />
+							<UserComponent user={user} onClick={() => push("/user")} />
 						) : (
 							<ButtonComponent
 								onClick={() => setContentHandler(<AuthComponent />)}
