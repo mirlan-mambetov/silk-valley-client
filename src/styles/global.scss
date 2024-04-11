@@ -51,7 +51,7 @@ a {
 }
 button:disabled {
 	cursor: not-allowed;
-	opacity: 0.5;
+	opacity: 0.8;
 	&:hover {
 		box-shadow: unset !important;
 	}
