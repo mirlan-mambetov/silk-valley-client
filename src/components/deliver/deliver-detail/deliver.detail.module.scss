@@ -30,6 +30,13 @@
 					button {
 						padding: 10px;
 					}
+					@include mediaLarge640px {
+						position: unset;
+						margin: 12px 0;
+						button {
+							width: 100%;
+						}
+					}
 				}
 				.rows {
 					.row {
