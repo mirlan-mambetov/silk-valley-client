@@ -6,14 +6,16 @@ import { notFound } from "next/navigation"
 import { Suspense } from "react"
 import { Detail } from "./detail/Detail"
 
-export const revalidate = 60
+// export const revalidate = 60
 
 // FETCH PRODUCT BY ALIAS
-export async function fetchProduct({ params }: IPageParams): Promise<IProduct> {
+
+export async function fetchData({ params }: IPageParams): Promise<IProduct> {
 	const { alias } = params
 	const response = await fetch(`${APP_URI}/product/by-alias/${alias}`)
 	if (!response.ok) notFound()
-	return response.json()
+	const product = await response.json()
+	return product
 }
 
 // GENERATE STATIC PARAMS
@@ -33,7 +35,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
 	params,
 }: IPageParams): Promise<Metadata> {
-	const product = await fetchProduct({ params })
+	const product = await fetchData({ params })
 
 	return {
 		title: `${product.title} В магазине`,
@@ -52,30 +54,6 @@ export async function generateMetadata({
 			locale: "ru_RU",
 			type: "website",
 		},
-		twitter: {
-			card: "app",
-			title: `${product.title}`,
-			description: `${product.description}`,
-			images: {
-				width: 32,
-				height: 32,
-				href: `${process.env.NEXT_PUBLIC_API_STATIC}/${product.poster}`,
-				alt: `${product.title}`,
-				url: `${process.env.NEXT_PUBLIC_API_STATIC}`,
-			},
-			app: {
-				name: "twitter_app",
-				id: {
-					iphone: "twitter_app://iphone",
-					ipad: "twitter_app://ipad",
-					googleplay: "twitter_app://googleplay",
-				},
-				url: {
-					iphone: "https://iphone_url",
-					ipad: "https://ipad_url",
-				},
-			},
-		},
 		alternates: {
 			canonical: `/${product.alias}`,
 		},
@@ -83,7 +61,7 @@ export async function generateMetadata({
 }
 
 export default async function ProductPage({ params }: IPageParams) {
-	const product = await fetchProduct({ params })
+	const product = await fetchData({ params })
 	return (
 		<>
 			<section>
