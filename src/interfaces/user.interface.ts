@@ -1,3 +1,4 @@
+import { EnumOrderStatus } from "@/enums/Payment.enum"
 import { IBase } from "./base.interface"
 
 export interface IUser extends IBase {
@@ -6,8 +7,15 @@ export interface IUser extends IBase {
 	phoneNumber: number
 	password: string
 	avatar: string
+	orders: IUserOrders[]
 }
 export interface IUserTokens {
 	accessToken: string
 	refreshToken: string
+}
+
+export interface IUserOrders extends IBase {
+	status: EnumOrderStatus
+	total: number
+	userId: number
 }
