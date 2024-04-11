@@ -41,7 +41,7 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 								<div className={style.description_price}>
 									<ProductPriceComponent
 										className={style.number}
-										price={product.price * product.quantity}
+										price={product.price * product.productQuantity}
 										discount={product.discount}
 										size="1xxl"
 										orientation="column"
