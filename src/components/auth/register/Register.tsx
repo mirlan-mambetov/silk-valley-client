@@ -78,6 +78,10 @@ export const RegisterComponent: FC<IAuthProps> = ({ animate, setChoice }) => {
 									message: "Минимальное значеине для E-mail 4 символа",
 									value: 4,
 								},
+								maxLength: {
+									message: "Максимальная длина E-mail 100 символов",
+									value: 100,
+								},
 							})}
 							errors={errors.email?.message}
 						/>
@@ -92,6 +96,10 @@ export const RegisterComponent: FC<IAuthProps> = ({ animate, setChoice }) => {
 									message: "Минимальное значеине для Имени 4 символа",
 									value: 4,
 								},
+								maxLength: {
+									message: "Максимальная длина Имени 100 символов",
+									value: 100,
+								},
 							})}
 							errors={errors.name?.message}
 						/>
@@ -103,6 +111,7 @@ export const RegisterComponent: FC<IAuthProps> = ({ animate, setChoice }) => {
 							{...register("phoneNumber", {
 								required: "Введите телефоный номер",
 							})}
+							type="number"
 							errors={errors.phoneNumber?.message}
 						/>
 					</div>
