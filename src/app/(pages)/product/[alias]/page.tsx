@@ -6,7 +6,7 @@ import { notFound } from "next/navigation"
 import { Suspense } from "react"
 import { Detail } from "./detail/Detail"
 
-// export const revalidate = 60
+export const revalidate = 60
 
 // FETCH PRODUCT BY ALIAS
 
