@@ -15,12 +15,12 @@ import style from "./user.module.scss"
 interface IUserComponentProps extends DetailsHTMLAttributes<HTMLDivElement> {
 	user: IUser
 }
-export const UserComponent: FC<IUserComponentProps> = ({ user }) => {
+export const UserComponent: FC<IUserComponentProps> = ({ user, ...props }) => {
 	const { elRef, isShow, setIsShow } = useOutsiteClick(false)
 	const { logOutUser } = useStoreActions()
 
 	return (
-		<div className={style.user}>
+		<div className={style.user} {...props}>
 			<div className={style.avatar} onClick={() => setIsShow(!isShow)}>
 				<img
 					src={

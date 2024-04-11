@@ -1,6 +1,8 @@
 "use client"
 
+import { ButtonComponent, withProtected } from "@/components"
 import { formatDateString } from "@/helpers/formate.data.helper"
+import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { useUser } from "@/hooks/user/useUser"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
@@ -8,12 +10,15 @@ import { FC } from "react"
 import { BiLineChart } from "react-icons/bi"
 import { BsBoxSeam } from "react-icons/bs"
 import { GoHeart } from "react-icons/go"
+import { IoLogOutOutline } from "react-icons/io5"
 import { MdOutlineViewStream } from "react-icons/md"
 import style from "./user.module.scss"
 
-export const User: FC = () => {
+const User: FC = () => {
 	const { user } = useUser()
 	const { push } = useRouter()
+	const { logOutUser } = useStoreActions()
+
 	return (
 		<>
 			<section>
@@ -37,8 +42,16 @@ export const User: FC = () => {
 									<h5 className={style.name}>{user?.name}</h5>
 								</div>
 								<div className={style.middle}>
-									<span>Телефон:</span>
-									{user?.phoneNumber}
+									<div className={style.item}>
+										<span>Телефон:</span>
+										{user?.phoneNumber}
+									</div>
+									<div className={style.item}>
+										<ButtonComponent onClick={() => logOutUser()}>
+											<IoLogOutOutline />
+											Выйти
+										</ButtonComponent>
+									</div>
 								</div>
 							</div>
 							<div className={style.row}>
@@ -108,3 +121,4 @@ export const User: FC = () => {
 		</>
 	)
 }
+export default withProtected(User)
