@@ -6,6 +6,16 @@ import { notFound } from "next/navigation"
 import { Suspense } from "react"
 import { Detail } from "./detail/Detail"
 
+export const revalidate = 60
+
+// FETCH PRODUCT BY ALIAS
+export async function fetchProduct({ params }: IPageParams): Promise<IProduct> {
+	const { alias } = params
+	const response = await fetch(`${APP_URI}/product/by-alias/${alias}`)
+	if (!response.ok) notFound()
+	return response.json()
+}
+
 // GENERATE STATIC PARAMS
 export async function generateStaticParams() {
 	const response: Response = await fetch(`${APP_URI}/product`)
@@ -17,18 +27,6 @@ export async function generateStaticParams() {
 		}
 	})
 	return paths
-}
-
-// FETCH PRODUCT BY ALIAS
-export async function fetchProduct({ params }: IPageParams): Promise<IProduct> {
-	const { alias } = params
-	try {
-		const response = await fetch(`${APP_URI}/product/by-alias/${alias}`)
-		if (!response.ok) notFound()
-		return response.json()
-	} catch (err) {
-		throw new Error(String(err))
-	}
 }
 
 // GENERATE META DATA

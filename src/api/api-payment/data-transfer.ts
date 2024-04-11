@@ -6,6 +6,10 @@ export interface IPaymentDTO {
 	products: ICartProduct[]
 
 	totalPrice: number
+
+	color?: boolean
+
+	sizes?: boolean
 }
 
 export interface IPaymentResponse {
