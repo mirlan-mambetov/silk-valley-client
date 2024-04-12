@@ -35,11 +35,7 @@ export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 	const { push } = useRouter()
 
 	const placeOrderHandler = async (data: IPaymentDTO) => {
-		const products = data.products.map((product) => ({
-			...product,
-			quantity: product.productQuantity,
-		}))
-		await placeOrder({ ...data, products }).unwrap()
+		await placeOrder(data).unwrap()
 	}
 
 	useEffect(() => {
@@ -96,7 +92,7 @@ export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 					onClick={() =>
 						placeOrderHandler({
 							products,
-							status: EnumOrderStatus.PENDING,
+							status: EnumOrderStatus.WAITING,
 							totalPrice,
 						})
 					}

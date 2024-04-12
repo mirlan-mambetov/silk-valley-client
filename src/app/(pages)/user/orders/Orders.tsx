@@ -16,12 +16,18 @@ const Orders: FC = () => {
 					<div className={style.head}>
 						<span>ORDER [ID]</span>
 						<span>Статус</span>
+						<span>Товар</span>
 						<span>Сумма заказа</span>
 						<span>Дата заказа</span>
 					</div>
 					<div className={style.body}>
 						<span>{order.id}</span>
 						<span>{order.status}</span>
+						<div className={style.productNames}>
+							{order.items.map((product) => (
+								<span key={product.id}>{product.name}</span>
+							))}
+						</div>
 						<span>{formatPrice(order.total)} KGS</span>
 						<span>{formatDateString(order.createdAt)}</span>
 					</div>

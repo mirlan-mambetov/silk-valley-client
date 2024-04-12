@@ -68,6 +68,9 @@ export const cartSlice = createSlice({
 				}
 			}
 		},
+		// addAttributeToProduct: (state, {payload}: PayloadAction<ICartAddAttributePayload>) => {
+		// 	state.products.
+		// }
 	},
 	extraReducers: (build) => {},
 })

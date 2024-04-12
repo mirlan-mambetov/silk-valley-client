@@ -1,6 +1,5 @@
 export enum EnumOrderStatus {
-	PENDING = "PENDING",
+	WAITING = "WAITING",
 	PAYED = "PAYED",
-	// SHIPPED
-	// DELIVERED
+	CANCELED = "CANCELED",
 }

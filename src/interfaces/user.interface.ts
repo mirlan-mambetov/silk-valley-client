@@ -18,4 +18,9 @@ export interface IUserOrders extends IBase {
 	status: EnumOrderStatus
 	total: number
 	userId: number
+	items: IUserOrderItems[]
+}
+export interface IUserOrderItems {
+	id: number
+	name: string
 }

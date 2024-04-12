@@ -14,7 +14,7 @@
 		border-radius: 10px;
 		.head {
 			display: grid;
-			grid-template-columns: repeat(4, calc(100% / 4 - 12px / 4 * (4 - 1)));
+			grid-template-columns: repeat(5, calc(100% / 5 - 12px / 5 * (5 - 1)));
 			span {
 				font-size: 12px;
 				font-weight: 400;
@@ -24,7 +24,7 @@
 		}
 		.body {
 			display: grid;
-			grid-template-columns: repeat(4, calc(100% / 4 - 12px / 4 * (4 - 1)));
+			grid-template-columns: repeat(5, calc(100% / 5 - 12px / 5 * (5 - 1)));
 			span {
 				font-size: 14px;
 				font-weight: 500;
