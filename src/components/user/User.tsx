@@ -4,6 +4,7 @@ import { useStoreActions } from "@/hooks/store/useStoreActions"
 import useOutsiteClick from "@/hooks/useOutsideClick"
 import { IUser } from "@/interfaces/user.interface"
 import cn from "classnames"
+import Image from "next/image"
 import Link from "next/link"
 import { DetailsHTMLAttributes, FC } from "react"
 import { GoHeart, GoStar } from "react-icons/go"
@@ -22,9 +23,12 @@ export const UserComponent: FC<IUserComponentProps> = ({ user, ...props }) => {
 	return (
 		<div className={style.user} {...props}>
 			<div className={style.avatar} onClick={() => setIsShow(!isShow)}>
-				<img
+				<Image
+					priority
+					width={30}
+					height={30}
 					src={
-						user.avatar.startsWith("http")
+						user.avatar.startsWith("https")
 							? user.avatar
 							: `${process.env.NEXT_PUBLIC_API_STATIC}/${user.avatar}`
 					}
