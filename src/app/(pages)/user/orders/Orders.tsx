@@ -13,22 +13,28 @@ const Orders: FC = () => {
 		<div className={style.orders}>
 			{user?.orders.map((order) => (
 				<div className={style.order} key={order.id}>
-					<div className={style.head}>
-						<span>ORDER [ID]</span>
-						<span>Статус</span>
-						<span>Товар</span>
-						<span>Сумма заказа</span>
-						<span>Дата заказа</span>
-					</div>
-					<div className={style.body}>
+					<div className={style.row}>
+						<strong>ORDER [ID]</strong>
 						<span>{order.id}</span>
+					</div>
+					<div className={style.row}>
+						<strong>Статус</strong>
 						<span>{order.status}</span>
+					</div>
+					<div className={style.row}>
+						<strong>Товар</strong>
 						<div className={style.productNames}>
 							{order.items.map((product) => (
 								<span key={product.id}>{product.name}</span>
 							))}
 						</div>
+					</div>
+					<div className={style.row}>
+						<strong>Сумма заказа</strong>
 						<span>{formatPrice(order.total)} KGS</span>
+					</div>
+					<div className={style.row}>
+						<strong>Дата заказа</strong>
 						<span>{formatDateString(order.createdAt)}</span>
 					</div>
 				</div>

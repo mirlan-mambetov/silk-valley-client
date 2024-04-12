@@ -6,30 +6,45 @@
 	flex-direction: column;
 	gap: 12px;
 	.order {
-		display: flex;
-		flex-direction: column;
-		gap: 12px;
+		display: grid;
+		grid-template-columns: repeat(5, calc(100% / 5 - 12px / 5 * (5 - 1)));
+		column-gap: 12px;
 		@include lowBoxShadow;
 		padding: 12px;
 		border-radius: 10px;
-		.head {
-			display: grid;
-			grid-template-columns: repeat(5, calc(100% / 5 - 12px / 5 * (5 - 1)));
-			span {
+		.row {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			strong {
+				display: flex;
+				flex-direction: column;
+				gap: 5px;
 				font-size: 12px;
-				font-weight: 400;
+				font-weight: 500;
 				line-height: 18px;
 				color: $gray;
+				@include dashdeLine;
 			}
-		}
-		.body {
-			display: grid;
-			grid-template-columns: repeat(5, calc(100% / 5 - 12px / 5 * (5 - 1)));
 			span {
 				font-size: 14px;
-				font-weight: 500;
-				line-height: 22px;
+				font-weight: 600;
+				line-height: 20px;
 			}
 		}
+		@include mediaLarge940px {
+			grid-template-columns: repeat(4, calc(100% / 4 - 12px / 4 * (4 - 1)));
+			row-gap: 20px;
+		}
+		@include mediaLarge776px {
+			grid-template-columns: repeat(2, calc(100% / 2 - 12px / 2 * (2 - 1)));
+			@include middleBoxShadow;
+		}
+		@include mediaLarge530px {
+			grid-template-columns: 1fr;
+		}
+	}
+	@include mediaLarge530px {
+		padding-top: 30px;
 	}
 }
