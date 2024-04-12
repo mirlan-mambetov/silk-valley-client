@@ -29,6 +29,7 @@ export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 	setSelectedColor,
 	setSelectedSize,
 }) => {
+	console.log(data.sizes)
 	return (
 		<div className={style.attributes}>
 			<div className={style.attribute}>
@@ -118,7 +119,7 @@ export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 			</div>
 
 			{/* SIZES */}
-			{data.sizes?.length ? (
+			{data.sizes && data.sizes?.length > 10 ? (
 				<div className={style.attribute}>
 					<h5 className={style.title}>Размеры</h5>
 					<div className={style.sizes}>

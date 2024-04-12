@@ -69,7 +69,7 @@ export const MobileDetailInfoComponent: FC<IMobileDetailInfoComponentProps> = ({
 								size="1xl"
 							/>
 						</div>
-						{data.sizes?.length ? (
+						{data.sizes && data.sizes?.length > 10 ? (
 							<div className={style.item}>
 								<ProducAttributeComponent
 									selectedValueHandler={(value) => setSelectedSize(value)}
