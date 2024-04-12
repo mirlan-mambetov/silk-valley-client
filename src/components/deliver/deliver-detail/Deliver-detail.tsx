@@ -23,7 +23,7 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 	position,
 }) => {
 	const [fullView, setFullView] = useState(false)
-	const { address } = useDeliver()
+	const { address, isConfirm } = useDeliver()
 	const [touchStartY, setTouchStartY] = useState(0)
 	const { clearContentHandler } = useScreen()
 	const { openModalHandler, openNotifyHandler, confirmDeliver } =
@@ -254,7 +254,7 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 							<span>
 								<MdOutlineCheck />
 							</span>
-							Потдвердить адрес
+							{!isConfirm ? "Потдвердить адрес" : "Потвержден"}
 						</ButtonComponent>
 					</div>
 				</div>

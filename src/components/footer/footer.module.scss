@@ -4,8 +4,9 @@
 
 .footer {
 	padding-top: 20px;
-	background: $black;
+	background: $white;
 	@include sectionShadow;
+	// transition: background 0.5s ease;
 	.columns {
 		display: grid;
 		grid-template-columns: 0.8fr 1fr 1fr 1fr;
@@ -25,7 +26,7 @@
 				line-height: 12px;
 				font-weight: 400;
 				height: 30px;
-				color: $white;
+				color: $purple;
 				@include mediaLarge480px {
 					font-size: 16px;
 					font-weight: 500;
@@ -102,6 +103,16 @@
 			padding-left: 10px;
 		}
 	}
+	// &.changed {
+	// 	background: $white;
+	// 	.columns {
+	// 		.column {
+	// 			.title {
+	// 				color: $black;
+	// 			}
+	// 		}
+	// 	}
+	// }
 	@include mediaLarge480px {
 		display: flex;
 		flex-direction: column;
