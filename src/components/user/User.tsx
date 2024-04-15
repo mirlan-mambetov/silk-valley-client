@@ -21,7 +21,7 @@ export const UserComponent: FC<IUserComponentProps> = ({ user, ...props }) => {
 	const { logOutUser } = useStoreActions()
 
 	return (
-		<div className={style.user} {...props}>
+		<div className={style.user} {...props} title={user.name}>
 			<div className={style.avatar} onClick={() => setIsShow(!isShow)}>
 				<Image
 					priority

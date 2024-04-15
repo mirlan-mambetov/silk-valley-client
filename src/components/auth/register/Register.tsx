@@ -1,10 +1,12 @@
 "use client"
 
-import { useRegisterUserMutation } from "@/api/api-auth/api-auth"
+import { AuthApi } from "@/api/api-auth/auth-api"
+import { IAuthRegisterDTO } from "@/api/api-auth/data-transfer"
 import { IUserRegisterDTO } from "@/api/api-user/data.transfer"
 import { ButtonComponent, FieldComponent } from "@/components"
 import { animateLoginRegister } from "@/framer-motion/auth/auth.animate"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
+import { useMutation } from "@tanstack/react-query"
 import { motion } from "framer-motion"
 import { FC } from "react"
 import { useForm } from "react-hook-form"
@@ -19,20 +21,23 @@ export const RegisterComponent: FC<IAuthProps> = ({ animate, setChoice }) => {
 		registerSuccess,
 		openNotifyHandler,
 	} = useStoreActions()
-	const [registerUser, result] = useRegisterUserMutation()
+	const { mutateAsync, isPending } = useMutation({
+		mutationKey: ["registerUser"],
+		mutationFn: (data: IAuthRegisterDTO) => AuthApi.registerUser(data),
+	})
 	const {
 		handleSubmit,
 		register,
 		formState: { errors },
 	} = useForm<IUserRegisterDTO>({ mode: "onChange" })
+
 	const registerHandler = async (data: IUserRegisterDTO) => {
 		registerPending()
-		await registerUser(data)
-			.unwrap()
-			.then((res) => {
-				if (res.success) {
+		try {
+			await mutateAsync(data, {
+				onSuccess(data, variables, context) {
 					openNotifyHandler({
-						text: res.message,
+						text: data.message,
 						options: {
 							size: "xl2",
 							timeOut: 2000,
@@ -42,19 +47,19 @@ export const RegisterComponent: FC<IAuthProps> = ({ animate, setChoice }) => {
 					})
 					setChoice("login")
 					registerSuccess()
-				}
+				},
 			})
-			.catch((err) => {
-				registerRejected()
-				openNotifyHandler({
-					text: err.data.message,
-					options: {
-						size: "xl2",
-						timeOut: 3000,
-					},
-					type: "error",
-				})
+		} catch (error) {
+			registerRejected()
+			openNotifyHandler({
+				text: String(error),
+				options: {
+					size: "xl2",
+					timeOut: 3000,
+				},
+				type: "error",
 			})
+		}
 	}
 	return (
 		<div className={style.auth}>
@@ -133,7 +138,7 @@ export const RegisterComponent: FC<IAuthProps> = ({ animate, setChoice }) => {
 					<ButtonComponent
 						aria-label="Регистрация"
 						btnType="submit"
-						isLoading={result.isLoading}
+						isLoading={isPending}
 					>
 						Регистрация
 					</ButtonComponent>

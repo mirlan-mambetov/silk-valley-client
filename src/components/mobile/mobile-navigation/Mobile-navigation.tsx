@@ -3,7 +3,6 @@
 import {
 	AuthComponent,
 	ButtonComponent,
-	MenuCategoriesComponent,
 	NotifyPlaceholder,
 	UserComponent,
 } from "@/components"
@@ -53,11 +52,11 @@ export const MobileMenuComponent: FC = () => {
 					</div>
 					<div className={style.item}>
 						<ButtonComponent
-							onClick={() =>
-								isOpen
-									? clearContentHandler()
-									: setContentHandler(<MenuCategoriesComponent />)
-							}
+						// onClick={() =>
+						// 	isOpen
+						// 		? clearContentHandler()
+						// 		: setContentHandler(<MenuCategoriesComponent />)
+						// }
 						>
 							<svg
 								width="26"

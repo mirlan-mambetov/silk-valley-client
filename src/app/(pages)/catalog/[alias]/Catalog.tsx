@@ -1,7 +1,5 @@
 "use client"
 
-import { SidebarComponent } from "@/components"
-
 import { FC } from "react"
 import style from "./catalog.module.scss"
 
@@ -20,7 +18,6 @@ export const Catalog: FC<ICatalog> = () => {
 				]}
 			/> */}
 			<div className={style.wrap}>
-				<SidebarComponent />
 				<div className={style.content}></div>
 			</div>
 		</div>

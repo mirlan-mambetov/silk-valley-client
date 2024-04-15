@@ -14,9 +14,10 @@ export const LogoComponent: FC<ILogoComponentProps> = ({
 	className,
 	height,
 	width,
+	...props
 }) => {
 	return (
-		<div className={cn(style.logo, className)}>
+		<div className={cn(style.logo, className)} {...props}>
 			<Link href={`/`}>
 				<Image
 					priority

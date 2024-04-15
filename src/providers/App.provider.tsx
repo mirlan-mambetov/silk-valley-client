@@ -1,19 +1,34 @@
 "use client"
 
 import { appStore, persist } from "@/store/store"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { FC, PropsWithChildren } from "react"
 import { Provider } from "react-redux"
 import { PersistGate } from "redux-persist/integration/react"
 import { LoaderProvider } from "./Loader.provider"
 import { ScreenProvider } from "./Screen.provider"
 
+import { SidebarProvider } from "./Sidebar.provider"
+
+const queryClient = new QueryClient({
+	defaultOptions: {
+		queries: {
+			refetchOnWindowFocus: false,
+		},
+	},
+})
+
 export const AppProvider: FC<PropsWithChildren> = ({ children }) => {
 	return (
 		<Provider store={appStore}>
 			<PersistGate persistor={persist} loading={null}>
-				<ScreenProvider>
-					<LoaderProvider>{children}</LoaderProvider>
-				</ScreenProvider>
+				<QueryClientProvider client={queryClient}>
+					<ScreenProvider>
+						<LoaderProvider>
+							<SidebarProvider>{children}</SidebarProvider>
+						</LoaderProvider>
+					</ScreenProvider>
+				</QueryClientProvider>
 			</PersistGate>
 		</Provider>
 	)

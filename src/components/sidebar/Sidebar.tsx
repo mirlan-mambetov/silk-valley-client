@@ -1,94 +1,55 @@
 "use client"
 
-import { useWindowWidth } from "@/hooks/app/useWindowWidth"
-import useOutsiteClick from "@/hooks/useOutsideClick"
-import cn from "classnames"
-import { usePathname } from "next/navigation"
-import { DetailedHTMLProps, FC, HTMLAttributes } from "react"
-
-import { ButtonComponent, MenuComponent } from ".."
-import { HEADER_MENU } from "../menu/menu.data"
-
-import Image from "next/image"
+import { CategoriesApi } from "@/api/api-categories/api-categories"
+import {
+	sidebarOverlayVariantMotion,
+	sidebarVariantMotion,
+} from "@/framer-motion/sidebar/sidebar"
+import { useSideBar } from "@/hooks/useSidebar/useSidebar"
+import { useQuery } from "@tanstack/react-query"
+import { motion } from "framer-motion"
+import Link from "next/link"
+import { FC } from "react"
 import style from "./sidebar.module.scss"
 
-interface ISidebarComponentProps
-	extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+interface ISidebarComponentProps {
 	isOpen?: boolean
 }
-export const SidebarComponent: FC<ISidebarComponentProps> = ({
-	isOpen,
-	...props
-}) => {
-	const pathName = usePathname()
-	// let result = pathName.replace(/^.*?\/(\w+)$/, "$1")
-	const { width } = useWindowWidth()
-	const { elRef, isShow, setIsShow } = useOutsiteClick(false)
+export const SidebarComponent: FC<ISidebarComponentProps> = ({ ...props }) => {
+	const { isOpen } = useSideBar()
 
-	const data = HEADER_MENU.find(
-		(item) => item.alias === pathName.replace("/", "")
-	)
+	const { data } = useQuery({
+		queryKey: ["fetchCategories"],
+		queryFn: () => CategoriesApi.fetchCategories(),
+	})
+
 	return (
 		<>
-			{width < 940 ? (
-				<ButtonComponent
-					className={style.button}
-					onClick={() => setIsShow(!isShow)}
-				>
-					<Image
-						src={`/icons/Category.svg`}
-						alt="categories"
-						width={17}
-						height={17}
-					/>
-					<small>Каталог</small>
-				</ButtonComponent>
-			) : null}
-			<aside
-				className={cn(style.sidebar, { [style.isOpen]: isShow })}
+			<motion.aside
+				variants={sidebarVariantMotion}
+				animate={isOpen ? "open" : "closed"}
+				className={style.sidebar}
 				{...props}
-				ref={elRef}
 			>
 				<div className={style.wrap}>
-					<div className={style.top}>
-						{width < 940 ? (
-							<ButtonComponent
-								onClick={() => setIsShow(!isShow)}
-								btnType="closed"
-							/>
-						) : (
-							<h4 className={style.title}>Каталог</h4>
-						)}
-					</div>
-					<div className={style.content}>
-						{/* MENU CATEGORIES */}
-						{data?.childsData && (
-							<MenuComponent
-								className={style.menu}
-								data={data?.childsData}
-								orientation="row-heigth"
-								size="1xl"
-							/>
-						)}
-					</div>
-					{/* SORT COLORS AND SIZES */}
-					{/* <ProducAttributeComponent
-					data={["32xl", "34xl", "38xl", "48XXL"]}
-					title="Размеры"
-					orientation="column"
-					className={style.attributes}
-					size="1xl"
-				/>
-				<ProducAttributeComponent
-					data={["Черный", "Черно/Белый", "Красный", "Белый"]}
-					title="Цвета"
-					orientation="column"
-					className={style.attributes}
-					size="1xl"
-				/>
-				<PriceRangeComponent /> */}
+					<ul className={style.list}>
+						{data &&
+							data.map((category) => (
+								<li className={style.listItem} key={category.id}>
+									<Link href={`/catalog/explorer/${category.slug}`}>
+										{category.name}
+									</Link>
+								</li>
+							))}
+					</ul>
+					<span>Silk Valley &copy; 2024</span>
 				</div>
-			</aside>
+			</motion.aside>
+			<motion.div
+				variants={sidebarOverlayVariantMotion}
+				animate={isOpen ? "open" : "closed"}
+				className={style.overlay}
+			></motion.div>
 		</>
 	)
 }

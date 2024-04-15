@@ -1,16 +1,13 @@
-import { appApi } from "../api"
+import { apiBase } from "../axios-base"
 import { IPaymentDTO, IPaymentResponse } from "./data-transfer"
 
-export const paymentApi = appApi.injectEndpoints({
-	endpoints: (build) => ({
-		// LOGIN USER
-		placeOrder: build.mutation<IPaymentResponse, IPaymentDTO>({
-			query: (body) => ({
-				url: "/payment/place-order",
-				method: "Post",
-				body,
-			}),
-		}),
-	}),
-})
-export const { usePlaceOrderMutation } = paymentApi
+export const PaymentApi = {
+	async placeOrder(data: IPaymentDTO) {
+		const response = await apiBase<IPaymentResponse>({
+			url: "/payment/place-order",
+			method: "POST",
+			data,
+		})
+		return response.data
+	},
+}

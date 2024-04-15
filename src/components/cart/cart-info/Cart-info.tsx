@@ -1,6 +1,6 @@
 "use client"
 
-import { usePlaceOrderMutation } from "@/api/api-payment/api-payment"
+import { PaymentApi } from "@/api/api-payment/api-payment"
 import { IPaymentDTO } from "@/api/api-payment/data-transfer"
 import {
 	ButtonComponent,
@@ -12,11 +12,13 @@ import { EnumOrderStatus } from "@/enums/Payment.enum"
 import { useCartPriceCalculate } from "@/hooks/cart/useCartPriceCalculate"
 import { useDeliver } from "@/hooks/deliver/useDeliver"
 import { useScreen } from "@/hooks/screen/useScreen"
+import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { useUser } from "@/hooks/user/useUser"
 import { ICartProduct } from "@/interfaces/cart.interface"
+import { useMutation } from "@tanstack/react-query"
 import cn from "classnames"
 import { useRouter } from "next/navigation"
-import { FC, useEffect } from "react"
+import { FC } from "react"
 import { MdOutlineBorderColor } from "react-icons/md"
 import style from "./cart-info.module.scss"
 
@@ -28,21 +30,36 @@ export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 	products,
 }) => {
 	const { setContentHandler } = useScreen()
+	const { openNotifyHandler } = useStoreActions()
 	const { totalPrice, totalDiscount } = useCartPriceCalculate(products)
 	const { address, isConfirm } = useDeliver()
-	const [placeOrder, result] = usePlaceOrderMutation()
 	const { user } = useUser()
 	const { push } = useRouter()
 
-	const placeOrderHandler = async (data: IPaymentDTO) => {
-		await placeOrder(data).unwrap()
-	}
+	const { mutateAsync, isPending } = useMutation({
+		mutationKey: ["placeOrder"],
+		mutationFn: (data: IPaymentDTO) => PaymentApi.placeOrder(data),
+	})
 
-	useEffect(() => {
-		if (result.data?.url) {
-			push(result.data.url)
+	const placeOrderHandler = async (data: IPaymentDTO) => {
+		try {
+			await mutateAsync(data, {
+				onSuccess(data, variables, context) {
+					if (data.url) {
+						push(data.url)
+					}
+				},
+			})
+		} catch (error) {
+			openNotifyHandler({
+				text: String(error),
+				options: {
+					position: "bottomCenter",
+				},
+				type: "error",
+			})
 		}
-	}, [result.isSuccess])
+	}
 
 	return (
 		<div className={style.info}>
@@ -86,7 +103,7 @@ export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 				</div>
 
 				<ButtonComponent
-					isLoading={result.isLoading}
+					isLoading={isPending}
 					disabled={!user || !isConfirm || !products.length}
 					className={style.button}
 					onClick={() =>

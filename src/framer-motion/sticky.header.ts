@@ -20,3 +20,18 @@ export const stickyHeaderMotion: Variants = {
 		},
 	},
 }
+
+export const headerOverlayVariantMotion: Variants = {
+	open: {
+		x: 0,
+		transition: {
+			x: { duration: 0.3 },
+		},
+	},
+	closed: {
+		x: "-100%",
+		transition: {
+			x: { duration: 0.3 },
+		},
+	},
+}

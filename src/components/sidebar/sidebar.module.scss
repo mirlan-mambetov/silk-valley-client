@@ -3,63 +3,51 @@
 @import "../../styles/media.mixin";
 
 .sidebar {
-	@include mediaLarge940px {
-		position: absolute;
-		top: 0;
-		left: 0;
-		max-width: 240px;
-		width: 100%;
-		height: 100%;
-		z-index: 200;
-		transform: translateX(-300px);
-		background: $white;
-		transition: transform 0.2s ease;
-		@include baseBoxShadow;
-		&.isOpen {
-			transform: translateX(-12px);
-		}
-	}
-	.top {
-		display: flex;
-		padding: 0 5px;
-		button {
-			background: transparent;
-			color: $black;
-			font-size: 27px;
-			padding: 0;
-		}
-		.title {
-			font-size: 16px;
-			font-weight: 500;
-			line-height: 22px;
-		}
-	}
-
+	position: fixed;
+	top: 0;
+	left: 0;
+	min-width: 240px;
+	max-width: 360px;
+	padding-top: calc(180px);
+	padding-left: 50px;
+	padding-right: 10px;
+	background: $white;
+	height: 100%;
+	-webkit-box-shadow: 11px 0px 26px -6px rgba(0, 0, 0, 0.07);
+	-moz-box-shadow: 11px 0px 26px -6px rgba(0, 0, 0, 0.07);
+	box-shadow: 11px 0px 26px -6px rgba(0, 0, 0, 0.07);
+	z-index: 40;
 	.wrap {
-		top: 12px;
 		display: flex;
 		flex-direction: column;
-		gap: 8px;
-		.content {
-			padding: 12px;
-			.menu {
-				overflow: auto;
-				padding-left: 12px;
+		justify-content: space-between;
+		width: 100%;
+		height: 100%;
+		overflow-y: scroll;
+		.list {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			.listItem {
+				font-size: 16px;
+				font-weight: 400;
+				line-height: 22px;
 			}
+		}
+		span {
+			font-size: 10px;
+			font-weight: 400;
+			color: $gray;
 		}
 	}
 }
-.button {
-	display: flex;
-	align-items: flex-end;
-	gap: 4px;
-	justify-content: flex-start;
-	margin: 20px 0;
-	border: 1px dashed $darkenRGBA;
-	border-radius: 4px;
-	padding: 10px 5px;
-	color: $darkSkay;
-	small {
-		font-size: 16px;
-	}
+
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: $darkenRGBA;
+	z-index: 30;
 }

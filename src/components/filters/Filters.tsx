@@ -1,32 +1,97 @@
 "use client"
 
-import { usePathname } from "next/navigation"
-import { useState } from "react"
-import { HEADER_MENU } from "../menu/menu.data"
+import { FC } from "react"
 
-import { useWindowWidth } from "@/hooks/app/useWindowWidth"
+import { useFetchProductAttributesQuery } from "@/api/api-filters/api-filters"
+import { PRODUCT_SORT_SELECT_DATA } from "@/constants/Filters.constants"
+import { useFilterInit } from "@/hooks/filter/useFilter"
+import { IDataCategories } from "@/interfaces/categories.interface"
+import cn from "classnames"
+import { BsSortAlphaUpAlt } from "react-icons/bs"
+import { FiList } from "react-icons/fi"
+import { IoResizeOutline } from "react-icons/io5"
+import { MdInvertColors } from "react-icons/md"
+import { PriceRangeComponent } from ".."
+import SelectComponent from "../select/Select"
 import style from "./filters.module.scss"
-import { LargeFilterComponent } from "./large-filter/Large-filter"
 
-export const FiltersComponent = () => {
-	const [sort, setSort] = useState<undefined | string>()
-	const [selectedColor, setSelectedColor] = useState<undefined | string>()
-	const { width } = useWindowWidth()
-
-	const pathName = usePathname()
-	const pathNameReplaced = pathName.replace("/", "")
-	const childsCategories = HEADER_MENU.find((item) =>
-		item.childsData?.find((childs) => childs.alias === pathNameReplaced)
+interface IFiltersComponentProps {
+	data: IDataCategories
+}
+export const FiltersComponent: FC<IFiltersComponentProps> = ({ data }) => {
+	const { data: productAttributes, isLoading } = useFetchProductAttributesQuery(
+		data.slug,
+		{
+			skip: !data.slug,
+		}
 	)
 
+	const { updateSearchParams } = useFilterInit()
+
 	return (
-		<div className={style.filters}>
-			<LargeFilterComponent
-				setSelectedColor={setSelectedColor}
-				setSort={setSort}
-				childCategories={childsCategories}
-			/>
-			{/* <MobileFilterComponent /> */}
+		<div
+			className={cn(style.filters, {
+				[style.grid5]: productAttributes?.sizes?.length,
+			})}
+		>
+			{/* SORT BY CATEGORIES */}
+			<div className={style.box}>
+				<SelectComponent
+					isLoading={isLoading}
+					data={
+						data.categories?.map((category) => ({
+							key: category.id,
+							label: category.name,
+						})) || []
+					}
+					onChange={(value) =>
+						updateSearchParams("secondCategoryId", value.key.toString())
+					}
+					title={"По категориям"}
+					TitleIcon={FiList}
+				/>
+			</div>
+			{/* SORT BY SORTING POPULAR, PRICE */}
+			<div className={style.box}>
+				<SelectComponent
+					data={PRODUCT_SORT_SELECT_DATA}
+					onChange={(value) => updateSearchParams("sort", value.key)}
+					title={PRODUCT_SORT_SELECT_DATA[0].label}
+					TitleIcon={BsSortAlphaUpAlt}
+				/>
+			</div>
+			{/* SORTING BY COLORS */}
+			<div className={style.box}>
+				<SelectComponent
+					isLoading={isLoading}
+					data={productAttributes?.colors.map((color) => ({
+						key: color,
+						label: color,
+					}))}
+					onChange={(value) => updateSearchParams("selectedColor", value.key)}
+					title="Цвет"
+					TitleIcon={MdInvertColors}
+				/>
+			</div>
+			{/* SORTING BY SIZES */}
+			{productAttributes?.sizes?.length ? (
+				<div className={style.box}>
+					<SelectComponent
+						isLoading={isLoading}
+						data={productAttributes?.sizes?.map((size) => ({
+							key: size,
+							label: size,
+						}))}
+						onChange={(value) => updateSearchParams("selectedSize", value.key)}
+						title="Размеры"
+						TitleIcon={IoResizeOutline}
+					/>
+				</div>
+			) : null}
+			{/* CHOICE PRICE RANGE */}
+			<div className={style.box}>
+				<PriceRangeComponent />
+			</div>
 		</div>
 	)
 }

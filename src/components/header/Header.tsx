@@ -5,78 +5,76 @@ import {
 	ButtonComponent,
 	HeaderTopComponent,
 	LogoComponent,
-	MenuComponent,
 	MobileHeaderComponent,
 	NotifyPlaceholder,
 	UserComponent,
 } from "@/components"
-import { variants3, variants4 } from "@/framer-motion"
+import { headerOverlayVariantMotion } from "@/framer-motion/sticky.header"
 import { useWindowWidth } from "@/hooks/app/useWindowWidth"
 import { useAuth } from "@/hooks/auth/useAuth"
 import { useCart } from "@/hooks/cart/useCart"
 import { useScreen } from "@/hooks/screen/useScreen"
-import useOutsiteClick from "@/hooks/useOutsideClick"
-import { useGetUserProfile } from "@/hooks/user/useGetUserProfile"
+import { useSideBar } from "@/hooks/useSidebar/useSidebar"
+import { useUser } from "@/hooks/user/useUser"
 import cn from "classnames"
 import { motion } from "framer-motion"
 import { useRouter } from "next/navigation"
 import { IoSearchOutline } from "react-icons/io5"
 import { SlHandbag } from "react-icons/sl"
-import { HEADER_MENU } from "../menu/menu.data"
 import style from "./header.module.scss"
 
 export const HeaderComponent = () => {
-	const { elRef, isShow, setIsShow } = useOutsiteClick(false)
 	const { push } = useRouter()
 	const { width } = useWindowWidth()
 	const { setContentHandler } = useScreen()
 	const { products } = useCart()
 	const { isAuthentificated } = useAuth()
-	const user = useGetUserProfile()
+	const { user } = useUser()
+	const { sidebarHandler, isOpen } = useSideBar()
 
 	return (
 		<>
-			{/* MOBILE */}
 			{width > 530 ? (
 				<>
 					<div className={style.header}>
-						{/* TOP HEADER */}
 						<HeaderTopComponent />
-						{/* END TOP HEADER */}
 						<div className="container">
 							<div className={style.content}>
-								{/* MENU */}
-								<div className={cn(style.menu, { [style.active]: isShow })}>
-									<ButtonComponent
-										aria-label="Меню"
-										className={style.button}
-										onClick={() => setIsShow(!isShow)}
+								<div className={style.row}>
+									<div
+										className={cn(style.menu, { [style.active]: isOpen })}
+										onClick={sidebarHandler}
 									>
-										<span></span>
-										<span></span>
-										<span></span>
-									</ButtonComponent>
-									<MenuComponent
-										className={style.list}
-										orientation="column"
-										data={HEADER_MENU}
-										limit={3}
-										animate={false}
-									/>
+										<ButtonComponent
+											title="Меню Silk Valley"
+											aria-label="Меню"
+											className={style.button}
+										>
+											<span></span>
+											<span></span>
+											<span></span>
+										</ButtonComponent>
+									</div>
+									<div className={style.column}>
+										<ButtonComponent
+											title="Поиск на Silk Valley"
+											className={style.search}
+											aria-label="Поиск"
+										>
+											<IoSearchOutline />
+										</ButtonComponent>
+									</div>
 								</div>
-								{/* END MENU */}
-
-								{/* LOGO */}
-								<LogoComponent width={140} height={90} />
-								{/* END LOGO */}
-
-								{/* ACTIONS */}
-								<div className={style.action}>
+								<div className={style.row}>
+									<LogoComponent width={140} height={90} title="Silk Valley" />
+								</div>
+								<div className={style.row}>
 									<div className={style.column}>
 										{isAuthentificated && user ? (
 											<UserComponent user={user} />
 										) : (
 											<ButtonComponent
+												title="Вход в систему"
 												aria-label="Вход"
 												onClick={() => setContentHandler(<AuthComponent />)}
 											>
@@ -85,16 +83,9 @@ export const HeaderComponent = () => {
 										)}
 									</div>
 									<div className={style.column}>
-										<ButtonComponent
-											className={style.search}
-											aria-label="Поиск"
-										>
-											<IoSearchOutline />
-										</ButtonComponent>
-									</div>
-									<div className={style.column}>
 										<NotifyPlaceholder length={products?.length} />
 										<ButtonComponent
+											title="Корзина"
 											aria-label="Корзина"
 											className={style.cart}
 											onClick={() => push("/cart")}
@@ -103,33 +94,14 @@ export const HeaderComponent = () => {
 										</ButtonComponent>
 									</div>
 								</div>
-								{/* END ACTIONS */}
 							</div>
 						</div>
 						<motion.div
-							variants={variants3}
-							animate={isShow ? "open" : "closed"}
-							className={style.navigation}
-							ref={elRef}
-						>
-							<motion.div
-								animate={isShow ? "active" : "closed"}
-								variants={variants4}
-								className={style.border}
-							></motion.div>
-							<div className="container">
-								<MenuComponent
-									orientation="row"
-									secondMenu={false}
-									data={HEADER_MENU}
-								/>
-							</div>
-						</motion.div>
+							animate={isOpen ? "open" : "closed"}
+							variants={headerOverlayVariantMotion}
+							className={style.overlay}
+						></motion.div>
 					</div>
-
-					<div
-						className={cn(style.overlay, { [style.transform]: isShow })}
-					></div>
 				</>
 			) : (
 				<MobileHeaderComponent />

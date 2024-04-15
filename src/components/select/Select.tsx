@@ -5,15 +5,17 @@ import cn from "classnames"
 import { useState } from "react"
 import { IconType } from "react-icons"
 import { LuSettings2 } from "react-icons/lu"
+import { LoaderComponent } from ".."
 import style from "./select.module.scss"
 
 export interface ISelectProps<K = string> {
-	data: ISelectItem<K>[]
+	data: ISelectItem<K>[] | undefined
 	onChange: (item: ISelectItem<K>) => void
 	value?: ISelectItem<K>
 	title?: string
 	className?: string
 	TitleIcon?: IconType
+	isLoading?: boolean
 }
 
 export interface ISelectItem<K = string> {
@@ -27,7 +29,7 @@ function SelectComponent<T>({
 	onChange,
 	className,
 	title,
-	value,
+	isLoading,
 	TitleIcon,
 }: ISelectProps<T>) {
 	const { elRef, isShow, setIsShow } = useOutsiteClick(false)
@@ -37,31 +39,46 @@ function SelectComponent<T>({
 		<div className={cn(style.select, className)} ref={elRef}>
 			<div
 				className={style.select_placeholder}
-				onClick={() => setIsShow(!isShow)}
+				onClick={() => {
+					isLoading ? undefined : setIsShow(!isShow)
+				}}
 			>
 				<h5 className={style.title}>
-					<span>{TitleIcon ? <TitleIcon /> : null}</span>
-					{isSelected ? isSelected : `${title}`}
+					{isLoading ? (
+						<LoaderComponent color="black" />
+					) : isSelected ? (
+						<>
+							<span>{TitleIcon ? <TitleIcon /> : null}</span>
+							{isSelected}
+						</>
+					) : (
+						<>
+							<span>{TitleIcon ? <TitleIcon /> : null}</span>
+							{title}
+						</>
+					)}
 				</h5>
 				<LuSettings2 />
 			</div>
+
 			{isShow && (
 				<div className={style.select_list}>
-					{data.map((option, i) => (
-						<div
-							className={cn(style.select_item, {
-								[style.disabled]: option.isDisable,
-							})}
-							key={i}
-							onClick={() => {
-								onChange(option)
-								setIsSelected(option.label)
-								setIsShow(!isShow)
-							}}
-						>
-							{option.label}
-						</div>
-					))}
+					{data &&
+						data.map((option, i) => (
+							<div
+								className={cn(style.select_item, {
+									[style.disabled]: option.isDisable,
+								})}
+								key={i}
+								onClick={() => {
+									setIsShow(!isShow)
+									setIsSelected(option.label)
+									onChange(option)
+								}}
+							>
+								{option.label}
+							</div>
+						))}
 				</div>
 			)}
 		</div>

@@ -4,23 +4,15 @@
 .wrap {
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	gap: 20px;
 	padding: 10px;
 	box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.02);
-
 	.range {
 		position: relative;
 		display: flex;
-		align-items: center;
+		flex-direction: column;
 		gap: 5px;
-		span {
-			display: flex;
-			justify-content: center;
-			width: 60px;
-			color: $gray;
-			font-weight: 500;
-			font-size: 12px;
-		}
 		input {
 			padding: 4px;
 			max-width: 80px;

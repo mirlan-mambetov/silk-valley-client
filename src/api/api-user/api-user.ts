@@ -1,17 +1,15 @@
 import { IUser } from "@/interfaces/user.interface"
-import { appApi } from "../api"
+import { apiBase } from "../axios-base"
 
-export const apiUser = appApi.injectEndpoints({
-	endpoints: (build) => ({
-		// LOGIN USER
-		fetchUserProfle: build.query<IUser, null>({
-			query: () => ({
-				url: "/user/profile",
-				method: "Get",
-				cache: "no-cache",
-			}),
-		}),
-	}),
-})
-
-export const { useFetchUserProfleQuery } = apiUser
+export const UserApi = {
+	/**
+	 * @returns USER
+	 */
+	async fetchUserProfile() {
+		const response = await apiBase<IUser>({
+			url: "/user/profile",
+			method: "GET",
+		})
+		return response.data
+	},
+}
