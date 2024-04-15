@@ -62,6 +62,7 @@ export const PromotionUniqueComponent: FC<IPromotionUniqueComponentProps> = ({
 							/>
 							<div className={style.poster}>
 								<Image
+									priority
 									src={`${process.env.NEXT_PUBLIC_API_STATIC}/${promotion.poster}`}
 									alt={promotion.title}
 									width={400}

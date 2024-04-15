@@ -45,7 +45,7 @@ export const ProductCardsComponent: FC<IDefaultCardsComponentProps> = ({
 											priority
 											width={900}
 											height={700}
-											src={`${process.env.NEXT_PUBLIC_API_STATIC}/${product.poster}`}
+											src={`${process.env.NEXT_PUBLIC_API_STATIC}${product.poster}`}
 											alt={product.title}
 										/>
 										<ProductDiscountComponent
