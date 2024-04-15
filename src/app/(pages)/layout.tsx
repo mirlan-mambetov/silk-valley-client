@@ -8,7 +8,7 @@ import {
 	ScreenComponent,
 	SidebarComponent,
 } from "@/components"
-import { MobileMenuComponent } from "@/components/mobile/mobile-navigation/Mobile-navigation"
+import { MobileNavigation } from "@/components/mobile/mobile-navigation/Mobile-navigation"
 import { ModalComponent } from "@/components/modal/Modal"
 import { ModalDialogComponent } from "@/components/modal/modal-dialog/Modal-dialog"
 import { useAuth } from "@/hooks/auth/useAuth"
@@ -42,7 +42,7 @@ export default function HomeLayout({
 	return (
 		<>
 			<HeaderComponent />
-			<MobileMenuComponent />
+			<MobileNavigation />
 			<SidebarComponent />
 			<ScreenComponent />
 			<main className="main">

@@ -1,12 +1,11 @@
 "use client"
 
-import { CategoriesApi } from "@/api/api-categories/api-categories"
 import {
 	sidebarOverlayVariantMotion,
 	sidebarVariantMotion,
 } from "@/framer-motion/sidebar/sidebar"
+import { useFetchAllCategories } from "@/hooks/categories/useFetchAllCategories"
 import { useSideBar } from "@/hooks/useSidebar/useSidebar"
-import { useQuery } from "@tanstack/react-query"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { FC } from "react"
@@ -18,10 +17,7 @@ interface ISidebarComponentProps {
 export const SidebarComponent: FC<ISidebarComponentProps> = ({ ...props }) => {
 	const { isOpen } = useSideBar()
 
-	const { data } = useQuery({
-		queryKey: ["fetchCategories"],
-		queryFn: () => CategoriesApi.fetchCategories(),
-	})
+	const data = useFetchAllCategories()
 
 	return (
 		<>

@@ -3,6 +3,7 @@
 import {
 	AuthComponent,
 	ButtonComponent,
+	MobileMenuComponent,
 	NotifyPlaceholder,
 	UserComponent,
 } from "@/components"
@@ -15,7 +16,7 @@ import { useRouter } from "next/navigation"
 import { FC } from "react"
 import style from "./mobile-navigation.module.scss"
 
-export const MobileMenuComponent: FC = () => {
+export const MobileNavigation: FC = () => {
 	const { push } = useRouter()
 	const { setContentHandler, isOpen, clearContentHandler } = useScreen()
 	const { products } = useCart()
@@ -52,11 +53,11 @@ export const MobileMenuComponent: FC = () => {
 					</div>
 					<div className={style.item}>
 						<ButtonComponent
-						// onClick={() =>
-						// 	isOpen
-						// 		? clearContentHandler()
-						// 		: setContentHandler(<MenuCategoriesComponent />)
-						// }
+							onClick={() =>
+								isOpen
+									? clearContentHandler()
+									: setContentHandler(<MobileMenuComponent />)
+							}
 						>
 							<svg
 								width="26"

@@ -8,6 +8,13 @@
 	padding: 0;
 	&.grid5 {
 		grid-template-columns: repeat(5, calc(100% / 5 - 10px / 5 * (5 - 1)));
+		@include mediaLarge1024px {
+			grid-template-columns: repeat(2, 1fr);
+			row-gap: 5px;
+		}
+		@include mediaLarge530px {
+			grid-template-columns: 1fr;
+		}
 	}
 	.box {
 		display: flex;
@@ -16,5 +23,11 @@
 		> div {
 			width: 100%;
 		}
+	}
+	@include mediaLarge1024px {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	@include mediaLarge530px {
+		grid-template-columns: 1fr;
 	}
 }
