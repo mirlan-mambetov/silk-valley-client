@@ -7,15 +7,17 @@ import { useStoreActions } from "../store/useStoreActions"
 import { useStoreReducer } from "../store/useStoreReducer"
 
 export const useFilter = () => {
-	const filter = useStoreReducer((state) => state.filter)
-	return filter
+	const { filterUpdated, queryParams } = useStoreReducer(
+		(state) => state.filter
+	)
+	return { filterUpdated, queryParams }
 }
 
 export const useFilterInit = () => {
 	const pathName = usePathname()
 	const searchParams = useSearchParams()
 	const { replace } = useRouter()
-	const { addFilter, resetFilterUpdate } = useStoreActions()
+	const { addFilter } = useStoreActions()
 	const { filterUpdated, queryParams } = useFilter()
 
 	useEffect(() => {
@@ -35,14 +37,28 @@ export const useFilterInit = () => {
 		} else {
 			newParams.delete(key)
 		}
-		replace(pathName + `?${newParams.toString().replace(/%7C/g, "|")}`)
+		replace(pathName + `?${newParams.toString().replace(/%7C/g, "|")}`, {
+			scroll: false,
+		})
 		addFilter({ key, value })
+	}
+
+	const resetFilter = () => {
+		const newParams = new URLSearchParams(searchParams?.toString())
+		// Сбрасываем только фильтры, связанные с текущей категорией товаров
+		newParams.delete("secondCategoryId")
+		newParams.delete("selectedColor")
+		newParams.delete("selectedSize")
+		newParams.delete("sort")
+		replace(pathName + `?${newParams.toString().replace(/%7C/g, "|")}`, {
+			scroll: false,
+		})
 	}
 
 	return {
 		updateSearchParams,
 		queryParams,
 		filterUpdated,
-		resetFilterUpdate,
+		resetFilter,
 	}
 }

@@ -23,7 +23,7 @@ export const PRODUCT_SORT_SELECT_DATA: ISelectItem<EnumProductSort>[] = [
 		label: "По возрастанию цены",
 	},
 	{
-		key: EnumProductSort.VIEWS,
+		key: EnumProductSort.LOW_PRICE,
 		label: "По убыванию цены",
 	},
 ]

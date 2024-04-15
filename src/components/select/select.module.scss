@@ -47,9 +47,26 @@
 		background: $white;
 		@include baseBoxShadow;
 		border-radius: 3px;
-		z-index: 8;
+		z-index: 50;
 		color: $darken;
 		overflow-y: scroll;
+		scrollbar-width: thin; /* Устанавливаем толщину полосы прокрутки */
+
+		/* Для Firefox */
+		scrollbar-color: $discount transparent; /* Устанавливаем цвет полосы прокрутки */
+
+		/* Для Webkit (Chrome, Safari) */
+		&::-webkit-scrollbar {
+			width: 5px; /* Устанавливаем ширину полосы прокрутки */
+		}
+		&::-webkit-scrollbar-thumb {
+			background-color: $discount; /* Устанавливаем цвет полосы прокрутки */
+			border-radius: 5px; /* Устанавливаем скругление углов полосы прокрутки */
+		}
+		&::-webkit-scrollbar-track {
+			background-color: transparent; /* Устанавливаем цвет фона трека прокрутки */
+		}
+
 		max-height: 200px;
 		@include mediaLarge480px {
 			gap: 7px;

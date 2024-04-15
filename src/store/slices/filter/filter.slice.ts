@@ -1,4 +1,3 @@
-import { EnumProductSort } from "@/enums/Filters.enum"
 import {
 	IFilterInitialState,
 	IFilterPayloadAction,
@@ -12,7 +11,7 @@ const initialState: IFilterInitialState = {
 		minPrice: undefined,
 		selectedColor: undefined,
 		selectedSize: undefined,
-		sort: EnumProductSort.NEWEST,
+		sort: undefined,
 	},
 }
 export const filterSlice = createSlice({
@@ -25,9 +24,6 @@ export const filterSlice = createSlice({
 			// @ts-ignore
 			state.queryParams[key] = value
 			state.filterUpdated = true
-		},
-		resetFilterUpdate: (state) => {
-			state.filterUpdated = false
 		},
 	},
 	extraReducers: (builder) => {},

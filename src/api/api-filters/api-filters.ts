@@ -1,25 +1,35 @@
 import { IProduct } from "@/interfaces/product.interface"
 import { IFilter } from "@/types/filter.type"
-import { appApi } from "../api"
+import { apiBase } from "../axios-base"
 import { IFilterProductResponse } from "./data-transfer"
 
-export const filtersApi = appApi.injectEndpoints({
-	endpoints: (build) => ({
-		// FETCH ALL PRODUCTS ATTRIBUTES FOR FILTER
-		fetchProductAttributes: build.query<IFilterProductResponse, string>({
-			query: (slug) => ({
-				url: `/filters/category/${slug}`,
-				method: "Get",
-			}),
-		}),
-		filteredProducts: build.query<IProduct[], { queryParams: IFilter }>({
-			query: ({ queryParams }) => ({
-				url: `/filters/product/filter`,
-				method: "Get",
-				params: queryParams,
-			}),
-		}),
-	}),
-})
-export const { useFetchProductAttributesQuery, useFilteredProductsQuery } =
-	filtersApi
+export const FiltersApi = {
+	/**
+	 *
+	 * @param slug
+	 * @returns
+	 */
+	async fetchProductsAttributes(slug?: string) {
+		if (slug) {
+			const response = await apiBase<IFilterProductResponse>({
+				url: `/filters/category/product/attributes/${slug}`,
+				method: "GET",
+			})
+			return response.data
+		}
+	},
+
+	/**
+	 *
+	 * @param queryParams
+	 * @returns
+	 */
+	async filteredProducts(queryParams: IFilter) {
+		const response = await apiBase<IProduct[]>({
+			url: "/filters/product/filter",
+			method: "GET",
+			params: { ...queryParams },
+		})
+		return response.data
+	},
+}

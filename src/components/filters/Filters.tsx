@@ -2,10 +2,11 @@
 
 import { FC } from "react"
 
-import { useFetchProductAttributesQuery } from "@/api/api-filters/api-filters"
+import { FiltersApi } from "@/api/api-filters/api-filters"
 import { PRODUCT_SORT_SELECT_DATA } from "@/constants/Filters.constants"
 import { useFilterInit } from "@/hooks/filter/useFilter"
-import { IDataCategories } from "@/interfaces/categories.interface"
+import { ICategories } from "@/interfaces/categories.interface"
+import { useQuery } from "@tanstack/react-query"
 import cn from "classnames"
 import { BsSortAlphaUpAlt } from "react-icons/bs"
 import { FiList } from "react-icons/fi"
@@ -16,16 +17,13 @@ import SelectComponent from "../select/Select"
 import style from "./filters.module.scss"
 
 interface IFiltersComponentProps {
-	data: IDataCategories
+	data: ICategories
 }
 export const FiltersComponent: FC<IFiltersComponentProps> = ({ data }) => {
-	const { data: productAttributes, isLoading } = useFetchProductAttributesQuery(
-		data.slug,
-		{
-			skip: !data.slug,
-		}
-	)
-
+	const { data: productAttributes, isPending } = useQuery({
+		queryKey: ["fetchProductAttributes"],
+		queryFn: () => FiltersApi.fetchProductsAttributes(data.slug),
+	})
 	const { updateSearchParams } = useFilterInit()
 
 	return (
@@ -37,7 +35,7 @@ export const FiltersComponent: FC<IFiltersComponentProps> = ({ data }) => {
 			{/* SORT BY CATEGORIES */}
 			<div className={style.box}>
 				<SelectComponent
-					isLoading={isLoading}
+					isLoading={isPending}
 					data={
 						data.categories?.map((category) => ({
 							key: category.id,
@@ -63,7 +61,7 @@ export const FiltersComponent: FC<IFiltersComponentProps> = ({ data }) => {
 			{/* SORTING BY COLORS */}
 			<div className={style.box}>
 				<SelectComponent
-					isLoading={isLoading}
+					isLoading={isPending}
 					data={productAttributes?.colors.map((color) => ({
 						key: color,
 						label: color,
@@ -77,7 +75,7 @@ export const FiltersComponent: FC<IFiltersComponentProps> = ({ data }) => {
 			{productAttributes?.sizes?.length ? (
 				<div className={style.box}>
 					<SelectComponent
-						isLoading={isLoading}
+						isLoading={isPending}
 						data={productAttributes?.sizes?.map((size) => ({
 							key: size,
 							label: size,
