@@ -16,9 +16,13 @@ interface IExplorerProps {
 	data: ICategories
 }
 export const Explorer: FC<IExplorerProps> = ({ data }) => {
-	const { queryParams, resetFilter, updateSearchParams } = useFilterInit()
+	const { queryParams, updateSearchParams } = useFilterInit()
 
-	const { data: products, isPending } = useQuery({
+	const {
+		data: products,
+		isPending,
+		isFetching,
+	} = useQuery({
 		queryKey: ["filteredProducts", queryParams],
 		queryFn: () => FiltersApi.filteredProducts(queryParams),
 		initialData: data.products,
@@ -36,12 +40,9 @@ export const Explorer: FC<IExplorerProps> = ({ data }) => {
 					{/* FILTERS */}
 					{data && <FiltersComponent data={data} />}
 					{/* CATALOG CARDS */}
-					<span style={{ color: "red" }}>
-						{isPending ? "Загрузка..." : null}
-					</span>
 					<div className={style.products}>
-						{isPending ? (
-							<LoaderComponent color="black" />
+						{isFetching ? (
+							<LoaderComponent color="black" position="absolute" />
 						) : (
 							<ProductCardsComponent products={products} />
 						)}

@@ -18,7 +18,7 @@ export const useFilterInit = () => {
 	const searchParams = useSearchParams()
 	const { replace } = useRouter()
 	const { addFilter } = useStoreActions()
-	const { filterUpdated, queryParams } = useFilter()
+	const { queryParams } = useFilter()
 
 	useEffect(() => {
 		searchParams?.forEach((value, key) => {
@@ -43,22 +43,8 @@ export const useFilterInit = () => {
 		addFilter({ key, value })
 	}
 
-	const resetFilter = () => {
-		const newParams = new URLSearchParams(searchParams?.toString())
-		// Сбрасываем только фильтры, связанные с текущей категорией товаров
-		newParams.delete("secondCategoryId")
-		newParams.delete("selectedColor")
-		newParams.delete("selectedSize")
-		newParams.delete("sort")
-		replace(pathName + `?${newParams.toString().replace(/%7C/g, "|")}`, {
-			scroll: false,
-		})
-	}
-
 	return {
 		updateSearchParams,
 		queryParams,
-		filterUpdated,
-		resetFilter,
 	}
 }

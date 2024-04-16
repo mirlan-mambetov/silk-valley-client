@@ -6,10 +6,18 @@ import style from "./loader.module.scss"
 
 interface ILoaderComponentProps {
 	color?: "white" | "black"
+	position?: "absolute"
 }
-export const LoaderComponent: FC<ILoaderComponentProps> = ({ color }) => {
+export const LoaderComponent: FC<ILoaderComponentProps> = ({
+	color,
+	position,
+}) => {
 	return (
-		<div className={style.parent}>
+		<div
+			className={cn(style.parent, {
+				[style.absolute]: position === "absolute",
+			})}
+		>
 			<div
 				className={cn(style.loader, { [style.black]: color === "black" })}
 			></div>
