@@ -29,7 +29,7 @@ export const useFilterInit = () => {
 		})
 	}, [])
 
-	const updateSearchParams = (key: keyof IFilter, value: string) => {
+	const addSearchParams = (key: keyof IFilter, value: string) => {
 		const newParams = new URLSearchParams(searchParams?.toString())
 
 		if (value) {
@@ -52,7 +52,7 @@ export const useFilterInit = () => {
 	}
 
 	return {
-		updateSearchParams,
+		addSearchParams,
 		queryParams,
 		resetFilters,
 		deleteSearchParams,

@@ -42,7 +42,7 @@ export async function generateMetadata({
 	const category = await fetchCategoryBySlug({ params })
 
 	return {
-		title: `Каталог ${category.name} В магазине`,
+		title: `Каталог ${category.name.toLowerCase()} В магазине`,
 		// openGraph: {
 		// 	title: `${product.title}`,
 		// 	siteName: "Silk Valley",

@@ -7,6 +7,7 @@ import {
 	ProductCardsComponent,
 } from "@/components"
 import { useFilterInit } from "@/hooks/filter/useFilter"
+import { useGetAttributes } from "@/hooks/filter/useGetAttributes"
 import { ISecondCategories } from "@/interfaces/categories.interface"
 import { useQuery } from "@tanstack/react-query"
 import { FC, useEffect } from "react"
@@ -17,23 +18,29 @@ interface ICatalogProps {
 }
 
 export const Catalog: FC<ICatalogProps> = ({ data }) => {
-	const { queryParams, deleteSearchParams, updateSearchParams } =
-		useFilterInit()
+	const { queryParams, deleteSearchParams, addSearchParams } = useFilterInit()
 
 	const { data: products, isFetching } = useQuery({
 		queryKey: ["filteredCatalogProducts", queryParams],
 		queryFn: () => FiltersApi.filteredProducts(queryParams),
 		initialData: data.products,
 	})
+	// GET ALL ATTRIBUTES FOR FILTER
+	const { data: productAttributes, isFetching: loadingAttributes } =
+		useGetAttributes({
+			slug: data.slug,
+		})
 
 	useEffect(() => {
-		updateSearchParams("secondCategoryId", data.id.toString())
+		addSearchParams("secondCategoryId", data.id.toString())
 		deleteSearchParams("childsCategoryId")
 	}, [])
 
 	return (
 		<div className={style.catalog}>
 			<FiltersComponent
+				attributesData={productAttributes}
+				isLoadingAttributes={loadingAttributes}
 				categoryId="child"
 				data={{ ...data, childsCategories: data.childsCategories }}
 			/>

@@ -2,14 +2,13 @@
 
 import { FC, useEffect } from "react"
 
-import { FiltersApi } from "@/api/api-filters/api-filters"
+import { IFilterProductResponse } from "@/api/api-filters/data-transfer"
 import { PRODUCT_SORT_SELECT_DATA } from "@/constants/Filters.constants"
 import { useFilterInit } from "@/hooks/filter/useFilter"
 import {
 	IChildsCategories,
 	ISecondCategories,
 } from "@/interfaces/categories.interface"
-import { useQuery } from "@tanstack/react-query"
 import cn from "classnames"
 import { BsSortAlphaUpAlt } from "react-icons/bs"
 import { FiList } from "react-icons/fi"
@@ -27,33 +26,31 @@ interface IFiltersComponentProps {
 		categories?: ISecondCategories[]
 		childsCategories?: IChildsCategories[]
 	}
+	attributesData: IFilterProductResponse | undefined
+	isLoadingAttributes: boolean
 }
 export const FiltersComponent: FC<IFiltersComponentProps> = ({
 	data,
 	categoryId,
+	attributesData,
+	isLoadingAttributes,
 }) => {
-	const { data: productAttributes, isPending } = useQuery({
-		queryKey: ["fetchProductAttributes"],
-		queryFn: () => FiltersApi.fetchProductsAttributes(data.slug),
-	})
-	console.log(productAttributes)
-	const { updateSearchParams, resetFilters } = useFilterInit()
+	const { addSearchParams, resetFilters } = useFilterInit()
 
 	useEffect(() => {
 		resetFilters()
 	}, [])
 
-	console.log(data.childsCategories)
 	return (
 		<div
 			className={cn(style.filters, {
-				[style.grid5]: productAttributes?.sizes?.length,
+				[style.grid5]: attributesData?.sizes?.length,
 			})}
 		>
 			{data.categories?.length || data.childsCategories?.length ? (
 				<div className={style.box}>
 					<SelectComponent
-						isLoading={isPending}
+						isLoading={isLoadingAttributes}
 						data={
 							data.categories?.map((category) => ({
 								key: category.id,
@@ -65,7 +62,7 @@ export const FiltersComponent: FC<IFiltersComponentProps> = ({
 							}))
 						}
 						onChange={(value) =>
-							updateSearchParams(
+							addSearchParams(
 								categoryId === "second"
 									? "secondCategoryId"
 									: "childsCategoryId",
@@ -81,7 +78,7 @@ export const FiltersComponent: FC<IFiltersComponentProps> = ({
 			<div className={style.box}>
 				<SelectComponent
 					data={PRODUCT_SORT_SELECT_DATA}
-					onChange={(value) => updateSearchParams("sort", value.key)}
+					onChange={(value) => addSearchParams("sort", value.key)}
 					title={PRODUCT_SORT_SELECT_DATA[0].label}
 					TitleIcon={BsSortAlphaUpAlt}
 				/>
@@ -89,26 +86,26 @@ export const FiltersComponent: FC<IFiltersComponentProps> = ({
 			{/* SORTING BY COLORS */}
 			<div className={style.box}>
 				<SelectComponent
-					isLoading={isPending}
-					data={productAttributes?.colors.map((color) => ({
+					isLoading={isLoadingAttributes}
+					data={attributesData?.colors.map((color) => ({
 						key: color,
 						label: color,
 					}))}
-					onChange={(value) => updateSearchParams("selectedColor", value.key)}
+					onChange={(value) => addSearchParams("selectedColor", value.key)}
 					title="Цвет"
 					TitleIcon={MdInvertColors}
 				/>
 			</div>
 			{/* SORTING BY SIZES */}
-			{productAttributes?.sizes?.length ? (
+			{attributesData?.sizes?.length ? (
 				<div className={style.box}>
 					<SelectComponent
-						isLoading={isPending}
-						data={productAttributes?.sizes?.map((size) => ({
+						isLoading={isLoadingAttributes}
+						data={attributesData?.sizes?.map((size) => ({
 							key: size,
 							label: size,
 						}))}
-						onChange={(value) => updateSearchParams("selectedSize", value.key)}
+						onChange={(value) => addSearchParams("selectedSize", value.key)}
 						title="Размеры"
 						TitleIcon={IoResizeOutline}
 					/>
