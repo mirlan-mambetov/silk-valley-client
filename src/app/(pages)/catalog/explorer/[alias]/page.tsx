@@ -5,12 +5,15 @@ import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { Explorer } from "../Explorer"
 
-export const revalidate = 60
-
 // FETCH DATA
 export async function fetchCategoryBySlug({ params }: IPageParams) {
 	const response = await fetch(
-		`${APP_URI}/main-category/by-slug/${params.alias}`
+		`${APP_URI}/main-category/by-slug/${params.alias}`,
+		{
+			next: {
+				revalidate: 60,
+			},
+		}
 	)
 	const promise: Promise<ICategories> = await response.json()
 	const category = await promise

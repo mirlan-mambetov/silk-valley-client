@@ -6,19 +6,30 @@ import {
 } from "@/framer-motion/sidebar/sidebar"
 import { useFetchAllCategories } from "@/hooks/categories/useFetchAllCategories"
 import { useSideBar } from "@/hooks/useSidebar/useSidebar"
+import cn from "classnames"
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { FC } from "react"
+import { FC, useEffect, useState } from "react"
 import style from "./sidebar.module.scss"
 
 interface ISidebarComponentProps {
 	isOpen?: boolean
 }
 export const SidebarComponent: FC<ISidebarComponentProps> = ({ ...props }) => {
+	const [categoryId, setCategoryId] = useState<number | null>(null)
 	const { isOpen } = useSideBar()
 
 	const data = useFetchAllCategories()
 
+	const handler = (categoryId: number) => {
+		setCategoryId(categoryId)
+	}
+
+	useEffect(() => {
+		if (!isOpen) {
+			setCategoryId(null)
+		}
+	}, [isOpen])
 	return (
 		<>
 			<motion.aside
@@ -31,10 +42,30 @@ export const SidebarComponent: FC<ISidebarComponentProps> = ({ ...props }) => {
 					<ul className={style.list}>
 						{data &&
 							data.map((category) => (
-								<li className={style.listItem} key={category.id}>
+								<li
+									className={style.listItem}
+									key={category.id}
+									onMouseEnter={() => handler(category.id)}
+								>
 									<Link href={`/catalog/explorer/${category.slug}`}>
 										{category.name}
 									</Link>
+									<ul
+										onMouseLeave={() => {
+											setCategoryId(null)
+										}}
+										className={cn(style.submenu, {
+											[style.isOpen]: categoryId === category.id,
+										})}
+									>
+										{category.categories.map((secondCategory) => (
+											<li className={style.submenuItem} key={secondCategory.id}>
+												<Link href={`/catalog/${secondCategory.slug}`}>
+													{secondCategory.name}
+												</Link>
+											</li>
+										))}
+									</ul>
 								</li>
 							))}
 					</ul>

@@ -6,21 +6,8 @@
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
-}
-.wrap {
-	position: relative;
-	display: grid;
-	grid-template-columns: minmax(0, 0.2fr) minmax(0, 1fr);
-	-moz-column-gap: 20px;
-	column-gap: 20px;
-	@include mediaLarge940px {
+	.products {
 		position: relative;
-		grid-template-columns: unset;
-		padding-top: 20px;
+		min-height: 40vh;
 	}
-}
-.content {
-	display: flex;
-	flex-direction: column;
-	gap: 15px;
 }

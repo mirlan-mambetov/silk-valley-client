@@ -35,14 +35,18 @@ export const ProductApi = {
 	 * @param slug
 	 * @returns
 	 */
-	async fetchByCategorySlug(slug?: string) {
-		if (slug) {
-			const response = await apiBase<IProduct[]>({
-				url: `/product/by-category/${slug}`,
-				method: "GET",
-			})
-			return response.data
-		}
-		return null
+	async fetchByCategorySlug({
+		mainCategorySlug,
+		secondCategorySlug,
+	}: {
+		mainCategorySlug?: string
+		secondCategorySlug?: string
+	}) {
+		const response = await apiBase<IProduct[]>({
+			url: `/product/by-category`,
+			method: "GET",
+			params: mainCategorySlug ? { mainCategorySlug } : { secondCategorySlug },
+		})
+		return response.data
 	},
 }

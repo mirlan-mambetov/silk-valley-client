@@ -16,13 +16,10 @@ interface IExplorerProps {
 	data: ICategories
 }
 export const Explorer: FC<IExplorerProps> = ({ data }) => {
-	const { queryParams, updateSearchParams } = useFilterInit()
+	const { queryParams, updateSearchParams, deleteSearchParams } =
+		useFilterInit()
 
-	const {
-		data: products,
-		isPending,
-		isFetching,
-	} = useQuery({
+	const { data: products, isFetching } = useQuery({
 		queryKey: ["filteredProducts", queryParams],
 		queryFn: () => FiltersApi.filteredProducts(queryParams),
 		initialData: data.products,
@@ -30,7 +27,7 @@ export const Explorer: FC<IExplorerProps> = ({ data }) => {
 
 	useEffect(() => {
 		updateSearchParams("mainCategoryId", data.id.toString())
-		updateSearchParams("secondCategoryId", "")
+		deleteSearchParams("secondCategoryId")
 	}, [])
 
 	return (
@@ -38,7 +35,7 @@ export const Explorer: FC<IExplorerProps> = ({ data }) => {
 			<div className="container">
 				<div className={style.wrap}>
 					{/* FILTERS */}
-					{data && <FiltersComponent data={data} />}
+					{data && <FiltersComponent data={data} categoryId="second" />}
 					{/* CATALOG CARDS */}
 					<div className={style.products}>
 						{isFetching ? (

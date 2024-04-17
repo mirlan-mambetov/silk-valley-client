@@ -1,11 +1,14 @@
 "use client"
 
-import { FC } from "react"
+import { FC, useEffect } from "react"
 
 import { FiltersApi } from "@/api/api-filters/api-filters"
 import { PRODUCT_SORT_SELECT_DATA } from "@/constants/Filters.constants"
 import { useFilterInit } from "@/hooks/filter/useFilter"
-import { ICategories } from "@/interfaces/categories.interface"
+import {
+	IChildsCategories,
+	ISecondCategories,
+} from "@/interfaces/categories.interface"
 import { useQuery } from "@tanstack/react-query"
 import cn from "classnames"
 import { BsSortAlphaUpAlt } from "react-icons/bs"
@@ -17,38 +20,63 @@ import SelectComponent from "../select/Select"
 import style from "./filters.module.scss"
 
 interface IFiltersComponentProps {
-	data: ICategories
+	categoryId: "second" | "child"
+	data: {
+		id: number
+		slug: string
+		categories?: ISecondCategories[]
+		childsCategories?: IChildsCategories[]
+	}
 }
-export const FiltersComponent: FC<IFiltersComponentProps> = ({ data }) => {
+export const FiltersComponent: FC<IFiltersComponentProps> = ({
+	data,
+	categoryId,
+}) => {
 	const { data: productAttributes, isPending } = useQuery({
 		queryKey: ["fetchProductAttributes"],
 		queryFn: () => FiltersApi.fetchProductsAttributes(data.slug),
 	})
-	const { updateSearchParams } = useFilterInit()
+	console.log(productAttributes)
+	const { updateSearchParams, resetFilters } = useFilterInit()
 
+	useEffect(() => {
+		resetFilters()
+	}, [])
+
+	console.log(data.childsCategories)
 	return (
 		<div
 			className={cn(style.filters, {
 				[style.grid5]: productAttributes?.sizes?.length,
 			})}
 		>
-			{/* SORT BY CATEGORIES */}
-			<div className={style.box}>
-				<SelectComponent
-					isLoading={isPending}
-					data={
-						data.categories?.map((category) => ({
-							key: category.id,
-							label: category.name,
-						})) || []
-					}
-					onChange={(value) =>
-						updateSearchParams("secondCategoryId", value.key.toString())
-					}
-					title={"По категориям"}
-					TitleIcon={FiList}
-				/>
-			</div>
+			{data.categories?.length || data.childsCategories?.length ? (
+				<div className={style.box}>
+					<SelectComponent
+						isLoading={isPending}
+						data={
+							data.categories?.map((category) => ({
+								key: category.id,
+								label: category.name,
+							})) ||
+							data.childsCategories?.map((category) => ({
+								key: category.id,
+								label: category.name,
+							}))
+						}
+						onChange={(value) =>
+							updateSearchParams(
+								categoryId === "second"
+									? "secondCategoryId"
+									: "childsCategoryId",
+								value.key.toString()
+							)
+						}
+						title={"По категориям"}
+						TitleIcon={FiList}
+					/>
+				</div>
+			) : null}
 			{/* SORT BY SORTING POPULAR, PRICE */}
 			<div className={style.box}>
 				<SelectComponent

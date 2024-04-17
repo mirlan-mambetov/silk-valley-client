@@ -25,6 +25,10 @@ export const filterSlice = createSlice({
 			state.queryParams[key] = value
 			state.filterUpdated = true
 		},
+		resetFilters: (state) => {
+			state.queryParams = initialState.queryParams
+			state.filterUpdated = false
+		},
 	},
 	extraReducers: (builder) => {},
 })

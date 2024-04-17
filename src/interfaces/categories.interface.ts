@@ -16,9 +16,11 @@ export interface ISecondCategories extends IBase {
 	name: string
 	slug: string
 	mainCategoryId: number
-	childsCategories: IChildsCategories
+	mainCategory: Pick<ICategories, "id" | "name">
+	childsCategories: IChildsCategories[]
 	createdAt: string
 	updatedAt: string
+	products: IProduct[]
 }
 
 export interface IChildsCategories extends IBase {

@@ -27,6 +27,7 @@
 		.list {
 			display: flex;
 			flex-direction: column;
+			align-items: flex-start;
 			gap: 10px;
 			.listItem {
 				font-size: 16px;
@@ -38,6 +39,41 @@
 			font-size: 10px;
 			font-weight: 400;
 			color: $gray;
+		}
+	}
+}
+.submenu {
+	position: absolute;
+	top: 0;
+	left: 100%;
+	width: 100%;
+	height: 100%;
+	background: $white;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	padding-top: 200px;
+	color: $darkenRGBA;
+	opacity: 0;
+	pointer-events: none;
+	&.isOpen {
+		opacity: 1;
+		pointer-events: auto;
+	}
+	.submenuItem {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		&::before {
+			content: "";
+			display: inline-block;
+			width: 5px;
+			height: 5px;
+			border-radius: 50px;
+			border: 1px solid $darkenRGBA;
+		}
+		a {
+			color: $black;
 		}
 	}
 }
