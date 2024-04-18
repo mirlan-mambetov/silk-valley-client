@@ -1,15 +1,14 @@
 "use client"
 
-import { FiltersApi } from "@/api/api-filters/api-filters"
 import {
 	FiltersComponent,
 	LoaderComponent,
 	ProductCardsComponent,
 } from "@/components"
+import { useFetchFilterProducts } from "@/hooks/filter/useFetchFilterProducts"
 import { useFilterInit } from "@/hooks/filter/useFilter"
 import { useGetAttributes } from "@/hooks/filter/useGetAttributes"
 import { ISecondCategories } from "@/interfaces/categories.interface"
-import { useQuery } from "@tanstack/react-query"
 import { FC, useEffect } from "react"
 import style from "./catalog.module.scss"
 
@@ -18,13 +17,10 @@ interface ICatalogProps {
 }
 
 export const Catalog: FC<ICatalogProps> = ({ data }) => {
-	const { queryParams, deleteSearchParams, addSearchParams } = useFilterInit()
+	const { deleteSearchParams, addSearchParams } = useFilterInit()
 
-	const { data: products, isFetching } = useQuery({
-		queryKey: ["filteredCatalogProducts", queryParams],
-		queryFn: () => FiltersApi.filteredProducts(queryParams),
-		initialData: data.products,
-	})
+	const { data: products, isFetching } = useFetchFilterProducts(data.products)
+
 	// GET ALL ATTRIBUTES FOR FILTER
 	const { data: productAttributes, isFetching: loadingAttributes } =
 		useGetAttributes({
@@ -36,6 +32,7 @@ export const Catalog: FC<ICatalogProps> = ({ data }) => {
 		deleteSearchParams("childsCategoryId")
 	}, [])
 
+	console.log(data)
 	return (
 		<div className={style.catalog}>
 			<FiltersComponent

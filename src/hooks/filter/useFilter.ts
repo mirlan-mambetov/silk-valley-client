@@ -45,6 +45,7 @@ export const useFilterInit = () => {
 
 	const deleteSearchParams = (key: keyof IFilter) => {
 		const newParams = new URLSearchParams(searchParams?.toString())
+		resetFilters(key)
 		newParams.delete(key)
 		replace(pathName + `?${newParams.toString().replace(/%7C/g, "|")}`, {
 			scroll: false,
@@ -54,7 +55,7 @@ export const useFilterInit = () => {
 	return {
 		addSearchParams,
 		queryParams,
-		resetFilters,
 		deleteSearchParams,
+		resetFilters,
 	}
 }

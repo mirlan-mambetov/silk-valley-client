@@ -2,6 +2,7 @@ import {
 	IFilterInitialState,
 	IFilterPayloadAction,
 } from "@/interfaces/filter.interface"
+import { IFilter } from "@/types/filter.type"
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
 const initialState: IFilterInitialState = {
@@ -25,8 +26,14 @@ export const filterSlice = createSlice({
 			state.queryParams[key] = value
 			state.filterUpdated = true
 		},
-		resetFilters: (state) => {
-			state.queryParams = initialState.queryParams
+		resetFilters: (state, { payload }: PayloadAction<keyof IFilter>) => {
+			const key = payload
+			state.queryParams[key] = undefined
+			state.queryParams.minPrice = undefined
+			state.queryParams.maxPrice = undefined
+			state.queryParams.selectedColor = undefined
+			state.queryParams.selectedSize = undefined
+			state.queryParams.sort = undefined
 			state.filterUpdated = false
 		},
 	},
