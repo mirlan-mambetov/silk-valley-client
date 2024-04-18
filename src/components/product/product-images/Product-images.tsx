@@ -80,7 +80,7 @@ export const ProductImagesComponent: FC<IProductImagesComponent> = ({
 								priority
 								onMouseEnter={(e) => setImgSrc(e.currentTarget.src)}
 								onMouseLeave={() => setImgSrc(null)}
-								src={`${process.env.NEXT_PUBLIC_API_STATIC}/${image}`}
+								src={`${process.env.NEXT_PUBLIC_API_STATIC}${image}`}
 								alt={"product-poster"}
 								width={500}
 								height={500}
@@ -105,7 +105,7 @@ export const ProductImagesComponent: FC<IProductImagesComponent> = ({
 							// @ts-ignore
 							src: newSrc
 								? newSrc
-								: `${process.env.NEXT_PUBLIC_API_STATIC}/${data?.poster}`,
+								: `${process.env.NEXT_PUBLIC_API_STATIC}${data?.poster}`,
 							alt: "product-poster",
 							isFluidWidth: true,
 						}}
@@ -115,7 +115,7 @@ export const ProductImagesComponent: FC<IProductImagesComponent> = ({
 							// @ts-ignore
 							src: newSrc
 								? newSrc
-								: `${process.env.NEXT_PUBLIC_API_STATIC}/${data?.poster}`,
+								: `${process.env.NEXT_PUBLIC_API_STATIC}${data?.poster}`,
 						}}
 					/>
 				</div>

@@ -30,7 +30,7 @@ export const UserComponent: FC<IUserComponentProps> = ({ user, ...props }) => {
 					src={
 						user.avatar.startsWith("https")
 							? user.avatar
-							: `${process.env.NEXT_PUBLIC_API_STATIC}/${user.avatar}`
+							: `${process.env.NEXT_PUBLIC_API_STATIC}${user.avatar}`
 					}
 					alt={user.name}
 				/>
