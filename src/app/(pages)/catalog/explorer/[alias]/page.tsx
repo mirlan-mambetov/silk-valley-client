@@ -3,23 +3,28 @@ import { ICategories } from "@/interfaces/categories.interface"
 import { IPageParams } from "@/interfaces/page.interface"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
+import { Suspense } from "react"
 import { Explorer } from "../Explorer"
 
 // FETCH DATA
 export async function fetchCategoryBySlug({ params }: IPageParams) {
-	const response = await fetch(
-		`${APP_URI}/main-category/by-slug/${params.alias}`,
-		{
-			next: {
-				revalidate: 60,
-			},
-		}
-	)
-	const promise: Promise<ICategories> = await response.json()
-	const category = await promise
+	try {
+		const response = await fetch(
+			`${APP_URI}/main-category/by-slug/${params.alias}`,
+			{
+				next: {
+					revalidate: 60,
+				},
+			}
+		)
+		const promise: Promise<ICategories> = await response.json()
+		const category = await promise
 
-	if (!category) return notFound()
-	return category
+		if (!category) return notFound()
+		return category
+	} catch (error) {
+		console.log(error)
+	}
 }
 
 // GENERATE STATIC PARAMS
@@ -42,7 +47,7 @@ export async function generateMetadata({
 	const category = await fetchCategoryBySlug({ params })
 
 	return {
-		title: `Каталог ${category.name.toLowerCase()} В магазине`,
+		title: `Каталог ${category?.name.toLowerCase()} В магазине`,
 		// openGraph: {
 		// 	title: `${product.title}`,
 		// 	siteName: "Silk Valley",
@@ -69,7 +74,9 @@ async function ExplorerPage({ params }: IPageParams) {
 		<>
 			{/* HERO */}
 			<section>
-				<Explorer data={category} />
+				<Suspense fallback={<>Загрузка...</>}>
+					{category && <Explorer data={category} />}
+				</Suspense>
 			</section>
 		</>
 	)

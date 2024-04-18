@@ -29,7 +29,7 @@ export const Catalog: FC<ICatalogProps> = ({ data }) => {
 
 	useEffect(() => {
 		addSearchParams("secondCategoryId", data.id.toString())
-		deleteSearchParams("childsCategoryId")
+		deleteSearchParams("mainCategoryId")
 	}, [])
 
 	console.log(data)

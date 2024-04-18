@@ -3,19 +3,28 @@ import { ISecondCategories } from "@/interfaces/categories.interface"
 import { IPageParams } from "@/interfaces/page.interface"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
+import { Suspense } from "react"
 import { Catalog } from "./Catalog"
 
 export async function fetchCategory({ params }: IPageParams) {
-	const { alias } = params
-	const response = await fetch(`${APP_URI}/second-category/by-alias/${alias}`, {
-		next: {
-			revalidate: 60,
-		},
-	})
-	const promise: Promise<ISecondCategories> = await response.json()
-	const category = await promise
-	if (!category) return notFound()
-	return category
+	try {
+		const { alias } = params
+		const response = await fetch(
+			`${APP_URI}/second-category/by-alias/${alias}`,
+			{
+				next: {
+					revalidate: 3600,
+				},
+			}
+		)
+
+		const promise: Promise<ISecondCategories> = await response.json()
+		const category = await promise
+		if (!category) return notFound()
+		return category
+	} catch (error) {
+		console.log(error)
+	}
 }
 // GENERATE STATIC PARAMS
 export async function generateStaticParams() {
@@ -38,8 +47,8 @@ export async function generateMetadata({
 
 	return {
 		title: `${
-			category.name
-		} | ${category.mainCategory.name.toLowerCase()} В магазине`,
+			category?.name
+		} | ${category?.mainCategory.name.toLowerCase()} В магазине`,
 		// openGraph: {
 		// 	title: `${product.title}`,
 		// 	siteName: "Silk Valley",
@@ -66,7 +75,9 @@ export default async function CatalogPage({ params }: IPageParams) {
 		<>
 			<section>
 				<div className="container">
-					<Catalog data={category} />
+					<Suspense fallback={<>Загрузка...</>}>
+						{category && <Catalog data={category} />}
+					</Suspense>
 				</div>
 			</section>
 		</>
