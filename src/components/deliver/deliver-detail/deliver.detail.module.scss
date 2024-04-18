@@ -26,10 +26,8 @@
 				.button {
 					position: absolute;
 					right: 10px;
-					bottom: 10px;
-					button {
-						padding: 10px;
-					}
+					bottom: 0;
+
 					@include mediaLarge640px {
 						position: unset;
 						margin: 12px 0;
@@ -147,6 +145,8 @@
 						flex: 1;
 						display: flex;
 						align-items: center;
+						flex-direction: row-reverse;
+						justify-content: flex-start;
 						gap: 6px;
 						font-size: 14px;
 						font-weight: 400;

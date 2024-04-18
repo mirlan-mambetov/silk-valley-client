@@ -1,7 +1,9 @@
 "use client"
 
+import { LoaderComponent } from "@/components"
 import { ButtonComponent } from "@/components/button/Button"
 import { deliverInformationMotion } from "@/framer-motion/deliver/deliver.motion"
+import { useLoader } from "@/hooks/app/useLoader"
 import { useDeliver } from "@/hooks/deliver/useDeliver"
 import { useScreen } from "@/hooks/screen/useScreen"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
@@ -26,6 +28,7 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 	const { address, isConfirm } = useDeliver()
 	const [touchStartY, setTouchStartY] = useState(0)
 	const { clearContentHandler } = useScreen()
+	const { isLoading, setLoadingHandler } = useLoader()
 	const { openModalHandler, openNotifyHandler, confirmDeliver } =
 		useStoreActions()
 
@@ -48,6 +51,7 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 	}
 
 	const confirmHandler = async () => {
+		setLoadingHandler(1200)
 		await new Promise<void>((resolve) => {
 			setTimeout(() => {
 				openNotifyHandler({
@@ -251,10 +255,23 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 					</div>
 					<div className={style.button}>
 						<ButtonComponent onClick={confirmHandler}>
-							<span>
-								<MdOutlineCheck />
-							</span>
-							{!isConfirm ? "Потдвердить адрес" : "Потвержден"}
+							{isLoading ? (
+								<LoaderComponent color="black" />
+							) : !isConfirm ? (
+								<>
+									<span>
+										<MdOutlineCheck />
+									</span>
+									Потдвердить адрес
+								</>
+							) : (
+								<>
+									<span>
+										<MdOutlineCheck />
+									</span>
+									Потдвержден адрес
+								</>
+							)}
 						</ButtonComponent>
 					</div>
 				</div>

@@ -4,6 +4,7 @@ import { ButtonComponent } from "@/components/button/Button"
 import { SwiperComponent } from "@/components/swiper-component/Swiper-component"
 import { useWindowWidth } from "@/hooks/app/useWindowWidth"
 import { IProductImages } from "@/interfaces/product.interface"
+import { hostSourceImages } from "@/utils/hostSource"
 import Image from "next/image"
 import { FC, useEffect, useState } from "react"
 import {
@@ -80,7 +81,7 @@ export const ProductImagesComponent: FC<IProductImagesComponent> = ({
 								priority
 								onMouseEnter={(e) => setImgSrc(e.currentTarget.src)}
 								onMouseLeave={() => setImgSrc(null)}
-								src={`${process.env.NEXT_PUBLIC_API_STATIC}${image}`}
+								src={hostSourceImages(image)}
 								alt={"product-poster"}
 								width={500}
 								height={500}
@@ -103,9 +104,7 @@ export const ProductImagesComponent: FC<IProductImagesComponent> = ({
 					<ReactImageMagnify
 						smallImage={{
 							// @ts-ignore
-							src: newSrc
-								? newSrc
-								: `${process.env.NEXT_PUBLIC_API_STATIC}${data?.poster}`,
+							src: newSrc ? newSrc : hostSourceImages(data.poster),
 							alt: "product-poster",
 							isFluidWidth: true,
 						}}
@@ -113,9 +112,7 @@ export const ProductImagesComponent: FC<IProductImagesComponent> = ({
 							width: 900,
 							height: 1300,
 							// @ts-ignore
-							src: newSrc
-								? newSrc
-								: `${process.env.NEXT_PUBLIC_API_STATIC}${data?.poster}`,
+							src: newSrc ? newSrc : hostSourceImages(data.poster),
 						}}
 					/>
 				</div>

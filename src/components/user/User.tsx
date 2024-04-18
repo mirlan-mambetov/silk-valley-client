@@ -3,6 +3,7 @@
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import useOutsiteClick from "@/hooks/useOutsideClick"
 import { IUser } from "@/interfaces/user.interface"
+import { hostSourceImages } from "@/utils/hostSource"
 import cn from "classnames"
 import Image from "next/image"
 import Link from "next/link"
@@ -30,7 +31,7 @@ export const UserComponent: FC<IUserComponentProps> = ({ user, ...props }) => {
 					src={
 						user.avatar.startsWith("https")
 							? user.avatar
-							: `${process.env.NEXT_PUBLIC_API_STATIC}${user.avatar}`
+							: hostSourceImages(user.avatar)
 					}
 					alt={user.name}
 				/>

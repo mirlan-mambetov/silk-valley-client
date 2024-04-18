@@ -4,6 +4,7 @@ import { ButtonComponent, withProtected } from "@/components"
 import { formatDateString } from "@/helpers/formate.data.helper"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { useUser } from "@/hooks/user/useUser"
+import { hostSourceImages } from "@/utils/hostSource"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { FC } from "react"
@@ -32,7 +33,7 @@ const User: FC = () => {
 											src={
 												user?.avatar.startsWith("http")
 													? user.avatar
-													: `${process.env.NEXT_PUBLIC_API_STATIC}/${user?.avatar}`
+													: hostSourceImages(user?.avatar)
 											}
 											alt={`${user?.name}`}
 											width={60}

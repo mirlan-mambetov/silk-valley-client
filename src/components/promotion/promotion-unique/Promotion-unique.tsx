@@ -7,6 +7,7 @@ import {
 } from "@/components"
 import { SwiperComponent } from "@/components/swiper-component/Swiper-component"
 import { IProduct } from "@/interfaces/product.interface"
+import { hostSourceImages } from "@/utils/hostSource"
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { FC } from "react"
@@ -63,7 +64,7 @@ export const PromotionUniqueComponent: FC<IPromotionUniqueComponentProps> = ({
 							<div className={style.poster}>
 								<Image
 									priority
-									src={`${process.env.NEXT_PUBLIC_API_STATIC}${promotion.poster}`}
+									src={hostSourceImages(promotion.poster)}
 									alt={promotion.title}
 									width={400}
 									height={400}

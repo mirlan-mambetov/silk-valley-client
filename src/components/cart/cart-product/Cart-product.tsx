@@ -7,6 +7,7 @@ import {
 } from "@/components"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { ICartProduct } from "@/interfaces/cart.interface"
+import { hostSourceImages } from "@/utils/hostSource"
 import cn from "classnames"
 import Image from "next/image"
 import { FC } from "react"
@@ -31,7 +32,7 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 						<div className={style.content}>
 							<div className={style.image}>
 								<Image
-									src={`${process.env.NEXT_PUBLIC_API_STATIC}/${product.poster}`}
+									src={hostSourceImages(product.poster)}
 									alt={product.title}
 									width={90}
 									height={120}
