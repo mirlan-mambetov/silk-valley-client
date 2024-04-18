@@ -11,6 +11,10 @@ import {
 import { MobileNavigation } from "@/components/mobile/mobile-navigation/Mobile-navigation"
 import { ModalComponent } from "@/components/modal/Modal"
 import { ModalDialogComponent } from "@/components/modal/modal-dialog/Modal-dialog"
+import {
+	getSessionStorage,
+	setSessionStorage,
+} from "@/helpers/session.storage.helper"
 import { useAuth } from "@/hooks/auth/useAuth"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { useQuery } from "@tanstack/react-query"
@@ -21,6 +25,7 @@ export default function HomeLayout({
 }: {
 	children: React.ReactNode
 }) {
+	const { openDialogHandler } = useStoreActions()
 	const { isAuthentificated } = useAuth()
 	const { addUser, clearUser } = useStoreActions()
 	const { data } = useQuery({
@@ -38,6 +43,18 @@ export default function HomeLayout({
 			clearUser()
 		}
 	}, [isAuthentificated, data])
+
+	useEffect(() => {
+		const isVisited = getSessionStorage()
+		if (isVisited !== "true") {
+			openDialogHandler({
+				message:
+					"Добро пожаловать! Вам предоставлено уникальная возможность, сейчас ведется тестирование проекта Silk Valley! Удачи в тестировании.",
+				type: "notify",
+			})
+		}
+		setSessionStorage("true")
+	}, [])
 
 	return (
 		<>
