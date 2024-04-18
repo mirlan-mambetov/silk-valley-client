@@ -107,7 +107,7 @@ export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 								}}
 							>
 								<Image
-									src={`${process.env.NEXT_PUBLIC_API_STATIC}/${color.image[0]}`}
+									src={`${process.env.NEXT_PUBLIC_API_STATIC}${color.image[0]}`}
 									width={80}
 									height={110}
 									alt={color.color}
