@@ -1,4 +1,5 @@
 import { APP_URI } from "@/api/config/api-config"
+import { LoaderComponent } from "@/components"
 import { ICategories } from "@/interfaces/categories.interface"
 import { IPageParams } from "@/interfaces/page.interface"
 import { Metadata } from "next"
@@ -74,7 +75,9 @@ async function ExplorerPage({ params }: IPageParams) {
 		<>
 			{/* HERO */}
 			<section>
-				<Suspense fallback={<>Загрузка...</>}>
+				<Suspense
+					fallback={<LoaderComponent position="absolute" color="black" />}
+				>
 					{category && <Explorer data={category} />}
 				</Suspense>
 			</section>
