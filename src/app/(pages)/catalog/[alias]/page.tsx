@@ -7,31 +7,45 @@ import { notFound } from "next/navigation"
 import { Suspense } from "react"
 import { Catalog } from "./Catalog"
 
-export async function fetchCategory({ params }: IPageParams) {
-	try {
-		const { alias } = params
-		const response = await fetch(
-			`${APP_URI}/second-category/by-alias/${alias}`,
-			{
-				next: {
-					revalidate: 3600,
-				},
-			}
-		)
+// FETCH DATA
+export async function fetchData<T>(url: string): Promise<T> {
+	const response = await fetch(url, {
+		method: "GET",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		next: {
+			revalidate: 3600,
+		},
+	})
+	if (!response.ok) return notFound()
 
-		const promise: Promise<ISecondCategories> = await response.json()
-		const category = await promise
-		if (!category) return notFound()
-		return category
-	} catch (error) {
-		console.log(error)
-	}
+	const promise: Promise<T> = await response.json()
+
+	return promise
 }
+
+// FETCH CATEGORY
+export async function fetchCategoryBySlug({
+	params,
+}: IPageParams): Promise<ISecondCategories> {
+	const { alias } = params
+	const url = `${APP_URI}/second-category/by-alias/${alias}`
+	const category = await fetchData<ISecondCategories>(url)
+	if (!category) return notFound()
+	return category
+}
+
+// FETCH ALL CATEGORIES
+export async function fetchAllCategories(): Promise<ISecondCategories[]> {
+	const url = `${APP_URI}/second-category`
+	const categories = await fetchData<ISecondCategories[]>(url)
+	return categories
+}
+
 // GENERATE STATIC PARAMS
 export async function generateStaticParams() {
-	const response = await fetch(`${APP_URI}/second-category`)
-	const promise: Promise<ISecondCategories[]> = await response.json()
-	const categories = await promise
+	const categories = await fetchAllCategories()
 	const paths = categories.map((category) => {
 		return {
 			params: { alias: category.slug },
@@ -44,34 +58,17 @@ export async function generateStaticParams() {
 export async function generateMetadata({
 	params,
 }: IPageParams): Promise<Metadata> {
-	const category = await fetchCategory({ params })
+	const category = await fetchCategoryBySlug({ params })
 
 	return {
 		title: `${
 			category?.name
 		} | ${category?.mainCategory.name.toLowerCase()} В магазине`,
-		// openGraph: {
-		// 	title: `${product.title}`,
-		// 	siteName: "Silk Valley",
-		// 	url: "https://slkvalley.com",
-		// 	images: {
-		// 		width: 32,
-		// 		height: 32,
-		// 		// href: `${process.env.NEXT_PUBLIC_API_STATIC}/${product.poster}`,
-		// 		alt: `${product.title}`,
-		// 		url: `${process.env.NEXT_PUBLIC_API_STATIC}`,
-		// 	},
-		// 	locale: "ru_RU",
-		// 	type: "website",
-		// },
-		// alternates: {
-		// 	canonical: `/${product.alias}`,
-		// },
 	}
 }
 
 export default async function CatalogPage({ params }: IPageParams) {
-	const category = await fetchCategory({ params })
+	const category = await fetchCategoryBySlug({ params })
 	return (
 		<>
 			<section>

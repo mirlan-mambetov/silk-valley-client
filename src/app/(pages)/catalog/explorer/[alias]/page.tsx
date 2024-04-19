@@ -8,31 +8,43 @@ import { Suspense } from "react"
 import { Explorer } from "../Explorer"
 
 // FETCH DATA
-export async function fetchCategoryBySlug({ params }: IPageParams) {
-	try {
-		const response = await fetch(
-			`${APP_URI}/main-category/by-slug/${params.alias}`,
-			{
-				next: {
-					revalidate: 60,
-				},
-			}
-		)
-		const promise: Promise<ICategories> = await response.json()
-		const category = await promise
+export async function fetchData<T>(url: string): Promise<T> {
+	const response = await fetch(url, {
+		method: "GET",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		next: {
+			revalidate: 3600,
+		},
+	})
 
-		if (!category) return notFound()
-		return category
-	} catch (error) {
-		console.log(error)
-	}
+	if (!response.ok) return notFound()
+
+	const promise: Promise<T> = await response.json()
+	return promise
+}
+
+// FETCH CATEGORY
+export async function fetchCategoryByAlias({
+	params,
+}: IPageParams): Promise<ICategories> {
+	const { alias } = params
+	const url = `${APP_URI}/main-category/by-slug/${alias}`
+	const category = await fetchData<ICategories>(url)
+	return category
+}
+
+// FETCH ALL CATEGORIES
+export async function fetchAllCategories(): Promise<ICategories[]> {
+	const url = `${APP_URI}/main-category`
+	const categories = await fetchData<ICategories[]>(url)
+	return categories
 }
 
 // GENERATE STATIC PARAMS
 export async function generateStaticParams() {
-	const response = await fetch(`${APP_URI}/main-category`)
-	const promise: Promise<ICategories[]> = await response.json()
-	const categories = await promise
+	const categories = await fetchAllCategories()
 	const paths = categories.map((product) => {
 		return {
 			params: { alias: product.slug },
@@ -45,32 +57,15 @@ export async function generateStaticParams() {
 export async function generateMetadata({
 	params,
 }: IPageParams): Promise<Metadata> {
-	const category = await fetchCategoryBySlug({ params })
+	const category = await fetchCategoryByAlias({ params })
 
 	return {
 		title: `Каталог ${category?.name.toLowerCase()} В магазине`,
-		// openGraph: {
-		// 	title: `${product.title}`,
-		// 	siteName: "Silk Valley",
-		// 	url: "https://slkvalley.com",
-		// 	images: {
-		// 		width: 32,
-		// 		height: 32,
-		// 		// href: `${process.env.NEXT_PUBLIC_API_STATIC}/${product.poster}`,
-		// 		alt: `${product.title}`,
-		// 		url: `${process.env.NEXT_PUBLIC_API_STATIC}`,
-		// 	},
-		// 	locale: "ru_RU",
-		// 	type: "website",
-		// },
-		// alternates: {
-		// 	canonical: `/${product.alias}`,
-		// },
 	}
 }
 
 async function ExplorerPage({ params }: IPageParams) {
-	const category = await fetchCategoryBySlug({ params })
+	const category = await fetchCategoryByAlias({ params })
 	return (
 		<>
 			{/* HERO */}
