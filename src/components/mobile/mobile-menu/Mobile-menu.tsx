@@ -6,7 +6,7 @@ import { FC } from "react"
 import style from "./mobile-menu.module.scss"
 
 export const MobileMenuComponent: FC = () => {
-	const data = useFetchAllCategories()
+	const { data, isFetching } = useFetchAllCategories()
 
 	return (
 		<div className={style.menu}>

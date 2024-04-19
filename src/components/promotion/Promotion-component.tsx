@@ -1,65 +1,94 @@
 "use client"
 
-import { ButtonComponent, HeadingComponent } from "@/components"
-import { IPromotions } from "@/interfaces/promotions.interface"
-import cn from "classnames"
-import { useRouter } from "next/navigation"
+import {
+	ProductActionsComponent,
+	ProductDiscountComponent,
+	ProductPriceComponent,
+} from "@/components"
+import { SwiperComponent } from "@/components/swiper-component/Swiper-component"
+import { IProduct } from "@/interfaces/product.interface"
+import { hostSourceImages } from "@/utils/hostSource"
+import { motion } from "framer-motion"
+import Image from "next/image"
 import { FC } from "react"
-import { IoArrowRedoOutline } from "react-icons/io5"
+import { Autoplay } from "swiper/modules"
+import { SwiperSlide } from "swiper/react"
 import style from "./promotion.component.module.scss"
 
 interface IPromotionComponentProps {
-	data: IPromotions[]
-	size?: "xl1" | "xl2" | "xl3"
-	routes?: boolean
+	data: IProduct[]
 }
-export const PromotionComponent: FC<IPromotionComponentProps> = ({
-	data,
-	size = "xl2",
-	routes = false,
-}) => {
-	const { push } = useRouter()
+export const PromotionComponent: FC<IPromotionComponentProps> = ({ data }) => {
 	return (
-		<>
-			<div className={style.promotion}>
-				{routes ? <HeadingComponent text="Акции недели" length={4} /> : null}
-				<div
-					className={cn(style.wrap, {
-						[style.xl1]: size === "xl1",
-						[style.xl2]: size === "xl2",
-						[style.xl3]: size === "xl3",
-					})}
+		<motion.div className={style.promotion}>
+			<div className="container">
+				<SwiperComponent
+					options={{
+						className: style.columns,
+						slidesPerView: 6,
+						speed: 3000,
+						spaceBetween: 10,
+						loop: true,
+						modules: [Autoplay],
+						autoplay: {
+							delay: 100,
+							pauseOnMouseEnter: true,
+							disableOnInteraction: false,
+						},
+						breakpoints: {
+							320: {
+								slidesPerView: 2,
+							},
+							530: {
+								slidesPerView: 3,
+							},
+							776: {
+								slidesPerView: 4,
+							},
+							1024: {
+								slidesPerView: 6,
+							},
+						},
+					}}
 				>
 					{data.map((promotion) => (
-						<div
-							className={style.column}
-							key={promotion.id}
-							style={{ backgroundImage: `url(${promotion.image})` }}
-						>
-							<div className={style.overlay}></div>
-							<div className={style.content}>
-								{/* <div className={style.title}>
-									<h2
-										className={style.name}
-										onClick={() => push(`/promotions/${promotion.alias}`)}
-									>
-										{promotion.name}
-									</h2>
-									<p className={style.description}>{promotion.description}</p>
-								</div> */}
-								<div className={style.action}>
-									<ButtonComponent
-										aria-label="Ссылка"
-										onClick={() => push(`/promotions/${promotion.alias}`)}
-									>
-										<IoArrowRedoOutline />
-									</ButtonComponent>
-								</div>
+						<SwiperSlide className={style.column} key={promotion.id}>
+							<ProductDiscountComponent
+								product={promotion}
+								type="absolute"
+								size="xl1"
+								position="top"
+							/>
+							<div className={style.poster}>
+								<Image
+									priority
+									src={hostSourceImages(promotion.poster)}
+									alt={promotion.title}
+									width={400}
+									height={400}
+								/>
 							</div>
-						</div>
+
+							<div className={style.content}>
+								<div className={style.top}>
+									<h2 className={style.title}>{promotion.title}</h2>
+									<ProductPriceComponent
+										size="1xxl"
+										price={promotion.price}
+										discount={promotion.discount}
+										orientation="column"
+									/>
+								</div>
+								<ProductActionsComponent
+									actionType="toView"
+									alias={`${promotion.alias}`}
+									product={promotion}
+								/>
+							</div>
+						</SwiperSlide>
 					))}
-				</div>
+				</SwiperComponent>
 			</div>
-		</>
+		</motion.div>
 	)
 }

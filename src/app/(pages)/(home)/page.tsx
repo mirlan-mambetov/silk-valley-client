@@ -1,14 +1,16 @@
 import { APP_URI } from "@/api/config/api-config"
-import { ProductCardsComponent } from "@/components"
-import { PromotionUniqueComponent } from "@/components/promotion/promotion-unique/Promotion-unique"
+import { ProductCardsComponent, PromotionComponent } from "@/components"
 import { IProduct } from "@/interfaces/product.interface"
-
-export const revalidate = 3600
 
 // FETCH ALL PRODUCTS
 export async function fetchProducts(): Promise<IProduct[]> {
 	try {
-		const response = await fetch(`${APP_URI}/product`)
+		const response = await fetch(`${APP_URI}/product`, {
+			next: {
+				revalidate: 3600,
+			},
+			method: "GET",
+		})
 		if (!response.ok) {
 			throw new Error("Fetch failed for products..")
 		}
@@ -23,7 +25,7 @@ export default async function HomePage() {
 	return (
 		<>
 			<section>
-				<PromotionUniqueComponent data={products} />
+				<PromotionComponent data={products} />
 			</section>
 			<section>
 				<div className="container">

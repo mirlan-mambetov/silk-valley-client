@@ -1,11 +1,22 @@
 import { CategoriesApi } from "@/api/api-categories/api-categories"
 import { useQuery } from "@tanstack/react-query"
+import { useEffect } from "react"
+import { useStoreActions } from "../store/useStoreActions"
 
 export const useFetchAllCategories = () => {
-	const { data } = useQuery({
+	const { openNotifyHandler } = useStoreActions()
+	const { data, isFetching, error } = useQuery({
 		queryKey: ["fetchCategories"],
 		queryFn: () => CategoriesApi.fetchCategories(),
 	})
 
-	return data
+	useEffect(() => {
+		if (error) {
+			openNotifyHandler({
+				text: error.message,
+				type: "error",
+			})
+		}
+	}, [error])
+	return { data, isFetching }
 }

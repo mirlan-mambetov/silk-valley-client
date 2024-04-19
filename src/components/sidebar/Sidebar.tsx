@@ -10,6 +10,7 @@ import cn from "classnames"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { FC, useEffect, useState } from "react"
+import { LoaderComponent } from ".."
 import style from "./sidebar.module.scss"
 
 interface ISidebarComponentProps {
@@ -19,7 +20,7 @@ export const SidebarComponent: FC<ISidebarComponentProps> = ({ ...props }) => {
 	const [categoryId, setCategoryId] = useState<number | null>(null)
 	const { isOpen } = useSideBar()
 
-	const data = useFetchAllCategories()
+	const { data, isFetching } = useFetchAllCategories()
 
 	const handler = (categoryId: number) => {
 		setCategoryId(categoryId)
@@ -38,39 +39,46 @@ export const SidebarComponent: FC<ISidebarComponentProps> = ({ ...props }) => {
 				className={style.sidebar}
 				{...props}
 			>
-				<div className={style.wrap}>
-					<ul className={style.list}>
-						{data &&
-							data.map((category) => (
-								<li
-									className={style.listItem}
-									key={category.id}
-									onMouseEnter={() => handler(category.id)}
-								>
-									<Link href={`/catalog/explorer/${category.slug}`}>
-										{category.name}
-									</Link>
-									<ul
-										onMouseLeave={() => {
-											setCategoryId(null)
-										}}
-										className={cn(style.submenu, {
-											[style.isOpen]: categoryId === category.id,
-										})}
+				{isFetching ? (
+					<LoaderComponent color="black" position="absolute" />
+				) : (
+					<div className={style.wrap}>
+						<ul className={style.list}>
+							{data &&
+								data.map((category) => (
+									<li
+										className={style.listItem}
+										key={category.id}
+										onMouseEnter={() => handler(category.id)}
 									>
-										{category.categories.map((secondCategory) => (
-											<li className={style.submenuItem} key={secondCategory.id}>
-												<Link href={`/catalog/${secondCategory.slug}`}>
-													{secondCategory.name}
-												</Link>
-											</li>
-										))}
-									</ul>
-								</li>
-							))}
-					</ul>
-					<span>Silk Valley &copy; 2024</span>
-				</div>
+										<Link href={`/catalog/explorer/${category.slug}`}>
+											{category.name}
+										</Link>
+										<ul
+											onMouseLeave={() => {
+												setCategoryId(null)
+											}}
+											className={cn(style.submenu, {
+												[style.isOpen]: categoryId === category.id,
+											})}
+										>
+											{category.categories.map((secondCategory) => (
+												<li
+													className={style.submenuItem}
+													key={secondCategory.id}
+												>
+													<Link href={`/catalog/${secondCategory.slug}`}>
+														{secondCategory.name}
+													</Link>
+												</li>
+											))}
+										</ul>
+									</li>
+								))}
+						</ul>
+						<span>Silk Valley &copy; 2024</span>
+					</div>
+				)}
 			</motion.aside>
 			<motion.div
 				variants={sidebarOverlayVariantMotion}
