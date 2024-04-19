@@ -6,10 +6,10 @@ import {
 	MapIconComponent,
 	ProductPriceComponent,
 } from "@/components"
+import { showDestinationName } from "@/helpers/showDestinationName"
 import { useCartPriceCalculate } from "@/hooks/cart/useCartPriceCalculate"
 import { useDeliver } from "@/hooks/deliver/useDeliver"
 import { useScreen } from "@/hooks/screen/useScreen"
-import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { useUser } from "@/hooks/user/useUser"
 import { ICartProduct } from "@/interfaces/cart.interface"
 import cn from "classnames"
@@ -26,7 +26,7 @@ export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 	products,
 }) => {
 	const { setContentHandler } = useScreen()
-	const { openNotifyHandler } = useStoreActions()
+	// const { openNotifyHandler } = useStoreActions()
 	const { totalPrice, totalDiscount } = useCartPriceCalculate(products)
 	const { address, isConfirm } = useDeliver()
 	const { user } = useUser()
@@ -64,15 +64,7 @@ export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 					className={style.deliver}
 					onClick={() => setContentHandler(<DeliverComponent />)}
 				>
-					<span>
-						{address.city && address.road
-							? `${address.city.replace("город", "г.")}. ${address.road}`
-							: address.town && address.road
-							? `${address.town}. ${address.road}`
-							: address.village && address.road
-							? `${address.village}. ${address.road}`
-							: "Выбрать адрес доставки"}
-					</span>
+					<span>{showDestinationName(address)}</span>
 					<MapIconComponent />
 				</ButtonComponent>
 				<div className={style.box}>

@@ -3,6 +3,7 @@
 import { ButtonComponent } from "@/components/button/Button"
 import { DeliverComponent } from "@/components/deliver/Deliver"
 import { MapIconComponent } from "@/components/icon/map/Map-icon"
+import { showDestinationName } from "@/helpers/showDestinationName"
 import { useDeliver } from "@/hooks/deliver/useDeliver"
 import { useScreen } from "@/hooks/screen/useScreen"
 import style from "./header.top.module.scss"
@@ -21,12 +22,7 @@ export const HeaderTopComponent = () => {
 								aria-label="Доставка"
 								onClick={() => setContentHandler(<DeliverComponent />)}
 							>
-								<span>
-									{address.city ||
-										address.town ||
-										address.state ||
-										"г. Каракол"}
-								</span>
+								<span>{showDestinationName(address)}</span>
 							</ButtonComponent>
 						</div>
 					</div>
