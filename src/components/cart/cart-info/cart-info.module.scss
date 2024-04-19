@@ -23,6 +23,9 @@
 		.deliver {
 			color: $purple;
 			cursor: pointer;
+			@include mediaLarge1024px {
+				display: none !important;
+			}
 		}
 		.box,
 		.profit,

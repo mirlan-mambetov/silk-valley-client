@@ -19,7 +19,7 @@ export const DeliverDetailForm: FC<IDeliverDetailFormProps> = ({ fields }) => {
 
 	const submitHandler = (data: IDeliverForm) => {
 		updateDeliverAddress({ ...data })
-		openNotifyHandler("Изменено")
+		openNotifyHandler({ text: "Изменено" })
 		closeModalHandler()
 	}
 	return (

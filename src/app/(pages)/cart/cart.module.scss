@@ -14,28 +14,42 @@
 		grid-template-columns: 1fr;
 	}
 }
-.order {
+.information {
 	display: flex;
 	flex-direction: column;
-	gap: 30px;
-
-	.box {
+	gap: 20px;
+	.info {
 		display: flex;
-		flex-direction: column;
-		gap: 16px;
-		border: 1px dashed $darkenRGBA;
-		padding: 10px;
-		border-radius: 5px;
-		.title {
+		justify-content: space-between;
+		align-items: center;
+		-webkit-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.04);
+		-moz-box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.04);
+		box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.04);
+		padding: 20px;
+		border-radius: 10px;
+		.user {
 			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			gap: 6px;
-			font-size: 14px;
-			line-height: 22px;
-			font-weight: 500;
+			flex-direction: column;
+			gap: 17px;
+			.userField {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+				small {
+					display: flex;
+					align-items: center;
+					font-size: 18px;
+					color: $gray;
+				}
+				span {
+					font-size: 16px;
+					line-height: 18px;
+					font-weight: 400;
+				}
+			}
+		}
+		.edit {
 			color: $purple;
-			overflow: hidden;
 		}
 		.button {
 			display: flex;
@@ -52,27 +66,13 @@
 				width: 100%;
 			}
 		}
-		.user {
-			display: flex;
-			flex-direction: column;
-			gap: 10px;
-			.user_field {
-				display: flex;
-				align-items: center;
-				gap: 12px;
-				font-size: 12px;
-				font-weight: 400;
-				line-height: 18px;
-				small {
-					display: flex;
-					font-size: 14px;
-					color: $gray;
-				}
-				span {
-					font-size: 14px;
-					font-weight: 400;
-					line-height: 100%;
-				}
+		.deliver {
+			font-size: 16px;
+			font-weight: 400;
+			line-height: 24px;
+			color: $purple;
+			> div {
+				justify-content: flex-start;
 			}
 		}
 	}

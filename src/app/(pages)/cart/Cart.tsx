@@ -5,21 +5,23 @@ import {
 	ButtonComponent,
 	CartInfoComponent,
 	CartProductComponent,
+	DeliverActionComponent,
 	DeliverComponent,
-	DeliverDetailComponent,
 	HeadingComponent,
 	MapIconComponent,
-	UserIconComponent,
 } from "@/components"
 import { FC } from "react"
 
+import { showDestinationName } from "@/helpers/showDestinationName"
 import { useCart } from "@/hooks/cart/useCart"
 import { useDeliver } from "@/hooks/deliver/useDeliver"
 import { useScreen } from "@/hooks/screen/useScreen"
 import { useUser } from "@/hooks/user/useUser"
 import { scrollToSection } from "@/utils/scrollToAnchor"
+import { useRouter } from "next/navigation"
+import { BsEnvelopeAt } from "react-icons/bs"
 import { FaUser } from "react-icons/fa6"
-import { IoMailOutline } from "react-icons/io5"
+import { FiEdit2 } from "react-icons/fi"
 import { MdOutlinePhone } from "react-icons/md"
 import style from "./cart.module.scss"
 
@@ -28,6 +30,7 @@ export const Cart: FC = () => {
 	const { products } = useCart()
 	const { address } = useDeliver()
 	const { user } = useUser()
+	const { push } = useRouter()
 
 	return (
 		<>
@@ -38,27 +41,17 @@ export const Cart: FC = () => {
 					anchorHanlder={scrollToSection}
 					products={products}
 				/>
-				<div className={style.order}>
-					<div className={style.box}>
-						<h5 className={style.title}>
-							<span>Данные пользователя</span>
-							<UserIconComponent />
-						</h5>
+				<div className={style.information}>
+					<div className={style.info}>
 						{user ? (
 							<div className={style.user}>
-								<div className={style.user_field}>
+								<div className={style.userField}>
 									<small>
-										<UserIconComponent />
-									</small>
-									<span>{user.name}</span>
-								</div>
-								<div className={style.user_field}>
-									<small>
-										<IoMailOutline />
+										<BsEnvelopeAt />
 									</small>
 									<span>{user.email}</span>
 								</div>
-								<div className={style.user_field}>
+								<div className={style.userField}>
 									<small>
 										<MdOutlinePhone />
 									</small>
@@ -75,25 +68,36 @@ export const Cart: FC = () => {
 								Войдите в систему или зарегистрируйтесь
 							</ButtonComponent>
 						)}
+						<ButtonComponent
+							className={style.edit}
+							title="Изменить профиль"
+							onClick={() => push("/user")}
+						>
+							<FiEdit2 fontSize={20} />
+						</ButtonComponent>
 					</div>
-					<div className={style.box}>
-						<h5 className={style.title}>
-							<span>Детали доставки </span>
-							<MapIconComponent />
-						</h5>
+					<div className={style.info}>
 						{Object.values(address).some((value) => value?.length) ? (
-							<DeliverDetailComponent position="default" />
-						) : (
-							<div className={style.out}>
-								<ButtonComponent
-									className={style.button}
-									onClick={() => setContentHandler(<DeliverComponent />)}
-								>
-									<MapIconComponent />
-									Выберите координаты
-								</ButtonComponent>
+							<div className={style.deliver}>
+								{showDestinationName(address)}
+								<DeliverActionComponent />
 							</div>
+						) : (
+							<ButtonComponent
+								className={style.button}
+								onClick={() => setContentHandler(<DeliverComponent />)}
+							>
+								<MapIconComponent />
+								Выберите координаты
+							</ButtonComponent>
 						)}
+						<ButtonComponent
+							className={style.edit}
+							title="Выбрать координаты доставки"
+							onClick={() => setContentHandler(<DeliverComponent />)}
+						>
+							<FiEdit2 fontSize={20} />
+						</ButtonComponent>
 					</div>
 				</div>
 			</div>

@@ -7,6 +7,7 @@ import {
 	ProductActionsComponent,
 	ProductPriceComponent,
 } from "@/components"
+import { showDestinationName } from "@/helpers/showDestinationName"
 import { useCart } from "@/hooks/cart/useCart"
 import { useDeliver } from "@/hooks/deliver/useDeliver"
 import { useScreen } from "@/hooks/screen/useScreen"
@@ -86,15 +87,7 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 				<div className={style.box}>
 					<small>Доставка</small>
 					<div className={style.box_item}>
-						<span>
-							{address.city && address.road
-								? `${address.city.replace("город", "г.")}. ${address.road}`
-								: address.town && address.road
-								? `${address.town}. ${address.road}`
-								: address.village && address.road
-								? `${address.village}. ${address.road}`
-								: "Выбрать адрес доставки"}
-						</span>
+						<span>{showDestinationName(address)}</span>
 						<ButtonComponent
 							title="Выбрать координаты доставки"
 							onClick={() => setContentHandler(<DeliverComponent />)}

@@ -1,18 +1,16 @@
 "use client"
 
-import { LoaderComponent } from "@/components"
+import { DeliverActionComponent } from "@/components"
 import { ButtonComponent } from "@/components/button/Button"
 import { deliverInformationMotion } from "@/framer-motion/deliver/deliver.motion"
 import { useLoader } from "@/hooks/app/useLoader"
 import { useDeliver } from "@/hooks/deliver/useDeliver"
 import { useScreen } from "@/hooks/screen/useScreen"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
-import cn from "classnames"
 import { motion } from "framer-motion"
 import { FC, TouchEventHandler, useState } from "react"
 import { BsQuestionCircle } from "react-icons/bs"
 import { IoCheckmarkCircleOutline } from "react-icons/io5"
-import { MdOutlineCheck } from "react-icons/md"
 import { TbCurrentLocation } from "react-icons/tb"
 import { TfiMore, TfiMoreAlt } from "react-icons/tfi"
 import style from "./deliver.detail.module.scss"
@@ -50,29 +48,13 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 		}
 	}
 
-	const confirmHandler = async () => {
-		setLoadingHandler(1200)
-		await new Promise<void>((resolve) => {
-			setTimeout(() => {
-				openNotifyHandler({
-					text: "Адрес потдвержден",
-				})
-				resolve()
-			}, 1200)
-		})
-		confirmDeliver()
-		clearContentHandler()
-	}
 	return (
 		<motion.div
 			onTouchStart={handleTouchStart}
 			onTouchMove={handleTouchMove}
 			animate={fullView && position === "fixed" ? "open" : "closed"}
 			variants={deliverInformationMotion}
-			className={cn(style.information, {
-				[style.fixed]: position === "fixed",
-				[style.default]: position === "default",
-			})}
+			className={style.information}
 		>
 			{position === "fixed" ? (
 				<div className={style.top}>
@@ -253,27 +235,7 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 							</div>
 						)}
 					</div>
-					<div className={style.button}>
-						<ButtonComponent onClick={confirmHandler}>
-							{isLoading ? (
-								<LoaderComponent color="black" />
-							) : !isConfirm ? (
-								<>
-									<span>
-										<MdOutlineCheck />
-									</span>
-									Потдвердить адрес
-								</>
-							) : (
-								<>
-									<span>
-										<MdOutlineCheck />
-									</span>
-									Потдвержден адрес
-								</>
-							)}
-						</ButtonComponent>
-					</div>
+					<DeliverActionComponent />
 				</div>
 			</motion.div>
 		</motion.div>

@@ -4,204 +4,134 @@
 
 .information {
 	position: absolute;
+	left: 20px;
+	right: 20px;
 	bottom: 0;
+	z-index: 2002;
+	padding: 20px;
+	background: $white;
+	box-shadow: 0px -22px 56px -32px rgba(0, 0, 0, 0.48);
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
 	display: flex;
 	flex-direction: column;
 	gap: 50px;
-	&.default {
-		position: unset;
-		gap: 12px;
-		transform: unset !important;
-
-		.columns {
-			position: relative;
-			display: flex;
-			flex-direction: row-reverse;
-			transform: unset !important;
-			.column {
-				flex: 1;
-				.title {
-					display: none;
-				}
-				.button {
-					position: absolute;
-					right: 10px;
-					bottom: 0;
-
-					@include mediaLarge640px {
-						position: unset;
-						margin: 12px 0;
-						button {
-							width: 100%;
-						}
-					}
-				}
-				.rows {
-					.row {
-						padding: 0;
-						span {
-							font-weight: 400;
-						}
-					}
-				}
-				@include mediaLarge1024px {
-					&:nth-child(1) {
-						display: none;
-					}
-				}
-			}
-			@include mediaLarge830px {
-				flex-direction: column;
-				gap: 15px;
-			}
-		}
+	@include mediaLarge530px {
+		right: 0px;
+		left: 0px;
 	}
-	&.fixed {
-		position: absolute;
-		left: 20px;
-		right: 20px;
-		bottom: 0;
-		z-index: 2002;
-		padding: 20px;
-		background: $white;
-		box-shadow: 0px -22px 56px -32px rgba(0, 0, 0, 0.48);
-		border-top-right-radius: 5px;
-		border-top-left-radius: 5px;
-		.columns {
-			display: flex;
-			flex-direction: column;
-			gap: 50px;
-			align-items: center;
-			.column {
-				max-width: 550px;
-				width: 100%;
-			}
-		}
-		@include mediaLarge530px {
-			right: 0px;
-			left: 0px;
-		}
-	}
+}
 
-	.top {
+.top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	button {
 		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		button {
-			display: flex;
-			font-size: 22px;
-			color: $gray;
-		}
+		font-size: 22px;
+		color: $gray;
 	}
-	.columns {
-		.column {
+}
+.columns {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
+	.column {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+		max-width: 60%;
+		width: 100%;
+		> span {
 			display: flex;
 			flex-direction: column;
-			gap: 15px;
-			> span {
-				display: flex;
+			align-items: center;
+			gap: 4px;
+			color: $purple;
+			font-size: 14px;
+		}
+		.questions {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 12px;
+			color: $purple;
+			span {
+				cursor: pointer;
+				font-size: 12px;
+				font-weight: 500;
+			}
+			@include mediaLarge360px {
+				flex-wrap: wrap;
+			}
+		}
+		.title {
+			font-size: 14px;
+			font-weight: 400;
+			line-height: 20px;
+			span {
+				display: inline-flex;
 				flex-direction: column;
-				align-items: center;
-				gap: 4px;
-				color: $purple;
-				font-size: 14px;
+				gap: 5px;
 			}
-			.questions {
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				gap: 12px;
-				color: $purple;
-				span {
-					cursor: pointer;
-					font-size: 12px;
-					font-weight: 500;
-				}
-			}
-			.title {
-				font-size: 14px;
-				font-weight: 400;
-				line-height: 20px;
-				span {
-					display: inline-flex;
-					flex-direction: column;
-					gap: 5px;
-				}
-			}
+		}
 
-			.rows {
+		.rows {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			.row {
 				display: flex;
-				flex-direction: column;
-				gap: 10px;
-				.row {
-					display: flex;
-					align-items: center;
-					padding: 0 4px;
-					small {
-						flex: 1;
-						color: $gray;
-						font-size: 12px;
-						line-height: 18px;
-					}
-					span {
-						flex: 1;
-						display: flex;
-						align-items: center;
-						flex-direction: row-reverse;
-						justify-content: flex-start;
-						gap: 6px;
-						font-size: 14px;
-						font-weight: 400;
-						line-height: 10px;
-						b {
-							color: $gray;
-						}
-					}
-					@include mediaLarge530px {
-						smal,
-						span {
-							flex: 1;
-							&:nth-child(2) {
-								justify-content: flex-start;
-								flex-direction: row-reverse;
-							}
-						}
-					}
-				}
-			}
-			.button {
-				display: flex;
-				justify-content: center;
-				button {
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					gap: 5px;
-					border: 1px solid $darkenRGBA;
-					border-radius: 8px;
-					padding: 12px 16px;
+				align-items: center;
+				padding: 0 4px;
+				small {
+					flex: 1;
+					color: $gray;
 					font-size: 12px;
-					span {
-						font-size: 16px;
+					line-height: 18px;
+				}
+				span {
+					flex: 1;
+					display: flex;
+					align-items: center;
+					flex-direction: row-reverse;
+					justify-content: flex-start;
+					gap: 6px;
+					font-size: 14px;
+					font-weight: 400;
+					line-height: 10px;
+					b {
+						color: $gray;
 					}
-					@include mediaLarge480px {
-						padding: 8px 12px;
-						margin: 12px 0;
-						border-radius: 6px;
+					@include mediaLarge360px {
+						line-height: 18px;
+						text-align: right;
 					}
 				}
-			}
-			@include mediaLarge776px {
-				min-width: 80%;
-			}
-			@include mediaLarge480px {
-				min-width: 100%;
+				@include mediaLarge530px {
+					smal,
+					span {
+						flex: 1;
+						&:nth-child(2) {
+							justify-content: flex-start;
+							flex-direction: row-reverse;
+						}
+					}
+				}
 			}
 		}
 
 		@include mediaLarge776px {
-			grid-template-columns: 1fr;
-			row-gap: 25px;
+			min-width: 80%;
 		}
+		@include mediaLarge480px {
+			min-width: 100%;
+		}
+	}
+
+	@include mediaLarge776px {
+		grid-template-columns: 1fr;
+		row-gap: 25px;
 	}
 }

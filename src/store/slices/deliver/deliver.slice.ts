@@ -40,7 +40,10 @@ export const deliverSlice = createSlice({
 			})
 		},
 		confirmDeliver: (state) => {
-			state.isConfirm = !state.isConfirm
+			state.isConfirm = true
+		},
+		unConfirm: (state) => {
+			state.isConfirm = false
 		},
 	},
 	extraReducers: (build) => {},
