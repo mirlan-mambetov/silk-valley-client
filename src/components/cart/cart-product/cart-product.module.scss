@@ -72,10 +72,9 @@
 					}
 				}
 				.description_price {
-					display: flex;
+					display: none;
 					align-items: center;
 					gap: 12px;
-					display: none;
 					@include mediaLarge776px {
 						display: flex;
 					}

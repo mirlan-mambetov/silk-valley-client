@@ -1,24 +1,27 @@
 @import "../../../styles/media.mixin";
 @import "../../../styles/mixin";
 @import "../../../styles/vars";
-.head {
-	margin: 20px 0;
-}
 .wrap {
 	display: flex;
+	padding: 20px 0;
 }
 .payments {
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
 	.method {
-		display: flex;
-		align-items: center;
-		gap: 20px;
+		display: grid;
+		grid-template-columns: 1fr 0.2fr;
+		column-gap: 20px;
 		padding: 20px;
 		border-radius: 10px;
-		@include baseBoxShadow;
+		@include lowBoxShadow;
 		border: 1px dashed $darkenRGBA;
+		strong {
+			font-size: 16px;
+			font-weight: 400;
+			line-height: 24px;
+		}
 		input {
 			width: 20px;
 			cursor: pointer;

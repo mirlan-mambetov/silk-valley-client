@@ -9,9 +9,7 @@ export const Checkout = () => {
 		<>
 			<section>
 				<div className="container">
-					<div className={style.head}>
-						<HeadingComponent text="Выберите метод оплаты" />
-					</div>
+					<HeadingComponent text="Выберите метод оплаты" />
 					<div className={style.wrap}>
 						<div className={style.payments}>
 							<div className={style.method}>
@@ -32,7 +30,12 @@ export const Checkout = () => {
 								/>
 								<FieldComponent type="checkbox" />
 							</div>
+							<div className={style.method}>
+								<strong>Наличными при доставке</strong>
+								<FieldComponent type="checkbox" />
+							</div>
 						</div>
+						<div className={style.policy}></div>
 					</div>
 				</div>
 			</section>

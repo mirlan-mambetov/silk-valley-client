@@ -34,48 +34,44 @@
 			font-size: 14px;
 			line-height: 22px;
 			font-weight: 500;
-			color: $darken;
+			color: $purple;
 			overflow: hidden;
-			span {
-				@include dashdeLine;
+		}
+		.button {
+			display: flex;
+			align-items: center;
+			gap: 4px;
+			background: $black;
+			padding: 12px 14px;
+			border-radius: 8px;
+			font-size: 12px;
+			color: $white;
+			@include buttonHover;
+			@include mediaLarge480px {
+				justify-content: center;
+				width: 100%;
 			}
 		}
-		.out {
-			.button {
+		.user {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			.user_field {
 				display: flex;
 				align-items: center;
-				gap: 4px;
-				background: $black;
-				padding: 12px 14px;
-				border-radius: 8px;
+				gap: 12px;
 				font-size: 12px;
-				color: $white;
-				@include buttonHover;
-				@include mediaLarge480px {
-					justify-content: center;
-					width: 100%;
-				}
-			}
-			.user {
-				display: flex;
-				flex-direction: column;
-				gap: 6px;
-				.user_field {
+				font-weight: 400;
+				line-height: 18px;
+				small {
 					display: flex;
-					align-items: center;
-					gap: 12px;
-					font-size: 12px;
+					font-size: 14px;
+					color: $gray;
+				}
+				span {
+					font-size: 14px;
 					font-weight: 400;
-					line-height: 18px;
-					small {
-						font-size: 12px;
-						color: $gray;
-					}
-					span {
-						font-size: 14px;
-						font-weight: 400;
-						line-height: 18px;
-					}
+					line-height: 100%;
 				}
 			}
 		}

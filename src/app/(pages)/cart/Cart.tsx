@@ -13,13 +13,14 @@ import {
 } from "@/components"
 import { FC } from "react"
 
-import { FaUser } from "react-icons/fa6"
-
 import { useCart } from "@/hooks/cart/useCart"
 import { useDeliver } from "@/hooks/deliver/useDeliver"
 import { useScreen } from "@/hooks/screen/useScreen"
 import { useUser } from "@/hooks/user/useUser"
 import { scrollToSection } from "@/utils/scrollToAnchor"
+import { FaUser } from "react-icons/fa6"
+import { IoMailOutline } from "react-icons/io5"
+import { MdOutlinePhone } from "react-icons/md"
 import style from "./cart.module.scss"
 
 export const Cart: FC = () => {
@@ -40,36 +41,40 @@ export const Cart: FC = () => {
 				<div className={style.order}>
 					<div className={style.box}>
 						<h5 className={style.title}>
-							<span>Получатель</span>
+							<span>Данные пользователя</span>
 							<UserIconComponent />
 						</h5>
-						<div className={style.out}>
-							{user ? (
-								<div className={style.user}>
-									<div className={style.user_field}>
-										<small>Имя: </small>
-										<span>{user.name}</span>
-									</div>
-									<div className={style.user_field}>
-										<small>Email: </small>
-										<span>{user.email}</span>
-									</div>
-									<div className={style.user_field}>
-										<small>Телефон: </small>
-										<span>{user.phoneNumber}</span>
-									</div>
+						{user ? (
+							<div className={style.user}>
+								<div className={style.user_field}>
+									<small>
+										<UserIconComponent />
+									</small>
+									<span>{user.name}</span>
 								</div>
-							) : (
-								<ButtonComponent
-									id="#section-authorization"
-									className={style.button}
-									onClick={() => setContentHandler(<AuthComponent />)}
-								>
-									<FaUser />
-									Войдите в систему или зарегистрируйтесь
-								</ButtonComponent>
-							)}
-						</div>
+								<div className={style.user_field}>
+									<small>
+										<IoMailOutline />
+									</small>
+									<span>{user.email}</span>
+								</div>
+								<div className={style.user_field}>
+									<small>
+										<MdOutlinePhone />
+									</small>
+									<span>{user.phoneNumber}</span>
+								</div>
+							</div>
+						) : (
+							<ButtonComponent
+								id="#section-authorization"
+								className={style.button}
+								onClick={() => setContentHandler(<AuthComponent />)}
+							>
+								<FaUser />
+								Войдите в систему или зарегистрируйтесь
+							</ButtonComponent>
+						)}
 					</div>
 					<div className={style.box}>
 						<h5 className={style.title}>

@@ -47,7 +47,10 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 										size="1xxl"
 										orientation="column"
 									/>
-									<ButtonComponent btnType="promo" />
+									<ButtonComponent
+										btnType="promo"
+										title="Скоро будет доступно"
+									/>
 								</div>
 								<h4 className={style.title}>{product.title}</h4>
 								<div className={style.items}>
@@ -104,7 +107,7 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 									size="1xxl"
 									orientation="row"
 								/>
-								<ButtonComponent btnType="promo" />
+								<ButtonComponent btnType="promo" title="Скоро будет доступно" />
 							</div>
 						</div>
 					</div>

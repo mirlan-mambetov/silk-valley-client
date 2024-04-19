@@ -128,10 +128,11 @@
 					gap: 5px;
 				}
 			}
+
 			.rows {
 				display: flex;
 				flex-direction: column;
-				gap: 12px;
+				gap: 10px;
 				.row {
 					display: flex;
 					align-items: center;
@@ -140,6 +141,7 @@
 						flex: 1;
 						color: $gray;
 						font-size: 12px;
+						line-height: 18px;
 					}
 					span {
 						flex: 1;
