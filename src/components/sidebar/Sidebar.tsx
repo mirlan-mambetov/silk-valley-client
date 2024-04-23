@@ -18,6 +18,7 @@ interface ISidebarComponentProps {
 }
 export const SidebarComponent: FC<ISidebarComponentProps> = ({ ...props }) => {
 	const [categoryId, setCategoryId] = useState<number | null>(null)
+	const [childCategoryId, setChildCategoryId] = useState<number | null>(null)
 	const { isOpen } = useSideBar()
 
 	const { data, isFetching } = useFetchAllCategories()
@@ -66,10 +67,39 @@ export const SidebarComponent: FC<ISidebarComponentProps> = ({ ...props }) => {
 												<li
 													className={style.submenuItem}
 													key={secondCategory.id}
+													onMouseEnter={() =>
+														setChildCategoryId(secondCategory.id)
+													}
 												>
 													<Link href={`/catalog/${secondCategory.slug}`}>
 														{secondCategory.name}
 													</Link>
+													{secondCategory.childsCategories.length ? (
+														<ul
+															onMouseLeave={() => {
+																setChildCategoryId(null)
+															}}
+															className={cn(style.submenu, {
+																[style.isOpen]:
+																	childCategoryId === secondCategory.id,
+															})}
+														>
+															{secondCategory.childsCategories.map(
+																(childCategory) => (
+																	<li
+																		className={style.submenuItem}
+																		key={childCategory.id}
+																	>
+																		<Link
+																			href={`/catalog/${childCategory.name}`}
+																		>
+																			{childCategory.name}
+																		</Link>
+																	</li>
+																)
+															)}
+														</ul>
+													) : null}
 												</li>
 											))}
 										</ul>
