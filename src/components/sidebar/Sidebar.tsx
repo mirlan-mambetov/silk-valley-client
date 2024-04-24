@@ -9,14 +9,14 @@ import { useSideBar } from "@/hooks/useSidebar/useSidebar"
 import cn from "classnames"
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { FC, useEffect, useState } from "react"
+import { FC, memo, useEffect, useState } from "react"
 import { LoaderComponent } from ".."
 import style from "./sidebar.module.scss"
 
 interface ISidebarComponentProps {
 	isOpen?: boolean
 }
-export const SidebarComponent: FC<ISidebarComponentProps> = ({ ...props }) => {
+const SidebarComponent: FC<ISidebarComponentProps> = ({ ...props }) => {
 	const [categoryId, setCategoryId] = useState<number | null>(null)
 	const [childCategoryId, setChildCategoryId] = useState<number | null>(null)
 	const { isOpen } = useSideBar()
@@ -118,3 +118,5 @@ export const SidebarComponent: FC<ISidebarComponentProps> = ({ ...props }) => {
 		</>
 	)
 }
+
+export default memo(SidebarComponent)

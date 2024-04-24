@@ -69,8 +69,8 @@ export const Detail: FC<IDetailProps> = ({ data }) => {
 							data={data}
 							selectedColor={selectedColor}
 							selectedSize={selectedSize}
-							setSelectedColor={(value) => setSelectedColor(value)}
-							setSelectedSize={(value) => setSelectedSize(value)}
+							selectedColorHandler={(value) => setSelectedColor(value)}
+							selectedSizeHandler={(value) => setSelectedSize(value)}
 						/>
 					</div>
 				</div>

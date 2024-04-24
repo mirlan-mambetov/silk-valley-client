@@ -3,7 +3,7 @@ import { IProduct } from "./product.interface"
 export interface ICartProduct extends IProduct {
 	selectedColor: string | undefined
 	selectedSize: string | undefined
-	productQuantity: number
+	productQuantity?: number
 }
 export interface ICartPayload {
 	product: ICartProduct

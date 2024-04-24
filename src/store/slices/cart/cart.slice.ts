@@ -61,16 +61,21 @@ export const cartSlice = createSlice({
 			const { id, type } = payload
 			const product = state.products.find((product) => product.id === id)
 			if (product) {
-				if (type === "plus" && product.productQuantity < product.quantity) {
+				if (
+					type === "plus" &&
+					product.productQuantity &&
+					product.productQuantity < product.quantity
+				) {
 					product.productQuantity++
-				} else if (type === "minus" && product.productQuantity > 1) {
+				} else if (
+					type === "minus" &&
+					product.productQuantity &&
+					product.productQuantity > 1
+				) {
 					product.productQuantity--
 				}
 			}
 		},
-		// addAttributeToProduct: (state, {payload}: PayloadAction<ICartAddAttributePayload>) => {
-		// 	state.products.
-		// }
 	},
 	extraReducers: (build) => {},
 })

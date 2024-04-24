@@ -13,7 +13,7 @@ import { useDeliver } from "@/hooks/deliver/useDeliver"
 import { useScreen } from "@/hooks/screen/useScreen"
 import { IProduct } from "@/interfaces/product.interface"
 import cn from "classnames"
-import { FC, useEffect, useState } from "react"
+import { FC, useEffect, useMemo, useState } from "react"
 import { FiEdit2 } from "react-icons/fi"
 import { SlHandbag } from "react-icons/sl"
 import style from "./product-info.module.scss"
@@ -38,11 +38,15 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 	const { address } = useDeliver()
 	const { products } = useCart()
 
-	useEffect(() => {
+	const attributes = useMemo(() => {
 		const isExist = products.find((product) => product.id === data.id)
+		return isExist
+	}, [products])
+
+	useEffect(() => {
 		setIsExistAttributes({
-			existColor: isExist?.selectedColor,
-			existSize: isExist?.selectedSize,
+			existColor: attributes?.selectedColor,
+			existSize: attributes?.selectedSize,
 		})
 	}, [])
 

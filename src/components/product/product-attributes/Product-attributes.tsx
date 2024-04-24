@@ -11,7 +11,7 @@ import { IProduct } from "@/interfaces/product.interface"
 import { hostSourceImages } from "@/utils/hostSource"
 import cn from "classnames"
 import Image from "next/image"
-import { Dispatch, FC, SetStateAction } from "react"
+import { FC } from "react"
 import { MdContentCopy } from "react-icons/md"
 import { SwiperSlide } from "swiper/react"
 import style from "./product-attributes.module.scss"
@@ -20,15 +20,15 @@ interface IAttributesComponentProps {
 	data: IProduct
 	selectedColor: string | undefined
 	selectedSize: string | undefined
-	setSelectedColor: Dispatch<SetStateAction<string | undefined>>
-	setSelectedSize: Dispatch<SetStateAction<string | undefined>>
+	selectedColorHandler: (value: string) => void
+	selectedSizeHandler: (value: string) => void
 }
 export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 	data,
 	selectedColor,
 	selectedSize,
-	setSelectedColor,
-	setSelectedSize,
+	selectedColorHandler,
+	selectedSizeHandler,
 }) => {
 	console.log(data.sizes)
 	return (
@@ -104,7 +104,7 @@ export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 								})}
 								key={color.id}
 								onClick={() => {
-									setSelectedColor(color.color)
+									selectedColorHandler(color.color)
 								}}
 							>
 								<Image
@@ -132,7 +132,7 @@ export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 									})}
 									key={i}
 									onClick={() => {
-										setSelectedSize(size)
+										selectedSizeHandler(size)
 									}}
 								>
 									{size}

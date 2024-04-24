@@ -6,11 +6,11 @@ import {
 	HeaderComponent,
 	NotifyComponent,
 	ScreenComponent,
-	SidebarComponent,
 } from "@/components"
 import { MobileNavigation } from "@/components/mobile/mobile-navigation/Mobile-navigation"
 import { ModalComponent } from "@/components/modal/Modal"
 import { ModalDialogComponent } from "@/components/modal/modal-dialog/Modal-dialog"
+import SidebarComponent from "@/components/sidebar/Sidebar"
 import {
 	getSessionStorage,
 	setSessionStorage,
