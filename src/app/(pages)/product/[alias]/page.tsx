@@ -10,7 +10,11 @@ import { Detail } from "./detail/Detail"
 
 export async function fetchData({ params }: IPageParams): Promise<IProduct> {
 	const { alias } = params
-	const response = await fetch(`${APP_URI}/product/by-alias/${alias}`)
+	const response = await fetch(`${APP_URI}/product/by-alias/${alias}`, {
+		next: {
+			revalidate: 60,
+		},
+	})
 	if (!response.ok) notFound()
 	const product = await response.json()
 	return product

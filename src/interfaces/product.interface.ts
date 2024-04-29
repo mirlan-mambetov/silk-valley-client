@@ -7,16 +7,21 @@ export interface IProduct extends IBase {
 	video?: string
 	description: string
 	poster: string
-	images: IProductImages[]
 	price: number
 	articleNumber: number
 	rating: number
 	new?: boolean
-	sizes?: string[]
 	discount?: number
 	isHit?: boolean
 	specifications?: IProductSpecifications
 	quantity: number
+	attributes: IProductAttributes[]
+}
+
+export interface IProductAttributes extends IBase {
+	color: string
+	size?: string
+	images: string[]
 }
 
 export interface IProductImages extends IBase {

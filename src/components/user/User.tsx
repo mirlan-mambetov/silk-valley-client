@@ -5,7 +5,6 @@ import useOutsiteClick from "@/hooks/useOutsideClick"
 import { IUser } from "@/interfaces/user.interface"
 import { hostSourceImages } from "@/utils/hostSource"
 import cn from "classnames"
-import Image from "next/image"
 import Link from "next/link"
 import { DetailsHTMLAttributes, FC } from "react"
 import { GoHeart, GoStar } from "react-icons/go"
@@ -24,8 +23,7 @@ export const UserComponent: FC<IUserComponentProps> = ({ user, ...props }) => {
 	return (
 		<div className={style.user} {...props} title={user.name}>
 			<div className={style.avatar} onClick={() => setIsShow(!isShow)}>
-				<Image
-					priority
+				<img
 					width={30}
 					height={30}
 					src={

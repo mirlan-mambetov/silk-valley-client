@@ -21,19 +21,20 @@ import style from "./product-info.module.scss"
 interface IProductInfoComponentProps {
 	data: IProduct
 	type?: "sticky" | "default"
-	size: string | undefined
-	color: string | undefined
+	selectedColor?: string
+	selectedSize?: string
 }
 export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 	data,
 	type = "default",
-	color,
-	size,
+	selectedColor,
+	selectedSize,
 }) => {
 	const [isExistAttributes, setIsExistAttributes] = useState<
 		| { existColor: string | undefined; existSize: string | undefined }
 		| undefined
 	>(undefined)
+
 	const { setContentHandler } = useScreen()
 	const { address } = useDeliver()
 	const { products } = useCart()
@@ -101,11 +102,11 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 					</div>
 				</div>
 
-				{color ? (
+				{selectedColor ? (
 					<div className={style.box}>
 						<small>Цвет</small>
 						<div className={style.box_item}>
-							<span>{color}</span>
+							<span>{selectedColor}</span>
 						</div>
 					</div>
 				) : isExistAttributes?.existColor ? (
@@ -117,11 +118,11 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 					</div>
 				) : null}
 
-				{size ? (
+				{selectedSize ? (
 					<div className={style.box}>
 						<small>Размеры</small>
 						<div className={style.box_item}>
-							<span>{size}</span>
+							<span>{selectedSize}</span>
 						</div>
 					</div>
 				) : isExistAttributes?.existSize ? (
@@ -135,8 +136,8 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 
 				<ProductActionsComponent
 					btnSize="2xl"
-					color={color}
-					size={size}
+					// color={color}
+					// size={size}
 					actionType="toCart"
 					alias={data.alias}
 					product={data}

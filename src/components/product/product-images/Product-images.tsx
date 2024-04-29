@@ -1,9 +1,8 @@
 "use client"
 
-import { ButtonComponent } from "@/components/button/Button"
+import { ButtonComponent } from "@/components"
 import { SwiperComponent } from "@/components/swiper-component/Swiper-component"
 import { useWindowWidth } from "@/hooks/app/useWindowWidth"
-import { IProductImages } from "@/interfaces/product.interface"
 import { hostSourceImages } from "@/utils/hostSource"
 import Image from "next/image"
 import { FC, useEffect, useState } from "react"
@@ -19,7 +18,7 @@ import style from "./product-images.module.scss"
 interface IProductImagesComponent {
 	data: {
 		poster: string
-		images: Pick<IProductImages, "image">
+		images: string[]
 	}
 }
 export const ProductImagesComponent: FC<IProductImagesComponent> = ({
@@ -74,7 +73,7 @@ export const ProductImagesComponent: FC<IProductImagesComponent> = ({
 						},
 					}}
 				>
-					{data.images.image.map((image, i) => (
+					{data.images.map((image, i) => (
 						<SwiperSlide key={i} className={style.slide}>
 							<Image
 								className={style.image}

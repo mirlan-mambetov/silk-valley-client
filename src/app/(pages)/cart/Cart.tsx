@@ -44,20 +44,29 @@ export const Cart: FC = () => {
 				<div className={style.information}>
 					<div className={style.info}>
 						{user ? (
-							<div className={style.user}>
-								<div className={style.userField}>
-									<small>
-										<BsEnvelopeAt />
-									</small>
-									<span>{user.email}</span>
+							<>
+								<div className={style.user}>
+									<div className={style.userField}>
+										<small>
+											<BsEnvelopeAt />
+										</small>
+										<span>{user.email}</span>
+									</div>
+									<div className={style.userField}>
+										<small>
+											<MdOutlinePhone />
+										</small>
+										<span>{user.phoneNumber}</span>
+									</div>
 								</div>
-								<div className={style.userField}>
-									<small>
-										<MdOutlinePhone />
-									</small>
-									<span>{user.phoneNumber}</span>
-								</div>
-							</div>
+								<ButtonComponent
+									className={style.edit}
+									title="Изменить профиль"
+									onClick={() => push("/user")}
+								>
+									<FiEdit2 fontSize={20} />
+								</ButtonComponent>
+							</>
 						) : (
 							<ButtonComponent
 								id="#section-authorization"
@@ -68,20 +77,22 @@ export const Cart: FC = () => {
 								Войдите в систему или зарегистрируйтесь
 							</ButtonComponent>
 						)}
-						<ButtonComponent
-							className={style.edit}
-							title="Изменить профиль"
-							onClick={() => push("/user")}
-						>
-							<FiEdit2 fontSize={20} />
-						</ButtonComponent>
 					</div>
 					<div className={style.info}>
 						{Object.values(address).some((value) => value?.length) ? (
-							<div className={style.deliver}>
-								{showDestinationName(address)}
-								<DeliverActionComponent />
-							</div>
+							<>
+								<div className={style.deliver}>
+									{showDestinationName(address)}
+									<DeliverActionComponent />
+								</div>
+								<ButtonComponent
+									className={style.edit}
+									title="Выбрать координаты доставки"
+									onClick={() => setContentHandler(<DeliverComponent />)}
+								>
+									<FiEdit2 fontSize={20} />
+								</ButtonComponent>
+							</>
 						) : (
 							<ButtonComponent
 								className={style.button}
@@ -91,13 +102,6 @@ export const Cart: FC = () => {
 								Выберите координаты
 							</ButtonComponent>
 						)}
-						<ButtonComponent
-							className={style.edit}
-							title="Выбрать координаты доставки"
-							onClick={() => setContentHandler(<DeliverComponent />)}
-						>
-							<FiEdit2 fontSize={20} />
-						</ButtonComponent>
 					</div>
 				</div>
 			</div>

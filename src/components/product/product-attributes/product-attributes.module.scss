@@ -103,12 +103,10 @@
 			}
 		}
 		.colors {
-			position: relative;
 			width: 100%;
-
 			.slider {
 				.color {
-					position: relative;
+					position: relative !important;
 					padding-top: calc(100% * (45 / 220));
 					cursor: pointer;
 					&.active_color {

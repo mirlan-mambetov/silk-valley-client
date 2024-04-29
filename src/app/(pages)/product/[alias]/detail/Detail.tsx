@@ -1,15 +1,11 @@
 "use client"
 
 import {
-	MobileDetailInfoComponent,
 	ProductAttributesComponent,
 	ProductImagesComponent,
 	ProductInfoComponent,
-	ProductSpecificationsComponent,
-	StickyHeaderComponent,
 } from "@/components"
-import { useWindowWidth } from "@/hooks/app/useWindowWidth"
-import { IProduct, IProductImages } from "@/interfaces/product.interface"
+import { IProduct } from "@/interfaces/product.interface"
 import { FC, useEffect, useState } from "react"
 import style from "./detail.module.scss"
 
@@ -17,34 +13,28 @@ interface IDetailProps {
 	data: IProduct
 }
 export const Detail: FC<IDetailProps> = ({ data }) => {
-	// FOR SELECTED IMAGE WITH COLOR
-	const [selectedImages, setSelectedImages] = useState<
-		IProductImages | undefined
-	>(undefined)
-
-	// SELECTED COLOR PRODUCT
+	const [selectedImages, setSelectedImages] = useState<string[] | undefined>(
+		undefined
+	)
 	const [selectedColor, setSelectedColor] = useState<string | undefined>(
-		data.images[0].color
+		undefined
 	)
-
-	// SELECTED SIZE PRODUCT
 	const [selectedSize, setSelectedSize] = useState<string | undefined>(
-		data.sizes ? data.sizes[0] : undefined
+		undefined
 	)
-
-	const { width } = useWindowWidth()
 
 	useEffect(() => {
 		if (selectedColor) {
-			const images = data.images.find((itemt) => itemt.color === selectedColor)
-			setSelectedImages(images)
+			const attribute = data.attributes.find(
+				(item) => item.color === selectedColor
+			)
+			setSelectedImages(attribute?.images)
 		}
 	}, [selectedColor])
-
 	return (
 		<div className={style.detail}>
 			{/* STICKY INFORMATION */}
-			<StickyHeaderComponent start={width < 940 ? 200 : 900}>
+			{/* <StickyHeaderComponent start={width < 940 ? 200 : 900}>
 				<MobileDetailInfoComponent
 					data={data}
 					selectedColor={selectedColor}
@@ -52,37 +42,37 @@ export const Detail: FC<IDetailProps> = ({ data }) => {
 					setSelectedColor={(value) => setSelectedColor(value)}
 					setSelectedSize={(value) => setSelectedSize(value)}
 				/>
-			</StickyHeaderComponent>
+			</StickyHeaderComponent> */}
 			<div className={style.wrap}>
 				{/* PRODUCT */}
 				<div className={style.product}>
 					{/* IMAGES */}
 					<ProductImagesComponent
 						data={{
-							poster: selectedImages ? selectedImages.image[0] : data.poster,
-							images: selectedImages ? selectedImages : data.images[0],
+							poster: selectedImages ? selectedImages[0] : data.poster,
+							images: selectedImages || data.attributes[0].images,
 						}}
 					/>
 					{/* PRODUCT CONTENT */}
 					<div className={style.product_content}>
 						<ProductAttributesComponent
-							data={data}
 							selectedColor={selectedColor}
 							selectedSize={selectedSize}
-							selectedColorHandler={(value) => setSelectedColor(value)}
-							selectedSizeHandler={(value) => setSelectedSize(value)}
+							data={data}
+							selectedColorHandle={(value) => setSelectedColor(value)}
+							selectedSizeHandle={(value) => setSelectedSize(value)}
 						/>
 					</div>
 				</div>
 				{/* ORDER INFO */}
-				{width > 940 ? (
-					<ProductInfoComponent
-						data={data}
-						size={selectedSize}
-						color={selectedColor}
-					/>
-				) : null}
-				<ProductSpecificationsComponent specifications={data.specifications} />
+				{/* {width > 940 ? ( */}
+				<ProductInfoComponent
+					data={data}
+					selectedColor={selectedColor}
+					selectedSize={selectedSize}
+				/>
+				{/* // ) : null} */}
+				{/* <ProductSpecificationsComponent specifications={data.specifications} /> */}
 			</div>
 		</div>
 	)

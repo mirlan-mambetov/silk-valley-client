@@ -18,19 +18,18 @@ import style from "./product-attributes.module.scss"
 
 interface IAttributesComponentProps {
 	data: IProduct
-	selectedColor: string | undefined
-	selectedSize: string | undefined
-	selectedColorHandler: (value: string) => void
-	selectedSizeHandler: (value: string) => void
+	selectedColorHandle: (value: string) => void
+	selectedSizeHandle: (value: string) => void
+	selectedSize?: string
+	selectedColor?: string
 }
 export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 	data,
+	selectedColorHandle,
+	selectedSizeHandle,
 	selectedColor,
 	selectedSize,
-	selectedColorHandler,
-	selectedSizeHandler,
 }) => {
-	console.log(data.sizes)
 	return (
 		<div className={style.attributes}>
 			<div className={style.attribute}>
@@ -69,11 +68,13 @@ export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 			<div className={style.attribute}>
 				<h5 className={style.title}>
 					Цвет:
-					<b>{selectedColor ? selectedColor : data.images[0].color}</b>
+					<b>{data.attributes[0].color}</b>
 				</h5>
+
 				<div className={cn(style.colors)}>
 					<SwiperComponent
 						options={{
+							slidesPerView: 6,
 							className: style.slider,
 							breakpoints: {
 								300: {
@@ -96,22 +97,22 @@ export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 							},
 						}}
 					>
-						{data.images.map((color) => (
+						{data.attributes.map((attribute) => (
 							<SwiperSlide
-								title={`Цвет: ${color.color}`}
+								title={`Цвет: ${attribute.color}`}
 								className={cn(style.color, {
-									[style.active_color]: selectedColor === color.color,
+									[style.active_color]: selectedColor === attribute.color,
 								})}
-								key={color.id}
+								key={attribute.id}
 								onClick={() => {
-									selectedColorHandler(color.color)
+									selectedColorHandle(attribute.color)
 								}}
 							>
 								<Image
-									src={hostSourceImages(color.image[0])}
+									src={hostSourceImages(attribute.images[0])}
 									width={80}
 									height={110}
-									alt={color.color}
+									alt={attribute.color}
 								/>
 							</SwiperSlide>
 						))}
@@ -120,22 +121,24 @@ export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 			</div>
 
 			{/* SIZES */}
-			{data.sizes && data.sizes?.length > 10 ? (
+			{data.attributes ? (
 				<div className={style.attribute}>
 					<h5 className={style.title}>Размеры</h5>
 					<div className={style.sizes}>
 						<div className={style.size}>
-							{data.sizes.map((size, i) => (
+							{data.attributes.map((attribute, i) => (
 								<ButtonComponent
 									className={cn(style.button, {
-										[style.active_color]: selectedSize === size,
+										[style.active_color]: selectedSize === attribute.size,
 									})}
 									key={i}
 									onClick={() => {
-										selectedSizeHandler(size)
+										attribute.size
+											? selectedSizeHandle(attribute.size)
+											: undefined
 									}}
 								>
-									{size}
+									{attribute.size}
 								</ButtonComponent>
 							))}
 						</div>
