@@ -136,8 +136,8 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 
 				<ProductActionsComponent
 					btnSize="2xl"
-					// color={color}
-					// size={size}
+					color={selectedColor}
+					size={selectedSize}
 					actionType="toCart"
 					alias={data.alias}
 					product={data}

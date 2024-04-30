@@ -7,7 +7,7 @@ import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { IProduct } from "@/interfaces/product.interface"
 import cn from "classnames"
 import { useRouter } from "next/navigation"
-import { FC, useMemo } from "react"
+import { FC } from "react"
 import style from "./product.actions.module.scss"
 
 interface IProductActionsComponentProps {
@@ -33,17 +33,9 @@ export const ProductActionsComponent: FC<IProductActionsComponentProps> = ({
 	const { addToCart, openNotifyHandler } = useStoreActions()
 	const { isLoading, setLoadingHandler } = useLoader()
 
-	const isExistSize = useMemo(() => {
-		if (product.sizes?.length) return true
-		return false
-	}, [product])
-
+	console.log(size)
+	console.log(color)
 	const addToCartHandler = async () => {
-		if (isExistSize && !size) {
-			return openNotifyHandler({
-				text: "Выберите размер",
-			})
-		}
 		setLoadingHandler()
 		await new Promise<void>((resolve) => {
 			setTimeout(() => {

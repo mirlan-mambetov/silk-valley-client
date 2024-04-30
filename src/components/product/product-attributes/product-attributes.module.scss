@@ -108,8 +108,12 @@
 				.color {
 					position: relative !important;
 					padding-top: calc(100% * (45 / 220));
+					border: 1px solid $darkenRGBA;
+					border-radius: 4px;
+
 					cursor: pointer;
 					&.active_color {
+						border: none;
 						&::after {
 							content: "";
 							position: absolute;

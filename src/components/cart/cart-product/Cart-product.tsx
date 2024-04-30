@@ -23,7 +23,6 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 }) => {
 	const { removeFromCart } = useStoreActions()
 	const { openNotifyHandler } = useStoreActions()
-
 	return (
 		<div className={style.cart}>
 			{products.length ? (

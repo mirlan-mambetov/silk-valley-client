@@ -51,7 +51,7 @@ export const CartRangeComponent: FC<ICartRangeComponentProps> = ({
 			{text && <small>Количество</small>}
 			<div className={style.quantity_item}>
 				<ButtonComponent
-					disabled={minusLoading}
+					disabled={minusLoading || product.quantity == 1}
 					isLoading={minusLoading}
 					title="Убрать"
 					btnType="rangeButton"
@@ -61,7 +61,7 @@ export const CartRangeComponent: FC<ICartRangeComponentProps> = ({
 				</ButtonComponent>
 				<span>{quantity}</span>
 				<ButtonComponent
-					disabled={plusLoading}
+					disabled={plusLoading || product.quantity <= 1}
 					isLoading={plusLoading}
 					title="Добавить"
 					btnType="rangeButton"
