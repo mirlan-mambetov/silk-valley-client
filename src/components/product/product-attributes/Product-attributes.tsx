@@ -68,7 +68,7 @@ export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 			<div className={style.attribute}>
 				<h5 className={style.title}>
 					Цвет:
-					<b>{data.attributes[0].color}</b>
+					<b>{selectedColor}</b>
 				</h5>
 
 				<div className={cn(style.colors)}>

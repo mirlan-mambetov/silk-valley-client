@@ -5,32 +5,51 @@ import {
 	ProductImagesComponent,
 	ProductInfoComponent,
 } from "@/components"
+import { useCart } from "@/hooks/cart/useCart"
 import { IProduct } from "@/interfaces/product.interface"
-import { FC, useEffect, useState } from "react"
+import { FC, useEffect, useMemo, useState } from "react"
 import style from "./detail.module.scss"
 
 interface IDetailProps {
 	data: IProduct
 }
 export const Detail: FC<IDetailProps> = ({ data }) => {
+	const { products } = useCart()
+
 	const [selectedImages, setSelectedImages] = useState<string[] | undefined>(
 		undefined
 	)
 	const [selectedColor, setSelectedColor] = useState<string | undefined>(
-		undefined
+		data.attributes[0].color
 	)
 	const [selectedSize, setSelectedSize] = useState<string | undefined>(
-		undefined
+		data.attributes[0].size
 	)
+
+	const attribute = data.attributes.find((item) => item.color === selectedColor)
 
 	useEffect(() => {
 		if (selectedColor) {
-			const attribute = data.attributes.find(
-				(item) => item.color === selectedColor
-			)
 			setSelectedImages(attribute?.images)
 		}
 	}, [selectedColor])
+
+	const attributes = useMemo(() => {
+		const isExist = products.find((product) => product.id === data.id)
+		return isExist
+	}, [products])
+
+	useEffect(() => {
+		if (attributes) {
+			if (attributes.selectedColor) {
+				setSelectedColor(attributes.selectedColor)
+			}
+			if (attributes.selectedSize) {
+				setSelectedSize(attributes.selectedSize)
+			}
+		}
+	}, [])
+
 	return (
 		<div className={style.detail}>
 			{/* STICKY INFORMATION */}

@@ -13,7 +13,7 @@ import { useDeliver } from "@/hooks/deliver/useDeliver"
 import { useScreen } from "@/hooks/screen/useScreen"
 import { IProduct } from "@/interfaces/product.interface"
 import cn from "classnames"
-import { FC, useEffect, useMemo, useState } from "react"
+import { FC } from "react"
 import { FiEdit2 } from "react-icons/fi"
 import { SlHandbag } from "react-icons/sl"
 import style from "./product-info.module.scss"
@@ -30,26 +30,9 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 	selectedColor,
 	selectedSize,
 }) => {
-	const [isExistAttributes, setIsExistAttributes] = useState<
-		| { existColor: string | undefined; existSize: string | undefined }
-		| undefined
-	>(undefined)
-
 	const { setContentHandler } = useScreen()
 	const { address } = useDeliver()
 	const { products } = useCart()
-
-	const attributes = useMemo(() => {
-		const isExist = products.find((product) => product.id === data.id)
-		return isExist
-	}, [products])
-
-	useEffect(() => {
-		setIsExistAttributes({
-			existColor: attributes?.selectedColor,
-			existSize: attributes?.selectedSize,
-		})
-	}, [])
 
 	return (
 		<div
@@ -102,38 +85,23 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 					</div>
 				</div>
 
-				{selectedColor ? (
+				{selectedColor && (
 					<div className={style.box}>
 						<small>Цвет</small>
 						<div className={style.box_item}>
 							<span>{selectedColor}</span>
 						</div>
 					</div>
-				) : isExistAttributes?.existColor ? (
-					<div className={style.box}>
-						<small>Цвет</small>
-						<div className={style.box_item}>
-							<span>{isExistAttributes?.existColor}</span>
-						</div>
-					</div>
-				) : null}
+				)}
 
-				{selectedSize ? (
+				{selectedSize && (
 					<div className={style.box}>
 						<small>Размеры</small>
 						<div className={style.box_item}>
 							<span>{selectedSize}</span>
 						</div>
 					</div>
-				) : isExistAttributes?.existSize ? (
-					<div className={style.box}>
-						<small>Размеры</small>
-						<div className={style.box_item}>
-							<span>{isExistAttributes?.existSize}</span>
-						</div>
-					</div>
-				) : null}
-
+				)}
 				<ProductActionsComponent
 					btnSize="2xl"
 					color={selectedColor}
