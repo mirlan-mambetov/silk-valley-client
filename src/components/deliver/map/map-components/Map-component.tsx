@@ -3,6 +3,7 @@ import { mapApi } from "@/api/map.api"
 import { useMapClickedBlock } from "@/hooks/map/useMapClickedBlock"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { useStoreReducer } from "@/hooks/store/useStoreReducer"
+import { useQuery } from "@tanstack/react-query"
 import { LatLngExpression } from "leaflet"
 import "leaflet-defaulticon-compatibility"
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css"
@@ -20,11 +21,18 @@ const MapComponent: FC<IMapProps> = ({ currentLocation, coordinates }) => {
 	const [selectedPoint, setSelectedPoint] = useState<LatLngExpression | null>(
 		null
 	)
-	const { addDeliverAddress } = useStoreActions()
 	const [clickPoint, setClickPoint] = useState<{
 		lat: number
 		lng: number
 	} | null>(null)
+
+	const { addDeliverAddress } = useStoreActions()
+
+	const { data, isLoading, refetch } = useQuery({
+		queryKey: ["getMapGeoCodes", clickPoint],
+		queryFn: () => mapApi.getGoeCode(clickPoint?.lat, clickPoint?.lng),
+		enabled: !!clickPoint,
+	})
 
 	const map = useMapEvents({
 		click(e) {
@@ -42,34 +50,37 @@ const MapComponent: FC<IMapProps> = ({ currentLocation, coordinates }) => {
 	}, [coordinates])
 
 	useEffect(() => {
-		const getGeo = async (lat: number, lng: number) => {
-			const res = await mapApi.getGoeCode(lat, lng)
-			addDeliverAddress({
-				city: res.address?.city,
-				city_district: res.address?.city_district,
-				country: res.address?.country,
-				country_code: res.address?.country_code,
-				house_number: res.address?.house_number,
-				postCode: res.address?.postCode,
-				road: res.address?.road,
-				state: res.address?.state,
-				village: res.address?.village,
-				town: res.address?.town,
-			})
-			openNotifyHandler({
-				text: "Координаты выбраны",
-				type: "success",
-				options: { position: "bottomCenter" },
-			})
-		}
-
 		if (clickPoint) {
-			getGeo(clickPoint.lat, clickPoint.lng)
+			refetch()
+			if (data) {
+				addDeliverAddress({
+					city: data.address?.city,
+					city_district: data.address?.city_district,
+					country: data.address?.country,
+					country_code: data.address?.country_code,
+					house_number: data.address?.house_number,
+					postCode: data.address?.postCode,
+					road: data.address?.road,
+					state: data.address?.state,
+					village: data.address?.village,
+					town: data.address?.town,
+				})
+				openNotifyHandler({
+					text: "Координаты выбраны",
+					type: "success",
+					options: { position: "bottomCenter" },
+				})
+			}
 		}
-	}, [clickPoint])
+	}, [clickPoint, data])
 
 	return (
 		<>
+			{isLoading && (
+				<div className={style.loader}>
+					<span>Выбираем координат...</span>
+				</div>
+			)}
 			<TileLayer url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png" />
 			{selectedPoint ? (
 				<Marker position={selectedPoint}>

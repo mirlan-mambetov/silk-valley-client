@@ -3,9 +3,7 @@
 import { DeliverActionComponent } from "@/components"
 import { ButtonComponent } from "@/components/button/Button"
 import { deliverInformationMotion } from "@/framer-motion/deliver/deliver.motion"
-import { useLoader } from "@/hooks/app/useLoader"
 import { useDeliver } from "@/hooks/deliver/useDeliver"
-import { useScreen } from "@/hooks/screen/useScreen"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { motion } from "framer-motion"
 import { FC, TouchEventHandler, useState } from "react"
@@ -23,12 +21,9 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 	position,
 }) => {
 	const [fullView, setFullView] = useState(false)
-	const { address, isConfirm } = useDeliver()
+	const { address } = useDeliver()
 	const [touchStartY, setTouchStartY] = useState(0)
-	const { clearContentHandler } = useScreen()
-	const { isLoading, setLoadingHandler } = useLoader()
-	const { openModalHandler, openNotifyHandler, confirmDeliver } =
-		useStoreActions()
+	const { openModalHandler } = useStoreActions()
 
 	const handleTouchStart: TouchEventHandler<HTMLDivElement> = (event) => {
 		setTouchStartY(event.touches[0].clientY)

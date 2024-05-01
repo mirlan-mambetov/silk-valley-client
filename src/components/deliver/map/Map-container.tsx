@@ -6,11 +6,9 @@ import { LatLngExpression } from "leaflet"
 import dynamic from "next/dynamic"
 import { FC, useState } from "react"
 import { TbCurrentLocation } from "react-icons/tb"
-import { MapContainer } from "react-leaflet"
-import style from "./map.module.scss"
+import { MapContainer, TileLayer } from "react-leaflet"
 import { IMapProps } from "./Map.props"
-
-// import { MapSearchComponent } from "./map-components/map-search/Map-search"
+import style from "./map.module.scss"
 
 const MapComponent = dynamic(
 	async () => await import("./map-components/Map-component"),
@@ -36,6 +34,7 @@ const MapContainerComponent: FC<IMapProps> = ({ currentLocation }) => {
 					zoomControl={false}
 					scrollWheelZoom={true}
 				>
+					<TileLayer url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png" />
 					<MapComponent
 						currentLocation={currentLocation}
 						coordinates={coordinates}
