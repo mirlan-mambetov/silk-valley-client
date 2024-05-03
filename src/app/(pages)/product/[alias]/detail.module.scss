@@ -1,6 +1,6 @@
-@import "../../../../../styles/mixin";
-@import "../../../../../styles/vars";
-@import "../../../../../styles/media.mixin";
+@import "../../../../styles/mixin";
+@import "../../../../styles/vars";
+@import "../../../../styles/media.mixin";
 
 .detail {
 	@include mediaLarge480px {

@@ -7,7 +7,7 @@ import {
 	ProductPriceComponent,
 } from "@/components"
 import { showDestinationName } from "@/helpers/showDestinationName"
-import { useCartPriceCalculate } from "@/hooks/cart/useCartPriceCalculate"
+import { useCart } from "@/hooks/cart/useCart"
 import { useDeliver } from "@/hooks/deliver/useDeliver"
 import { useScreen } from "@/hooks/screen/useScreen"
 import { useUser } from "@/hooks/user/useUser"
@@ -26,8 +26,8 @@ export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 	products,
 }) => {
 	const { setContentHandler } = useScreen()
+	const { totalDiscount, totalPrice } = useCart()
 	// const { openNotifyHandler } = useStoreActions()
-	const { totalPrice, totalDiscount } = useCartPriceCalculate(products)
 	const { address, isConfirm } = useDeliver()
 	const { user } = useUser()
 	const { push } = useRouter()

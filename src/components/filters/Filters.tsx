@@ -26,7 +26,7 @@ interface IFiltersComponentProps {
 		categories?: ISecondCategories[]
 		childsCategories?: IChildsCategories[]
 	}
-	attributesData: IFilterProductResponse | undefined
+	attributesData: IFilterProductResponse[] | undefined
 	isLoadingAttributes: boolean
 }
 export const FiltersComponent: FC<IFiltersComponentProps> = ({
@@ -44,7 +44,9 @@ export const FiltersComponent: FC<IFiltersComponentProps> = ({
 	return (
 		<div
 			className={cn(style.filters, {
-				[style.grid5]: attributesData?.sizes?.length,
+				[style.grid5]: attributesData?.some(
+					(attribute) => attribute.size?.length
+				),
 			})}
 		>
 			{data.categories?.length || data.childsCategories?.length ? (
@@ -87,9 +89,9 @@ export const FiltersComponent: FC<IFiltersComponentProps> = ({
 			<div className={style.box}>
 				<SelectComponent
 					isLoading={isLoadingAttributes}
-					data={attributesData?.colors.map((color) => ({
-						key: color,
-						label: color,
+					data={attributesData?.map((attribute) => ({
+						key: attribute.color,
+						label: attribute.color,
 					}))}
 					onChange={(value) => addSearchParams("selectedColor", value.key)}
 					title="Цвет"
@@ -97,20 +99,18 @@ export const FiltersComponent: FC<IFiltersComponentProps> = ({
 				/>
 			</div>
 			{/* SORTING BY SIZES */}
-			{attributesData?.sizes?.length ? (
-				<div className={style.box}>
-					<SelectComponent
-						isLoading={isLoadingAttributes}
-						data={attributesData?.sizes?.map((size) => ({
-							key: size,
-							label: size,
-						}))}
-						onChange={(value) => addSearchParams("selectedSize", value.key)}
-						title="Размеры"
-						TitleIcon={IoResizeOutline}
-					/>
-				</div>
-			) : null}
+			<div className={style.box}>
+				<SelectComponent
+					isLoading={isLoadingAttributes}
+					data={attributesData?.map((attribute) => ({
+						key: attribute.size || "undefined",
+						label: attribute.size || "undefined",
+					}))}
+					onChange={(value) => addSearchParams("selectedSize", value.key)}
+					title="Размер"
+					TitleIcon={IoResizeOutline}
+				/>
+			</div>
 			{/* CHOICE PRICE RANGE */}
 			<div className={style.box}>
 				<PriceRangeComponent />

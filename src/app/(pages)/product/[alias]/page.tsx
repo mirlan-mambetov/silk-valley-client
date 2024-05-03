@@ -4,7 +4,7 @@ import { IProduct } from "@/interfaces/product.interface"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { Suspense } from "react"
-import { Detail } from "./detail/Detail"
+import { Detail } from "./Detail"
 
 // FETCH PRODUCT BY ALIAS
 

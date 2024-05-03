@@ -11,7 +11,7 @@ import { IProduct } from "@/interfaces/product.interface"
 import cn from "classnames"
 import Image from "next/image"
 import Link from "next/link"
-import { FC } from "react"
+import { FC, useMemo } from "react"
 import style from "./product-cards.module.scss"
 
 interface IDefaultCardsComponentProps {
@@ -26,7 +26,9 @@ export const ProductCardsComponent: FC<IDefaultCardsComponentProps> = ({
 	title,
 	grid,
 }) => {
-	const limitedData = products.slice(0, limit)
+	const limitedData = useMemo(() => {
+		return products.slice(0, limit)
+	}, [products])
 
 	return (
 		<div className={style.cards}>

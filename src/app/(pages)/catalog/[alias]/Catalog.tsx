@@ -32,7 +32,6 @@ export const Catalog: FC<ICatalogProps> = ({ data }) => {
 		deleteSearchParams("mainCategoryId")
 	}, [])
 
-	console.log(data)
 	return (
 		<div className={style.catalog}>
 			<FiltersComponent

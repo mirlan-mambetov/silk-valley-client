@@ -11,7 +11,7 @@ export const FiltersApi = {
 	 */
 	async fetchProductsAttributes(slug?: string) {
 		if (slug) {
-			const response = await apiBase<IFilterProductResponse>({
+			const response = await apiBase<IFilterProductResponse[]>({
 				url: `/filters/category/product/attributes/${slug}`,
 				method: "GET",
 			})

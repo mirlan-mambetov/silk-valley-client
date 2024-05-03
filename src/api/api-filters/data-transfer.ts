@@ -1,6 +1,6 @@
 export interface IFilterProductResponse {
-	sizes?: string[]
-	colors: string[]
+	size?: string
+	color: string
 }
 export interface IFilterQueryDTO {
 	mainCategoryId?: number
