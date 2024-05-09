@@ -1,6 +1,7 @@
 "use client"
 
-import { useStoreActions } from "@/hooks/store/useStoreActions"
+import { clearTokensFromStorage } from "@/helpers/local.storage.helper"
+import { useAuth } from "@/hooks/auth/useAuth"
 import useOutsiteClick from "@/hooks/useOutsideClick"
 import { IUser } from "@/interfaces/user.interface"
 import { hostSourceImages } from "@/utils/hostSource"
@@ -18,7 +19,12 @@ interface IUserComponentProps extends DetailsHTMLAttributes<HTMLDivElement> {
 }
 export const UserComponent: FC<IUserComponentProps> = ({ user, ...props }) => {
 	const { elRef, isShow, setIsShow } = useOutsiteClick(false)
-	const { logOutUser } = useStoreActions()
+	const { logOutUser } = useAuth()
+
+	const logOutHandle = () => {
+		logOutUser()
+		clearTokensFromStorage()
+	}
 
 	return (
 		<div className={style.user} {...props} title={user.name}>
@@ -55,7 +61,7 @@ export const UserComponent: FC<IUserComponentProps> = ({ user, ...props }) => {
 						</Link>
 					</li>
 					<li className={style.item}>
-						<ButtonComponent onClick={() => logOutUser()}>
+						<ButtonComponent onClick={logOutHandle}>
 							<IoLogOutOutline size={18} />
 							Выйти
 						</ButtonComponent>

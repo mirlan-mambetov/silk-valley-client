@@ -1,4 +1,3 @@
-import { appApi } from "@/api/api"
 import { configureStore } from "@reduxjs/toolkit"
 import {
 	FLUSH,
@@ -32,7 +31,7 @@ export const appStore = configureStore({
 			serializableCheck: {
 				ignoredActions: [FLUSH, PAUSE, PERSIST, REHYDRATE, PURGE, REGISTER],
 			},
-		}).concat(appApi.middleware),
+		}),
 })
 
 export const persist = persistStore(appStore)

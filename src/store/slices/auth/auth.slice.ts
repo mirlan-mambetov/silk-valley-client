@@ -1,4 +1,3 @@
-import { clearTokensFromStorage } from "@/helpers/local.storage.helper"
 import { createSlice } from "@reduxjs/toolkit"
 
 interface IAuthInitialState {
@@ -9,6 +8,7 @@ const initialState: IAuthInitialState = {
 	isAuthentificated: false,
 	loading: false,
 }
+
 export const authSlice = createSlice({
 	name: "auth",
 	initialState,
@@ -28,7 +28,6 @@ export const authSlice = createSlice({
 		logOutUser: (state) => {
 			state.isAuthentificated = false
 			state.loading = false
-			clearTokensFromStorage()
 		},
 		registerPending: (state) => {
 			state.loading = true

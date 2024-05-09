@@ -1,4 +1,3 @@
-import { appApi } from "@/api/api"
 import { combineReducers } from "@reduxjs/toolkit"
 import { authReducer } from "./slices/auth/auth.slice"
 import { cartReducer } from "./slices/cart/cart.slice"
@@ -18,5 +17,4 @@ export const rootReducer = combineReducers({
 	user: userReducer,
 	auth: authReducer,
 	filter: filterReducer,
-	[appApi.reducerPath]: appApi.reducer,
 })

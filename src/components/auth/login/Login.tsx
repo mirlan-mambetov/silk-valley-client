@@ -6,6 +6,7 @@ import { IUserLoginDTO } from "@/api/api-user/data.transfer"
 import { ButtonComponent, FieldComponent } from "@/components"
 import { animateLoginRegister } from "@/framer-motion/auth/auth.animate"
 import { saveTokensToStorage } from "@/helpers/local.storage.helper"
+import { useAuth } from "@/hooks/auth/useAuth"
 import { useScreen } from "@/hooks/screen/useScreen"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { useMutation } from "@tanstack/react-query"
@@ -17,8 +18,8 @@ import style from "../auth-form.module.scss"
 import { IAuthProps } from "../auth.props"
 
 export const LoginComponent: FC<IAuthProps> = ({ animate, setChoice }) => {
-	const { openNotifyHandler, loginPending, loginSuccess, loginRejected } =
-		useStoreActions()
+	const { openNotifyHandler } = useStoreActions()
+	const { loginPending, loginSuccess, loginRejected } = useAuth()
 	// const [loginUser, result] = useLoginUserMutation()
 	const { clearContentHandler } = useScreen()
 
@@ -30,7 +31,7 @@ export const LoginComponent: FC<IAuthProps> = ({ animate, setChoice }) => {
 	const {
 		register,
 		handleSubmit,
-		formState: { errors, isValid },
+		// formState: { errors, isValid },
 	} = useForm<IUserLoginDTO>({ mode: "onChange" })
 
 	const loginHandler = async (data: IUserLoginDTO) => {
