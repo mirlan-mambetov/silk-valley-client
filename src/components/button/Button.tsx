@@ -10,6 +10,7 @@ import {
 import { IoIosRemoveCircleOutline, IoMdSend } from "react-icons/io"
 import { IoCloseOutline } from "react-icons/io5"
 import { LuPercent } from "react-icons/lu"
+import { MdOutlineBorderColor } from "react-icons/md"
 import { LoaderComponent } from "../loader/Loader"
 import style from "./button.module.scss"
 
@@ -23,6 +24,7 @@ type IButtonComponentProps = {
 		| "delete"
 		| "submit"
 		| "rangeButton"
+		| "placeOrder"
 	children?: ReactNode
 	size?: "xl1" | "xxl1" | "xl2"
 	isLoading?: boolean
@@ -39,6 +41,16 @@ export const ButtonComponent: FC<IButtonComponentProps> = ({
 	...props
 }) => {
 	switch (btnType) {
+		case "placeOrder":
+			return (
+				<button
+					className={cn(style.button, style.placeOrder, className)}
+					{...props}
+				>
+					<MdOutlineBorderColor />
+					{children ? <span>{children}</span> : <span>Оформить заказ</span>}
+				</button>
+			)
 		case "submit":
 			return (
 				<button

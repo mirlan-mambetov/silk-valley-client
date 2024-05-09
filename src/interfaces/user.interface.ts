@@ -1,5 +1,6 @@
-import { EnumOrderStatus } from "@/enums/Payment.enum"
+import { EnumOrderStatus, EnumPaymentMethod } from "@/enums/Payment.enum"
 import { IBase } from "./base.interface"
+import { IDeliverPoint } from "./deliver.interface"
 
 export interface IUser extends IBase {
 	name: string
@@ -16,9 +17,12 @@ export interface IUserTokens {
 
 export interface IUserOrders extends IBase {
 	status: EnumOrderStatus
-	total: number
+	totalCache: number
 	userId: number
+	payment_type: EnumPaymentMethod
 	items: IUserOrderItems[]
+	address: IDeliverPoint
+	orderId: string
 }
 export interface IUserOrderItems {
 	id: number

@@ -20,6 +20,10 @@
 		@include lowBoxShadow;
 		border: 1px dashed $darkenRGBA;
 		cursor: pointer;
+		opacity: 0.6;
+		&.active {
+			opacity: 1;
+		}
 		strong {
 			font-size: 16px;
 			font-weight: 400;

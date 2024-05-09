@@ -31,7 +31,7 @@ const User: FC = () => {
 									<div className={style.img}>
 										<Image
 											src={
-												user?.avatar.startsWith("http")
+												user?.avatar.startsWith("https")
 													? user.avatar
 													: hostSourceImages(user?.avatar)
 											}

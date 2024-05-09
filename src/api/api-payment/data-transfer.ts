@@ -1,5 +1,10 @@
-import { EnumOrderStatus } from "@/enums/Payment.enum"
+import {
+	EnumOrderStatus,
+	EnumPaymentMethod,
+	EnumPaymentStatus,
+} from "@/enums/Payment.enum"
 import { ICartProduct } from "@/interfaces/cart.interface"
+import { IDeliverPoint } from "@/interfaces/deliver.interface"
 
 export interface IPaymentDTO {
 	status: EnumOrderStatus
@@ -7,12 +12,16 @@ export interface IPaymentDTO {
 
 	totalPrice: number
 
+	paymentMethod: EnumPaymentMethod
+
 	color?: boolean
 
 	sizes?: boolean
+
+	address: IDeliverPoint
 }
 
-export interface IPaymentResponse {
+export interface IPaymentResponseWithCard {
 	id: string
 	object: string
 	after_expiration: any
@@ -37,11 +46,10 @@ export interface IPaymentResponse {
 	payment_method_types: string[]
 	payment_status: string
 	phone_number_collection: PhoneNumberCollection
-	status: string
+	status: EnumPaymentStatus
 	success_url: string
 	url: string
 }
-
 export interface CustomerDetails {
 	address: any
 	email: string

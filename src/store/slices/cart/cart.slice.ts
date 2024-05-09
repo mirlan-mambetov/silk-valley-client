@@ -3,19 +3,14 @@ import {
 	ICartProduct,
 	IChangeQuantityPayload,
 } from "@/interfaces/cart.interface"
-import { calculateDiscount } from "@/utils/product.utils"
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
 interface ICartInitialState {
 	products: ICartProduct[]
-	totalPrice: number
-	totalDiscount: number
 }
 
 const initialState: ICartInitialState = {
 	products: [],
-	totalPrice: 0,
-	totalDiscount: 0,
 }
 
 export const cartSlice = createSlice({
@@ -31,20 +26,6 @@ export const cartSlice = createSlice({
 					...payload.product,
 					productQuantity: 1,
 				})
-				let totalDiscount = 0
-				const totalPrice = state.products.reduce((acc, product) => {
-					let total: number = acc + product.price * product.productQuantity // Явно указываем тип переменной total как number
-					if (product.discount) {
-						const discountAmount: number = parseInt(
-							calculateDiscount(product.price, product.discount)
-						) // Явно указываем тип переменной discountAmount как number
-						total -= discountAmount * product.productQuantity
-						totalDiscount += discountAmount * product.productQuantity
-					}
-					return total
-				}, 0)
-				state.totalPrice = totalPrice
-				state.totalDiscount = totalDiscount
 			}
 		},
 

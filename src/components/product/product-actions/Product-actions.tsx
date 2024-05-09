@@ -2,6 +2,7 @@
 
 import { ButtonComponent } from "@/components/button/Button"
 import { useLoader } from "@/hooks/app/useLoader"
+import { useCart } from "@/hooks/cart/useCart"
 import { useExistInCart } from "@/hooks/cart/useExistInCart"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { IProduct } from "@/interfaces/product.interface"
@@ -30,11 +31,10 @@ export const ProductActionsComponent: FC<IProductActionsComponentProps> = ({
 }) => {
 	const { push } = useRouter()
 	const { isExist } = useExistInCart(product)
-	const { addToCart, openNotifyHandler } = useStoreActions()
+	const { openNotifyHandler } = useStoreActions()
 	const { isLoading, setLoadingHandler } = useLoader()
+	const { addToCart } = useCart()
 
-	console.log(size)
-	console.log(color)
 	const addToCartHandler = async () => {
 		setLoadingHandler()
 		await new Promise<void>((resolve) => {

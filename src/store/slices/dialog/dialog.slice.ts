@@ -1,10 +1,10 @@
 import { IDialogInitial, IDialogPayload } from "@/interfaces/dialog.interface"
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
 const initialState: IDialogInitial = {
 	dialogContent: { message: "" },
 	isActive: false,
-	isConfirm: false,
+	isConfirm: undefined,
 	type: "notify",
 }
 export const dialogSlice = createSlice({

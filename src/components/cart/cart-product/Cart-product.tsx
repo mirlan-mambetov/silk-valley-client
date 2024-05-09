@@ -5,6 +5,7 @@ import {
 	CartRangeComponent,
 	ProductPriceComponent,
 } from "@/components"
+import { useCart } from "@/hooks/cart/useCart"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { ICartProduct } from "@/interfaces/cart.interface"
 import { hostSourceImages } from "@/utils/hostSource"
@@ -21,7 +22,7 @@ interface ICartProductComponentProps {
 export const CartProductComponent: FC<ICartProductComponentProps> = ({
 	products,
 }) => {
-	const { removeFromCart } = useStoreActions()
+	const { removeFromCart } = useCart()
 	const { openNotifyHandler } = useStoreActions()
 	return (
 		<div className={style.cart}>

@@ -4,7 +4,7 @@ export interface IDialogContent {
 export interface IDialogInitial {
 	dialogContent: IDialogContent
 	isActive: boolean
-	isConfirm: boolean
+	isConfirm: boolean | undefined
 	type?: "notify" | "dialog"
 }
 export type IDialogPayload = {

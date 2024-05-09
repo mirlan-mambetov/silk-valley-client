@@ -11,34 +11,38 @@ const Orders: FC = () => {
 	const { user } = useUser()
 	return (
 		<div className={style.orders}>
-			{user?.orders.map((order) => (
-				<div className={style.order} key={order.id}>
-					<div className={style.row}>
-						<strong>ORDER [ID]</strong>
-						<span>{order.id}</span>
-					</div>
-					<div className={style.row}>
-						<strong>Статус</strong>
-						<span>{order.status}</span>
-					</div>
-					<div className={style.row}>
-						<strong>Товар</strong>
-						<div className={style.productNames}>
-							{order.items.map((product) => (
-								<span key={product.id}>{product.name}</span>
-							))}
+			{user?.orders.length ? (
+				user.orders.map((order) => (
+					<div className={style.order} key={order.id}>
+						<div className={style.row}>
+							<strong>ORDER [ID]</strong>
+							<span>{order.orderId}</span>
+						</div>
+						<div className={style.row}>
+							<strong>Статус</strong>
+							<span>{order.status}</span>
+						</div>
+						<div className={style.row}>
+							<strong>Товар</strong>
+							<div className={style.productNames}>
+								{order.items.map((product) => (
+									<span key={product.id}>{product.name}</span>
+								))}
+							</div>
+						</div>
+						<div className={style.row}>
+							<strong>Сумма заказа</strong>
+							<span>{formatPrice(order.totalCache)} KGS</span>
+						</div>
+						<div className={style.row}>
+							<strong>Дата заказа</strong>
+							<span>{formatDateString(order.createdAt)}</span>
 						</div>
 					</div>
-					<div className={style.row}>
-						<strong>Сумма заказа</strong>
-						<span>{formatPrice(order.total)} KGS</span>
-					</div>
-					<div className={style.row}>
-						<strong>Дата заказа</strong>
-						<span>{formatDateString(order.createdAt)}</span>
-					</div>
-				</div>
-			))}
+				))
+			) : (
+				<span>У вас заказов нет</span>
+			)}
 		</div>
 	)
 }

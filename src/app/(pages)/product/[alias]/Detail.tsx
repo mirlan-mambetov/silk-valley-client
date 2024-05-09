@@ -20,10 +20,10 @@ export const Detail: FC<IDetailProps> = ({ data }) => {
 		undefined
 	)
 	const [selectedColor, setSelectedColor] = useState<string | undefined>(
-		data.attributes[0].color
+		data.attributes[0]?.color
 	)
 	const [selectedSize, setSelectedSize] = useState<string | undefined>(
-		data.attributes[0].size
+		data.attributes[0]?.size
 	)
 
 	const attribute = data.attributes.find((item) => item.color === selectedColor)

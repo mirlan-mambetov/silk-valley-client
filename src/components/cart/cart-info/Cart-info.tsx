@@ -15,7 +15,6 @@ import { ICartProduct } from "@/interfaces/cart.interface"
 import cn from "classnames"
 import { useRouter } from "next/navigation"
 import { FC } from "react"
-import { MdOutlineBorderColor } from "react-icons/md"
 import style from "./cart-info.module.scss"
 
 interface ICartInfoComponentProps {
@@ -27,35 +26,9 @@ export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 }) => {
 	const { setContentHandler } = useScreen()
 	const { totalDiscount, totalPrice } = useCart()
-	// const { openNotifyHandler } = useStoreActions()
 	const { address, isConfirm } = useDeliver()
 	const { user } = useUser()
 	const { push } = useRouter()
-
-	// const { mutateAsync, isPending } = useMutation({
-	// 	mutationKey: ["placeOrder"],
-	// 	mutationFn: (data: IPaymentDTO) => PaymentApi.placeOrder(data),
-	// })
-
-	// const placeOrderHandler = async (data: IPaymentDTO) => {
-	// 	try {
-	// 		await mutateAsync(data, {
-	// 			onSuccess(data, variables, context) {
-	// 				if (data.url) {
-	// 					push(data.url)
-	// 				}
-	// 			},
-	// 		})
-	// 	} catch (error) {
-	// 		openNotifyHandler({
-	// 			text: String(error),
-	// 			options: {
-	// 				position: "bottomCenter",
-	// 			},
-	// 			type: "error",
-	// 		})
-	// 	}
-	// }
 
 	return (
 		<div className={style.info}>
@@ -89,22 +62,12 @@ export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 					<span className={style.total}>Итого</span>
 					<ProductPriceComponent className={style.total} price={totalPrice} />
 				</div>
-
 				<ButtonComponent
-					// isLoading={isPending}
+					btnType="placeOrder"
 					disabled={!user || !isConfirm || !products.length}
-					className={style.button}
-					onClick={
-						() => push("/checkout")
-						// placeOrderHandler({
-						// 	products,
-						// 	status: EnumOrderStatus.WAITING,
-						// 	totalPrice,
-						// })
-					}
+					onClick={() => push("/checkout")}
 				>
-					<MdOutlineBorderColor />
-					<span>Оформить заказ</span>
+					Перейти к оформлению
 				</ButtonComponent>
 			</div>
 		</div>

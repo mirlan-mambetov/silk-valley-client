@@ -1,16 +1,97 @@
 "use client"
 
-import { FieldComponent, HeadingComponent } from "@/components"
+import { PaymentApi } from "@/api/api-payment/api-payment"
+import { IPaymentDTO } from "@/api/api-payment/data-transfer"
+import { ButtonComponent, FieldComponent, HeadingComponent } from "@/components"
+import {
+	EnumOrderStatus,
+	EnumOrderStatusInCookie,
+	EnumPaymentMethod,
+} from "@/enums/Payment.enum"
+import { saveItemToCookie } from "@/helpers/cookie.helpers"
 import { useCart } from "@/hooks/cart/useCart"
+import { useDeliver } from "@/hooks/deliver/useDeliver"
+import { useStoreActions } from "@/hooks/store/useStoreActions"
+import { useUser } from "@/hooks/user/useUser"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 import cn from "classnames"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 import { useState } from "react"
 import style from "./checkout.module.scss"
 
 export const Checkout = () => {
 	const [methodCard, setMethodCard] = useState(false)
 	const [methodCache, setMethodCache] = useState(false)
-	const { products, totalDiscount, totalPrice } = useCart()
+	const { push } = useRouter()
+	const { user } = useUser()
+	const { products, totalPrice, clearCart } = useCart()
+	const { address } = useDeliver()
+	const { openNotifyHandler, openDialogHandler } = useStoreActions()
+	const queryClient = useQueryClient()
+
+	// PAYMENT MUTATION
+	const { mutateAsync, isPending } = useMutation({
+		mutationKey: ["placeOrder"],
+		mutationFn: (data: IPaymentDTO) => PaymentApi.placeOrder(data),
+	})
+
+	// CANCEDLED TRANSACTION
+	// const { mutate: cancelTransaction } = useMutation({
+	// 	mutationKey: ["cancelTransaction"],
+	// 	mutationFn: (sessionId?: string) =>
+	// 		PaymentApi.canceldTransaction({ sessionId }),
+	// })
+
+	const placeOrderHandler = async (data: IPaymentDTO) => {
+		try {
+			await mutateAsync(data, {
+				onSuccess(data, variables, context) {
+					if (data.message) {
+						openNotifyHandler({
+							text: data.message,
+							type: "success",
+							options: {
+								timeOut: 5000,
+							},
+						})
+						queryClient.invalidateQueries({ queryKey: ["getUserProfile"] })
+					} else if (data.url) {
+						saveItemToCookie(
+							EnumOrderStatusInCookie._SV__ST_OR,
+							data.status,
+							data.expires_at
+						)
+						saveItemToCookie(
+							EnumOrderStatusInCookie._SV__R_CL_ID,
+							data.client_reference_id
+						)
+						saveItemToCookie(EnumOrderStatusInCookie._SV_UR_S_, data.url)
+						saveItemToCookie(EnumOrderStatusInCookie._SV_OR_ID, data.id)
+						push(`${data.url}`)
+					}
+					clearCart()
+				},
+			})
+		} catch (error) {
+			openNotifyHandler({
+				text: String(error),
+				options: {
+					position: "bottomCenter",
+				},
+				type: "error",
+			})
+		}
+	}
+
+	const methodCardHandl = () => {
+		if (methodCache) return
+		setMethodCard(!methodCard)
+	}
+	const methodCacheHandl = () => {
+		if (methodCard) return
+		setMethodCache(!methodCache)
+	}
 
 	return (
 		<>
@@ -19,7 +100,10 @@ export const Checkout = () => {
 					<HeadingComponent text="Выберите метод оплаты" />
 					<div className={style.wrap}>
 						<div className={style.payments}>
-							<div className={style.method}>
+							<div
+								className={cn(style.method, { [style.active]: methodCard })}
+								onClick={methodCardHandl}
+							>
 								<div className={style.icons}>
 									<div
 										className={cn(style.icon, style.iconVisa)}
@@ -43,12 +127,13 @@ export const Checkout = () => {
 									></div>
 								</div>
 								<FieldComponent
+									checked={methodCard}
 									type="checkbox"
-									onChange={() => setMethodCard(!methodCard)}
+									onChange={methodCardHandl}
 									disabled={methodCache}
 								/>
 							</div>
-							<div className={style.method}>
+							<div className={cn(style.method)}>
 								<Image
 									width={300}
 									height={300}
@@ -57,18 +142,20 @@ export const Checkout = () => {
 								/>
 								<FieldComponent type="checkbox" checked={false} disabled />
 							</div>
-							<div className={style.method}>
+							<div
+								className={cn(style.method, { [style.active]: methodCache })}
+								onClick={methodCacheHandl}
+							>
 								<strong>Наличными при доставке</strong>
 								<FieldComponent
+									checked={methodCache}
 									type="checkbox"
 									disabled={methodCard}
-									onChange={() => setMethodCache(!methodCache)}
+									onChange={methodCacheHandl}
 								/>
 							</div>
 						</div>
 						<div className={style.policy}>
-							<h5>Внимание! Ознакомтесь с правилами</h5>
-
 							<ul className={style.description}>
 								<li>При оформлении заказа:</li>
 								<li>
@@ -96,15 +183,24 @@ export const Checkout = () => {
 										{totalPrice} <small>KGS</small>
 									</span>
 								</div>
-								{/* <span>
-									<small>Итого:</small>
-									<ProductPriceComponent price={totalPrice} />
-								</span>
-								<span>
-									<small>Скида:</small>
-									{totalDiscount ? totalDiscount : "нет"}
-								</span> */}
 							</div>
+							<ButtonComponent
+								btnType="placeOrder"
+								disabled={
+									(!methodCache && !methodCard) || !user || !products.length
+								}
+								onClick={() =>
+									placeOrderHandler({
+										paymentMethod: methodCache
+											? EnumPaymentMethod.CACHE
+											: EnumPaymentMethod.CARD,
+										products,
+										status: EnumOrderStatus.WAITING,
+										totalPrice,
+										address,
+									})
+								}
+							/>
 						</div>
 					</div>
 				</div>
