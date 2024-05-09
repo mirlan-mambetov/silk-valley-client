@@ -13,7 +13,7 @@ import Image from "next/image"
 import { FC } from "react"
 import { Autoplay } from "swiper/modules"
 import { SwiperSlide } from "swiper/react"
-import style from "./promotion.component.module.scss"
+import style from "./promotion.module.scss"
 
 interface IPromotionComponentProps {
 	data: IProduct[]
