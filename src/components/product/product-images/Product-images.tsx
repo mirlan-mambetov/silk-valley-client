@@ -37,7 +37,7 @@ export const ProductImagesComponent: FC<IProductImagesComponent> = ({
 	}, [imgSrc])
 
 	useEffect(() => {
-		setNewSrc(`${process.env.NEXT_PUBLIC_API_STATIC}/${data?.poster}`)
+		setNewSrc(hostSourceImages(data.poster))
 	}, [data.poster])
 
 	return (

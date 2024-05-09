@@ -11,7 +11,7 @@ interface IPriceComponentProps extends DetailsHTMLAttributes<HTMLDivElement> {
 	size?: "1xl" | "2xl" | "1xxl" | "3xxl"
 	orientation?: "column" | "row"
 }
-export const ProductPriceComponent: FC<IPriceComponentProps> = ({
+export const PriceComponent: FC<IPriceComponentProps> = ({
 	price,
 	discount,
 	size = "1xl",

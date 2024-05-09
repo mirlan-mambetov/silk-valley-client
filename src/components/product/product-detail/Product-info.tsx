@@ -1,11 +1,11 @@
 "use client"
 
 import {
+	ActionsComponent,
 	ButtonComponent,
 	DeliverComponent,
 	FeaturedComponent,
-	ProductActionsComponent,
-	ProductPriceComponent,
+	PriceComponent,
 } from "@/components"
 import { showDestinationName } from "@/helpers/showDestinationName"
 import { useCart } from "@/hooks/cart/useCart"
@@ -49,7 +49,7 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 								<>с учетом скидки</>
 							</small>
 							<div className={style.box_item}>
-								<ProductPriceComponent
+								<PriceComponent
 									price={data.price}
 									discount={data.discount}
 									orientation="column"
@@ -61,7 +61,7 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 						<>
 							<small>Цена</small>
 							<div className={style.box_item}>
-								<ProductPriceComponent
+								<PriceComponent
 									price={data.price}
 									discount={data.discount}
 									orientation="column"
@@ -102,7 +102,7 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 						</div>
 					</div>
 				)}
-				<ProductActionsComponent
+				<ActionsComponent
 					btnSize="2xl"
 					color={selectedColor}
 					size={selectedSize}

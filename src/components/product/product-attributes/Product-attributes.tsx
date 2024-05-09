@@ -2,9 +2,9 @@
 
 import {
 	ButtonComponent,
+	PriceComponent,
 	ProductDiscountComponent,
-	ProductPriceComponent,
-	ProductRatingComponent,
+	RatingComponent,
 } from "@/components"
 import { SwiperComponent } from "@/components/swiper-component/Swiper-component"
 import { IProduct } from "@/interfaces/product.interface"
@@ -43,15 +43,12 @@ export const ProductAttributesComponent: FC<IAttributesComponentProps> = ({
 			</div>
 			<div className={style.attribute}>
 				<h5 className={style.title}>Оценка</h5>
-				<ProductRatingComponent
-					rating={data?.rating || 0}
-					className={style.rating}
-				/>
+				<RatingComponent rating={data?.rating || 0} className={style.rating} />
 			</div>
 			<div className={style.attribute}>
 				<h5 className={style.title}>Цена</h5>
 				<div className={style.price}>
-					<ProductPriceComponent
+					<PriceComponent
 						price={data.price}
 						discount={data.discount}
 						orientation="column"

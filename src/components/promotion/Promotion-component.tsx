@@ -1,9 +1,9 @@
 "use client"
 
 import {
-	ProductActionsComponent,
+	ActionsComponent,
+	PriceComponent,
 	ProductDiscountComponent,
-	ProductPriceComponent,
 } from "@/components"
 import { SwiperComponent } from "@/components/swiper-component/Swiper-component"
 import { IProduct } from "@/interfaces/product.interface"
@@ -72,14 +72,14 @@ export const PromotionComponent: FC<IPromotionComponentProps> = ({ data }) => {
 							<div className={style.content}>
 								<div className={style.top}>
 									<h2 className={style.title}>{promotion.title}</h2>
-									<ProductPriceComponent
+									<PriceComponent
 										size="1xxl"
 										price={promotion.price}
 										discount={promotion.discount}
 										orientation="column"
 									/>
 								</div>
-								<ProductActionsComponent
+								<ActionsComponent
 									actionType="toView"
 									alias={`${promotion.alias}`}
 									product={promotion}

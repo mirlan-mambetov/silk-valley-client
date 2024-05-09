@@ -9,9 +9,9 @@ import { IProduct } from "@/interfaces/product.interface"
 import cn from "classnames"
 import { useRouter } from "next/navigation"
 import { FC } from "react"
-import style from "./product.actions.module.scss"
+import style from "./actions.module.scss"
 
-interface IProductActionsComponentProps {
+interface IActionsProps {
 	alias: string
 	disable?: boolean
 	actionType: "toCart" | "toView"
@@ -20,7 +20,7 @@ interface IProductActionsComponentProps {
 	product: IProduct
 	btnSize?: "1xl" | "2xl"
 }
-export const ProductActionsComponent: FC<IProductActionsComponentProps> = ({
+export const ActionsComponent: FC<IActionsProps> = ({
 	alias,
 	disable,
 	actionType,

@@ -1,10 +1,9 @@
 "use client"
 
 import {
+	ActionsComponent,
 	FeaturedComponent,
-	ProducAttributeComponent,
-	ProductActionsComponent,
-	ProductPriceComponent,
+	PriceComponent,
 } from "@/components"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { IProduct } from "@/interfaces/product.interface"
@@ -51,7 +50,7 @@ export const MobileDetailInfoComponent: FC<IMobileDetailInfoComponentProps> = ({
 					<div className={style.content}>
 						<div className={style.item}>
 							<h3 className={style.name}>{data.title}</h3>
-							<ProductPriceComponent
+							<PriceComponent
 								price={data.price}
 								className={style.price}
 								discount={data.discount}
@@ -60,7 +59,7 @@ export const MobileDetailInfoComponent: FC<IMobileDetailInfoComponentProps> = ({
 							/>
 						</div>
 
-						<div className={style.item}>
+						{/* <div className={style.item}>
 							<ProducAttributeComponent
 								selectedValueHandler={(value) => setSelectedColor(value)}
 								className={style.attribute}
@@ -79,12 +78,12 @@ export const MobileDetailInfoComponent: FC<IMobileDetailInfoComponentProps> = ({
 									size="1xl"
 								/>
 							</div>
-						) : null}
+						) : null} */}
 					</div>
 				</div>
 				<div className={style.actions}>
 					<FeaturedComponent size={20} />
-					<ProductActionsComponent
+					<ActionsComponent
 						size={selectedSize}
 						color={selectedColor}
 						actionType="toCart"

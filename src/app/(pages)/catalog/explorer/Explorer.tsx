@@ -1,10 +1,6 @@
 "use client"
 
-import {
-	FiltersComponent,
-	LoaderComponent,
-	ProductCardsComponent,
-} from "@/components"
+import { CardsComponent, FiltersComponent, LoaderComponent } from "@/components"
 import { useFetchFilterProducts } from "@/hooks/filter/useFetchFilterProducts"
 import { useFilterInit } from "@/hooks/filter/useFilter"
 import { useGetAttributes } from "@/hooks/filter/useGetAttributes"
@@ -49,7 +45,7 @@ export const Explorer: FC<IExplorerProps> = ({ data }) => {
 						{isFetching ? (
 							<LoaderComponent color="black" position="absolute" />
 						) : (
-							<ProductCardsComponent products={products} />
+							<CardsComponent products={products} />
 						)}
 					</div>
 				</div>

@@ -5,10 +5,10 @@ import { FC } from "react"
 import style from "./specifications.module.scss"
 
 interface IProductSpecificationsComponentProps {
-	specifications: IProductSpecifications | undefined
+	specifications: IProductSpecifications[] | undefined
 }
 
-export const ProductSpecificationsComponent: FC<
+export const SpecificationsComponent: FC<
 	IProductSpecificationsComponentProps
 > = ({ specifications }) => {
 	return (
@@ -17,7 +17,7 @@ export const ProductSpecificationsComponent: FC<
 				<span>Дополнительная информация</span>
 			</h3>
 			<div className={style.wrap}>
-				{specifications?.attributes.map((attribute) => (
+				{specifications?.map((attribute) => (
 					<div className={style.column} key={attribute.id}>
 						<small>{attribute.name}</small>
 						<span>{attribute.value}</span>

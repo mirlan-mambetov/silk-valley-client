@@ -8,7 +8,7 @@ interface IRatingComponentProps {
 	className?: string
 	hideReviews?: boolean
 }
-export const ProductRatingComponent: FC<IRatingComponentProps> = ({
+export const RatingComponent: FC<IRatingComponentProps> = ({
 	rating,
 	className,
 	hideReviews = false,

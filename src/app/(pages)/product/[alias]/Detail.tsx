@@ -4,6 +4,7 @@ import {
 	ProductAttributesComponent,
 	ProductImagesComponent,
 	ProductInfoComponent,
+	SpecificationsComponent,
 } from "@/components"
 import { useCart } from "@/hooks/cart/useCart"
 import { IProduct } from "@/interfaces/product.interface"
@@ -91,7 +92,7 @@ export const Detail: FC<IDetailProps> = ({ data }) => {
 					selectedSize={selectedSize}
 				/>
 				{/* // ) : null} */}
-				{/* <ProductSpecificationsComponent specifications={data.specifications} /> */}
+				<SpecificationsComponent specifications={data.specifications} />
 			</div>
 		</div>
 	)

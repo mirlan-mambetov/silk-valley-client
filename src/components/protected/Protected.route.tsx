@@ -13,7 +13,7 @@ export const withProtected = <P extends object>(
 
 		useEffect(() => {
 			if (!isAuthentificated) {
-				return push("/")
+				push("/")
 			}
 		}, [isAuthentificated])
 

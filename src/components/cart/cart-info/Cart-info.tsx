@@ -4,7 +4,7 @@ import {
 	ButtonComponent,
 	DeliverComponent,
 	MapIconComponent,
-	ProductPriceComponent,
+	PriceComponent,
 } from "@/components"
 import { showDestinationName } from "@/helpers/showDestinationName"
 import { useCart } from "@/hooks/cart/useCart"
@@ -42,7 +42,7 @@ export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 				</ButtonComponent>
 				<div className={style.box}>
 					<span>Товары, {products.length}шт</span>
-					<ProductPriceComponent
+					<PriceComponent
 						size="1xxl"
 						className={style.price}
 						price={totalPrice}
@@ -51,7 +51,7 @@ export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 				{totalDiscount ? (
 					<div className={cn(style.box, style.profit)}>
 						<span>Выгода</span>
-						<ProductPriceComponent
+						<PriceComponent
 							className={style.profitPrice}
 							price={totalDiscount}
 							size="1xxl"
@@ -60,7 +60,7 @@ export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 				) : null}
 				<div className={style.box}>
 					<span className={style.total}>Итого</span>
-					<ProductPriceComponent className={style.total} price={totalPrice} />
+					<PriceComponent className={style.total} price={totalPrice} />
 				</div>
 				<ButtonComponent
 					btnType="placeOrder"

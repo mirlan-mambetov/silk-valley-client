@@ -1,40 +1,35 @@
 "use client"
 
 import {
+	ActionsComponent,
 	FeaturedComponent,
 	HeadingComponent,
-	ProductActionsComponent,
+	PriceComponent,
 	ProductDiscountComponent,
-	ProductPriceComponent,
 } from "@/components"
 import { IProduct } from "@/interfaces/product.interface"
+import { hostSourceImages } from "@/utils/hostSource"
 import cn from "classnames"
 import Image from "next/image"
 import Link from "next/link"
-import { FC, useMemo } from "react"
-import style from "./product-cards.module.scss"
+import { FC } from "react"
+import style from "./cards.module.scss"
 
 interface IDefaultCardsComponentProps {
 	products: IProduct[]
-	limit?: number
 	title?: string
 	grid?: "6" | "5"
 }
-export const ProductCardsComponent: FC<IDefaultCardsComponentProps> = ({
+export const CardsComponent: FC<IDefaultCardsComponentProps> = ({
 	products,
-	limit,
 	title,
 	grid,
 }) => {
-	const limitedData = useMemo(() => {
-		return products.slice(0, limit)
-	}, [products])
-
 	return (
 		<div className={style.cards}>
 			{title ? <HeadingComponent text={title} /> : null}
 			<div className={cn(style.wrap, { [style.grid5]: grid === "5" })}>
-				{limitedData.map((product) => (
+				{products.map((product) => (
 					<div className={style.card} key={product.id}>
 						<div className={style.card_wrap}>
 							<div className={style.featured}>
@@ -45,9 +40,9 @@ export const ProductCardsComponent: FC<IDefaultCardsComponentProps> = ({
 									<div className={style.poster}>
 										<Image
 											priority
-											width={900}
-											height={700}
-											src={`${process.env.NEXT_PUBLIC_API_STATIC}${product.poster}`}
+											width={400}
+											height={400}
+											src={hostSourceImages(product.poster)}
 											alt={product.title}
 										/>
 										<ProductDiscountComponent
@@ -63,7 +58,7 @@ export const ProductCardsComponent: FC<IDefaultCardsComponentProps> = ({
 										</h2>
 										<span>Бренд: Apple </span>
 									</div>
-									<ProductPriceComponent
+									<PriceComponent
 										className={style.price}
 										price={product.price}
 										discount={product.discount}
@@ -72,7 +67,7 @@ export const ProductCardsComponent: FC<IDefaultCardsComponentProps> = ({
 								</div>
 							</Link>
 							<div className={style.buttons}>
-								<ProductActionsComponent
+								<ActionsComponent
 									actionType="toView"
 									alias={product.alias}
 									product={product}

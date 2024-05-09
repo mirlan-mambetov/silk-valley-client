@@ -3,7 +3,7 @@
 import {
 	ButtonComponent,
 	CartRangeComponent,
-	ProductPriceComponent,
+	PriceComponent,
 } from "@/components"
 import { useCart } from "@/hooks/cart/useCart"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
@@ -40,7 +40,7 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 							</div>
 							<div className={style.description}>
 								<div className={style.description_price}>
-									<ProductPriceComponent
+									<PriceComponent
 										className={style.number}
 										price={product.price * product.productQuantity}
 										discount={product.discount}
@@ -100,7 +100,7 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 								/>
 							</div>
 							<div className={style.price}>
-								<ProductPriceComponent
+								<PriceComponent
 									className={style.number}
 									price={product.price * product.productQuantity}
 									discount={product.discount}

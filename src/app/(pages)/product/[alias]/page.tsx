@@ -1,4 +1,5 @@
 import { APP_URI } from "@/api/config/api-config"
+import { APP_REVALIDATE } from "@/constants/app.constants"
 import { IPageParams } from "@/interfaces/page.interface"
 import { IProduct } from "@/interfaces/product.interface"
 import { Metadata } from "next"
@@ -12,7 +13,7 @@ export async function fetchData({ params }: IPageParams): Promise<IProduct> {
 	const { alias } = params
 	const response = await fetch(`${APP_URI}/product/by-alias/${alias}`, {
 		next: {
-			revalidate: 60,
+			revalidate: APP_REVALIDATE,
 		},
 	})
 	if (!response.ok) notFound()
@@ -22,7 +23,9 @@ export async function fetchData({ params }: IPageParams): Promise<IProduct> {
 
 // GENERATE STATIC PARAMS
 export async function generateStaticParams() {
-	const response: Response = await fetch(`${APP_URI}/product`)
+	const response: Response = await fetch(`${APP_URI}/product`, {
+		next: { revalidate: APP_REVALIDATE },
+	})
 	const promise: Promise<IProduct[]> = response.json()
 	const products = await promise
 	const paths = products.map((product) => {
@@ -64,23 +67,17 @@ export async function generateMetadata({
 
 export default async function ProductPage({ params }: IPageParams) {
 	const product = await fetchData({ params })
+
 	return (
 		<>
 			<section>
 				{/* DETAIL */}
 				<div className="container">
-					{/* <Suspense fallback={<>Загрузка...</>}> */}
-					<Suspense>
+					<Suspense fallback={<>Загрузка...</>}>
 						<Detail data={product} />
 					</Suspense>
-					{/* </Suspense> */}
 				</div>
 			</section>
-			{/* <section>
-				<div className="container">
-					<CardsComponent products={CARDS_PRODUCT} title="Смотрите также" />
-				</div>
-			</section> */}
 		</>
 	)
 }

@@ -13,7 +13,7 @@ export interface IProduct extends IBase {
 	new?: boolean
 	discount?: number
 	isHit?: boolean
-	specifications?: IProductSpecifications
+	specifications?: IProductSpecifications[]
 	quantity: number
 	attributes: IProductAttributes[]
 }
@@ -30,7 +30,8 @@ export interface IProductImages extends IBase {
 }
 
 export interface IProductSpecifications extends IBase {
-	attributes: IProductSpecificationsAttributes[]
+	name: string
+	value: string
 }
 
 export interface IProductSpecificationsAttributes extends IBase {
