@@ -19,7 +19,7 @@ import SelectComponent from "../select/Select"
 import style from "./filters.module.scss"
 
 interface IFiltersComponentProps {
-	categoryId: "second" | "child"
+	categoryId?: "second" | "child"
 	data: {
 		id: number
 		slug: string
@@ -35,10 +35,10 @@ export const FiltersComponent: FC<IFiltersComponentProps> = ({
 	attributesData,
 	isLoadingAttributes,
 }) => {
-	const { addSearchParams, resetFilters } = useFilterInit()
+	const { addSearchParams, resetAllFilters } = useFilterInit()
 
 	useEffect(() => {
-		resetFilters()
+		resetAllFilters()
 	}, [])
 
 	return (

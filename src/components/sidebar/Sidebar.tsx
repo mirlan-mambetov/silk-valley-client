@@ -91,7 +91,7 @@ const SidebarComponent: FC<ISidebarComponentProps> = ({ ...props }) => {
 																		key={childCategory.id}
 																	>
 																		<Link
-																			href={`/catalog/${childCategory.name}`}
+																			href={`/catalog/category/${childCategory.slug}`}
 																		>
 																			{childCategory.name}
 																		</Link>

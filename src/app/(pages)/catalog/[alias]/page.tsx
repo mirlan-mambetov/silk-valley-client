@@ -1,5 +1,6 @@
 import { APP_URI } from "@/api/config/api-config"
 import { LoaderComponent } from "@/components"
+import { APP_REVALIDATE } from "@/constants/app.constants"
 import { ISecondCategories } from "@/interfaces/categories.interface"
 import { IPageParams } from "@/interfaces/page.interface"
 import { Metadata } from "next"
@@ -15,7 +16,7 @@ export async function fetchData<T>(url: string): Promise<T> {
 			"Content-Type": "application/json",
 		},
 		next: {
-			revalidate: 3600,
+			revalidate: APP_REVALIDATE,
 		},
 	})
 	if (!response.ok) return notFound()

@@ -17,7 +17,7 @@ export const useFilterInit = () => {
 	const pathName = usePathname()
 	const searchParams = useSearchParams()
 	const { replace } = useRouter()
-	const { addFilter, resetFilters } = useStoreActions()
+	const { addFilter, resetFilterByKey, resetAllFilters } = useStoreActions()
 	const { queryParams } = useFilter()
 
 	useEffect(() => {
@@ -45,7 +45,7 @@ export const useFilterInit = () => {
 
 	const deleteSearchParams = (key: keyof IFilter) => {
 		const newParams = new URLSearchParams(searchParams?.toString())
-		resetFilters(key)
+		resetFilterByKey(key)
 		newParams.delete(key)
 		replace(pathName + `?${newParams.toString().replace(/%7C/g, "|")}`, {
 			scroll: false,
@@ -56,6 +56,7 @@ export const useFilterInit = () => {
 		addSearchParams,
 		queryParams,
 		deleteSearchParams,
-		resetFilters,
+		resetFilterByKey,
+		resetAllFilters,
 	}
 }

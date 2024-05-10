@@ -7,13 +7,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
 const initialState: IFilterInitialState = {
 	filterUpdated: false,
-	queryParams: {
-		maxPrice: undefined,
-		minPrice: undefined,
-		selectedColor: undefined,
-		selectedSize: undefined,
-		sort: undefined,
-	},
+	queryParams: {},
 }
 export const filterSlice = createSlice({
 	name: "filter",
@@ -26,9 +20,11 @@ export const filterSlice = createSlice({
 			state.queryParams[key] = value
 			state.filterUpdated = true
 		},
-		resetFilters: (state, { payload }: PayloadAction<keyof IFilter>) => {
+		resetFilterByKey: (state, { payload }: PayloadAction<keyof IFilter>) => {
 			const key = payload
 			state.queryParams[key] = undefined
+		},
+		resetAllFilters: (state) => {
 			state.queryParams.minPrice = undefined
 			state.queryParams.maxPrice = undefined
 			state.queryParams.selectedColor = undefined

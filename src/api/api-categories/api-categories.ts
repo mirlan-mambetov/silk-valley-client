@@ -4,6 +4,9 @@ import {
 } from "@/interfaces/categories.interface"
 import { apiBase } from "../axios-base"
 
+export const MAIN_UIR_PATH = "/main-category"
+export const SECOND_UIR_PATH = "/childs-category"
+export const CHILDS_UIR_PATH = "/childs-category"
 export const CategoriesApi = {
 	/**
 	 *
@@ -11,7 +14,7 @@ export const CategoriesApi = {
 	 */
 	async fetchCategories() {
 		const response = await apiBase<ICategories[]>({
-			url: "/main-category",
+			url: MAIN_UIR_PATH,
 			method: "GET",
 		})
 		return response.data
@@ -25,7 +28,7 @@ export const CategoriesApi = {
 	async fetchCategoryBySlug(slug?: string) {
 		if (slug) {
 			const response = await apiBase<ICategories>({
-				url: `/main-category/by-slug/${slug}`,
+				url: `${MAIN_UIR_PATH}/by-slug/${slug}`,
 				method: "GET",
 			})
 			return response.data
@@ -42,7 +45,7 @@ export const CategoriesApi = {
 	 */
 	async fetchSecondCategories() {
 		const response = await apiBase<ISecondCategories[]>({
-			url: `/second-category`,
+			url: SECOND_UIR_PATH,
 			method: "GET",
 		})
 		return response.data
@@ -55,7 +58,7 @@ export const CategoriesApi = {
 	async fetchSecondCategoryBySlug(slug?: string) {
 		if (slug) {
 			const response = await apiBase<ISecondCategories>({
-				url: `/second-category/by-alias/${slug}`,
+				url: `${SECOND_UIR_PATH}/by-alias/${slug}`,
 				method: "GET",
 			})
 			return response.data
