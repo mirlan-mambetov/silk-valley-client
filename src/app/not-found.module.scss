@@ -1,0 +1,13 @@
+@import "../styles/media.mixin";
+@import "../styles/vars";
+@import "../styles/mixin";
+.notFound {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
+	min-height: 100vh;
+	a {
+		text-decoration: underline;
+	}
+}

@@ -1,13 +1,16 @@
 "use client"
 
+import { ButtonComponent } from "@/components"
 import { formatDateString } from "@/helpers/formate.data.helper"
 import { useUser } from "@/hooks/user/useUser"
 import { formatPrice } from "@/utils/product.utils"
 import { FC } from "react"
+import { CgDetailsMore } from "react-icons/cg"
 import style from "./orders.module.scss"
 
 const Orders: FC = () => {
 	const { user } = useUser()
+	console.log(user?.orders)
 	return (
 		<div className={style.orders}>
 			{user?.orders.length ? (
@@ -36,6 +39,12 @@ const Orders: FC = () => {
 						<div className={style.row}>
 							<strong>Дата заказа</strong>
 							<span>{formatDateString(order.createdAt)}</span>
+						</div>
+						<div className={style.row}>
+							<strong>Подробнее</strong>
+							<ButtonComponent title={`Просмотр заказа ${order.orderId}`}>
+								<CgDetailsMore />
+							</ButtonComponent>
 						</div>
 					</div>
 				))

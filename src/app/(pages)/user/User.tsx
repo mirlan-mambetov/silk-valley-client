@@ -2,7 +2,7 @@
 
 import { ButtonComponent } from "@/components"
 import { formatDateString } from "@/helpers/formate.data.helper"
-import { useStoreActions } from "@/hooks/store/useStoreActions"
+import { useAuth } from "@/hooks/auth/useAuth"
 import { useUser } from "@/hooks/user/useUser"
 import { hostSourceImages } from "@/utils/hostSource"
 import Image from "next/image"
@@ -18,7 +18,7 @@ import style from "./user.module.scss"
 const User: FC = () => {
 	const { user } = useUser()
 	const { push } = useRouter()
-	const { logOutUser } = useStoreActions()
+	const { logoutHandle } = useAuth()
 
 	return (
 		<>
@@ -48,7 +48,7 @@ const User: FC = () => {
 										{user?.phoneNumber}
 									</div>
 									<div className={style.item}>
-										<ButtonComponent onClick={() => logOutUser()}>
+										<ButtonComponent onClick={logoutHandle}>
 											<IoLogOutOutline />
 											Выйти
 										</ButtonComponent>

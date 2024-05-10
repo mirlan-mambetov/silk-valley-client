@@ -7,7 +7,7 @@
 	gap: 12px;
 	.order {
 		display: grid;
-		grid-template-columns: repeat(5, calc(100% / 5 - 12px / 5 * (5 - 1)));
+		grid-template-columns: repeat(6, calc(100% / 6 - 12px / 6 * (6 - 1)));
 		column-gap: 12px;
 		@include lowBoxShadow;
 		padding: 12px;
