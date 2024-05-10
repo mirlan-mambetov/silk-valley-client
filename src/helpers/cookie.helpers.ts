@@ -9,7 +9,7 @@ export const saveItemToCookie = (
 
 	if (expires) {
 		const expiresMilliseconds = expires * 1000
-		const expiresDate = new Date(expiresMilliseconds)
+		const expiresDate = new Date(Date.now() + expiresMilliseconds)
 		options.expires = expiresDate
 	}
 	Cookies.set(item, value, options)

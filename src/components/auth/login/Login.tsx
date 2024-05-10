@@ -44,7 +44,7 @@ export const LoginComponent: FC<IAuthProps> = ({ animate, setChoice }) => {
 				onSuccess(data, variables, context) {
 					// DISPATCH LOGIN SUCCESS
 					loginSuccess()
-					saveItemToCookie(AuthEnum.IS_AUTH, "__SV__V1")
+					saveItemToCookie(AuthEnum.IS_AUTH, "__SV__V1", 7 * 24 * 60 * 60)
 					saveTokensToStorage(data)
 					openNotifyHandler({
 						text: "Вход выполнен успешно",
