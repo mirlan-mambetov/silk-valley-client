@@ -18,3 +18,7 @@ export const saveItemToCookie = (
 export const getItemFormCookie = (itemName: string) => {
 	return Cookies.get(itemName)
 }
+
+export const clearCookies = (name: string) => {
+	Cookies.remove(name)
+}

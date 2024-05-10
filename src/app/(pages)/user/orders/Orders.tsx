@@ -1,6 +1,5 @@
 "use client"
 
-import { withProtected } from "@/components"
 import { formatDateString } from "@/helpers/formate.data.helper"
 import { useUser } from "@/hooks/user/useUser"
 import { formatPrice } from "@/utils/product.utils"
@@ -47,4 +46,4 @@ const Orders: FC = () => {
 	)
 }
 
-export default withProtected(Orders)
+export default Orders

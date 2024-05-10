@@ -13,6 +13,7 @@ const nextConfig = {
 	typescript: {
 		ignoreBuildErrors: true,
 	},
+	pageExtensions: ["ts", "tsx"],
 }
 
 module.exports = nextConfig

@@ -1,6 +1,6 @@
 "use client"
 
-import { ButtonComponent, withProtected } from "@/components"
+import { ButtonComponent } from "@/components"
 import { formatDateString } from "@/helpers/formate.data.helper"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { useUser } from "@/hooks/user/useUser"
@@ -122,4 +122,4 @@ const User: FC = () => {
 		</>
 	)
 }
-export default withProtected(User)
+export default User

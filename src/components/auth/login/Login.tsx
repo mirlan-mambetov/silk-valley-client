@@ -4,7 +4,9 @@ import { AuthApi } from "@/api/api-auth/auth-api"
 import { IAuthLoginDTO } from "@/api/api-auth/data-transfer"
 import { IUserLoginDTO } from "@/api/api-user/data.transfer"
 import { ButtonComponent, FieldComponent } from "@/components"
+import { AuthEnum } from "@/enums/Auth.enum"
 import { animateLoginRegister } from "@/framer-motion/auth/auth.animate"
+import { saveItemToCookie } from "@/helpers/cookie.helpers"
 import { saveTokensToStorage } from "@/helpers/local.storage.helper"
 import { useAuth } from "@/hooks/auth/useAuth"
 import { useScreen } from "@/hooks/screen/useScreen"
@@ -42,6 +44,7 @@ export const LoginComponent: FC<IAuthProps> = ({ animate, setChoice }) => {
 				onSuccess(data, variables, context) {
 					// DISPATCH LOGIN SUCCESS
 					loginSuccess()
+					saveItemToCookie(AuthEnum.IS_AUTH, "__SV__V1")
 					saveTokensToStorage(data)
 					openNotifyHandler({
 						text: "Вход выполнен успешно",

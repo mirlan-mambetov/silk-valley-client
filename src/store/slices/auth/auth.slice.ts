@@ -1,3 +1,5 @@
+import { clearCookies } from "@/helpers/cookie.helpers"
+import { clearTokensFromStorage } from "@/helpers/local.storage.helper"
 import { createSlice } from "@reduxjs/toolkit"
 
 interface IAuthInitialState {
@@ -28,6 +30,8 @@ export const authSlice = createSlice({
 		logOutUser: (state) => {
 			state.isAuthentificated = false
 			state.loading = false
+			clearTokensFromStorage()
+			clearCookies("isAuth")
 		},
 		registerPending: (state) => {
 			state.loading = true
