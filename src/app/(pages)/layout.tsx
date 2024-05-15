@@ -13,6 +13,7 @@ import { ModalDialogComponent } from "@/components/modal/modal-dialog/Modal-dial
 import SidebarComponent from "@/components/sidebar/Sidebar"
 import { useAuth } from "@/hooks/auth/useAuth"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
+import { useWebSocket } from "@/hooks/ws/useWebSocket"
 import { useQuery } from "@tanstack/react-query"
 import React, { Suspense, useEffect } from "react"
 
@@ -23,6 +24,7 @@ export default function HomeLayout({
 }) {
 	const { addUser, clearUser } = useStoreActions()
 	const { isAuthentificated } = useAuth()
+	const socket = useWebSocket()
 
 	const { data } = useQuery({
 		queryKey: ["getUserProfile"],

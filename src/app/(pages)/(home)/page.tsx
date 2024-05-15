@@ -1,5 +1,5 @@
 import { APP_URI } from "@/api/config/api-config"
-import { CardsComponent, PromotionComponent } from "@/components"
+import { CardsComponent } from "@/components"
 import { APP_REVALIDATE } from "@/constants/app.constants"
 import { IProduct } from "@/interfaces/product.interface"
 
@@ -21,9 +21,7 @@ export default async function HomePage() {
 	const products = await fetchProducts()
 	return (
 		<>
-			<section>
-				<PromotionComponent data={products} />
-			</section>
+			<section>{/* <PromotionComponent data={products} /> */}</section>
 			<section>
 				<div className="container">
 					<CardsComponent products={products} title="Хиты продаж" />

@@ -9,6 +9,7 @@ import { LoaderProvider } from "./Loader.provider"
 import { ScreenProvider } from "./Screen.provider"
 
 import { SidebarProvider } from "./Sidebar.provider"
+import { WebSocketProvider } from "./Ws.provider"
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -21,15 +22,17 @@ const queryClient = new QueryClient({
 export const AppProvider: FC<PropsWithChildren> = ({ children }) => {
 	return (
 		<Provider store={appStore}>
-			<PersistGate persistor={persist} loading={null}>
-				<QueryClientProvider client={queryClient}>
-					<ScreenProvider>
-						<LoaderProvider>
-							<SidebarProvider>{children}</SidebarProvider>
-						</LoaderProvider>
-					</ScreenProvider>
-				</QueryClientProvider>
-			</PersistGate>
+			<WebSocketProvider>
+				<PersistGate persistor={persist} loading={null}>
+					<QueryClientProvider client={queryClient}>
+						<ScreenProvider>
+							<LoaderProvider>
+								<SidebarProvider>{children}</SidebarProvider>
+							</LoaderProvider>
+						</ScreenProvider>
+					</QueryClientProvider>
+				</PersistGate>
+			</WebSocketProvider>
 		</Provider>
 	)
 }
