@@ -13,8 +13,8 @@ import { ModalDialogComponent } from "@/components/modal/modal-dialog/Modal-dial
 import SidebarComponent from "@/components/sidebar/Sidebar"
 import { useAuth } from "@/hooks/auth/useAuth"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
+import { useUser } from "@/hooks/user/useUser"
 import { useWebSocket } from "@/hooks/ws/useWebSocket"
-import { useQuery } from "@tanstack/react-query"
 import React, { Suspense, useEffect } from "react"
 
 export default function HomeLayout({
@@ -22,25 +22,40 @@ export default function HomeLayout({
 }: {
 	children: React.ReactNode
 }) {
-	const { addUser, clearUser } = useStoreActions()
+	const { addUser } = useStoreActions()
 	const { isAuthentificated } = useAuth()
+	const { user } = useUser()
 	const socket = useWebSocket()
 
-	const { data } = useQuery({
-		queryKey: ["getUserProfile"],
-		queryFn: () => UserApi.fetchUserProfile(),
-		enabled: isAuthentificated,
-	})
+	const getUserProfile = async () => {
+		const data = await UserApi.fetchUserProfile()
+		if (data) {
+			addUser({ data })
+			console.log(data)
+			socket?.emit("logIn", { email: data.email })
+		}
+	}
 
 	useEffect(() => {
 		if (isAuthentificated) {
-			if (data) {
-				addUser({ data })
-			}
-		} else {
-			clearUser()
+			getUserProfile()
 		}
-	}, [isAuthentificated, data])
+	}, [isAuthentificated, socket])
+
+	useEffect(() => {
+		if (!socket) return
+
+		const handleLogOutWithClosed = () => {
+			if (user) {
+				socket.emit("logOut", { email: user.email })
+			}
+		}
+		window.addEventListener("beforeunload", handleLogOutWithClosed)
+
+		return () => {
+			window.removeEventListener("beforeunload", handleLogOutWithClosed)
+		}
+	}, [])
 
 	return (
 		<>

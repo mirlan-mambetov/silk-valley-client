@@ -12,13 +12,15 @@ export const useAuth = () => {
 	const { user } = useUser()
 	const socket = useWebSocket()
 	const { isAuthentificated, loading } = useStoreReducer((state) => state.auth)
-	const { loginPending, loginSuccess, loginRejected, logOutUser } =
+	const { loginPending, loginSuccess, loginRejected, logOutUser, clearUser } =
 		useStoreActions()
 
 	const logoutHandle = () => {
-		socket?.emit("logOut", { email: user?.email })
 		logOutUser()
+		socket?.emit("logOut", { email: user?.email })
+		clearUser()
 		clearTokensFromStorage()
+		// FOR MIDDLEWARE ON ROUTES
 		clearCookies(AuthEnum.IS_AUTH)
 		replace("/")
 	}
