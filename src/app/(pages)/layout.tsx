@@ -15,24 +15,29 @@ import { useAuth } from "@/hooks/auth/useAuth"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { useUser } from "@/hooks/user/useUser"
 import { useWebSocket } from "@/hooks/ws/useWebSocket"
-import React, { Suspense, useEffect } from "react"
+import React, { Suspense, useEffect, useRef } from "react"
 
 export default function HomeLayout({
 	children,
 }: {
 	children: React.ReactNode
 }) {
+	const hasFetchedProfile = useRef(false)
 	const { addUser } = useStoreActions()
 	const { isAuthentificated } = useAuth()
 	const { user } = useUser()
 	const socket = useWebSocket()
 
 	const getUserProfile = async () => {
-		const data = await UserApi.fetchUserProfile()
-		if (data) {
-			addUser({ data })
-			console.log(data)
-			socket?.emit("logIn", { email: data.email })
+		if (!hasFetchedProfile.current) {
+			hasFetchedProfile.current = true
+			const data = await UserApi.fetchUserProfile()
+			if (data) {
+				addUser({ data })
+				if (data) {
+					socket?.emit("logIn", { email: data.email })
+				}
+			}
 		}
 	}
 
@@ -40,7 +45,7 @@ export default function HomeLayout({
 		if (isAuthentificated) {
 			getUserProfile()
 		}
-	}, [isAuthentificated, socket])
+	}, [isAuthentificated])
 
 	useEffect(() => {
 		if (!socket) return
