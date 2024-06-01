@@ -33,7 +33,6 @@ export async function fetchCategoryBySlug({
 	const { alias } = params
 	const url = `${APP_URI}/second-category/by-alias/${alias}`
 	const category = await fetchData<ISecondCategories>(url)
-	if (!category) return notFound()
 	return category
 }
 
