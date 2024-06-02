@@ -17,7 +17,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query"
 import cn from "classnames"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import style from "./checkout.module.scss"
 
 export const Checkout = () => {
@@ -43,6 +43,15 @@ export const Checkout = () => {
 	// 		PaymentApi.canceldTransaction({ sessionId }),
 	// })
 
+	useEffect(() => {
+		if (methodCard) {
+			openDialogHandler({
+				message:
+					"Для прохождения оплаты по visa. Используйте следующее. Номер карты 4242 4242 4242 4242. Дата истечения срока 04/26. CVC 444",
+				type: "notify",
+			})
+		}
+	}, [methodCard])
 	const placeOrderHandler = async (data: IPaymentDTO) => {
 		try {
 			await mutateAsync(data, {
@@ -185,6 +194,7 @@ export const Checkout = () => {
 								</div>
 							</div>
 							<ButtonComponent
+								isLoading={isPending}
 								btnType="placeOrder"
 								disabled={
 									(!methodCache && !methodCard) || !user || !products.length
