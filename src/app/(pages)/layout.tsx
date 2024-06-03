@@ -48,7 +48,6 @@ export default function HomeLayout({
 
 	useEffect(() => {
 		if (!socket) return
-
 		const handleLogOutWithClosed = () => {
 			if (user) {
 				socket.emit("logOut", { email: user.email })
@@ -59,7 +58,7 @@ export default function HomeLayout({
 		return () => {
 			window.removeEventListener("beforeunload", handleLogOutWithClosed)
 		}
-	}, [])
+	}, [socket, user])
 
 	return (
 		<>
