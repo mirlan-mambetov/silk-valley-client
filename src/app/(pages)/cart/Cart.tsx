@@ -5,8 +5,6 @@ import {
 	ButtonComponent,
 	CartInfoComponent,
 	CartProductComponent,
-	DeliverActionComponent,
-	DeliverComponent,
 	HeadingComponent,
 	MapIconComponent,
 } from "@/components"
@@ -83,12 +81,12 @@ export const Cart: FC = () => {
 							<>
 								<div className={style.deliver}>
 									{showDestinationName(address)}
-									<DeliverActionComponent />
+									{/* <DeliverActionComponent /> */}
 								</div>
 								<ButtonComponent
 									className={style.edit}
 									title="Выбрать координаты доставки"
-									onClick={() => setContentHandler(<DeliverComponent />)}
+									// onClick={() => setContentHandler(<DeliverComponent />)}
 								>
 									<FiEdit2 fontSize={20} />
 								</ButtonComponent>
@@ -96,7 +94,7 @@ export const Cart: FC = () => {
 						) : (
 							<ButtonComponent
 								className={style.button}
-								onClick={() => setContentHandler(<DeliverComponent />)}
+								// onClick={() => setContentHandler(<DeliverComponent />)}
 							>
 								<MapIconComponent />
 								Выберите координаты

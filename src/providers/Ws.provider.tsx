@@ -8,7 +8,7 @@ export const WebSocketProvider: React.FC<{ children: ReactNode }> = ({
 	const [socket, setSocket] = useState<Socket | null>(null)
 
 	useEffect(() => {
-		const newSocket = io("https://api.slkvalley.com", {})
+		const newSocket = io("http://localhost:5000", {})
 
 		newSocket.on("connect", () => {
 			console.log("Successfully connected to the WebSocket server")

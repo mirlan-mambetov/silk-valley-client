@@ -11,18 +11,20 @@ import { GoHeart, GoStar } from "react-icons/go"
 import { IoLogOutOutline } from "react-icons/io5"
 import { ButtonComponent } from "../button/Button"
 import { UserIconComponent } from "../icon/user/User-icon"
+import { UserNotifyComponent } from "./Notify"
 import style from "./user.module.scss"
 
 interface IUserComponentProps extends DetailsHTMLAttributes<HTMLDivElement> {
 	user: IUser
 }
 export const UserComponent: FC<IUserComponentProps> = ({ user, ...props }) => {
-	const { elRef, isShow, setIsShow } = useOutsiteClick(false)
 	const { logoutHandle } = useAuth()
+	const { elRef, isShow, setIsShow } = useOutsiteClick(false)
 
 	return (
 		<div className={style.user} {...props} title={user.name}>
 			<div className={style.avatar} onClick={() => setIsShow(!isShow)}>
+				<UserNotifyComponent type="head" title="Одно важное уведомление" />
 				<img
 					width={30}
 					height={30}
@@ -34,29 +36,44 @@ export const UserComponent: FC<IUserComponentProps> = ({ user, ...props }) => {
 					alt={user.name}
 				/>
 			</div>
-			<div className={cn(style.drop, { [style.show]: isShow })} ref={elRef}>
+			<div
+				className={cn(style.dropDown, { [style.show]: isShow })}
+				{...props}
+				ref={elRef}
+			>
 				<ul className={style.list}>
-					<li className={style.item}>
-						<Link href={"/user"}>
-							<UserIconComponent fontSize={20} />
-							Профиль
-						</Link>
-					</li>
-					<li className={style.item}>
-						<Link href={"/user/orders"}>
-							<GoStar size={20} />
-							Мои заказы
-						</Link>
-					</li>
-					<li className={style.item}>
-						<Link href={"/user/featured"}>
-							<GoHeart size={18} />
-							Избранные
-						</Link>
-					</li>
+					{[
+						{
+							name: "Профиль",
+							href: "/user",
+							notify: true,
+							NodeIcon: <UserIconComponent fontSize={20} />,
+						},
+						{
+							name: "Мои заказы",
+							href: "/user/orders",
+							Icon: GoStar,
+							notify: true,
+						},
+						{
+							name: "Избранные",
+							href: "/user/featured",
+							Icon: GoHeart,
+							notify: false,
+						},
+					].map((item, i) => (
+						<li key={i} className={style.item}>
+							<Link href={`${item.href}`}>
+								{item.Icon && <item.Icon size={20} />}
+								{item.NodeIcon && item.NodeIcon}
+								{item.name}
+							</Link>
+							{item.notify && <UserNotifyComponent type="item" />}
+						</li>
+					))}
 					<li className={style.item}>
 						<ButtonComponent onClick={logoutHandle}>
-							<IoLogOutOutline size={18} />
+							<IoLogOutOutline size={20} />
 							Выйти
 						</ButtonComponent>
 					</li>

@@ -1,29 +1,24 @@
 "use client"
 
 import {
-	ActionsComponent,
+	__ProductActions,
 	FeaturedComponent,
 	HeadingComponent,
 	PriceComponent,
 	ProductDiscountComponent,
 } from "@/components"
-import { IProduct } from "@/interfaces/product.interface"
 import { hostSourceImages } from "@/utils/hostSource"
 import cn from "classnames"
 import Image from "next/image"
 import Link from "next/link"
 import { FC } from "react"
-import style from "./cards.module.scss"
+import style from "./__productCards.module.scss"
+import { IProductCardsProps } from "./Product-cards.props"
 
-interface IDefaultCardsComponentProps {
-	products: IProduct[]
-	title?: string
-	grid?: "6" | "5"
-}
-export const CardsComponent: FC<IDefaultCardsComponentProps> = ({
+export const __ProductCards: FC<IProductCardsProps> = ({
 	products,
-	title,
 	grid,
+	title,
 }) => {
 	return (
 		<div className={style.cards}>
@@ -67,7 +62,7 @@ export const CardsComponent: FC<IDefaultCardsComponentProps> = ({
 								</div>
 							</Link>
 							<div className={style.buttons}>
-								<ActionsComponent
+								<__ProductActions
 									actionType="toView"
 									alias={product.alias}
 									product={product}

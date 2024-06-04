@@ -1,37 +1,26 @@
 "use client"
 
-import { ButtonComponent } from "@/components/button/Button"
 import { useLoader } from "@/hooks/app/useLoader"
 import { useCart } from "@/hooks/cart/useCart"
 import { useExistInCart } from "@/hooks/cart/useExistInCart"
-import { useStoreActions } from "@/hooks/store/useStoreActions"
-import { IProduct } from "@/interfaces/product.interface"
 import cn from "classnames"
 import { useRouter } from "next/navigation"
 import { FC } from "react"
-import style from "./actions.module.scss"
+import { ButtonComponent } from "../button/Button"
+import style from "./__productActions.module.scss"
+import { IProductActionsProps } from "./Product-actions.props"
 
-interface IActionsProps {
-	alias: string
-	disable?: boolean
-	actionType: "toCart" | "toView"
-	size?: string | undefined
-	color?: string | undefined
-	product: IProduct
-	btnSize?: "1xl" | "2xl"
-}
-export const ActionsComponent: FC<IActionsProps> = ({
-	alias,
-	disable,
+export const __ProductActions: FC<IProductActionsProps> = ({
 	actionType,
+	alias,
 	product,
-	size,
-	color,
 	btnSize,
+	color,
+	disable,
+	size,
 }) => {
 	const { push } = useRouter()
 	const { isExist } = useExistInCart(product)
-	const { openNotifyHandler } = useStoreActions()
 	const { isLoading, setLoadingHandler } = useLoader()
 	const { addToCart } = useCart()
 
@@ -48,12 +37,6 @@ export const ActionsComponent: FC<IActionsProps> = ({
 				})
 				resolve()
 			}, 3000)
-		})
-		openNotifyHandler({
-			text: "Товар добавлен в корзину",
-			options: {
-				position: "bottomCenter",
-			},
 		})
 	}
 	switch (actionType) {

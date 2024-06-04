@@ -1,14 +1,9 @@
 "use client"
 
 import { UserApi } from "@/api/api-user/api-user"
-import {
-	FooterComponent,
-	HeaderComponent,
-	NotifyComponent,
-	ScreenComponent,
-} from "@/components"
+import { FooterComponent, HeaderComponent, ScreenComponent } from "@/components"
+import { MobileNavigation } from "@/components/mobile/mobile-navigation/Mobile-navigation"
 import { ModalComponent } from "@/components/modal/Modal"
-import { ModalDialogComponent } from "@/components/modal/modal-dialog/Modal-dialog"
 import SidebarComponent from "@/components/sidebar/Sidebar"
 import { useAuth } from "@/hooks/auth/useAuth"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
@@ -27,24 +22,23 @@ export default function HomeLayout({
 	const { user } = useUser()
 	const socket = useWebSocket()
 
-	const getUserProfile = async () => {
-		if (!hasFetchedProfile.current) {
-			hasFetchedProfile.current = true
-			const data = await UserApi.fetchUserProfile()
-			if (data) {
-				addUser({ data })
+	useEffect(() => {
+		const getUserProfile = async () => {
+			if (!hasFetchedProfile.current) {
+				hasFetchedProfile.current = true
+				const data = await UserApi.fetchUserProfile()
 				if (data) {
+					addUser({ data })
 					socket?.emit("logIn", { email: data.email })
 				}
 			}
 		}
-	}
-
-	useEffect(() => {
 		if (isAuthentificated) {
 			getUserProfile()
+		} else {
+			hasFetchedProfile.current = false
 		}
-	}, [isAuthentificated])
+	}, [isAuthentificated, hasFetchedProfile])
 
 	useEffect(() => {
 		if (!socket) return
@@ -64,15 +58,13 @@ export default function HomeLayout({
 		<>
 			<HeaderComponent />
 			{/* <Cungrulations /> */}
-			{/* <MobileNavigation /> */}
+			<MobileNavigation />
 			<SidebarComponent />
 			<ScreenComponent />
 			<main className="main">
 				<Suspense>{children}</Suspense>
 			</main>
 			<FooterComponent />
-			<NotifyComponent />
-			<ModalDialogComponent />
 			<ModalComponent />
 		</>
 	)

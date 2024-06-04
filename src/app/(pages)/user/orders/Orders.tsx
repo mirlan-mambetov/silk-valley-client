@@ -4,13 +4,14 @@ import { ButtonComponent } from "@/components"
 import { formatDateString } from "@/helpers/formate.data.helper"
 import { useUser } from "@/hooks/user/useUser"
 import { formatPrice } from "@/utils/product.utils"
+import { useRouter } from "next/navigation"
 import { FC } from "react"
-import { CgDetailsMore } from "react-icons/cg"
+import { MdOutlineBookmarkBorder } from "react-icons/md"
 import style from "./orders.module.scss"
 
 const Orders: FC = () => {
 	const { user } = useUser()
-	console.log(user?.orders)
+	const { push } = useRouter()
 	return (
 		<div className={style.orders}>
 			{user?.orders.length ? (
@@ -41,9 +42,14 @@ const Orders: FC = () => {
 							<span>{formatDateString(order.createdAt)}</span>
 						</div>
 						<div className={style.row}>
-							<strong>Подробнее</strong>
-							<ButtonComponent title={`Просмотр заказа ${order.orderId}`}>
-								<CgDetailsMore />
+							<strong>Действие</strong>
+							<ButtonComponent
+								onClick={() => push(`/user/orders/${order.id}`)}
+								title={`Просмотр заказа ${order.orderId}`}
+							>
+								<span>
+									<MdOutlineBookmarkBorder />
+								</span>
 							</ButtonComponent>
 						</div>
 					</div>

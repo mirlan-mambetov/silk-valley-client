@@ -1,7 +1,7 @@
 "use client"
 
 import {
-	ActionsComponent,
+	__ProductActions,
 	PriceComponent,
 	ProductDiscountComponent,
 } from "@/components"
@@ -79,7 +79,7 @@ export const PromotionComponent: FC<IPromotionComponentProps> = ({ data }) => {
 										orientation="column"
 									/>
 								</div>
-								<ActionsComponent
+								<__ProductActions
 									actionType="toView"
 									alias={`${promotion.alias}`}
 									product={promotion}

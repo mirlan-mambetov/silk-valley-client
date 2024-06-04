@@ -10,7 +10,6 @@ import { saveItemToCookie } from "@/helpers/cookie.helpers"
 import { saveTokensToStorage } from "@/helpers/local.storage.helper"
 import { useAuth } from "@/hooks/auth/useAuth"
 import { useScreen } from "@/hooks/screen/useScreen"
-import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { useMutation } from "@tanstack/react-query"
 import { motion } from "framer-motion"
 import { FC } from "react"
@@ -20,7 +19,6 @@ import style from "../auth-form.module.scss"
 import { IAuthProps } from "../auth.props"
 
 export const LoginComponent: FC<IAuthProps> = ({ animate, setChoice }) => {
-	const { openNotifyHandler } = useStoreActions()
 	const { loginPending, loginSuccess, loginRejected } = useAuth()
 	// const [loginUser, result] = useLoginUserMutation()
 	const { clearContentHandler } = useScreen()
@@ -46,29 +44,13 @@ export const LoginComponent: FC<IAuthProps> = ({ animate, setChoice }) => {
 					loginSuccess()
 					saveItemToCookie(AuthEnum.IS_AUTH, "__SV__V1", 7 * 24 * 60 * 60)
 					saveTokensToStorage(data)
-					openNotifyHandler({
-						text: "Вход выполнен успешно",
-						options: {
-							size: "xl2",
-							timeOut: 2000,
-							position: "topRight",
-						},
-						type: "success",
-					})
+
 					clearContentHandler()
 				},
 			})
 		} catch (error) {
 			// DISPATCH LOGIN WITH REJECTED
 			loginRejected()
-			openNotifyHandler({
-				text: String(error),
-				options: {
-					size: "xl2",
-					timeOut: 3000,
-				},
-				type: "error",
-			})
 		}
 	}
 

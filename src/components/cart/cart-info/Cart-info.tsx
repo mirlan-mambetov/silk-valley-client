@@ -1,11 +1,6 @@
 "use client"
 
-import {
-	ButtonComponent,
-	DeliverComponent,
-	MapIconComponent,
-	PriceComponent,
-} from "@/components"
+import { ButtonComponent, MapIconComponent, PriceComponent } from "@/components"
 import { showDestinationName } from "@/helpers/showDestinationName"
 import { useCart } from "@/hooks/cart/useCart"
 import { useDeliver } from "@/hooks/deliver/useDeliver"
@@ -35,7 +30,7 @@ export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 			<div className={style.wrap}>
 				<ButtonComponent
 					className={style.deliver}
-					onClick={() => setContentHandler(<DeliverComponent />)}
+					// onClick={() => setContentHandler(<DeliverComponent />)}
 				>
 					<span>{showDestinationName(address)}</span>
 					<MapIconComponent />

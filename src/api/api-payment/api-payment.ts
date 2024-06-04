@@ -3,7 +3,9 @@ import { IPaymentDTO, IPaymentResponseWithCard } from "./data-transfer"
 
 export type PlaceOrderResponse = {} & {
 	message: string
-} & IPaymentResponseWithCard
+	orderId: number
+	detail_order: IPaymentResponseWithCard
+}
 
 export const PaymentApi = {
 	/**
@@ -34,5 +36,13 @@ export const PaymentApi = {
 			})
 			return response.data
 		}
+	},
+
+	async checkOrder(orderId: number) {
+		const response = await apiBase<{ message: string }>({
+			url: `/payment/check-order/${orderId}`,
+			method: "POST",
+		})
+		return response.data
 	},
 }

@@ -15,12 +15,8 @@ import style from "../auth-form.module.scss"
 import { IAuthProps } from "../auth.props"
 
 export const RegisterComponent: FC<IAuthProps> = ({ animate, setChoice }) => {
-	const {
-		registerPending,
-		registerRejected,
-		registerSuccess,
-		openNotifyHandler,
-	} = useStoreActions()
+	const { registerPending, registerRejected, registerSuccess } =
+		useStoreActions()
 	const { mutateAsync, isPending } = useMutation({
 		mutationKey: ["registerUser"],
 		mutationFn: (data: IAuthRegisterDTO) => AuthApi.registerUser(data),
@@ -36,29 +32,12 @@ export const RegisterComponent: FC<IAuthProps> = ({ animate, setChoice }) => {
 		try {
 			await mutateAsync(data, {
 				onSuccess(data, variables, context) {
-					openNotifyHandler({
-						text: data.message,
-						options: {
-							size: "xl2",
-							timeOut: 2000,
-							position: "topRight",
-						},
-						type: "success",
-					})
 					setChoice("login")
 					registerSuccess()
 				},
 			})
 		} catch (error) {
 			registerRejected()
-			openNotifyHandler({
-				text: String(error),
-				options: {
-					size: "xl2",
-					timeOut: 3000,
-				},
-				type: "error",
-			})
 		}
 	}
 	return (

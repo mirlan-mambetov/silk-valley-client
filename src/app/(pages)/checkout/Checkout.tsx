@@ -8,16 +8,14 @@ import {
 	EnumOrderStatusInCookie,
 	EnumPaymentMethod,
 } from "@/enums/Payment.enum"
-import { saveItemToCookie } from "@/helpers/cookie.helpers"
 import { useCart } from "@/hooks/cart/useCart"
 import { useDeliver } from "@/hooks/deliver/useDeliver"
-import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { useUser } from "@/hooks/user/useUser"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import cn from "classnames"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import style from "./checkout.module.scss"
 
 export const Checkout = () => {
@@ -27,7 +25,6 @@ export const Checkout = () => {
 	const { user } = useUser()
 	const { products, totalPrice, clearCart } = useCart()
 	const { address } = useDeliver()
-	const { openNotifyHandler, openDialogHandler } = useStoreActions()
 	const queryClient = useQueryClient()
 
 	// PAYMENT MUTATION
@@ -43,53 +40,51 @@ export const Checkout = () => {
 	// 		PaymentApi.canceldTransaction({ sessionId }),
 	// })
 
-	useEffect(() => {
-		if (methodCard) {
-			openDialogHandler({
-				message:
-					"Для прохождения оплаты по visa. Используйте следующее. Номер карты 4242 4242 4242 4242. Дата истечения срока 04/26. CVC 444",
-				type: "notify",
-			})
-		}
-	}, [methodCard])
+	// useEffect(() => {
+	// 	if (methodCard) {
+	// 		openDialogHandler({
+	// 			message:
+	// 				"Для прохождения оплаты по visa. Используйте следующее. Номер карты 4242 4242 4242 4242. Дата истечения срока 04/26. CVC 444",
+	// 			type: "notify",
+	// 		})
+	// 	}
+	// }, [methodCard])
+
 	const placeOrderHandler = async (data: IPaymentDTO) => {
 		try {
 			await mutateAsync(data, {
 				onSuccess(data, variables, context) {
-					if (data.message) {
-						openNotifyHandler({
-							text: data.message,
-							type: "success",
-							options: {
-								timeOut: 5000,
-							},
-						})
-						queryClient.invalidateQueries({ queryKey: ["getUserProfile"] })
-					} else if (data.url) {
-						saveItemToCookie(
-							EnumOrderStatusInCookie._SV__ST_OR,
-							data.status,
-							data.expires_at
+					if (data.orderId) {
+						localStorage.setItem(
+							`${EnumOrderStatusInCookie.__SV_O_ID}-${user?.id}`,
+							String(data.orderId)
 						)
-						saveItemToCookie(
-							EnumOrderStatusInCookie._SV__R_CL_ID,
-							data.client_reference_id
-						)
-						saveItemToCookie(EnumOrderStatusInCookie._SV_UR_S_, data.url)
-						saveItemToCookie(EnumOrderStatusInCookie._SV_OR_ID, data.id)
-						push(`${data.url}`)
 					}
+					if (data.message) {
+						// openNotifyHandler({
+						// 	text: data.message,
+						// 	type: "success",
+						// 	options: {
+						// 		timeOut: 5000,
+						// 	},
+						// })
+						queryClient.invalidateQueries({ queryKey: ["getUserProfile"] })
+					}
+					if (data.detail_order.url) {
+						push(`${data.detail_order.url}`)
+					}
+					console.log(data)
 					clearCart()
 				},
 			})
 		} catch (error) {
-			openNotifyHandler({
-				text: String(error),
-				options: {
-					position: "bottomCenter",
-				},
-				type: "error",
-			})
+			// openNotifyHandler({
+			// 	text: String(error),
+			// 	options: {
+			// 		position: "bottomCenter",
+			// 	},
+			// 	type: "error",
+			// })
 		}
 	}
 

@@ -1,11 +1,10 @@
 "use client"
 
 import {
-	ActionsComponent,
 	ButtonComponent,
-	DeliverComponent,
 	FeaturedComponent,
 	PriceComponent,
+	__ProductActions,
 } from "@/components"
 import { showDestinationName } from "@/helpers/showDestinationName"
 import { useCart } from "@/hooks/cart/useCart"
@@ -78,7 +77,7 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 						<span>{showDestinationName(address)}</span>
 						<ButtonComponent
 							title="Выбрать координаты доставки"
-							onClick={() => setContentHandler(<DeliverComponent />)}
+							// onClick={() => setContentHandler(<DeliverComponent />)}
 						>
 							<FiEdit2 />
 						</ButtonComponent>
@@ -102,7 +101,7 @@ export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
 						</div>
 					</div>
 				)}
-				<ActionsComponent
+				<__ProductActions
 					btnSize="2xl"
 					color={selectedColor}
 					size={selectedSize}

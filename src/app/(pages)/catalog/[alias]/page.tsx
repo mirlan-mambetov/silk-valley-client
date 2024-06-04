@@ -9,7 +9,7 @@ import { Suspense } from "react"
 import { Catalog } from "./Catalog"
 
 // FETCH DATA
-export async function fetchData<T>(url: string): Promise<T> {
+async function fetchData<T>(url: string): Promise<T> {
 	const response = await fetch(url, {
 		method: "GET",
 		headers: {
@@ -27,7 +27,7 @@ export async function fetchData<T>(url: string): Promise<T> {
 }
 
 // FETCH CATEGORY
-export async function fetchCategoryBySlug({
+async function fetchCategoryBySlug({
 	params,
 }: IPageParams): Promise<ISecondCategories> {
 	const { alias } = params
@@ -37,7 +37,7 @@ export async function fetchCategoryBySlug({
 }
 
 // FETCH ALL CATEGORIES
-export async function fetchAllCategories(): Promise<ISecondCategories[]> {
+async function fetchAllCategories(): Promise<ISecondCategories[]> {
 	const url = `${APP_URI}/second-category`
 	const categories = await fetchData<ISecondCategories[]>(url)
 	return categories

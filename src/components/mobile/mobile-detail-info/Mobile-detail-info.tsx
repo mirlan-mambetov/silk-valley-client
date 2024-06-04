@@ -1,9 +1,9 @@
 "use client"
 
 import {
-	ActionsComponent,
 	FeaturedComponent,
 	PriceComponent,
+	__ProductActions,
 } from "@/components"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { IProduct } from "@/interfaces/product.interface"
@@ -83,7 +83,7 @@ export const MobileDetailInfoComponent: FC<IMobileDetailInfoComponentProps> = ({
 				</div>
 				<div className={style.actions}>
 					<FeaturedComponent size={20} />
-					<ActionsComponent
+					<__ProductActions
 						size={selectedSize}
 						color={selectedColor}
 						actionType="toCart"
