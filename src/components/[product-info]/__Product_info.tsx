@@ -1,35 +1,27 @@
 "use client"
 
 import {
+	__ProductActions,
 	ButtonComponent,
 	FeaturedComponent,
 	PriceComponent,
-	__ProductActions,
 } from "@/components"
 import { showDestinationName } from "@/helpers/showDestinationName"
 import { useCart } from "@/hooks/cart/useCart"
 import { useDeliver } from "@/hooks/deliver/useDeliver"
-import { useScreen } from "@/hooks/screen/useScreen"
-import { IProduct } from "@/interfaces/product.interface"
 import cn from "classnames"
 import { FC } from "react"
 import { FiEdit2 } from "react-icons/fi"
 import { SlHandbag } from "react-icons/sl"
-import style from "./product-info.module.scss"
+import { IProductInfoProps } from "./__Product_info.props"
+import style from "./_product_info.module.scss"
 
-interface IProductInfoComponentProps {
-	data: IProduct
-	type?: "sticky" | "default"
-	selectedColor?: string
-	selectedSize?: string
-}
-export const ProductInfoComponent: FC<IProductInfoComponentProps> = ({
+export const __Product_info: FC<IProductInfoProps> = ({
 	data,
-	type = "default",
 	selectedColor,
 	selectedSize,
+	type,
 }) => {
-	const { setContentHandler } = useScreen()
 	const { address } = useDeliver()
 	const { products } = useCart()
 

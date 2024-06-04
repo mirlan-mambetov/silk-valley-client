@@ -1,10 +1,10 @@
 "use client"
 
 import {
-	ProductAttributesComponent,
-	ProductImagesComponent,
-	ProductInfoComponent,
-	SpecificationsComponent,
+	__Product_info,
+	__ProductAttributes,
+	__ProductImages,
+	ProductSpecification,
 } from "@/components"
 import { useCart } from "@/hooks/cart/useCart"
 import { IProduct } from "@/interfaces/product.interface"
@@ -53,21 +53,11 @@ export const Detail: FC<IDetailProps> = ({ data }) => {
 
 	return (
 		<div className={style.detail}>
-			{/* STICKY INFORMATION */}
-			{/* <StickyHeaderComponent start={width < 940 ? 200 : 900}>
-				<MobileDetailInfoComponent
-					data={data}
-					selectedColor={selectedColor}
-					selectedSize={selectedSize}
-					setSelectedColor={(value) => setSelectedColor(value)}
-					setSelectedSize={(value) => setSelectedSize(value)}
-				/>
-			</StickyHeaderComponent> */}
 			<div className={style.wrap}>
 				{/* PRODUCT */}
 				<div className={style.product}>
 					{/* IMAGES */}
-					<ProductImagesComponent
+					<__ProductImages
 						data={{
 							poster: selectedImages ? selectedImages[0] : data.poster,
 							images: selectedImages || data.attributes[0].images,
@@ -75,7 +65,7 @@ export const Detail: FC<IDetailProps> = ({ data }) => {
 					/>
 					{/* PRODUCT CONTENT */}
 					<div className={style.product_content}>
-						<ProductAttributesComponent
+						<__ProductAttributes
 							selectedColor={selectedColor}
 							selectedSize={selectedSize}
 							data={data}
@@ -85,14 +75,12 @@ export const Detail: FC<IDetailProps> = ({ data }) => {
 					</div>
 				</div>
 				{/* ORDER INFO */}
-				{/* {width > 940 ? ( */}
-				<ProductInfoComponent
+				<__Product_info
 					data={data}
 					selectedColor={selectedColor}
 					selectedSize={selectedSize}
 				/>
-				{/* // ) : null} */}
-				<SpecificationsComponent specifications={data.specifications} />
+				<ProductSpecification specifications={data.specifications} />
 			</div>
 		</div>
 	)

@@ -1,0 +1,174 @@
+@import "../../styles/mixin";
+@import "../../styles/vars";
+@import "../../styles/media.mixin";
+
+.attributes {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	&::before {
+		display: block;
+		content: "";
+		width: 100%;
+		border-bottom: 1px dashed $darkenRGBA;
+	}
+
+	.attribute {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		.product_name {
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+			font-size: 20px;
+			font-weight: 700;
+			line-height: 25px;
+			max-width: 500px;
+		}
+
+		.product_id {
+			display: flex;
+			align-items: center;
+			gap: 7px;
+			span,
+			button {
+				color: $discount;
+				border-radius: 4px;
+				background: $white;
+				padding: 4px;
+				box-shadow: 0px 10px 23px 3px rgba(34, 60, 40, 0.03);
+				font-size: 12px;
+				font-weight: 500;
+			}
+		}
+		.title {
+			display: flex;
+			align-items: center;
+			gap: 6px;
+			font-size: 12px;
+			font-weight: 500;
+			color: $gray;
+			b {
+				font-weight: 400;
+			}
+		}
+		.rating {
+			justify-content: unset;
+			gap: 10px;
+		}
+		.price {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+		}
+		.description {
+			p {
+				font-size: 14px;
+				line-height: 20px;
+				font-weight: 400;
+				display: -webkit-box;
+				-webkit-line-clamp: 5;
+				overflow: hidden;
+				-webkit-box-orient: vertical;
+			}
+		}
+		.sizes {
+			display: flex;
+			flex-direction: column;
+			gap: 5px;
+			.size {
+				display: flex;
+				align-items: center;
+				gap: 8px;
+				.button {
+					display: flex;
+					position: relative;
+					border: 1px solid $purpleDarken;
+					padding: 10px;
+					border-radius: 3px;
+					&.active_color {
+						&::after {
+							content: "";
+							position: absolute;
+							top: -1px;
+							left: -1px;
+							right: -1px;
+							bottom: -1px;
+							border: 2px solid $purple;
+							border-radius: 4px;
+						}
+					}
+				}
+			}
+		}
+		.colors {
+			width: 100%;
+			.slider {
+				.color {
+					position: relative !important;
+					padding-top: calc(100% * (45 / 220));
+					border: 1px solid $darkenRGBA;
+					border-radius: 4px;
+
+					cursor: pointer;
+					&.active_color {
+						border: none;
+						&::after {
+							content: "";
+							position: absolute;
+							top: 0px;
+							left: 0px;
+							right: 0;
+							bottom: 0;
+							border: 2px solid $purple;
+							border-radius: 4px;
+						}
+					}
+					img {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						border-radius: 4px;
+					}
+					@include mediaLarge1024px {
+						padding-top: calc(100% * (30 / 270));
+					}
+					@include mediaLarge776px {
+						padding-top: calc(100% * (40 / 270));
+					}
+					@include mediaLarge640px {
+						padding-top: calc(100% * (40 / 160));
+					}
+				}
+			}
+		}
+		&:nth-child(1) {
+			@include mediaLarge530px {
+				order: 4;
+			}
+		}
+		&:nth-child(2) {
+			@include mediaLarge530px {
+				order: 2;
+			}
+		}
+		&:nth-child(4) {
+			@include mediaLarge530px {
+				order: 3;
+			}
+		}
+		&:nth-child(5) {
+			@include mediaLarge530px {
+				order: 5;
+			}
+		}
+		&:nth-child(6) {
+			@include mediaLarge530px {
+				order: 6;
+			}
+		}
+	}
+}

@@ -1,16 +1,12 @@
 "use client"
 
-import { IProductSpecifications } from "@/interfaces/product.interface"
 import { FC } from "react"
-import style from "./specifications.module.scss"
+import style from "./productSpecification.module.scss"
+import { IProductSpecificationsProps } from "./ProductSpecification.props"
 
-interface IProductSpecificationsComponentProps {
-	specifications: IProductSpecifications[] | undefined
-}
-
-export const SpecificationsComponent: FC<
-	IProductSpecificationsComponentProps
-> = ({ specifications }) => {
+export const ProductSpecification: FC<IProductSpecificationsProps> = ({
+	specifications,
+}) => {
 	return (
 		<div className={style.specifications}>
 			<h3 className={style.title}>

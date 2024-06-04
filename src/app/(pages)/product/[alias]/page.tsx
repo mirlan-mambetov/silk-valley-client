@@ -8,8 +8,9 @@ import { notFound } from "next/navigation"
 import { Suspense } from "react"
 import { Detail } from "./Detail"
 
-// FETCH PRODUCT BY ALIAS
-
+/**
+	FETCH DATA
+ */
 export async function fetchData({ params }: IPageParams): Promise<IProduct> {
 	const { alias } = params
 	const response = await fetch(`${APP_URI}/product/by-alias/${alias}`, {
@@ -22,7 +23,9 @@ export async function fetchData({ params }: IPageParams): Promise<IProduct> {
 	return product
 }
 
-// GENERATE STATIC PARAMS
+/**
+	GENERATE STATIC PARAMS
+ */
 export async function generateStaticParams() {
 	const response: Response = await fetch(`${APP_URI}/product`, {
 		next: { revalidate: APP_REVALIDATE },
@@ -37,7 +40,9 @@ export async function generateStaticParams() {
 	return paths
 }
 
-// GENERATE META DATA
+/**
+	GENERATE META DATA
+ */
 export async function generateMetadata({
 	params,
 }: IPageParams): Promise<Metadata> {
