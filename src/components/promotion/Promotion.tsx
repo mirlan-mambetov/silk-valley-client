@@ -1,10 +1,6 @@
 "use client"
 
-import {
-	__ProductActions,
-	PriceComponent,
-	ProductDiscountComponent,
-} from "@/components"
+import { __ProductActions, PriceComponent } from "@/components"
 import { SwiperComponent } from "@/components/swiper-component/Swiper-component"
 import { IProduct } from "@/interfaces/product.interface"
 import { hostSourceImages } from "@/utils/hostSource"
@@ -53,12 +49,6 @@ export const PromotionComponent: FC<IPromotionComponentProps> = ({ data }) => {
 				>
 					{data.map((promotion) => (
 						<SwiperSlide className={style.column} key={promotion.id}>
-							<ProductDiscountComponent
-								product={promotion}
-								type="absolute"
-								size="xl1"
-								position="top"
-							/>
 							<div className={style.poster}>
 								<Image
 									priority

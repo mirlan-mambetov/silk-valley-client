@@ -3,6 +3,7 @@
 import { useLoader } from "@/hooks/app/useLoader"
 import { useCart } from "@/hooks/cart/useCart"
 import { useExistInCart } from "@/hooks/cart/useExistInCart"
+import { useNotification } from "@/hooks/useNotification"
 import cn from "classnames"
 import { useRouter } from "next/navigation"
 import { FC } from "react"
@@ -23,6 +24,7 @@ export const __ProductActions: FC<IProductActionsProps> = ({
 	const { isExist } = useExistInCart(product)
 	const { isLoading, setLoadingHandler } = useLoader()
 	const { addToCart } = useCart()
+	const { addNotification } = useNotification()
 
 	const addToCartHandler = async () => {
 		setLoadingHandler()
@@ -37,6 +39,10 @@ export const __ProductActions: FC<IProductActionsProps> = ({
 				})
 				resolve()
 			}, 3000)
+		})
+		addNotification({
+			message: "Товар добавлен в корзину",
+			options: { background: "Black" },
 		})
 	}
 	switch (actionType) {

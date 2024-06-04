@@ -6,7 +6,7 @@ import {
 	PriceComponent,
 } from "@/components"
 import { useCart } from "@/hooks/cart/useCart"
-import { useStoreActions } from "@/hooks/store/useStoreActions"
+import { useNotification } from "@/hooks/useNotification"
 import { ICartProduct } from "@/interfaces/cart.interface"
 import { hostSourceImages } from "@/utils/hostSource"
 import cn from "classnames"
@@ -23,7 +23,8 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 	products,
 }) => {
 	const { removeFromCart } = useCart()
-	const { openNotifyHandler } = useStoreActions()
+	const { addNotification } = useNotification()
+
 	return (
 		<div className={style.cart}>
 			{products.length ? (
@@ -94,8 +95,13 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 									title="Убрать из корзины"
 									btnType="delete"
 									onClick={() => {
-										removeFromCart({ id: product.id })
-										openNotifyHandler({ text: "Товар убран из корзины" })
+										addNotification({
+											message: "Убрать товар из корзины ?",
+											options: { background: "Black", notifyType: "Dialog" },
+											onConfirm() {
+												removeFromCart({ id: product.id })
+											},
+										})
 									}}
 								/>
 							</div>

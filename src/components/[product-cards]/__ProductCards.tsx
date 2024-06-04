@@ -5,7 +5,6 @@ import {
 	FeaturedComponent,
 	HeadingComponent,
 	PriceComponent,
-	ProductDiscountComponent,
 } from "@/components"
 import { hostSourceImages } from "@/utils/hostSource"
 import cn from "classnames"
@@ -39,10 +38,6 @@ export const __ProductCards: FC<IProductCardsProps> = ({
 											height={400}
 											src={hostSourceImages(product.poster)}
 											alt={product.title}
-										/>
-										<ProductDiscountComponent
-											type="absolute"
-											product={product}
 										/>
 									</div>
 								</div>

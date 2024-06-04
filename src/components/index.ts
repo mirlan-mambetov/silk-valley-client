@@ -39,6 +39,7 @@ export * from "./sticky-header/Sticky-header"
 export * from "./user/User"
 
 // NEW
+export * from "./[notification]/Notification"
 export * from "./[product-actions]/__ProductActions"
 export * from "./[product-attributes]/__ProductAttributes"
 export * from "./[product-cards]/__ProductCards"
