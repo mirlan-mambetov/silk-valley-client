@@ -8,6 +8,7 @@ import { PersistGate } from "redux-persist/integration/react"
 import { LoaderProvider } from "./Loader.provider"
 import { ScreenProvider } from "./Screen.provider"
 
+import { AttributesProvider } from "./Attributes.prodivder"
 import { NotificationProvider } from "./Notification.provider"
 import { SidebarProvider } from "./Sidebar.provider"
 import { WebSocketProvider } from "./Ws.provider"
@@ -29,7 +30,9 @@ export const AppProvider: FC<PropsWithChildren> = ({ children }) => {
 						<NotificationProvider>
 							<ScreenProvider>
 								<LoaderProvider>
-									<SidebarProvider>{children}</SidebarProvider>
+									<AttributesProvider>
+										<SidebarProvider>{children}</SidebarProvider>
+									</AttributesProvider>
 								</LoaderProvider>
 							</ScreenProvider>
 						</NotificationProvider>

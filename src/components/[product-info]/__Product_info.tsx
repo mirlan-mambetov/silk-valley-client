@@ -9,6 +9,7 @@ import {
 import { showDestinationName } from "@/helpers/showDestinationName"
 import { useCart } from "@/hooks/cart/useCart"
 import { useDeliver } from "@/hooks/deliver/useDeliver"
+import { useAttributes } from "@/hooks/useAttributes"
 import cn from "classnames"
 import { FC } from "react"
 import { FiEdit2 } from "react-icons/fi"
@@ -16,14 +17,12 @@ import { SlHandbag } from "react-icons/sl"
 import { IProductInfoProps } from "./__Product_info.props"
 import style from "./_product_info.module.scss"
 
-export const __Product_info: FC<IProductInfoProps> = ({
-	data,
-	selectedColor,
-	selectedSize,
-	type,
-}) => {
+export const __Product_info: FC<IProductInfoProps> = ({ data, type }) => {
 	const { address } = useDeliver()
 	const { products } = useCart()
+	const {
+		payload: { selectedColor, selectedSize },
+	} = useAttributes()
 
 	return (
 		<div
@@ -95,8 +94,6 @@ export const __Product_info: FC<IProductInfoProps> = ({
 				)}
 				<__ProductActions
 					btnSize="2xl"
-					color={selectedColor}
-					size={selectedSize}
 					actionType="toCart"
 					alias={data.alias}
 					product={data}

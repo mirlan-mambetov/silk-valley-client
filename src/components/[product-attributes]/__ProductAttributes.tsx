@@ -9,18 +9,17 @@ import { SwiperSlide } from "swiper/react"
 import { ButtonComponent } from "../button/Button"
 import { PriceComponent } from "../price/Price"
 // import { ProductDiscountComponent } from "../product/product-discount/Product-discount"
+import { useAttributes } from "@/hooks/useAttributes"
 import { RatingComponent } from "../rating/Rating"
 import { SwiperComponent } from "../swiper-component/Swiper-component"
 import style from "./__productAttributes.module.scss"
 import { IProductAttributes } from "./ProductAttributes.props"
 
-export const __ProductAttributes: FC<IProductAttributes> = ({
-	data,
-	selectedColorHandle,
-	selectedSizeHandle,
-	selectedColor,
-	selectedSize,
-}) => {
+export const __ProductAttributes: FC<IProductAttributes> = ({ data }) => {
+	const {
+		addAttribute,
+		payload: { selectedColor, selectedSize },
+	} = useAttributes()
 	return (
 		<div className={style.attributes}>
 			<div className={style.attribute}>
@@ -88,7 +87,7 @@ export const __ProductAttributes: FC<IProductAttributes> = ({
 								})}
 								key={attribute.id}
 								onClick={() => {
-									selectedColorHandle(attribute.color)
+									addAttribute({ selectedColor: attribute.color })
 								}}
 							>
 								<Image
@@ -116,9 +115,7 @@ export const __ProductAttributes: FC<IProductAttributes> = ({
 									})}
 									key={i}
 									onClick={() => {
-										attribute.size
-											? selectedSizeHandle(attribute.size)
-											: undefined
+										addAttribute({ selectedSize: attribute.size })
 									}}
 								>
 									{attribute.size}

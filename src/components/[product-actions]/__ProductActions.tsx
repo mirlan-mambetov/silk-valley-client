@@ -3,6 +3,7 @@
 import { useLoader } from "@/hooks/app/useLoader"
 import { useCart } from "@/hooks/cart/useCart"
 import { useExistInCart } from "@/hooks/cart/useExistInCart"
+import { useAttributes } from "@/hooks/useAttributes"
 import { useNotification } from "@/hooks/useNotification"
 import cn from "classnames"
 import { useRouter } from "next/navigation"
@@ -16,15 +17,16 @@ export const __ProductActions: FC<IProductActionsProps> = ({
 	alias,
 	product,
 	btnSize,
-	color,
 	disable,
-	size,
 }) => {
 	const { push } = useRouter()
 	const { isExist } = useExistInCart(product)
 	const { isLoading, setLoadingHandler } = useLoader()
 	const { addToCart } = useCart()
 	const { addNotification } = useNotification()
+	const {
+		payload: { selectedColor, selectedSize },
+	} = useAttributes()
 
 	const addToCartHandler = async () => {
 		setLoadingHandler()
@@ -33,8 +35,8 @@ export const __ProductActions: FC<IProductActionsProps> = ({
 				addToCart({
 					product: {
 						...product,
-						selectedColor: color,
-						selectedSize: size,
+						selectedColor,
+						selectedSize,
 					},
 				})
 				resolve()

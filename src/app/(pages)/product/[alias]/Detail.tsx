@@ -6,26 +6,21 @@ import {
 	__ProductImages,
 	ProductSpecification,
 } from "@/components"
-import { useCart } from "@/hooks/cart/useCart"
+import { useAttributes } from "@/hooks/useAttributes"
 import { IProduct } from "@/interfaces/product.interface"
-import { FC, useEffect, useMemo, useState } from "react"
+import { FC, useEffect, useState } from "react"
 import style from "./detail.module.scss"
 
 interface IDetailProps {
 	data: IProduct
 }
 export const Detail: FC<IDetailProps> = ({ data }) => {
-	const { products } = useCart()
-
 	const [selectedImages, setSelectedImages] = useState<string[] | undefined>(
 		undefined
 	)
-	const [selectedColor, setSelectedColor] = useState<string | undefined>(
-		data.attributes[0]?.color
-	)
-	const [selectedSize, setSelectedSize] = useState<string | undefined>(
-		data.attributes[0]?.size
-	)
+	const {
+		payload: { selectedColor },
+	} = useAttributes()
 
 	const attribute = data.attributes.find((item) => item.color === selectedColor)
 
@@ -34,22 +29,6 @@ export const Detail: FC<IDetailProps> = ({ data }) => {
 			setSelectedImages(attribute?.images)
 		}
 	}, [selectedColor])
-
-	const attributes = useMemo(() => {
-		const isExist = products.find((product) => product.id === data.id)
-		return isExist
-	}, [products])
-
-	useEffect(() => {
-		if (attributes) {
-			if (attributes.selectedColor) {
-				setSelectedColor(attributes.selectedColor)
-			}
-			if (attributes.selectedSize) {
-				setSelectedSize(attributes.selectedSize)
-			}
-		}
-	}, [])
 
 	return (
 		<div className={style.detail}>
@@ -65,21 +44,11 @@ export const Detail: FC<IDetailProps> = ({ data }) => {
 					/>
 					{/* PRODUCT CONTENT */}
 					<div className={style.product_content}>
-						<__ProductAttributes
-							selectedColor={selectedColor}
-							selectedSize={selectedSize}
-							data={data}
-							selectedColorHandle={(value) => setSelectedColor(value)}
-							selectedSizeHandle={(value) => setSelectedSize(value)}
-						/>
+						<__ProductAttributes data={data} />
 					</div>
 				</div>
 				{/* ORDER INFO */}
-				<__Product_info
-					data={data}
-					selectedColor={selectedColor}
-					selectedSize={selectedSize}
-				/>
+				<__Product_info data={data} />
 				<ProductSpecification specifications={data.specifications} />
 			</div>
 		</div>
