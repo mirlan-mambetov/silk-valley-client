@@ -9,36 +9,31 @@ import { useAuth } from "@/hooks/auth/useAuth"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { useUser } from "@/hooks/user/useUser"
 import { useWebSocket } from "@/hooks/ws/useWebSocket"
-import React, { Suspense, useEffect, useRef } from "react"
+import { useQuery } from "@tanstack/react-query"
+import React, { Suspense, useEffect } from "react"
 
 export default function HomeLayout({
 	children,
 }: {
 	children: React.ReactNode
 }) {
-	const hasFetchedProfile = useRef(false)
 	const { addUser } = useStoreActions()
 	const { isAuthentificated } = useAuth()
 	const { user } = useUser()
 	const socket = useWebSocket()
 
+	const { data } = useQuery({
+		queryKey: ["getUserProfile"],
+		queryFn: () => UserApi.fetchUserProfile(),
+		enabled: !!isAuthentificated,
+	})
+
 	useEffect(() => {
-		const getUserProfile = async () => {
-			if (!hasFetchedProfile.current) {
-				hasFetchedProfile.current = true
-				const data = await UserApi.fetchUserProfile()
-				if (data) {
-					addUser({ data })
-					socket?.emit("logIn", { email: data.email })
-				}
-			}
+		if (data) {
+			addUser({ data })
+			socket?.emit("logIn", { email: data.email })
 		}
-		if (isAuthentificated) {
-			getUserProfile()
-		} else {
-			hasFetchedProfile.current = false
-		}
-	}, [isAuthentificated, hasFetchedProfile])
+	}, [data])
 
 	useEffect(() => {
 		if (!socket) return

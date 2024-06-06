@@ -1,7 +1,10 @@
+import { LoaderComponent } from "@/components"
 import { Metadata } from "next"
+import { Suspense } from "react"
 import Orders from "./Orders"
 
 export const metadata: Metadata = {
+	title: "Мои заказы",
 	robots: {
 		index: false,
 		follow: false,
@@ -13,7 +16,11 @@ const OrdersPage = () => {
 		<>
 			<section>
 				<div className="container">
-					<Orders />
+					<Suspense
+						fallback={<LoaderComponent color="black" position="absolute" />}
+					>
+						<Orders />
+					</Suspense>
 				</div>
 			</section>
 		</>

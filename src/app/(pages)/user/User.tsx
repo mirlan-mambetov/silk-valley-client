@@ -11,6 +11,7 @@ import { FC } from "react"
 import { BiLineChart } from "react-icons/bi"
 import { BsBoxSeam } from "react-icons/bs"
 import { GoHeart } from "react-icons/go"
+import { IoMdNotificationsOutline } from "react-icons/io"
 import { IoLogOutOutline } from "react-icons/io5"
 import { MdOutlineViewStream } from "react-icons/md"
 import style from "./user.module.scss"
@@ -64,6 +65,7 @@ const User: FC = () => {
 								</h5>
 							</div>
 						</div>
+
 						<div className={style.row}>
 							<div className={style.top}>
 								<span>
@@ -99,6 +101,17 @@ const User: FC = () => {
 								onClick={() => push("/user/remaining")}
 							>
 								Просмотренные
+							</h5>
+						</div>
+						<div className={style.box}>
+							<span>
+								<IoMdNotificationsOutline />
+							</span>
+							<h5
+								className={style.title}
+								onClick={() => push("/user/notifications")}
+							>
+								Уведомления
 							</h5>
 						</div>
 					</div>

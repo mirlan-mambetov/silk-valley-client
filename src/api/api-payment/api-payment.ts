@@ -5,6 +5,7 @@ export type PlaceOrderResponse = {} & {
 	message: string
 	orderId: number
 	detail_order: IPaymentResponseWithCard
+	notifyId: number
 }
 
 export const PaymentApi = {
@@ -36,13 +37,5 @@ export const PaymentApi = {
 			})
 			return response.data
 		}
-	},
-
-	async checkOrder(orderId: number) {
-		const response = await apiBase<{ message: string }>({
-			url: `/payment/check-order/${orderId}`,
-			method: "POST",
-		})
-		return response.data
 	},
 }

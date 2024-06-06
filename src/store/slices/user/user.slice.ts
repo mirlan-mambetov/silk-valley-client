@@ -20,7 +20,6 @@ export const userSlice = createSlice({
 			state.user = undefined
 		},
 	},
-	extraReducers: (build) => ({}),
 })
 
 export const userActions = userSlice.actions

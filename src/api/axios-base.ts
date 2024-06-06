@@ -15,7 +15,7 @@ export const getContentType = () => ({
 	"Content-Type": "application/json",
 	"ngrok-skip-browser-warning": "69420",
 })
-const refreshTokenMutex = new Mutex()
+export const mutex = new Mutex()
 export const apiBase = axios.create({
 	baseURL: process.env.NEXT_PUBLIC_API_BASE_HOST,
 	headers: getContentType(),
@@ -33,8 +33,8 @@ apiBase.interceptors.response.use(
 		const originalRequest = error.config
 		if (error?.response?.status === 401 && !error.config._isRetry) {
 			originalRequest._isRetry = true
-			if (!refreshTokenMutex.isLocked()) {
-				const release = await refreshTokenMutex.acquire()
+			if (!mutex.isLocked()) {
+				const release = await mutex.acquire()
 				try {
 					const refreshToken = getRefreshTokenFromStorage()
 					if (refreshToken) {
@@ -62,7 +62,7 @@ apiBase.interceptors.response.use(
 					release()
 				}
 			} else {
-				await refreshTokenMutex.waitForUnlock()
+				await mutex.waitForUnlock()
 			}
 		}
 		// Обрабатываем другие ошибки

@@ -29,6 +29,17 @@ export const __ProductActions: FC<IProductActionsProps> = ({
 	} = useAttributes()
 
 	const addToCartHandler = async () => {
+		if (!selectedColor) {
+			return addNotification({
+				message: "Выберите цвет",
+				options: { background: "Black" },
+			})
+		} else if (!selectedSize) {
+			return addNotification({
+				message: "Выберите размер",
+				options: { background: "Black" },
+			})
+		}
 		setLoadingHandler()
 		await new Promise<void>((resolve) => {
 			setTimeout(() => {

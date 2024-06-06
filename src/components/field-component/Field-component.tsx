@@ -1,6 +1,6 @@
 "use client"
 
-import { useStoreActions } from "@/hooks/store/useStoreActions"
+import { useNotification } from "@/hooks/useNotification"
 import { forwardRef, InputHTMLAttributes, useEffect } from "react"
 import style from "./field-component.module.scss"
 
@@ -9,15 +9,11 @@ interface IFieldComponent extends InputHTMLAttributes<HTMLInputElement> {
 }
 export const FieldComponent = forwardRef<HTMLInputElement, IFieldComponent>(
 	({ type, errors, className, ...props }, ref) => {
-		const { openNotifyHandler } = useStoreActions()
+		const { addNotification } = useNotification()
 		useEffect(() => {
 			if (errors) {
-				openNotifyHandler({
-					text: errors,
-					type: "error",
-					options: {
-						position: "bottomCenter",
-					},
+				addNotification({
+					message: errors,
 				})
 			}
 		}, [errors])

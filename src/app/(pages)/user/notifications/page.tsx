@@ -1,15 +1,13 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-	title: "Избранное",
+	title: "Уведомления",
 	robots: {
 		index: false,
 		follow: false,
 	},
 }
 
-const FeaturedPage = () => {
-	return <div>FeaturedPage</div>
+export default function NotificationPage() {
+	return <div>NotificationPage</div>
 }
-
-export default FeaturedPage

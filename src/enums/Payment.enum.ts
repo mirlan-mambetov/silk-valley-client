@@ -13,6 +13,6 @@ export enum EnumPaymentStatus {
 	succeeded = "succeeded",
 	open = "open",
 }
-export enum EnumOrderStatusInCookie {
-	__SV_O_ID = "__SV_O_ID",
+export enum EnumSaveStorage {
+	ORDER_ID = "__SV_O_ID",
 }

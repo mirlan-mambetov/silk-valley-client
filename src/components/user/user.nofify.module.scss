@@ -4,7 +4,6 @@
 
 .notify {
 	position: absolute;
-	left: 50%;
 	width: 5px;
 	height: 5px;
 	background: $discount;
@@ -12,11 +11,13 @@
 	border-radius: 50%;
 }
 .notifyItem {
-	top: 20%;
-	transform: translateY(-20%);
+	top: 50%;
+	right: 0;
+	transform: translateY(-50%);
 	font-size: 16px;
 }
 .head {
+	left: 50%;
 	font-size: 20px;
 	transform: translateX(-50%);
 	bottom: -8px;

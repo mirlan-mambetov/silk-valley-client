@@ -3,13 +3,16 @@
 import { PaymentApi } from "@/api/api-payment/api-payment"
 import { IPaymentDTO } from "@/api/api-payment/data-transfer"
 import { ButtonComponent, FieldComponent, HeadingComponent } from "@/components"
+import { NotifyEnum } from "@/enums/notify.enum"
 import {
 	EnumOrderStatus,
-	EnumOrderStatusInCookie,
 	EnumPaymentMethod,
+	EnumSaveStorage,
 } from "@/enums/Payment.enum"
+import { saveItemToStorage } from "@/helpers/local.storage.helper"
 import { useCart } from "@/hooks/cart/useCart"
 import { useDeliver } from "@/hooks/deliver/useDeliver"
+import { useNotification } from "@/hooks/useNotification"
 import { useUser } from "@/hooks/user/useUser"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import cn from "classnames"
@@ -26,6 +29,7 @@ export const Checkout = () => {
 	const { products, totalPrice, clearCart } = useCart()
 	const { address } = useDeliver()
 	const queryClient = useQueryClient()
+	const { addNotification } = useNotification()
 
 	// PAYMENT MUTATION
 	const { mutateAsync, isPending } = useMutation({
@@ -54,23 +58,22 @@ export const Checkout = () => {
 		try {
 			await mutateAsync(data, {
 				onSuccess(data, variables, context) {
-					if (data.orderId) {
-						localStorage.setItem(
-							`${EnumOrderStatusInCookie.__SV_O_ID}-${user?.id}`,
-							String(data.orderId)
-						)
-					}
-					if (data.message) {
-						// openNotifyHandler({
-						// 	text: data.message,
-						// 	type: "success",
-						// 	options: {
-						// 		timeOut: 5000,
-						// 	},
-						// })
-						queryClient.invalidateQueries({ queryKey: ["getUserProfile"] })
-					}
-					if (data.detail_order.url) {
+					saveItemToStorage(
+						`${EnumSaveStorage.ORDER_ID}-${user?.id}`,
+						data.orderId
+					)
+					saveItemToStorage(
+						`${NotifyEnum.NOTIFY_ID}-${user?.id}`,
+						data.notifyId
+					)
+					addNotification({
+						message: data.message,
+						options: {
+							background: "Black",
+						},
+					})
+					queryClient.invalidateQueries({ queryKey: ["getUserProfile"] })
+					if (data.detail_order?.url) {
 						push(`${data.detail_order.url}`)
 					}
 					console.log(data)
@@ -78,13 +81,12 @@ export const Checkout = () => {
 				},
 			})
 		} catch (error) {
-			// openNotifyHandler({
-			// 	text: String(error),
-			// 	options: {
-			// 		position: "bottomCenter",
-			// 	},
-			// 	type: "error",
-			// })
+			addNotification({
+				message: String(error),
+				options: {
+					background: "Black",
+				},
+			})
 		}
 	}
 

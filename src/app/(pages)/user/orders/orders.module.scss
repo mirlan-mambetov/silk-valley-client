@@ -6,12 +6,29 @@
 	flex-direction: column;
 	gap: 12px;
 	.order {
+		position: relative;
 		display: grid;
 		grid-template-columns: repeat(6, calc(100% / 6 - 12px / 6 * (6 - 1)));
 		column-gap: 12px;
 		@include lowBoxShadow;
 		padding: 12px;
 		border-radius: 10px;
+		&.active {
+			border: 1px solid $purple;
+
+			&::before {
+				content: "Новое";
+				position: absolute;
+				top: -10px;
+				left: 20px;
+				height: 10px;
+				color: $white;
+				font-size: 10px;
+				padding: 5px;
+				background: $purple;
+				border-radius: 4px;
+			}
+		}
 		.row {
 			display: flex;
 			flex-direction: column;

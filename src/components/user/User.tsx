@@ -1,12 +1,13 @@
 "use client"
 
+import { EnumNotifyType } from "@/enums/notify.enum"
 import { useAuth } from "@/hooks/auth/useAuth"
 import useOutsiteClick from "@/hooks/useOutsideClick"
 import { IUser } from "@/interfaces/user.interface"
 import { hostSourceImages } from "@/utils/hostSource"
 import cn from "classnames"
 import Link from "next/link"
-import { DetailsHTMLAttributes, FC } from "react"
+import { DetailsHTMLAttributes, FC, useMemo } from "react"
 import { GoHeart, GoStar } from "react-icons/go"
 import { IoLogOutOutline } from "react-icons/io5"
 import { ButtonComponent } from "../button/Button"
@@ -17,14 +18,21 @@ import style from "./user.module.scss"
 interface IUserComponentProps extends DetailsHTMLAttributes<HTMLDivElement> {
 	user: IUser
 }
-export const UserComponent: FC<IUserComponentProps> = ({ user, ...props }) => {
+
+export const UserComponent: FC<IUserComponentProps> = ({ user }) => {
+	const hasUnexpiredNotification = useMemo(() => {
+		return user.notifications?.some((notify) => notify.expire === false)
+	}, [user.notifications])
+
 	const { logoutHandle } = useAuth()
 	const { elRef, isShow, setIsShow } = useOutsiteClick(false)
 
 	return (
-		<div className={style.user} {...props} title={user.name}>
+		<div className={style.user} title={user.name}>
 			<div className={style.avatar} onClick={() => setIsShow(!isShow)}>
-				<UserNotifyComponent type="head" title="Одно важное уведомление" />
+				{hasUnexpiredNotification ? (
+					<UserNotifyComponent type="head" title="Одно важное уведомление" />
+				) : null}
 				<img
 					width={30}
 					height={30}
@@ -36,24 +44,23 @@ export const UserComponent: FC<IUserComponentProps> = ({ user, ...props }) => {
 					alt={user.name}
 				/>
 			</div>
-			<div
-				className={cn(style.dropDown, { [style.show]: isShow })}
-				{...props}
-				ref={elRef}
-			>
+			<div className={cn(style.dropDown, { [style.show]: isShow })} ref={elRef}>
 				<ul className={style.list}>
 					{[
 						{
 							name: "Профиль",
 							href: "/user",
-							notify: true,
+							notify: false,
 							NodeIcon: <UserIconComponent fontSize={20} />,
 						},
 						{
 							name: "Мои заказы",
 							href: "/user/orders",
 							Icon: GoStar,
-							notify: true,
+							notify: user.notifications?.some(
+								(notify) =>
+									notify.typeOfNotify === EnumNotifyType.ORDER && !notify.expire
+							),
 						},
 						{
 							name: "Избранные",
@@ -61,6 +68,12 @@ export const UserComponent: FC<IUserComponentProps> = ({ user, ...props }) => {
 							Icon: GoHeart,
 							notify: false,
 						},
+						// {
+						// 	name: "Уведомления",
+						// 	href: "/user/notifications",
+						// 	Icon: IoMdNotificationsOutline,
+						// 	notify: false,
+						// },
 					].map((item, i) => (
 						<li key={i} className={style.item}>
 							<Link href={`${item.href}`}>
