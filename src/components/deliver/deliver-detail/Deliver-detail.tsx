@@ -4,14 +4,12 @@ import { DeliverActionComponent, DeliverFields } from "@/components"
 import { ButtonComponent } from "@/components/button/Button"
 import { deliverInformationMotion } from "@/framer-motion/deliver/deliver.motion"
 import { useDeliver } from "@/hooks/deliver/useDeliver"
-import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { motion } from "framer-motion"
 import { FC, TouchEventHandler, useState } from "react"
 import { BsQuestionCircle } from "react-icons/bs"
 import { TbCurrentLocation } from "react-icons/tb"
 import { TfiMore, TfiMoreAlt } from "react-icons/tfi"
 import style from "./deliver.detail.module.scss"
-import { DeliverDetailForm } from "./form/Deliver-detail-form"
 
 interface IDeliverDetailComponentProps {
 	position?: "default" | "fixed"
@@ -22,7 +20,7 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 	const [fullView, setFullView] = useState(false)
 	const { address } = useDeliver()
 	const [touchStartY, setTouchStartY] = useState(0)
-	const { openModalHandler } = useStoreActions()
+	// const { openModalHandler } = useStoreActions()
 
 	const handleTouchStart: TouchEventHandler<HTMLDivElement> = (event) => {
 		setTouchStartY(event.touches[0].clientY)
@@ -75,38 +73,38 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 						<span className="section-title">Уточнить адрес</span>
 						<div className={style.questions}>
 							<span
-								onClick={() =>
-									openModalHandler({
-										children: <DeliverDetailForm fields="road" />,
-									})
-								}
+							// onClick={() =>
+							// 	openModalHandler({
+							// 		children: <DeliverDetailForm fields="road" />,
+							// 	})
+							// }
 							>
 								Улица
 							</span>
 							<span
-								onClick={() =>
-									openModalHandler({
-										children: <DeliverDetailForm fields="city" />,
-									})
-								}
+							// onClick={() =>
+							// 	openModalHandler({
+							// 		children: <DeliverDetailForm fields="city" />,
+							// 	})
+							// }
 							>
 								Город.(село)
 							</span>
 							<span
-								onClick={() =>
-									openModalHandler({
-										children: <DeliverDetailForm fields="house_number" />,
-									})
-								}
+							// onClick={() =>
+							// 	// openModalHandler({
+							// 	// 	children: <DeliverDetailForm fields="house_number" />,
+							// 	// })
+							// }
 							>
 								Номер дома
 							</span>
 							<span
-								onClick={() =>
-									openModalHandler({
-										children: <DeliverDetailForm fields="postCode" />,
-									})
-								}
+							// onClick={() =>
+							// 	openModalHandler({
+							// 		children: <DeliverDetailForm fields="postCode" />,
+							// 	})
+							// }
 							>
 								Почтовый индекс
 							</span>

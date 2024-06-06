@@ -1,18 +1,24 @@
 "use client"
 
 import { ScreenComponent } from "@/components"
-import { ScreenContext } from "@/context/screen.context"
+import { IContextPaylod, ScreenContext } from "@/context/screen.context"
 import { usePathname } from "next/navigation"
 import { FC, PropsWithChildren, ReactNode, useEffect, useState } from "react"
 
 export const ScreenProvider: FC<PropsWithChildren> = ({ children }) => {
 	const [active, setActive] = useState<boolean>(false)
+	const [typeOfScreen, setTypeOfScreen] = useState<"default" | "modal">(
+		"default"
+	)
 	const [content, setContent] = useState<ReactNode | null>()
 	const pathName = usePathname()
 
-	const screenHandle = (content: ReactNode) => {
+	const screenHandle = (paylod: IContextPaylod) => {
 		setActive(!active)
-		setContent(content)
+		setContent(paylod.content)
+		if (paylod.typeOfScreen) {
+			setTypeOfScreen(paylod.typeOfScreen)
+		}
 	}
 
 	useEffect(() => {
@@ -38,6 +44,7 @@ export const ScreenProvider: FC<PropsWithChildren> = ({ children }) => {
 				active={active}
 				content={content}
 				closeHandle={closeHandle}
+				typeOfScreen={typeOfScreen}
 			/>
 		</ScreenContext.Provider>
 	)

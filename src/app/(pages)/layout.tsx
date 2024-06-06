@@ -3,7 +3,6 @@
 import { UserApi } from "@/api/api-user/api-user"
 import { FooterComponent, HeaderComponent } from "@/components"
 import { MobileNavigation } from "@/components/mobile/mobile-navigation/Mobile-navigation"
-import { ModalComponent } from "@/components/modal/Modal"
 import SidebarComponent from "@/components/sidebar/Sidebar"
 import { useAuth } from "@/hooks/auth/useAuth"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
@@ -59,7 +58,6 @@ export default function HomeLayout({
 				<Suspense>{children}</Suspense>
 			</main>
 			<FooterComponent />
-			<ModalComponent />
 		</>
 	)
 }

@@ -76,7 +76,9 @@ export const HeaderComponent = () => {
 											<ButtonComponent
 												title="Вход в систему"
 												aria-label="Вход"
-												onClick={() => screenHandle(<AuthComponent />)}
+												onClick={() =>
+													screenHandle({ content: <AuthComponent /> })
+												}
 											>
 												Вход
 											</ButtonComponent>
