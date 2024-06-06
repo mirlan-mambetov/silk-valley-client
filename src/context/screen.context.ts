@@ -1,15 +1,9 @@
 import { ReactNode, createContext } from "react"
 
 interface IinitialContext {
-	isOpen: boolean
-	content: ReactNode | null
-	setContentHandler: (content: ReactNode) => void
-	clearContentHandler: () => void
+	screenHandle: (content: ReactNode) => void
 }
-const initialContext: IinitialContext = {
-	isOpen: false,
-	content: null,
-	setContentHandler: () => {},
-	clearContentHandler: () => {},
-}
-export const ScreenContext = createContext({ ...initialContext })
+
+export const ScreenContext = createContext<IinitialContext | undefined>(
+	undefined
+)

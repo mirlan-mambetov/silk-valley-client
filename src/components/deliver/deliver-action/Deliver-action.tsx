@@ -3,14 +3,13 @@
 import { ButtonComponent, LoaderComponent } from "@/components"
 import { useLoader } from "@/hooks/app/useLoader"
 import { useDeliver } from "@/hooks/deliver/useDeliver"
-import { useScreen } from "@/hooks/screen/useScreen"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { MdOutlineCheck } from "react-icons/md"
 import style from "./deliver.action.module.scss"
 
 export const DeliverActionComponent = () => {
-	const { confirmDeliver, openNotifyHandler, unConfirm } = useStoreActions()
-	const { clearContentHandler } = useScreen()
+	const { confirmDeliver, unConfirm } = useStoreActions()
+	// const { clearContentHandler } = useScreen()
 	const { isConfirm } = useDeliver()
 	const { isLoading, setLoadingHandler } = useLoader()
 
@@ -18,14 +17,14 @@ export const DeliverActionComponent = () => {
 		setLoadingHandler(1200)
 		await new Promise<void>((resolve) => {
 			setTimeout(() => {
-				openNotifyHandler({
-					text: "Адрес потдвержден",
-				})
+				// openNotifyHandler({
+				// 	text: "Адрес потдвержден",
+				// })
 				resolve()
 			}, 1200)
 		})
 		confirmDeliver()
-		clearContentHandler()
+		// clearContentHandler()
 	}
 
 	return (

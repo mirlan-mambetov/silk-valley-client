@@ -1,7 +1,7 @@
 "use client"
 
 import { UserApi } from "@/api/api-user/api-user"
-import { FooterComponent, HeaderComponent, ScreenComponent } from "@/components"
+import { FooterComponent, HeaderComponent } from "@/components"
 import { MobileNavigation } from "@/components/mobile/mobile-navigation/Mobile-navigation"
 import { ModalComponent } from "@/components/modal/Modal"
 import SidebarComponent from "@/components/sidebar/Sidebar"
@@ -55,7 +55,6 @@ export default function HomeLayout({
 			{/* <Cungrulations /> */}
 			<MobileNavigation />
 			<SidebarComponent />
-			<ScreenComponent />
 			<main className="main">
 				<Suspense>{children}</Suspense>
 			</main>

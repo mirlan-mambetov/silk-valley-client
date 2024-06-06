@@ -1,19 +1,16 @@
 "use client"
 
 import {
-	AuthComponent,
 	ButtonComponent,
 	CartIconComponent,
 	CatalogIconComponent,
 	HomeIconComponent,
-	MobileMenuComponent,
 	NotifyPlaceholder,
 	UserComponent,
 } from "@/components"
 import { useWindowWidth } from "@/hooks/app/useWindowWidth"
 import { useAuth } from "@/hooks/auth/useAuth"
 import { useCart } from "@/hooks/cart/useCart"
-import { useScreen } from "@/hooks/screen/useScreen"
 import { useUser } from "@/hooks/user/useUser"
 import cn from "classnames"
 import { useRouter } from "next/navigation"
@@ -23,7 +20,7 @@ import style from "./mobile-navigation.module.scss"
 export const MobileNavigation: FC = () => {
 	const { width } = useWindowWidth()
 	const { push } = useRouter()
-	const { setContentHandler, isOpen, clearContentHandler } = useScreen()
+	// const { setContentHandler, isOpen, clearContentHandler } = useScreen()
 	const { products } = useCart()
 	const { user } = useUser()
 	const { isAuthentificated } = useAuth()
@@ -31,7 +28,7 @@ export const MobileNavigation: FC = () => {
 	return width <= 530 ? (
 		<div
 			className={cn(style.menu, {
-				[style.shadow]: isOpen,
+				// [style.shadow]: isOpen,
 			})}
 		>
 			<div className="container">
@@ -44,11 +41,11 @@ export const MobileNavigation: FC = () => {
 					</div>
 					<div className={style.item}>
 						<ButtonComponent
-							onClick={() =>
-								isOpen
-									? clearContentHandler()
-									: setContentHandler(<MobileMenuComponent />)
-							}
+						// onClick={() =>
+						// 	isOpen
+						// 		? clearContentHandler()
+						// 		: setContentHandler(<MobileMenuComponent />)
+						// }
 						>
 							<CatalogIconComponent />
 							{/* <span>Категории</span> */}
@@ -67,7 +64,7 @@ export const MobileNavigation: FC = () => {
 							<UserComponent user={user} onClick={() => push("/user")} />
 						) : (
 							<ButtonComponent
-								onClick={() => setContentHandler(<AuthComponent />)}
+							// onClick={() => setContentHandler(<AuthComponent />)}
 							>
 								<svg
 									width="30"

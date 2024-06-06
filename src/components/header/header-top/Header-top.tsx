@@ -4,11 +4,10 @@ import { ButtonComponent } from "@/components/button/Button"
 import { MapIconComponent } from "@/components/icon/map/Map-icon"
 import { showDestinationName } from "@/helpers/showDestinationName"
 import { useDeliver } from "@/hooks/deliver/useDeliver"
-import { useScreen } from "@/hooks/screen/useScreen"
 import style from "./header.top.module.scss"
 
 export const HeaderTopComponent = () => {
-	const { setContentHandler } = useScreen()
+	// const { setContentHandler } = useScreen()
 	const { address } = useDeliver()
 	return (
 		<div className={style.top}>

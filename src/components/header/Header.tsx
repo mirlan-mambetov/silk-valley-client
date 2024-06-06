@@ -26,7 +26,7 @@ import style from "./header.module.scss"
 export const HeaderComponent = () => {
 	const { push } = useRouter()
 	const { width } = useWindowWidth()
-	const { setContentHandler } = useScreen()
+	const { screenHandle } = useScreen()
 	const { products } = useCart()
 	const { isAuthentificated } = useAuth()
 	const { user } = useUser()
@@ -76,7 +76,7 @@ export const HeaderComponent = () => {
 											<ButtonComponent
 												title="Вход в систему"
 												aria-label="Вход"
-												onClick={() => setContentHandler(<AuthComponent />)}
+												onClick={() => screenHandle(<AuthComponent />)}
 											>
 												Вход
 											</ButtonComponent>

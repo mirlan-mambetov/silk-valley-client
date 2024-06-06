@@ -78,6 +78,7 @@ export const Checkout = () => {
 					}
 					console.log(data)
 					clearCart()
+					push(`/`)
 				},
 			})
 		} catch (error) {

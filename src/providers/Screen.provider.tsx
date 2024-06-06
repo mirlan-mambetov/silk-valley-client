@@ -1,36 +1,44 @@
 "use client"
 
+import { ScreenComponent } from "@/components"
 import { ScreenContext } from "@/context/screen.context"
 import { usePathname } from "next/navigation"
 import { FC, PropsWithChildren, ReactNode, useEffect, useState } from "react"
 
 export const ScreenProvider: FC<PropsWithChildren> = ({ children }) => {
-	const [isOpen, setIsOpen] = useState<boolean>(false)
+	const [active, setActive] = useState<boolean>(false)
 	const [content, setContent] = useState<ReactNode | null>()
-	const pathNameRoute = usePathname()
+	const pathName = usePathname()
 
-	const setContentHandler = (content: ReactNode) => {
-		setIsOpen(true)
-		document.body.style.overflow = "hidden"
+	const screenHandle = (content: ReactNode) => {
+		setActive(!active)
 		setContent(content)
-	}
-	const clearContentHandler = () => {
-		setIsOpen(false)
-		setTimeout(() => {
-			setContent(null)
-		}, 300)
-		document.body.style.overflow = "visible"
 	}
 
 	useEffect(() => {
-		setIsOpen(false)
-	}, [pathNameRoute])
+		if (active) {
+			document.body.style.overflow = "hidden"
+		} else {
+			document.body.style.overflow = "visible"
+		}
+	}, [active])
+
+	useEffect(() => {
+		if (active) {
+			closeHandle()
+		}
+	}, [pathName])
+
+	const closeHandle = () => setActive(false)
 
 	return (
-		<ScreenContext.Provider
-			value={{ isOpen, content, setContentHandler, clearContentHandler }}
-		>
+		<ScreenContext.Provider value={{ screenHandle }}>
 			{children}
+			<ScreenComponent
+				active={active}
+				content={content}
+				closeHandle={closeHandle}
+			/>
 		</ScreenContext.Provider>
 	)
 }

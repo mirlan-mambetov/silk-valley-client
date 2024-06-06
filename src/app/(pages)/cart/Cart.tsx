@@ -1,7 +1,6 @@
 "use client"
 
 import {
-	AuthComponent,
 	ButtonComponent,
 	CartInfoComponent,
 	CartProductComponent,
@@ -13,7 +12,6 @@ import { FC } from "react"
 import { showDestinationName } from "@/helpers/showDestinationName"
 import { useCart } from "@/hooks/cart/useCart"
 import { useDeliver } from "@/hooks/deliver/useDeliver"
-import { useScreen } from "@/hooks/screen/useScreen"
 import { useUser } from "@/hooks/user/useUser"
 import { scrollToSection } from "@/utils/scrollToAnchor"
 import { useRouter } from "next/navigation"
@@ -24,7 +22,6 @@ import { MdOutlinePhone } from "react-icons/md"
 import style from "./cart.module.scss"
 
 export const Cart: FC = () => {
-	const { setContentHandler } = useScreen()
 	const { products } = useCart()
 	const { address } = useDeliver()
 	const { user } = useUser()
@@ -69,7 +66,7 @@ export const Cart: FC = () => {
 							<ButtonComponent
 								id="#section-authorization"
 								className={style.button}
-								onClick={() => setContentHandler(<AuthComponent />)}
+								// onClick={() => setContentHandler(<AuthComponent />)}
 							>
 								<FaUser />
 								Войдите в систему или зарегистрируйтесь

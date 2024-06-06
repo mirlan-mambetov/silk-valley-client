@@ -9,7 +9,6 @@ import { animateLoginRegister } from "@/framer-motion/auth/auth.animate"
 import { saveItemToCookie } from "@/helpers/cookie.helpers"
 import { saveTokensToStorage } from "@/helpers/local.storage.helper"
 import { useAuth } from "@/hooks/auth/useAuth"
-import { useScreen } from "@/hooks/screen/useScreen"
 import { useMutation } from "@tanstack/react-query"
 import { motion } from "framer-motion"
 import { FC } from "react"
@@ -21,7 +20,7 @@ import { IAuthProps } from "../auth.props"
 export const LoginComponent: FC<IAuthProps> = ({ animate, setChoice }) => {
 	const { loginPending, loginSuccess, loginRejected } = useAuth()
 	// const [loginUser, result] = useLoginUserMutation()
-	const { clearContentHandler } = useScreen()
+	// const { clearContentHandler } = useScreen()
 
 	const { mutateAsync, isPending } = useMutation({
 		mutationKey: ["loginUser"],
@@ -45,7 +44,7 @@ export const LoginComponent: FC<IAuthProps> = ({ animate, setChoice }) => {
 					saveItemToCookie(AuthEnum.IS_AUTH, "__SV__V1", 7 * 24 * 60 * 60)
 					saveTokensToStorage(data)
 
-					clearContentHandler()
+					// clearContentHandler()
 				},
 			})
 		} catch (error) {

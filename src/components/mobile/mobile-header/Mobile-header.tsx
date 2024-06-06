@@ -8,7 +8,6 @@ import {
 } from "@/components"
 import { FC } from "react"
 
-import { useScreen } from "@/hooks/screen/useScreen"
 import cn from "classnames"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
@@ -16,7 +15,7 @@ import style from "./mobile-header.module.scss"
 
 export const MobileHeaderComponent: FC = () => {
 	const pathName = usePathname()
-	const { setContentHandler } = useScreen()
+	// const { setContentHandler } = useScreen()
 	const isProductPage = /^\/product\/[a-zA-Z0-9_-]+/.test(pathName)
 	// const isPromotionsPage = /^\/promotions\/[a-zA-Z0-9_-]+/.test(pathName)
 

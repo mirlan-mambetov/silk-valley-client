@@ -2,12 +2,9 @@ import { ScreenContext } from "@/context/screen.context"
 import { useContext } from "react"
 
 export const useScreen = () => {
-	const { clearContentHandler, content, isOpen, setContentHandler } =
-		useContext(ScreenContext)
-	return {
-		clearContentHandler,
-		content,
-		isOpen,
-		setContentHandler,
+	const context = useContext(ScreenContext)
+	if (!context) {
+		throw new Error("ScreenContext must be used within a ScreenProvider!")
 	}
+	return context
 }
