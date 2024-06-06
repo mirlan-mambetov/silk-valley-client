@@ -3,6 +3,7 @@ import { createContext } from "react"
 export interface INotificationOptions {
 	background?: "Black" | "White"
 	notifyType?: "Notify" | "Dialog"
+	type?: "error" | "success"
 }
 
 export interface INotifyPayload {

@@ -7,4 +7,5 @@ export interface INotificationProps {
 	options?: INotificationOptions
 	onConfirm?: () => void
 	onCanceled?: () => void
+	type?: "error" | "success"
 }

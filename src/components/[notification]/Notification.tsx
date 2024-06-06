@@ -4,8 +4,12 @@ import { notifyMotionVariant } from "@/framer-motion/notify/notify.motion"
 import cn from "classnames"
 import { motion } from "framer-motion"
 import { FC } from "react"
+import { IoCheckboxOutline } from "react-icons/io5"
 import { ButtonComponent } from "../button/Button"
 import { INotificationProps } from "./Notification.props"
+
+import { VscWarning } from "react-icons/vsc"
+
 import style from "./notification.module.scss"
 
 export const Notification: FC<INotificationProps> = ({
@@ -15,6 +19,7 @@ export const Notification: FC<INotificationProps> = ({
 	options,
 	onCanceled,
 	onConfirm,
+	type,
 }) => {
 	return (
 		<motion.div
@@ -26,7 +31,10 @@ export const Notification: FC<INotificationProps> = ({
 				[style.backgroundWhite]: options?.background === "White",
 			})}
 		>
-			{message}
+			<div className={style.content}>
+				{type === "error" ? <VscWarning /> : <IoCheckboxOutline />}
+				{message}
+			</div>
 			{options?.notifyType === "Dialog" ? (
 				<div className={style.buttons}>
 					<ButtonComponent

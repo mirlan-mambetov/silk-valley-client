@@ -31,12 +31,14 @@ export const ScreenComponent: FC<IScreenComponentProps> = ({
 			></ButtonComponent>
 			{/* CONTENT */}
 			<div className={style.content}>
-				<ButtonComponent
-					className={style.closeContent}
-					onClick={closeHandle}
-					btnType="closed"
-					size={"xxl1"}
-				></ButtonComponent>
+				{typeOfScreen === "modal" ? (
+					<ButtonComponent
+						className={style.closeContent}
+						onClick={closeHandle}
+						btnType="closed"
+						size={"xxl1"}
+					></ButtonComponent>
+				) : null}
 				{content}
 			</div>
 		</motion.div>

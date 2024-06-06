@@ -9,6 +9,8 @@ import { animateLoginRegister } from "@/framer-motion/auth/auth.animate"
 import { saveItemToCookie } from "@/helpers/cookie.helpers"
 import { saveTokensToStorage } from "@/helpers/local.storage.helper"
 import { useAuth } from "@/hooks/auth/useAuth"
+import { useScreen } from "@/hooks/screen/useScreen"
+import { useNotification } from "@/hooks/useNotification"
 import { useMutation } from "@tanstack/react-query"
 import { motion } from "framer-motion"
 import { FC } from "react"
@@ -20,7 +22,8 @@ import { IAuthProps } from "../auth.props"
 export const LoginComponent: FC<IAuthProps> = ({ animate, setChoice }) => {
 	const { loginPending, loginSuccess, loginRejected } = useAuth()
 	// const [loginUser, result] = useLoginUserMutation()
-	// const { clearContentHandler } = useScreen()
+	const { closeHandle } = useScreen()
+	const { addNotification } = useNotification()
 
 	const { mutateAsync, isPending } = useMutation({
 		mutationKey: ["loginUser"],
@@ -43,11 +46,23 @@ export const LoginComponent: FC<IAuthProps> = ({ animate, setChoice }) => {
 					loginSuccess()
 					saveItemToCookie(AuthEnum.IS_AUTH, "__SV__V1", 7 * 24 * 60 * 60)
 					saveTokensToStorage(data)
-
-					// clearContentHandler()
+					addNotification({
+						message: "Вход выполнен успешно",
+						options: {
+							background: "Black",
+						},
+					})
+					closeHandle()
 				},
 			})
 		} catch (error) {
+			addNotification({
+				message: error as string,
+				options: {
+					background: "Black",
+					type: "error",
+				},
+			})
 			// DISPATCH LOGIN WITH REJECTED
 			loginRejected()
 		}

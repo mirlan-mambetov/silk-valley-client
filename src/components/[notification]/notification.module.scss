@@ -13,7 +13,7 @@
 	font-size: 14px;
 	font-weight: 400;
 	line-height: 18px;
-	z-index: 100;
+	z-index: 300;
 	display: flex;
 	flex-direction: column;
 	gap: 15px;
@@ -24,6 +24,11 @@
 	&.backgroundWhite {
 		background: $white;
 		color: $black;
+	}
+	.content {
+		display: flex;
+		align-items: center;
+		gap: 6px;
 	}
 	.buttons {
 		display: flex;

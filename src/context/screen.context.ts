@@ -6,6 +6,7 @@ export interface IContextPaylod {
 }
 interface IinitialContext {
 	screenHandle: (paylod: IContextPaylod) => void
+	closeHandle: () => void
 }
 
 export const ScreenContext = createContext<IinitialContext | undefined>(

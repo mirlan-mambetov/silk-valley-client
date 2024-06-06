@@ -7,6 +7,7 @@ import { FC, PropsWithChildren, useState } from "react"
 
 export const NotificationProvider: FC<PropsWithChildren> = ({ children }) => {
 	const [isShow, setIsShow] = useState(false)
+	const [type, setType] = useState<"error" | "success" | undefined>(undefined)
 	const [payload, setPayload] = useState<INotifyPayload>({
 		message: "",
 		options: { background: "White", notifyType: "Notify" },
@@ -14,6 +15,7 @@ export const NotificationProvider: FC<PropsWithChildren> = ({ children }) => {
 	const addNotification = (payload: INotifyPayload) => {
 		setIsShow(true)
 		setPayload(payload)
+		setType(payload.options?.type)
 		if (payload.options?.notifyType !== "Dialog") {
 			new Promise<void>((resolve, reject) => {
 				setTimeout(() => {
@@ -26,6 +28,7 @@ export const NotificationProvider: FC<PropsWithChildren> = ({ children }) => {
 
 	const removeNotification = async () => {
 		setIsShow(false)
+		setType(undefined)
 		new Promise<void>((resolve, reject) => {
 			setTimeout(() => {
 				setPayload({ message: undefined })
@@ -44,6 +47,7 @@ export const NotificationProvider: FC<PropsWithChildren> = ({ children }) => {
 				isShow={isShow}
 				message={payload.message}
 				onClose={removeNotification}
+				type={type}
 			/>
 		</NotificationContext.Provider>
 	)

@@ -35,10 +35,13 @@ export const ScreenProvider: FC<PropsWithChildren> = ({ children }) => {
 		}
 	}, [pathName])
 
-	const closeHandle = () => setActive(false)
+	const closeHandle = () => {
+		setActive(false)
+		setContent(null)
+	}
 
 	return (
-		<ScreenContext.Provider value={{ screenHandle }}>
+		<ScreenContext.Provider value={{ screenHandle, closeHandle }}>
 			{children}
 			<ScreenComponent
 				active={active}
