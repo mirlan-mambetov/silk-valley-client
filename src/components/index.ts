@@ -39,6 +39,7 @@ export * from "./user/User"
 
 // NEW
 export * from "./[notification]/Notification"
+export * from "./[points-delivery]/PointsDelivery"
 export * from "./[product-actions]/__ProductActions"
 export * from "./[product-attributes]/__ProductAttributes"
 export * from "./[product-cards]/__ProductCards"
@@ -46,3 +47,4 @@ export * from "./[product-images]/__ProductImages"
 export * from "./[product-info]/__Product_info"
 export * from "./[product-specification]/ProductSpecification"
 export * from "./[screen-component]/ScreenComponent"
+export * from "./[select-location]/SelectLocation"

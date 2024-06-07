@@ -1,16 +1,13 @@
 "use client"
 
-import { ButtonComponent, LoaderComponent } from "@/components"
 import { useLoader } from "@/hooks/app/useLoader"
-import { useDeliver } from "@/hooks/deliver/useDeliver"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
-import { MdOutlineCheck } from "react-icons/md"
 import style from "./deliver.action.module.scss"
 
 export const DeliverActionComponent = () => {
 	const { confirmDeliver, unConfirm } = useStoreActions()
 	// const { clearContentHandler } = useScreen()
-	const { isConfirm } = useDeliver()
+	// const { isConfirm } = useDeliver()
 	const { isLoading, setLoadingHandler } = useLoader()
 
 	const confirmHandler = async () => {
@@ -29,7 +26,7 @@ export const DeliverActionComponent = () => {
 
 	return (
 		<div className={style.button}>
-			{!isConfirm ? (
+			{/* {!isConfirm ? (
 				<ButtonComponent onClick={confirmHandler}>
 					{isLoading ? (
 						<LoaderComponent color="black" />
@@ -55,7 +52,7 @@ export const DeliverActionComponent = () => {
 						</>
 					)}
 				</ButtonComponent>
-			)}
+			)} */}
 		</div>
 	)
 }

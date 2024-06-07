@@ -6,9 +6,7 @@ import {
 	FeaturedComponent,
 	PriceComponent,
 } from "@/components"
-import { showDestinationName } from "@/helpers/showDestinationName"
 import { useCart } from "@/hooks/cart/useCart"
-import { useDeliver } from "@/hooks/deliver/useDeliver"
 import { useAttributes } from "@/hooks/useAttributes"
 import cn from "classnames"
 import { FC } from "react"
@@ -18,7 +16,7 @@ import { IProductInfoProps } from "./__Product_info.props"
 import style from "./_product_info.module.scss"
 
 export const __Product_info: FC<IProductInfoProps> = ({ data, type }) => {
-	const { address } = useDeliver()
+	// const { address } = useDeliver()
 	const { products } = useCart()
 	const {
 		payload: { selectedColor, selectedSize },
@@ -65,7 +63,7 @@ export const __Product_info: FC<IProductInfoProps> = ({ data, type }) => {
 				<div className={style.box}>
 					<small>Доставка</small>
 					<div className={style.box_item}>
-						<span>{showDestinationName(address)}</span>
+						{/* <span>{showDestinationName(address)}</span> */}
 						<ButtonComponent
 							title="Выбрать координаты доставки"
 							// onClick={() => setContentHandler(<DeliverComponent />)}

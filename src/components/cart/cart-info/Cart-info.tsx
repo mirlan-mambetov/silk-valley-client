@@ -1,9 +1,7 @@
 "use client"
 
 import { ButtonComponent, MapIconComponent, PriceComponent } from "@/components"
-import { showDestinationName } from "@/helpers/showDestinationName"
 import { useCart } from "@/hooks/cart/useCart"
-import { useDeliver } from "@/hooks/deliver/useDeliver"
 import { useUser } from "@/hooks/user/useUser"
 import { ICartProduct } from "@/interfaces/cart.interface"
 import cn from "classnames"
@@ -20,7 +18,7 @@ export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 }) => {
 	// const { setContentHandler } = useScreen()
 	const { totalDiscount, totalPrice } = useCart()
-	const { address, isConfirm } = useDeliver()
+	// const { address, isConfirm } = useDeliver()
 	const { user } = useUser()
 	const { push } = useRouter()
 
@@ -31,7 +29,7 @@ export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 					className={style.deliver}
 					// onClick={() => setContentHandler(<DeliverComponent />)}
 				>
-					<span>{showDestinationName(address)}</span>
+					{/* <span>{showDestinationName(address)}</span> */}
 					<MapIconComponent />
 				</ButtonComponent>
 				<div className={style.box}>
@@ -58,7 +56,7 @@ export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 				</div>
 				<ButtonComponent
 					btnType="placeOrder"
-					disabled={!user || !isConfirm || !products.length}
+					// disabled={!user || !isConfirm || !products.length}
 					onClick={() => push("/checkout")}
 				>
 					Перейти к оформлению

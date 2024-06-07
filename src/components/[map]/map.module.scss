@@ -1,9 +1,8 @@
-@import "../../../styles/media.mixin";
-@import "../../../styles/mixin";
-@import "../../../styles/vars";
+@import "../../styles/media.mixin";
+@import "../../styles/mixin";
+@import "../../styles/vars";
 .map {
-	width: 100%;
-	height: 100%;
+	position: relative;
 	border-radius: 4px;
 	overflow: hidden;
 }
@@ -11,11 +10,10 @@
 .leaflet {
 	position: absolute;
 	top: 0;
-	left: 50px;
-	right: 50px;
+	left: 0;
+	width: 100%;
 	height: 100%;
 	outline: none;
-	border-radius: 5px;
 	&:focus {
 		outline: none !important;
 	}
@@ -35,11 +33,9 @@
 .navigation {
 	position: absolute;
 	top: 20px;
-	left: 100px;
 	right: 100px;
 	z-index: 2000;
 	display: flex;
-	justify-content: space-between;
 	gap: 12px;
 	.button {
 		pointer-events: all;
@@ -60,34 +56,5 @@
 				font-size: 12px;
 			}
 		}
-	}
-	@include mediaLarge830px {
-		right: 30px;
-		left: 30px;
-	}
-	@include mediaLarge530px {
-		justify-content: unset;
-		flex-direction: column;
-		align-items: flex-start;
-		left: 10px;
-		gap: 6px;
-	}
-}
-.loader {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: $white;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	z-index: 500;
-	span {
-		font-size: 10px;
-		font-weight: 300;
-		line-height: 18px;
-		text-transform: uppercase;
 	}
 }

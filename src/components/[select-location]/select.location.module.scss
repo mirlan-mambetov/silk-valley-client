@@ -1,0 +1,36 @@
+@import "../../styles/media.mixin";
+@import "../../styles/mixin";
+@import "../../styles/vars";
+.selectLocation {
+	display: grid;
+	grid-template-columns: 0.3fr 1fr;
+	min-height: 95vh;
+	.wrap {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		@include baseBoxShadow;
+		padding: 0 10px;
+
+		.head {
+			display: flex;
+			align-items: center;
+			gap: 20px;
+			.box {
+				font-size: 14px;
+				font-weight: 400;
+				padding: 10px;
+				@include baseBoxShadow;
+				border-radius: 10px;
+				cursor: pointer;
+				&.disable {
+					opacity: 0.5;
+					cursor: not-allowed;
+				}
+			}
+		}
+		.content {
+			padding: 5px;
+		}
+	}
+}

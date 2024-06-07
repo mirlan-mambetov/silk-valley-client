@@ -1,9 +1,8 @@
 "use client"
 
-import { DeliverActionComponent, DeliverFields } from "@/components"
+import { DeliverActionComponent } from "@/components"
 import { ButtonComponent } from "@/components/button/Button"
 import { deliverInformationMotion } from "@/framer-motion/deliver/deliver.motion"
-import { useDeliver } from "@/hooks/deliver/useDeliver"
 import { motion } from "framer-motion"
 import { FC, TouchEventHandler, useState } from "react"
 import { BsQuestionCircle } from "react-icons/bs"
@@ -18,7 +17,7 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 	position,
 }) => {
 	const [fullView, setFullView] = useState(false)
-	const { address } = useDeliver()
+	// const { address } = useDeliver()
 	const [touchStartY, setTouchStartY] = useState(0)
 	// const { openModalHandler } = useStoreActions()
 
@@ -68,7 +67,7 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 				className={style.columns}
 				animate={!fullView ? { y: "100%" } : { y: "0" }}
 			>
-				{Object.values(address).some((value) => value?.length) ? (
+				{/* {Object.values(address).some((value) => value?.length) ? (
 					<div className={style.column}>
 						<span className="section-title">Уточнить адрес</span>
 						<div className={style.questions}>
@@ -110,12 +109,12 @@ export const DeliverDetailComponent: FC<IDeliverDetailComponentProps> = ({
 							</span>
 						</div>
 					</div>
-				) : null}
+				) : null} */}
 				<div className={style.column}>
 					<h5 className={style.title}>
 						<span>Координаты доставки</span>
 					</h5>
-					<DeliverFields address={address} />
+					{/* <DeliverFields address={address} /> */}
 					<DeliverActionComponent />
 				</div>
 			</motion.div>

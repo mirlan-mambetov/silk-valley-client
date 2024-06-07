@@ -3,15 +3,14 @@
 import { PaymentApi } from "@/api/api-payment/api-payment"
 import { IPaymentDTO } from "@/api/api-payment/data-transfer"
 import { ButtonComponent, FieldComponent, HeadingComponent } from "@/components"
-import { NotifyEnum } from "@/enums/notify.enum"
 import {
 	EnumOrderStatus,
 	EnumPaymentMethod,
 	EnumSaveStorage,
 } from "@/enums/Payment.enum"
+import { NotifyEnum } from "@/enums/notify.enum"
 import { saveItemToStorage } from "@/helpers/local.storage.helper"
 import { useCart } from "@/hooks/cart/useCart"
-import { useDeliver } from "@/hooks/deliver/useDeliver"
 import { useNotification } from "@/hooks/useNotification"
 import { useUser } from "@/hooks/user/useUser"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
@@ -27,7 +26,7 @@ export const Checkout = () => {
 	const { push } = useRouter()
 	const { user } = useUser()
 	const { products, totalPrice, clearCart } = useCart()
-	const { address } = useDeliver()
+	// const { address } = useDeliver()
 	const queryClient = useQueryClient()
 	const { addNotification } = useNotification()
 
@@ -205,7 +204,9 @@ export const Checkout = () => {
 										products,
 										status: EnumOrderStatus.WAITING,
 										totalPrice,
-										address,
+										address: {
+											city: "",
+										},
 									})
 								}
 							/>

@@ -5,13 +5,10 @@ import {
 	CartInfoComponent,
 	CartProductComponent,
 	HeadingComponent,
-	MapIconComponent,
 } from "@/components"
 import { FC } from "react"
 
-import { showDestinationName } from "@/helpers/showDestinationName"
 import { useCart } from "@/hooks/cart/useCart"
-import { useDeliver } from "@/hooks/deliver/useDeliver"
 import { useUser } from "@/hooks/user/useUser"
 import { scrollToSection } from "@/utils/scrollToAnchor"
 import { useRouter } from "next/navigation"
@@ -23,7 +20,6 @@ import style from "./cart.module.scss"
 
 export const Cart: FC = () => {
 	const { products } = useCart()
-	const { address } = useDeliver()
 	const { user } = useUser()
 	const { push } = useRouter()
 
@@ -73,12 +69,10 @@ export const Cart: FC = () => {
 							</ButtonComponent>
 						)}
 					</div>
-					<div className={style.info}>
-						{Object.values(address).some((value) => value?.length) ? (
+					{/* <div className={style.info}>
 							<>
 								<div className={style.deliver}>
 									{showDestinationName(address)}
-									{/* <DeliverActionComponent /> */}
 								</div>
 								<ButtonComponent
 									className={style.edit}
@@ -88,7 +82,6 @@ export const Cart: FC = () => {
 									<FiEdit2 fontSize={20} />
 								</ButtonComponent>
 							</>
-						) : (
 							<ButtonComponent
 								className={style.button}
 								// onClick={() => setContentHandler(<DeliverComponent />)}
@@ -96,8 +89,7 @@ export const Cart: FC = () => {
 								<MapIconComponent />
 								Выберите координаты
 							</ButtonComponent>
-						)}
-					</div>
+					</div> */}
 				</div>
 			</div>
 		</>

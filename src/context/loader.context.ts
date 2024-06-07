@@ -1,5 +1,9 @@
-import { ILoader } from "@/interfaces/loader.interface"
 import { createContext } from "react"
+
+export interface ILoader {
+	isLoading: boolean
+	setLoadingHandler: (time?: number) => void
+}
 
 export const loaderInitialContext: ILoader = {
 	isLoading: false,
