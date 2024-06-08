@@ -1,8 +1,15 @@
 "use client"
 
-import { Button, Featured, Price, ProductActions } from "@/components"
+import {
+	Button,
+	Featured,
+	Price,
+	ProductActions,
+	SelectLocation,
+} from "@/components"
 import { showDestinationName } from "@/helpers/showDestinationName"
 import { useCart } from "@/hooks/cart/useCart"
+import { useScreen } from "@/hooks/screen/useScreen"
 import { useAttributes } from "@/hooks/useAttributes"
 import { useMap } from "@/hooks/useMap"
 import cn from "classnames"
@@ -15,6 +22,7 @@ import style from "./product-info.module.scss"
 export const ProductInfo: FC<IProductInfoProps> = ({ data, type }) => {
 	const { products } = useCart()
 	const { pointDeliverLocation } = useMap()
+	const { screenHandle } = useScreen()
 	const {
 		payload: { selectedColor, selectedSize },
 	} = useAttributes()
@@ -63,7 +71,7 @@ export const ProductInfo: FC<IProductInfoProps> = ({ data, type }) => {
 						<span>{showDestinationName(pointDeliverLocation)}</span>
 						<Button
 							title="Выбрать координаты доставки"
-							// onClick={() => setContentHandler(<DeliverComponent />)}
+							onClick={() => screenHandle({ content: <SelectLocation /> })}
 						>
 							<FiEdit2 />
 						</Button>

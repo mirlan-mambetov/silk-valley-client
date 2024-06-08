@@ -1,5 +1,7 @@
 "use client"
 
+import { Button } from "@/components"
+import { useScreen } from "@/hooks/screen/useScreen"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { useMap } from "@/hooks/useMap"
 import { IPointsDelivery } from "@/interfaces/select.location.interface"
@@ -28,6 +30,7 @@ export const PointsDelivery = () => {
 	const { addPointsDeliversLocation, addPointDeliverLocation } =
 		useStoreActions()
 	const { pointDeliverLocation } = useMap()
+	const { closeHandle } = useScreen()
 
 	useEffect(() => {
 		if (data) {
@@ -53,6 +56,12 @@ export const PointsDelivery = () => {
 						</strong>
 					</div>
 				))}
+				<Button
+					disabled={!pointDeliverLocation}
+					onClick={closeHandle}
+					className={style.btn}
+					children={pointDeliverLocation ? "Выбрано" : "Готово"}
+				/>
 			</div>
 		</div>
 	)

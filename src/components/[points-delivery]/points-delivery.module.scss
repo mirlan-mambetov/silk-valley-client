@@ -38,5 +38,14 @@
 				color: $purple;
 			}
 		}
+
+		.btn {
+			background: $purple;
+			margin: 12px 0;
+			color: $white;
+			padding: 12px;
+			border-radius: 4px;
+			@include buttonHover;
+		}
 	}
 }

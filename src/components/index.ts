@@ -1,7 +1,6 @@
 export * from "./cart/cart-info/Cart-info"
 export * from "./cart/cart-product/Cart-product"
 export * from "./cart/cart-range/Cart-range"
-export * from "./deliver-fields/Deliver-fields"
 export * from "./field-component/Field-component"
 export * from "./filters/Filters"
 export * from "./filters/price-range/Price-range"
