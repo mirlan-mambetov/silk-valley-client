@@ -9,10 +9,10 @@ import { MdContentCopy } from "react-icons/md"
 import { SwiperSlide } from "swiper/react"
 // import { ProductDiscountComponent } from "../product/product-discount/Product-discount"
 import { useAttributes } from "@/hooks/useAttributes"
-import style from "./__productAttributes.module.scss"
+import style from "./product-attributes.module.scss"
 import { IProductAttributes } from "./ProductAttributes.props"
 
-export const __ProductAttributes: FC<IProductAttributes> = ({ data }) => {
+export const ProductAttributes: FC<IProductAttributes> = ({ data }) => {
 	const {
 		addAttribute,
 		payload: { selectedColor, selectedSize },

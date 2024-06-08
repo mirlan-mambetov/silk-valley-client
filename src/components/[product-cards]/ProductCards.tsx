@@ -1,15 +1,15 @@
 "use client"
 
-import { __ProductActions, Featured, Heading, Price } from "@/components"
+import { Featured, Heading, Price, ProductActions } from "@/components"
 import { hostSourceImages } from "@/utils/hostSource"
 import cn from "classnames"
 import Image from "next/image"
 import Link from "next/link"
 import { FC } from "react"
-import style from "./__productCards.module.scss"
-import { IProductCardsProps } from "./Product-cards.props"
+import style from "./product-cards.module.scss"
+import { IProductCardsProps } from "./ProductCards.props"
 
-export const __ProductCards: FC<IProductCardsProps> = ({
+export const ProductCards: FC<IProductCardsProps> = ({
 	products,
 	grid,
 	title,
@@ -52,7 +52,7 @@ export const __ProductCards: FC<IProductCardsProps> = ({
 								</div>
 							</Link>
 							<div className={style.buttons}>
-								<__ProductActions
+								<ProductActions
 									actionType="toView"
 									alias={product.alias}
 									product={product}

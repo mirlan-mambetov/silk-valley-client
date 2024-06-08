@@ -1,6 +1,6 @@
 "use client"
 
-import { __ProductActions, Button, Featured, Price } from "@/components"
+import { Button, Featured, Price, ProductActions } from "@/components"
 import { showDestinationName } from "@/helpers/showDestinationName"
 import { useCart } from "@/hooks/cart/useCart"
 import { useAttributes } from "@/hooks/useAttributes"
@@ -9,10 +9,10 @@ import cn from "classnames"
 import { FC } from "react"
 import { FiEdit2 } from "react-icons/fi"
 import { SlHandbag } from "react-icons/sl"
-import { IProductInfoProps } from "./__Product_info.props"
-import style from "./_product_info.module.scss"
+import { IProductInfoProps } from "./ProductInfo.props"
+import style from "./product-info.module.scss"
 
-export const __Product_info: FC<IProductInfoProps> = ({ data, type }) => {
+export const ProductInfo: FC<IProductInfoProps> = ({ data, type }) => {
 	const { products } = useCart()
 	const { pointDeliverLocation } = useMap()
 	const {
@@ -87,7 +87,7 @@ export const __Product_info: FC<IProductInfoProps> = ({ data, type }) => {
 						</div>
 					</div>
 				)}
-				<__ProductActions
+				<ProductActions
 					btnSize="2xl"
 					actionType="toCart"
 					alias={data.alias}

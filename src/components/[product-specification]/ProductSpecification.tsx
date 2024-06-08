@@ -1,7 +1,7 @@
 "use client"
 
 import { FC } from "react"
-import style from "./productSpecification.module.scss"
+import style from "./product-specification.module.scss"
 import { IProductSpecificationsProps } from "./ProductSpecification.props"
 
 export const ProductSpecification: FC<IProductSpecificationsProps> = ({

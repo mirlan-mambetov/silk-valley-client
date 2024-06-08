@@ -1,9 +1,9 @@
 "use client"
 
 import {
-	__Product_info,
-	__ProductAttributes,
-	__ProductImages,
+	ProductAttributes,
+	ProductImages,
+	ProductInfo,
 	ProductSpecification,
 } from "@/components"
 import { useAttributes } from "@/hooks/useAttributes"
@@ -36,7 +36,7 @@ export const Detail: FC<IDetailProps> = ({ data }) => {
 				{/* PRODUCT */}
 				<div className={style.product}>
 					{/* IMAGES */}
-					<__ProductImages
+					<ProductImages
 						data={{
 							poster: selectedImages ? selectedImages[0] : data.poster,
 							images: selectedImages || data.attributes[0].images,
@@ -44,11 +44,11 @@ export const Detail: FC<IDetailProps> = ({ data }) => {
 					/>
 					{/* PRODUCT CONTENT */}
 					<div className={style.product_content}>
-						<__ProductAttributes data={data} />
+						<ProductAttributes data={data} />
 					</div>
 				</div>
 				{/* ORDER INFO */}
-				<__Product_info data={data} />
+				<ProductInfo data={data} />
 				<ProductSpecification specifications={data.specifications} />
 			</div>
 		</div>

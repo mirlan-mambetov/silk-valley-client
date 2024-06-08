@@ -6,7 +6,7 @@ import dynamic from "next/dynamic"
 import { FC, useState } from "react"
 import { PointsDelivery } from "../[points-delivery]/PointsDelivery"
 import { ISelectLocationProps } from "./SelectLocation.props"
-import style from "./select.location.module.scss"
+import style from "./select-location.module.scss"
 
 const MapContainerComponent = dynamic(
 	async () => await import("../[map]/MapContainer"),

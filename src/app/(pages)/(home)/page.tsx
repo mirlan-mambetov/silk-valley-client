@@ -1,5 +1,5 @@
 import { APP_URI } from "@/api/config/api-config"
-import { __ProductCards } from "@/components"
+import { ProductCards } from "@/components"
 import { APP_REVALIDATE } from "@/constants/app.constants"
 import { IProduct } from "@/interfaces/product.interface"
 
@@ -24,7 +24,7 @@ export default async function HomePage() {
 			<section>{/* <PromotionComponent data={products} /> */}</section>
 			<section>
 				<div className="container">
-					<__ProductCards products={products} title="Хиты продаж" />
+					<ProductCards products={products} title="Хиты продаж" />
 				</div>
 			</section>
 		</>

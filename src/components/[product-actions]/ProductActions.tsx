@@ -9,10 +9,10 @@ import { useNotification } from "@/hooks/useNotification"
 import cn from "classnames"
 import { useRouter } from "next/navigation"
 import { FC } from "react"
-import style from "./__productActions.module.scss"
-import { IProductActionsProps } from "./Product-actions.props"
+import style from "./product-actions.module.scss"
+import { IProductActionsProps } from "./ProductActions.props"
 
-export const __ProductActions: FC<IProductActionsProps> = ({
+export const ProductActions: FC<IProductActionsProps> = ({
 	actionType,
 	alias,
 	product,

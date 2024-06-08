@@ -12,10 +12,10 @@ import {
 import ReactImageMagnify from "react-image-magnify"
 import { Navigation, Pagination } from "swiper/modules"
 import { SwiperSlide } from "swiper/react"
-import style from "./__productCards.module.scss"
+import style from "./product-cards.module.scss"
 import { IProductImagesProps } from "./ProductImages.props"
 
-export const __ProductImages: FC<IProductImagesProps> = ({ data }) => {
+export const ProductImages: FC<IProductImagesProps> = ({ data }) => {
 	// WINDOW ITH
 	const { width } = useWindowWidth()
 	// IMAGE SRC

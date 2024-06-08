@@ -1,6 +1,6 @@
 "use client"
 
-import { Featured, Price, __ProductActions } from "@/components"
+import { Featured, Price, ProductActions } from "@/components"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { IProduct } from "@/interfaces/product.interface"
 import Image from "next/image"
@@ -79,7 +79,7 @@ export const MobileDetailInfoComponent: FC<IMobileDetailInfoComponentProps> = ({
 				</div>
 				<div className={style.actions}>
 					<Featured size={20} />
-					<__ProductActions
+					<ProductActions
 						actionType="toCart"
 						alias={data.alias}
 						product={data}
