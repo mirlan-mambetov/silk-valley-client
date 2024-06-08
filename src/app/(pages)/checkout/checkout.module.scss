@@ -6,6 +6,13 @@
 	grid-template-columns: 1fr 1fr 1fr;
 	column-gap: 20px;
 	padding: 20px 0;
+	@include mediaLarge1024px {
+		grid-template-columns: repeat(2, 1fr);
+		row-gap: 20px;
+	}
+	@include mediaLarge776px {
+		grid-template-columns: 1fr;
+	}
 }
 .payments {
 	display: flex;
@@ -40,6 +47,11 @@
 			max-width: 200px;
 			height: 50px;
 			object-fit: cover;
+			@include mediaLarge640px {
+				min-width: 100px;
+				max-width: 150px;
+				height: unset;
+			}
 		}
 		.icons {
 			display: flex;

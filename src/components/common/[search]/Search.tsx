@@ -4,10 +4,10 @@ import { FieldComponent } from "@/components"
 import { FC } from "react"
 import style from "./search.module.scss"
 
-export const SearchComponent: FC = () => {
+export const Search: FC = () => {
 	return (
 		<div className={style.search}>
-			<FieldComponent />
+			<FieldComponent placeholder="Я ищу..iphone" />
 		</div>
 	)
 }

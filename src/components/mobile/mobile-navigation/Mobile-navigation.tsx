@@ -1,16 +1,19 @@
 "use client"
 
 import {
+	Auth,
 	Button,
 	CartIcon,
 	CatalogIcon,
 	HomeIcon,
+	MobileMenuComponent,
 	NotifyPlaceholder,
 	UserComponent,
 } from "@/components"
 import { useWindowWidth } from "@/hooks/app/useWindowWidth"
 import { useAuth } from "@/hooks/auth/useAuth"
 import { useCart } from "@/hooks/cart/useCart"
+import { useScreen } from "@/hooks/screen/useScreen"
 import { useUser } from "@/hooks/user/useUser"
 import cn from "classnames"
 import { useRouter } from "next/navigation"
@@ -20,7 +23,7 @@ import style from "./mobile-navigation.module.scss"
 export const MobileNavigation: FC = () => {
 	const { width } = useWindowWidth()
 	const { push } = useRouter()
-	// const { setContentHandler, isOpen, clearContentHandler } = useScreen()
+	const { screenHandle } = useScreen()
 	const { products } = useCart()
 	const { user } = useUser()
 	const { isAuthentificated } = useAuth()
@@ -41,11 +44,7 @@ export const MobileNavigation: FC = () => {
 					</div>
 					<div className={style.item}>
 						<Button
-						// onClick={() =>
-						// 	isOpen
-						// 		? clearContentHandler()
-						// 		: setContentHandler(<MobileMenuComponent />)
-						// }
+							onClick={() => screenHandle({ content: <MobileMenuComponent /> })}
 						>
 							<CatalogIcon />
 							{/* <span>Категории</span> */}
@@ -60,12 +59,10 @@ export const MobileNavigation: FC = () => {
 					</div>
 
 					<div className={style.item}>
-						{isAuthentificated && user ? (
+						{user ? (
 							<UserComponent user={user} onClick={() => push("/user")} />
 						) : (
-							<Button
-							// onClick={() => setContentHandler(<AuthComponent />)}
-							>
+							<Button onClick={() => screenHandle({ content: <Auth /> })}>
 								<svg
 									width="30"
 									height="30"

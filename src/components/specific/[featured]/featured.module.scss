@@ -1,3 +1,4 @@
+@import "../../../styles/media.mixin";
 @import "../../../styles/mixin";
 @import "../../../styles/vars";
 .featured {
@@ -12,5 +13,8 @@
 		top: 20px;
 		right: 20px;
 		z-index: 3;
+		@include mediaLarge480px {
+			position: unset;
+		}
 	}
 }

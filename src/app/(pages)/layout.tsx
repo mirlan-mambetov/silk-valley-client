@@ -7,14 +7,15 @@ import { MobileNavigation } from "@/components/mobile/mobile-navigation/Mobile-n
 import { useAuth } from "@/hooks/auth/useAuth"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { useQuery } from "@tanstack/react-query"
-import React, { useEffect } from "react"
+import React, { useEffect, useRef } from "react"
 
 export default function HomeLayout({
 	children,
 }: {
 	children: React.ReactNode
 }) {
-	const { addUser } = useStoreActions()
+	const isUserAdded = useRef(false)
+	const { addUser, clearUser } = useStoreActions()
 	const { isAuthentificated } = useAuth()
 
 	const { data } = useQuery({
@@ -24,11 +25,14 @@ export default function HomeLayout({
 	})
 
 	useEffect(() => {
-		if (data) {
-			addUser({ data })
+		if (isAuthentificated) {
+			if (data) {
+				addUser({ data })
+			}
+		} else {
+			clearUser()
 		}
 	}, [isAuthentificated, data])
-
 	return (
 		<>
 			<Header />

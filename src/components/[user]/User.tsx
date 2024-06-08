@@ -16,7 +16,7 @@ import { UserNotifyComponent } from "../user/Notify"
 import style from "./user.module.scss"
 import { IUserComponentProps } from "./User.props"
 
-export const UserComponent: FC<IUserComponentProps> = ({ user }) => {
+export const UserComponent: FC<IUserComponentProps> = ({ user, ...props }) => {
 	const { addNotification } = useNotification()
 
 	const { push } = useRouter()
@@ -44,7 +44,7 @@ export const UserComponent: FC<IUserComponentProps> = ({ user }) => {
 	}, [])
 
 	return (
-		<div className={style.user} title={user.name}>
+		<div className={style.user} title={user.name} {...props}>
 			<div className={style.avatar} onClick={() => setIsShow(!isShow)}>
 				{hasUnexpiredNotification ? (
 					<UserNotifyComponent type="head" title="Одно важное уведомление" />

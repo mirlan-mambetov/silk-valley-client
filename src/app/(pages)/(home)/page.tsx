@@ -24,7 +24,7 @@ export default async function HomePage() {
 			<section>{/* <PromotionComponent data={products} /> */}</section>
 			<section>
 				<div className="container">
-					<ProductCards products={products} title="Хиты продаж" />
+					<ProductCards products={products} />
 				</div>
 			</section>
 		</>

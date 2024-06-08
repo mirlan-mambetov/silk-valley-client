@@ -5,6 +5,12 @@
 	position: relative;
 	border-radius: 4px;
 	overflow: hidden;
+	@include mediaLarge1200px {
+		min-height: 300px;
+	}
+	@include mediaLarge776px {
+		min-height: 350px;
+	}
 }
 
 .leaflet {
@@ -56,5 +62,10 @@
 				font-size: 12px;
 			}
 		}
+	}
+	@include mediaLarge776px {
+		top: unset;
+		right: 20px;
+		bottom: 20px;
 	}
 }

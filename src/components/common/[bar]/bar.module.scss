@@ -3,7 +3,9 @@
 @import "../../../styles/vars";
 .bar {
 	background: $black;
-
+	@include mediaLarge530px {
+		display: none;
+	}
 	.wrap {
 		display: flex;
 		align-items: center;

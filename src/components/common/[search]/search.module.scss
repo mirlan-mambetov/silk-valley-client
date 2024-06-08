@@ -4,18 +4,20 @@
 .search {
 	position: relative;
 	width: 100%;
-	border: 1px solid $white;
-	padding: 16px 5px;
-	border-radius: 5px;
+	border: 1px solid $grayDark;
+	border-radius: 10px;
 	overflow: hidden;
 	input {
-		position: absolute;
-		top: 0;
-		left: 0;
+		padding: 7px 10px;
 		width: 100%;
-		height: 100%;
 		border: none;
 		background: $white;
+		@include mediaLarge530px {
+			&::placeholder {
+				font-size: 14px;
+				font-weight: 400;
+			}
+		}
 		&:focus {
 			outline: none;
 		}
