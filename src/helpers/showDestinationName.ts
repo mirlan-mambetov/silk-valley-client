@@ -1,11 +1,5 @@
-import { IDeliverPoint } from "@/interfaces/deliver.interface"
+import { IPointsDelivery } from "@/interfaces/select.location.interface"
 
-export const showDestinationName = (address: IDeliverPoint) => {
-	return address.city && address.road
-		? `${address.city.replace("город", "г.")}. ${address.road}`
-		: address.town && address.road
-		? `${address.town}. ${address.road}`
-		: address.village && address.road
-		? `${address.village}. ${address.road}`
-		: "Выбрать адрес доставки"
+export const showDestinationName = (location?: IPointsDelivery) => {
+	return location ? `Пунк выдачи: ${location?.name}` : "Выбрать тип доставки"
 }

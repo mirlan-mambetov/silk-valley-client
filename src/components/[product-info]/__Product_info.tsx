@@ -6,8 +6,10 @@ import {
 	FeaturedComponent,
 	PriceComponent,
 } from "@/components"
+import { showDestinationName } from "@/helpers/showDestinationName"
 import { useCart } from "@/hooks/cart/useCart"
 import { useAttributes } from "@/hooks/useAttributes"
+import { useMap } from "@/hooks/useMap"
 import cn from "classnames"
 import { FC } from "react"
 import { FiEdit2 } from "react-icons/fi"
@@ -16,8 +18,8 @@ import { IProductInfoProps } from "./__Product_info.props"
 import style from "./_product_info.module.scss"
 
 export const __Product_info: FC<IProductInfoProps> = ({ data, type }) => {
-	// const { address } = useDeliver()
 	const { products } = useCart()
+	const { pointDeliverLocation } = useMap()
 	const {
 		payload: { selectedColor, selectedSize },
 	} = useAttributes()
@@ -63,7 +65,7 @@ export const __Product_info: FC<IProductInfoProps> = ({ data, type }) => {
 				<div className={style.box}>
 					<small>Доставка</small>
 					<div className={style.box_item}>
-						{/* <span>{showDestinationName(address)}</span> */}
+						<span>{showDestinationName(pointDeliverLocation)}</span>
 						<ButtonComponent
 							title="Выбрать координаты доставки"
 							// onClick={() => setContentHandler(<DeliverComponent />)}

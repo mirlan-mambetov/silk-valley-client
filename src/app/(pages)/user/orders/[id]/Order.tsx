@@ -1,13 +1,9 @@
 "use client"
 
 import { OrderApi } from "@/api/api-order/api-order"
-import {
-	DeliverFields,
-	HeadingComponent,
-	LoaderComponent,
-	PriceComponent,
-} from "@/components"
+import { HeadingComponent, LoaderComponent, PriceComponent } from "@/components"
 import { formatDateString } from "@/helpers/formate.data.helper"
+import { showDestinationName } from "@/helpers/showDestinationName"
 import { useQuery } from "@tanstack/react-query"
 import { FC } from "react"
 import style from "./order.module.scss"
@@ -68,7 +64,7 @@ export const Order: FC<IOrderProps> = ({ id }) => {
 					</div>
 					<div className={style.column}>
 						<strong>Пункт доставки</strong>
-						{data?.address && <DeliverFields address={data?.address} />}
+						{showDestinationName(data?.address)}
 					</div>
 				</div>
 			</div>

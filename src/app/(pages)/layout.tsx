@@ -6,8 +6,6 @@ import { MobileNavigation } from "@/components/mobile/mobile-navigation/Mobile-n
 import SidebarComponent from "@/components/sidebar/Sidebar"
 import { useAuth } from "@/hooks/auth/useAuth"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
-import { useUser } from "@/hooks/user/useUser"
-import { useWebSocket } from "@/hooks/ws/useWebSocket"
 import { useQuery } from "@tanstack/react-query"
 import React, { Suspense, useEffect } from "react"
 
@@ -18,8 +16,6 @@ export default function HomeLayout({
 }) {
 	const { addUser } = useStoreActions()
 	const { isAuthentificated } = useAuth()
-	const { user } = useUser()
-	const socket = useWebSocket()
 
 	const { data } = useQuery({
 		queryKey: ["getUserProfile"],
@@ -30,23 +26,8 @@ export default function HomeLayout({
 	useEffect(() => {
 		if (data) {
 			addUser({ data })
-			socket?.emit("logIn", { email: data.email })
 		}
-	}, [data])
-
-	useEffect(() => {
-		if (!socket) return
-		const handleLogOutWithClosed = () => {
-			if (user) {
-				socket.emit("logOut", { email: user.email })
-			}
-		}
-		window.addEventListener("beforeunload", handleLogOutWithClosed)
-
-		return () => {
-			window.removeEventListener("beforeunload", handleLogOutWithClosed)
-		}
-	}, [socket, user])
+	}, [isAuthentificated, data])
 
 	return (
 		<>

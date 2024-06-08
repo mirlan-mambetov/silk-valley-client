@@ -32,7 +32,11 @@ export const Notification: FC<INotificationProps> = ({
 			})}
 		>
 			<div className={style.content}>
-				{type === "error" ? <VscWarning /> : <IoCheckboxOutline />}
+				{type === "error" ? (
+					<VscWarning />
+				) : type === "success" ? (
+					<IoCheckboxOutline />
+				) : null}
 				{message}
 			</div>
 			{options?.notifyType === "Dialog" ? (

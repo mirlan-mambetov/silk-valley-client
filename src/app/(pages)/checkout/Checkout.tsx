@@ -11,6 +11,7 @@ import {
 import { NotifyEnum } from "@/enums/notify.enum"
 import { saveItemToStorage } from "@/helpers/local.storage.helper"
 import { useCart } from "@/hooks/cart/useCart"
+import { useMap } from "@/hooks/useMap"
 import { useNotification } from "@/hooks/useNotification"
 import { useUser } from "@/hooks/user/useUser"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
@@ -21,13 +22,13 @@ import { useState } from "react"
 import style from "./checkout.module.scss"
 
 export const Checkout = () => {
-	const [methodCard, setMethodCard] = useState(false)
-	const [methodCache, setMethodCache] = useState(false)
 	const { push } = useRouter()
 	const { user } = useUser()
+	const [methodCard, setMethodCard] = useState(false)
+	const [methodCache, setMethodCache] = useState(false)
 	const { products, totalPrice, clearCart } = useCart()
-	// const { address } = useDeliver()
 	const queryClient = useQueryClient()
+	const { pointDeliverLocation } = useMap()
 	const { addNotification } = useNotification()
 
 	// PAYMENT MUTATION
@@ -197,17 +198,17 @@ export const Checkout = () => {
 									(!methodCache && !methodCard) || !user || !products.length
 								}
 								onClick={() =>
-									placeOrderHandler({
-										paymentMethod: methodCache
-											? EnumPaymentMethod.CACHE
-											: EnumPaymentMethod.CARD,
-										products,
-										status: EnumOrderStatus.WAITING,
-										totalPrice,
-										address: {
-											city: "",
-										},
-									})
+									pointDeliverLocation
+										? placeOrderHandler({
+												paymentMethod: methodCache
+													? EnumPaymentMethod.CACHE
+													: EnumPaymentMethod.CARD,
+												products,
+												status: EnumOrderStatus.WAITING,
+												totalPrice,
+												address: pointDeliverLocation,
+										  })
+										: undefined
 								}
 							/>
 						</div>

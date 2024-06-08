@@ -7,7 +7,7 @@ export const NotifyApi = {
 	 * @returns NULL
 	 */
 	async changeExpire(id: number) {
-		const response = await apiBase({
+		const response = await apiBase<boolean>({
 			url: `/notify/expire/${id}`,
 			method: "POST",
 		})

@@ -5,10 +5,7 @@ import { ButtonComponent } from "@/components"
 import { NotifyEnum } from "@/enums/notify.enum"
 import { EnumSaveStorage } from "@/enums/Payment.enum"
 import { formatDateString } from "@/helpers/formate.data.helper"
-import {
-	getItemFormStorage,
-	removeItemFromStorage,
-} from "@/helpers/local.storage.helper"
+import { getItemFormStorage } from "@/helpers/local.storage.helper"
 import { useUser } from "@/hooks/user/useUser"
 import { formatPrice } from "@/utils/product.utils"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
@@ -33,12 +30,17 @@ const Orders: FC = () => {
 		const orderId = getItemFormStorage(
 			`${EnumSaveStorage.ORDER_ID}-${user?.id}`
 		)
+
 		const notifyId = localStorage.getItem(`${NotifyEnum.NOTIFY_ID}-${user?.id}`)
+
+		console.log(notifyId)
 		const changeExpire = async (id: number) => {
 			await mutateAsync(id, {
 				onSuccess(data, variables, context) {
-					removeItemFromStorage(`${NotifyEnum.NOTIFY_ID}`)
-					queryClient.invalidateQueries({ queryKey: ["getUserProfile"] })
+					if (!!data) {
+						localStorage.removeItem(`${NotifyEnum.NOTIFY_ID}-${user?.id}`)
+						queryClient.invalidateQueries({ queryKey: ["getUserProfile"] })
+					}
 				},
 			})
 		}

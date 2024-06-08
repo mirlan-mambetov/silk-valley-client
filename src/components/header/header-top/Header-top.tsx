@@ -3,12 +3,14 @@
 import { SelectLocation } from "@/components/[select-location]/SelectLocation"
 import { ButtonComponent } from "@/components/button/Button"
 import { MapIconComponent } from "@/components/icon/map/Map-icon"
+import { showDestinationName } from "@/helpers/showDestinationName"
 import { useScreen } from "@/hooks/screen/useScreen"
+import { useMap } from "@/hooks/useMap"
 import style from "./header.top.module.scss"
 
 export const HeaderTopComponent = () => {
 	const { screenHandle } = useScreen()
-	// const { address } = useDeliver()
+	const { pointDeliverLocation } = useMap()
 	return (
 		<div className={style.top}>
 			<div className="container">
@@ -20,7 +22,7 @@ export const HeaderTopComponent = () => {
 								aria-label="Доставка"
 								onClick={() => screenHandle({ content: <SelectLocation /> })}
 							>
-								{/* <span>{showDestinationName(address)}</span> */}
+								<span>{showDestinationName(pointDeliverLocation)}</span>
 							</ButtonComponent>
 						</div>
 					</div>

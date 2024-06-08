@@ -1,6 +1,7 @@
 "use client"
 
 import {
+	AuthComponent,
 	ButtonComponent,
 	CartInfoComponent,
 	CartProductComponent,
@@ -9,6 +10,7 @@ import {
 import { FC } from "react"
 
 import { useCart } from "@/hooks/cart/useCart"
+import { useScreen } from "@/hooks/screen/useScreen"
 import { useUser } from "@/hooks/user/useUser"
 import { scrollToSection } from "@/utils/scrollToAnchor"
 import { useRouter } from "next/navigation"
@@ -20,6 +22,7 @@ import style from "./cart.module.scss"
 
 export const Cart: FC = () => {
 	const { products } = useCart()
+	const { screenHandle } = useScreen()
 	const { user } = useUser()
 	const { push } = useRouter()
 
@@ -62,7 +65,7 @@ export const Cart: FC = () => {
 							<ButtonComponent
 								id="#section-authorization"
 								className={style.button}
-								// onClick={() => setContentHandler(<AuthComponent />)}
+								onClick={() => screenHandle({ content: <AuthComponent /> })}
 							>
 								<FaUser />
 								Войдите в систему или зарегистрируйтесь

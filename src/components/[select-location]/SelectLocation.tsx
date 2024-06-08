@@ -21,12 +21,6 @@ export const SelectLocation: FC<ISelectLocationProps> = () => {
 
 	const { currentLocation } = useCurrentLocation()
 
-	// useEffect(() => {
-	// 	if (currentLocation) {
-	// 		addUserLocation(currentLocation)
-	// 	}
-	// }, [currentLocation])
-
 	return (
 		<div className={style.selectLocation}>
 			<div className={style.wrap}>

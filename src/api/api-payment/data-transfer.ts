@@ -4,7 +4,7 @@ import {
 	EnumPaymentStatus,
 } from "@/enums/Payment.enum"
 import { ICartProduct } from "@/interfaces/cart.interface"
-import { IDeliverPoint } from "@/interfaces/deliver.interface"
+import { IPointsDelivery } from "@/interfaces/select.location.interface"
 
 export interface IPaymentDTO {
 	status: EnumOrderStatus
@@ -18,7 +18,7 @@ export interface IPaymentDTO {
 
 	sizes?: boolean
 
-	address: IDeliverPoint
+	address: IPointsDelivery
 }
 
 export interface IPaymentResponseWithCard {

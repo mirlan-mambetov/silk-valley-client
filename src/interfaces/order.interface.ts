@@ -1,6 +1,6 @@
 import { EnumOrderStatus, EnumPaymentMethod } from "@/enums/Payment.enum"
 import { IBase } from "./base.interface"
-import { IDeliverPoint } from "./deliver.interface"
+import { IPointsDelivery } from "./select.location.interface"
 
 export interface IOrder extends IBase {
 	status: EnumOrderStatus
@@ -8,7 +8,7 @@ export interface IOrder extends IBase {
 	userId: number
 	payment_type: EnumPaymentMethod
 	items: IOrderItem[]
-	address: IDeliverPoint
+	address: IPointsDelivery
 	orderId: string
 }
 
