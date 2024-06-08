@@ -26,6 +26,7 @@ export const Button: FC<ButtonType> = ({
 					className={cn(style.button, style.placeOrder, className)}
 					{...props}
 				>
+					{isLoading ? <Loader /> : null}
 					<MdOutlineBorderColor />
 					{children ? <span>{children}</span> : <span>Оформить заказ</span>}
 				</button>

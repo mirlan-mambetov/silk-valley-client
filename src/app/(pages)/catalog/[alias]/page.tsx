@@ -61,7 +61,7 @@ export async function generateMetadata({
 	const category = await fetchCategoryBySlug({ params })
 
 	return {
-		title: `${category?.name} | ${category?.name.toLowerCase()} В магазине`,
+		title: `${category?.name} в магазине`,
 	}
 }
 

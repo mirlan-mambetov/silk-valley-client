@@ -1,6 +1,6 @@
 "use client"
 
-import { CardsComponent, FiltersComponent } from "@/components"
+import { FiltersComponent, ProductCards } from "@/components"
 import { useFetchFilterProducts } from "@/hooks/filter/useFetchFilterProducts"
 import { useGetAttributes } from "@/hooks/filter/useGetAttributes"
 import { IChildsCategories } from "@/interfaces/categories.interface"
@@ -34,7 +34,7 @@ export const CategoryPage: FC<ICategoryProps> = ({ data }) => {
 			</section>
 			<section>
 				<div className="container">
-					<CardsComponent products={data.products} />
+					<ProductCards products={data.products} />
 				</div>
 			</section>
 		</>

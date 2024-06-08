@@ -6,11 +6,14 @@ import {
 	CartInfoComponent,
 	CartProductComponent,
 	Heading,
+	SelectLocation,
 } from "@/components"
 import { FC } from "react"
 
+import { showDestinationName } from "@/helpers/showDestinationName"
 import { useCart } from "@/hooks/cart/useCart"
 import { useScreen } from "@/hooks/screen/useScreen"
+import { useMap } from "@/hooks/useMap"
 import { useUser } from "@/hooks/user/useUser"
 import { scrollToSection } from "@/utils/scrollToAnchor"
 import { useRouter } from "next/navigation"
@@ -23,6 +26,7 @@ import style from "./cart.module.scss"
 export const Cart: FC = () => {
 	const { products } = useCart()
 	const { screenHandle } = useScreen()
+	const { pointDeliverLocation } = useMap()
 	const { user } = useUser()
 	const { push } = useRouter()
 
@@ -72,27 +76,18 @@ export const Cart: FC = () => {
 							</Button>
 						)}
 					</div>
-					{/* <div className={style.info}>
-							<>
-								<div className={style.deliver}>
-									{showDestinationName(address)}
-								</div>
-								<Button
-									className={style.edit}
-									title="Выбрать координаты доставки"
-									// onClick={() => setContentHandler(<DeliverComponent />)}
-								>
-									<FiEdit2 fontSize={20} />
-								</Button>
-							</>
-							<Button
-								className={style.button}
-								// onClick={() => setContentHandler(<DeliverComponent />)}
-							>
-								<MapIconComponent />
-								Выберите координаты
-							</Button>
-					</div> */}
+					<div className={style.info}>
+						<div className={style.deliver}>
+							{showDestinationName(pointDeliverLocation)}
+						</div>
+						<Button
+							className={style.edit}
+							title="Выбрать координаты доставки"
+							onClick={() => screenHandle({ content: <SelectLocation /> })}
+						>
+							<FiEdit2 fontSize={20} />
+						</Button>
+					</div>
 				</div>
 			</div>
 		</>
