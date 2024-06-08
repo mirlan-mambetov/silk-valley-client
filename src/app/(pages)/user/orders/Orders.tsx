@@ -1,14 +1,14 @@
 "use client"
 
-import { NotifyApi } from "@/api/api-notify/api-notify"
 import { ButtonComponent } from "@/components"
 import { NotifyEnum } from "@/enums/notify.enum"
 import { EnumSaveStorage } from "@/enums/Payment.enum"
 import { formatDateString } from "@/helpers/formate.data.helper"
 import { getItemFormStorage } from "@/helpers/local.storage.helper"
+import { useMutationHooks } from "@/hooks/useMutation"
 import { useUser } from "@/hooks/user/useUser"
 import { formatPrice } from "@/utils/product.utils"
-import { useMutation, useQueryClient } from "@tanstack/react-query"
+import { useQueryClient } from "@tanstack/react-query"
 import cn from "classnames"
 import { useRouter } from "next/navigation"
 import { FC, useEffect, useState } from "react"
@@ -16,15 +16,11 @@ import { MdOutlineBookmarkBorder } from "react-icons/md"
 import style from "./orders.module.scss"
 
 const Orders: FC = () => {
+	const { changeNotificationExpire } = useMutationHooks()
 	const queryClient = useQueryClient()
 	const [orderId, setOrderId] = useState<number | undefined>(undefined)
 	const { user } = useUser()
 	const { push } = useRouter()
-
-	const { mutateAsync, isPending } = useMutation({
-		mutationKey: ["changeNotifyExpire"],
-		mutationFn: (id: number) => NotifyApi.changeExpire(id),
-	})
 
 	useEffect(() => {
 		const orderId = getItemFormStorage(
@@ -32,10 +28,8 @@ const Orders: FC = () => {
 		)
 
 		const notifyId = localStorage.getItem(`${NotifyEnum.NOTIFY_ID}-${user?.id}`)
-
-		console.log(notifyId)
 		const changeExpire = async (id: number) => {
-			await mutateAsync(id, {
+			await changeNotificationExpire.mutateAsync(id, {
 				onSuccess(data, variables, context) {
 					if (!!data) {
 						localStorage.removeItem(`${NotifyEnum.NOTIFY_ID}-${user?.id}`)

@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+import { Notifications } from "./Notifications"
 
 export const metadata: Metadata = {
 	title: "Уведомления",
@@ -9,5 +10,5 @@ export const metadata: Metadata = {
 }
 
 export default function NotificationPage() {
-	return <div>NotificationPage</div>
+	return <Notifications />
 }
