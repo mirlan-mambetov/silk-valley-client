@@ -1,7 +1,7 @@
 "use client"
 
 import { OrderApi } from "@/api/api-order/api-order"
-import { HeadingComponent, LoaderComponent, PriceComponent } from "@/components"
+import { Heading, Loader, Price } from "@/components"
 import { formatDateString } from "@/helpers/formate.data.helper"
 import { showDestinationName } from "@/helpers/showDestinationName"
 import { useQuery } from "@tanstack/react-query"
@@ -18,11 +18,11 @@ export const Order: FC<IOrderProps> = ({ id }) => {
 	})
 
 	return isLoading ? (
-		<LoaderComponent />
+		<Loader />
 	) : (
 		<div className="container">
 			<div className={style.order}>
-				<HeadingComponent text={`Детали заказа № "${data?.orderId}"`} />
+				<Heading text={`Детали заказа № "${data?.orderId}"`} />
 				<div className={style.wrap}>
 					<div className={style.column}>
 						<strong>ID заказа</strong>
@@ -53,10 +53,7 @@ export const Order: FC<IOrderProps> = ({ id }) => {
 					</div>
 					<div className={style.column}>
 						<strong>Итого</strong>
-						<PriceComponent
-							price={data?.totalCache || 20}
-							orientation="column"
-						/>
+						<Price price={data?.totalCache || 20} orientation="column" />
 					</div>
 					<div className={style.column}>
 						<strong>Обновлен</strong>

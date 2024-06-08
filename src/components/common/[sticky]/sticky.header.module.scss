@@ -1,0 +1,17 @@
+@import "../../../styles/media.mixin";
+@import "../../../styles/vars";
+@import "../../../styles/mixin";
+
+.sticky {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background: $white;
+	z-index: 170;
+	@include baseBoxShadow;
+}
+
+.content {
+	padding: 5px;
+}

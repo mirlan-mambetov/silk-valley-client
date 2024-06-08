@@ -1,5 +1,5 @@
 import { APP_URI } from "@/api/config/api-config"
-import { LoaderComponent } from "@/components"
+import { Loader } from "@/components"
 import { APP_REVALIDATE } from "@/constants/app.constants"
 import { IPageParams } from "@/interfaces/page.interface"
 import { IProduct } from "@/interfaces/product.interface"
@@ -79,9 +79,7 @@ export default async function ProductPage({ params }: IPageParams) {
 			<section>
 				{/* DETAIL */}
 				<div className="container">
-					<Suspense
-						fallback={<LoaderComponent position="absolute" color="black" />}
-					>
+					<Suspense fallback={<Loader position="absolute" color="black" />}>
 						<Detail data={product} />
 					</Suspense>
 				</div>

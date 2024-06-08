@@ -2,7 +2,7 @@
 
 import { PaymentApi } from "@/api/api-payment/api-payment"
 import { IPaymentDTO } from "@/api/api-payment/data-transfer"
-import { ButtonComponent, FieldComponent, HeadingComponent } from "@/components"
+import { Button, FieldComponent, Heading } from "@/components"
 import {
 	EnumOrderStatus,
 	EnumPaymentMethod,
@@ -104,7 +104,7 @@ export const Checkout = () => {
 		<>
 			<section>
 				<div className="container">
-					<HeadingComponent text="Выберите метод оплаты" />
+					<Heading text="Выберите метод оплаты" />
 					<div className={style.wrap}>
 						<div className={style.payments}>
 							<div
@@ -191,7 +191,7 @@ export const Checkout = () => {
 									</span>
 								</div>
 							</div>
-							<ButtonComponent
+							<Button
 								isLoading={isPending}
 								btnType="placeOrder"
 								disabled={

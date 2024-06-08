@@ -1,11 +1,6 @@
 "use client"
 
-import {
-	__ProductActions,
-	FeaturedComponent,
-	HeadingComponent,
-	PriceComponent,
-} from "@/components"
+import { __ProductActions, Featured, Heading, Price } from "@/components"
 import { hostSourceImages } from "@/utils/hostSource"
 import cn from "classnames"
 import Image from "next/image"
@@ -21,13 +16,13 @@ export const __ProductCards: FC<IProductCardsProps> = ({
 }) => {
 	return (
 		<div className={style.cards}>
-			{title ? <HeadingComponent text={title} /> : null}
+			{title ? <Heading text={title} /> : null}
 			<div className={cn(style.wrap, { [style.grid5]: grid === "5" })}>
 				{products.map((product) => (
 					<div className={style.card} key={product.id}>
 						<div className={style.card_wrap}>
 							<div className={style.featured}>
-								<FeaturedComponent />
+								<Featured />
 							</div>
 							<Link href={`/product/${product.alias}`}>
 								<div className={style.top}>
@@ -48,7 +43,7 @@ export const __ProductCards: FC<IProductCardsProps> = ({
 										</h2>
 										<span>Бренд: Apple </span>
 									</div>
-									<PriceComponent
+									<Price
 										className={style.price}
 										price={product.price}
 										discount={product.discount}

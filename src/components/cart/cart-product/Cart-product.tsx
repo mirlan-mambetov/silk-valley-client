@@ -1,10 +1,6 @@
 "use client"
 
-import {
-	ButtonComponent,
-	CartRangeComponent,
-	PriceComponent,
-} from "@/components"
+import { Button, CartRangeComponent, Price } from "@/components"
 import { useCart } from "@/hooks/cart/useCart"
 import { useNotification } from "@/hooks/useNotification"
 import { ICartProduct } from "@/interfaces/cart.interface"
@@ -41,17 +37,14 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 							</div>
 							<div className={style.description}>
 								<div className={style.description_price}>
-									<PriceComponent
+									<Price
 										className={style.number}
 										price={product.price * product.productQuantity}
 										discount={product.discount}
 										size="1xxl"
 										orientation="column"
 									/>
-									<ButtonComponent
-										btnType="promo"
-										title="Скоро будет доступно"
-									/>
+									<Button btnType="promo" title="Скоро будет доступно" />
 								</div>
 								<h4 className={style.title}>{product.title}</h4>
 								<div className={style.items}>
@@ -91,7 +84,7 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 								/>
 							</div>
 							<div className={style.action}>
-								<ButtonComponent
+								<Button
 									title="Убрать из корзины"
 									btnType="delete"
 									onClick={() => {
@@ -106,14 +99,14 @@ export const CartProductComponent: FC<ICartProductComponentProps> = ({
 								/>
 							</div>
 							<div className={style.price}>
-								<PriceComponent
+								<Price
 									className={style.number}
 									price={product.price * product.productQuantity}
 									discount={product.discount}
 									size="1xxl"
 									orientation="row"
 								/>
-								<ButtonComponent btnType="promo" title="Скоро будет доступно" />
+								<Button btnType="promo" title="Скоро будет доступно" />
 							</div>
 						</div>
 					</div>

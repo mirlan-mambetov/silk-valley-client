@@ -1,6 +1,6 @@
 "use client"
 
-import { ButtonComponent, MapIconComponent, PriceComponent } from "@/components"
+import { Button, MapIcon, Price } from "@/components"
 import { showDestinationName } from "@/helpers/showDestinationName"
 import { useCart } from "@/hooks/cart/useCart"
 import { useMap } from "@/hooks/useMap"
@@ -26,25 +26,21 @@ export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 	return (
 		<div className={style.info}>
 			<div className={style.wrap}>
-				<ButtonComponent
+				<Button
 					className={style.deliver}
 					// onClick={() => setContentHandler(<DeliverComponent />)}
 				>
-					<MapIconComponent />
+					<MapIcon />
 					<span>{showDestinationName(pointDeliverLocation)}</span>
-				</ButtonComponent>
+				</Button>
 				<div className={style.box}>
 					<span>Товары, {products.length}шт</span>
-					<PriceComponent
-						size="1xxl"
-						className={style.price}
-						price={totalPrice}
-					/>
+					<Price size="1xxl" className={style.price} price={totalPrice} />
 				</div>
 				{totalDiscount ? (
 					<div className={cn(style.box, style.profit)}>
 						<span>Выгода</span>
-						<PriceComponent
+						<Price
 							className={style.profitPrice}
 							price={totalDiscount}
 							size="1xxl"
@@ -53,15 +49,15 @@ export const CartInfoComponent: FC<ICartInfoComponentProps> = ({
 				) : null}
 				<div className={style.box}>
 					<span className={style.total}>Итого</span>
-					<PriceComponent className={style.total} price={totalPrice} />
+					<Price className={style.total} price={totalPrice} />
 				</div>
-				<ButtonComponent
+				<Button
 					btnType="placeOrder"
 					disabled={!user || !pointDeliverLocation?.location}
 					onClick={() => push("/checkout")}
 				>
 					Перейти к оформлению
-				</ButtonComponent>
+				</Button>
 			</div>
 		</div>
 	)

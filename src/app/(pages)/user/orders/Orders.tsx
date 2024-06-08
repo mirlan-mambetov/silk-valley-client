@@ -1,6 +1,6 @@
 "use client"
 
-import { ButtonComponent } from "@/components"
+import { Button } from "@/components"
 import { NotifyEnum } from "@/enums/notify.enum"
 import { EnumSaveStorage } from "@/enums/Payment.enum"
 import { formatDateString } from "@/helpers/formate.data.helper"
@@ -85,14 +85,14 @@ const Orders: FC = () => {
 						</div>
 						<div className={style.row}>
 							<strong>Действие</strong>
-							<ButtonComponent
+							<Button
 								onClick={() => push(`/user/orders/${order.id}`)}
 								title={`Просмотр заказа ${order.orderId}`}
 							>
 								<span>
 									<MdOutlineBookmarkBorder />
 								</span>
-							</ButtonComponent>
+							</Button>
 						</div>
 					</div>
 				))

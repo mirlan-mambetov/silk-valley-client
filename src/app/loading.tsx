@@ -1,7 +1,7 @@
-import { LoaderComponent } from "@/components"
+import { Loader } from "@/components"
 
 const Loading = () => {
-	return <LoaderComponent position="absolute" color="black" />
+	return <Loader position="absolute" color="black" />
 }
 
 export default Loading

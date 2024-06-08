@@ -1,11 +1,11 @@
 "use client"
 
 import {
-	AuthComponent,
-	ButtonComponent,
+	Auth,
+	Button,
 	CartInfoComponent,
 	CartProductComponent,
-	HeadingComponent,
+	Heading,
 } from "@/components"
 import { FC } from "react"
 
@@ -28,7 +28,7 @@ export const Cart: FC = () => {
 
 	return (
 		<>
-			<HeadingComponent text="Корзина" length={products.length} />
+			<Heading text="Корзина" length={products.length} />
 			<div className={style.cart}>
 				<CartProductComponent products={products} />
 				<CartInfoComponent
@@ -53,23 +53,23 @@ export const Cart: FC = () => {
 										<span>{user.phoneNumber}</span>
 									</div>
 								</div>
-								<ButtonComponent
+								<Button
 									className={style.edit}
 									title="Изменить профиль"
 									onClick={() => push("/user")}
 								>
 									<FiEdit2 fontSize={20} />
-								</ButtonComponent>
+								</Button>
 							</>
 						) : (
-							<ButtonComponent
+							<Button
 								id="#section-authorization"
 								className={style.button}
-								onClick={() => screenHandle({ content: <AuthComponent /> })}
+								onClick={() => screenHandle({ content: <Auth /> })}
 							>
 								<FaUser />
 								Войдите в систему или зарегистрируйтесь
-							</ButtonComponent>
+							</Button>
 						)}
 					</div>
 					{/* <div className={style.info}>
@@ -77,21 +77,21 @@ export const Cart: FC = () => {
 								<div className={style.deliver}>
 									{showDestinationName(address)}
 								</div>
-								<ButtonComponent
+								<Button
 									className={style.edit}
 									title="Выбрать координаты доставки"
 									// onClick={() => setContentHandler(<DeliverComponent />)}
 								>
 									<FiEdit2 fontSize={20} />
-								</ButtonComponent>
+								</Button>
 							</>
-							<ButtonComponent
+							<Button
 								className={style.button}
 								// onClick={() => setContentHandler(<DeliverComponent />)}
 							>
 								<MapIconComponent />
 								Выберите координаты
-							</ButtonComponent>
+							</Button>
 					</div> */}
 				</div>
 			</div>

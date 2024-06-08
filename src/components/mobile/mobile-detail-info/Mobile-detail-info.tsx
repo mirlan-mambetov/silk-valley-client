@@ -1,10 +1,6 @@
 "use client"
 
-import {
-	FeaturedComponent,
-	PriceComponent,
-	__ProductActions,
-} from "@/components"
+import { Featured, Price, __ProductActions } from "@/components"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { IProduct } from "@/interfaces/product.interface"
 import Image from "next/image"
@@ -50,7 +46,7 @@ export const MobileDetailInfoComponent: FC<IMobileDetailInfoComponentProps> = ({
 					<div className={style.content}>
 						<div className={style.item}>
 							<h3 className={style.name}>{data.title}</h3>
-							<PriceComponent
+							<Price
 								price={data.price}
 								className={style.price}
 								discount={data.discount}
@@ -82,10 +78,8 @@ export const MobileDetailInfoComponent: FC<IMobileDetailInfoComponentProps> = ({
 					</div>
 				</div>
 				<div className={style.actions}>
-					<FeaturedComponent size={20} />
+					<Featured size={20} />
 					<__ProductActions
-						size={selectedSize}
-						color={selectedColor}
 						actionType="toCart"
 						alias={data.alias}
 						product={data}

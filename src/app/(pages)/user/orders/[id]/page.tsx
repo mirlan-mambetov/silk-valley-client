@@ -1,4 +1,4 @@
-import { LoaderComponent } from "@/components"
+import { Loader } from "@/components"
 import { IPageParams } from "@/interfaces/page.interface"
 import { Metadata } from "next"
 import { Suspense } from "react"
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function OrderPage({ params }: IPageParams<{ id: string }>) {
 	return (
-		<Suspense fallback={<LoaderComponent color="black" position="absolute" />}>
+		<Suspense fallback={<Loader color="black" position="absolute" />}>
 			<Order id={params.id} />
 		</Suspense>
 	)

@@ -1,7 +1,6 @@
 "use client"
 
-import { ButtonComponent } from "@/components"
-import { SwiperComponent } from "@/components/swiper-component/Swiper-component"
+import { Button, SwiperComponent } from "@/components"
 import { IProduct } from "@/interfaces/product.interface"
 import { FC, useEffect, useRef, useState } from "react"
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs"
@@ -136,12 +135,12 @@ export const Banner: FC<IMainBannerProps> = ({ data }) => {
 						</SwiperSlide>
 					))}
 					<div className={style.navigations}>
-						<ButtonComponent className={style.prev}>
+						<Button className={style.prev}>
 							<BsArrowLeft />
-						</ButtonComponent>
-						<ButtonComponent className={style.next}>
+						</Button>
+						<Button className={style.next}>
 							<BsArrowRight />
-						</ButtonComponent>
+						</Button>
 					</div>
 					<div className={style.pagination}></div>
 				</SwiperComponent>

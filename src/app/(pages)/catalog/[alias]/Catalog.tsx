@@ -1,6 +1,6 @@
 "use client"
 
-import { CardsComponent, FiltersComponent, LoaderComponent } from "@/components"
+import { __ProductCards, FiltersComponent, Loader } from "@/components"
 import { useFetchFilterProducts } from "@/hooks/filter/useFetchFilterProducts"
 import { useFilterInit } from "@/hooks/filter/useFilter"
 import { useGetAttributes } from "@/hooks/filter/useGetAttributes"
@@ -38,9 +38,9 @@ export const Catalog: FC<ICatalogProps> = ({ data }) => {
 			/>
 			<div className={style.products}>
 				{isFetching ? (
-					<LoaderComponent color="black" position="absolute" />
+					<Loader color="black" position="absolute" />
 				) : (
-					<CardsComponent products={products} />
+					<__ProductCards products={products} />
 				)}
 			</div>
 		</div>

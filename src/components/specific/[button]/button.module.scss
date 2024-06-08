@@ -1,0 +1,149 @@
+@import "../../../styles/mixin";
+@import "../../../styles/media.mixin";
+@import "../../../styles/vars";
+
+.button {
+	background: none;
+	border: none;
+	cursor: pointer;
+	color: inherit;
+	&:focus {
+		outline: none;
+	}
+	&.xl2 {
+		font-size: 28px;
+	}
+	&.xxl1 {
+		font-size: 14px;
+	}
+}
+.close {
+	display: flex;
+	padding: 5px;
+	border-radius: 50px;
+	color: $purple;
+	box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.04);
+}
+.placeOrder {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 5px;
+	background: $black;
+	color: $white;
+	padding: 15px 12px;
+	border-radius: 14px;
+	min-height: 50px;
+	@include buttonHover;
+	span {
+		font-size: 14px;
+	}
+}
+.promo {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	background-image: linear-gradient(
+		43deg,
+		#4158d0 0%,
+		#c850c0 46%,
+		#ffcc70 100%
+	);
+	background-size: 400% 400%;
+	color: $purple;
+	background-clip: text;
+	text-fill-color: transparent;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	-webkit-animation: changeBackground 8.4s linear infinite;
+	animation: changeBackground 8.4s linear infinite;
+	font-size: 12px;
+
+	span {
+		display: flex;
+		flex-direction: column;
+		@include dashdeLine;
+		font-size: 10px;
+	}
+}
+.cart {
+	display: flex;
+	align-items: center;
+	padding: 12px 17px;
+	border-radius: 12px;
+	background: $black;
+	color: $white;
+	font-size: 14px;
+	font-weight: 500;
+	@include buttonHover;
+	@include mediaLarge380px {
+		padding: 10px 6px;
+	}
+}
+.delete {
+	color: $gray;
+}
+.submit {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 7px;
+	padding: 12px 22px;
+	background: $black;
+	border-radius: 10px;
+	@include buttonHover;
+	font-size: 14px;
+	line-height: 18px;
+	min-height: 40px;
+	color: $white;
+	span {
+		margin-bottom: -2px;
+	}
+}
+.range {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 25px;
+	height: 25px;
+	min-height: 20px;
+	border: 1px solid $darkenRGBA;
+	> div {
+		> div {
+			width: 18px !important;
+			aspect-ratio: 4 !important;
+			background: radial-gradient(circle closest-side, #080808 90%, #c2c2c200) 0 /
+				calc(100% / 3) 100% space !important;
+		}
+	}
+	&.isloading {
+		border: none;
+	}
+}
+@-webkit-keyframes changeBackground {
+	0% {
+		background-position: 0% 50%;
+	}
+
+	50% {
+		background-position: 100% 50%;
+	}
+
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@keyframes changeBackground {
+	0% {
+		background-position: 0% 50%;
+	}
+
+	50% {
+		background-position: 100% 50%;
+	}
+
+	100% {
+		background-position: 0% 50%;
+	}
+}

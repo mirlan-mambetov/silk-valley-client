@@ -1,4 +1,4 @@
-import { LoaderComponent } from "@/components"
+import { Loader } from "@/components"
 import { Metadata } from "next"
 import { Suspense } from "react"
 import Orders from "./Orders"
@@ -16,9 +16,7 @@ const OrdersPage = () => {
 		<>
 			<section>
 				<div className="container">
-					<Suspense
-						fallback={<LoaderComponent color="black" position="absolute" />}
-					>
+					<Suspense fallback={<Loader color="black" position="absolute" />}>
 						<Orders />
 					</Suspense>
 				</div>

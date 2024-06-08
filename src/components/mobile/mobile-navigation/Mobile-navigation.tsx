@@ -1,10 +1,10 @@
 "use client"
 
 import {
-	ButtonComponent,
-	CartIconComponent,
-	CatalogIconComponent,
-	HomeIconComponent,
+	Button,
+	CartIcon,
+	CatalogIcon,
+	HomeIcon,
 	NotifyPlaceholder,
 	UserComponent,
 } from "@/components"
@@ -34,36 +34,36 @@ export const MobileNavigation: FC = () => {
 			<div className="container">
 				<div className={style.list}>
 					<div className={style.item}>
-						<ButtonComponent onClick={() => push("/")}>
-							<HomeIconComponent />
+						<Button onClick={() => push("/")}>
+							<HomeIcon />
 							{/* <span>Профиль</span> */}
-						</ButtonComponent>
+						</Button>
 					</div>
 					<div className={style.item}>
-						<ButtonComponent
+						<Button
 						// onClick={() =>
 						// 	isOpen
 						// 		? clearContentHandler()
 						// 		: setContentHandler(<MobileMenuComponent />)
 						// }
 						>
-							<CatalogIconComponent />
+							<CatalogIcon />
 							{/* <span>Категории</span> */}
-						</ButtonComponent>
+						</Button>
 					</div>
 
 					<div className={style.item}>
-						<ButtonComponent onClick={() => push("/cart")}>
-							<CartIconComponent />
+						<Button onClick={() => push("/cart")}>
+							<CartIcon />
 							<NotifyPlaceholder length={products.length} toUp="1" />
-						</ButtonComponent>
+						</Button>
 					</div>
 
 					<div className={style.item}>
 						{isAuthentificated && user ? (
 							<UserComponent user={user} onClick={() => push("/user")} />
 						) : (
-							<ButtonComponent
+							<Button
 							// onClick={() => setContentHandler(<AuthComponent />)}
 							>
 								<svg
@@ -88,7 +88,7 @@ export const MobileNavigation: FC = () => {
 									/>
 								</svg>
 								{/* <span>Профиль</span> */}
-							</ButtonComponent>
+							</Button>
 						)}
 					</div>
 				</div>

@@ -3,6 +3,7 @@
 import { FC, useEffect } from "react"
 
 import { IFilterProductResponse } from "@/api/api-filters/data-transfer"
+import Select from "@/components/specific/[select]/Select"
 import { PRODUCT_SORT_SELECT_DATA } from "@/constants/Filters.constants"
 import { useFilterInit } from "@/hooks/filter/useFilter"
 import {
@@ -15,7 +16,6 @@ import { FiList } from "react-icons/fi"
 import { IoResizeOutline } from "react-icons/io5"
 import { MdInvertColors } from "react-icons/md"
 import { PriceRangeComponent } from ".."
-import SelectComponent from "../select/Select"
 import style from "./filters.module.scss"
 
 interface IFiltersComponentProps {
@@ -51,7 +51,7 @@ export const FiltersComponent: FC<IFiltersComponentProps> = ({
 		>
 			{data.categories?.length || data.childsCategories?.length ? (
 				<div className={style.box}>
-					<SelectComponent
+					<Select
 						isLoading={isLoadingAttributes}
 						data={
 							data.categories?.map((category) => ({
@@ -78,7 +78,7 @@ export const FiltersComponent: FC<IFiltersComponentProps> = ({
 			) : null}
 			{/* SORT BY SORTING POPULAR, PRICE */}
 			<div className={style.box}>
-				<SelectComponent
+				<Select
 					data={PRODUCT_SORT_SELECT_DATA}
 					onChange={(value) => addSearchParams("sort", value.key)}
 					title={PRODUCT_SORT_SELECT_DATA[0].label}
@@ -87,7 +87,7 @@ export const FiltersComponent: FC<IFiltersComponentProps> = ({
 			</div>
 			{/* SORTING BY COLORS */}
 			<div className={style.box}>
-				<SelectComponent
+				<Select
 					isLoading={isLoadingAttributes}
 					data={attributesData?.map((attribute) => ({
 						key: attribute.color,
@@ -100,7 +100,7 @@ export const FiltersComponent: FC<IFiltersComponentProps> = ({
 			</div>
 			{/* SORTING BY SIZES */}
 			<div className={style.box}>
-				<SelectComponent
+				<Select
 					isLoading={isLoadingAttributes}
 					data={attributesData?.map((attribute) => ({
 						key: attribute.size || "undefined",

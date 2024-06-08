@@ -1,13 +1,12 @@
 "use client"
 
+import { Button, MapIcon } from "@/components"
 import { useMap } from "@/hooks/useMap"
 import "leaflet-defaulticon-compatibility"
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css"
 import "leaflet/dist/leaflet.css"
 import { FC, useEffect } from "react"
 import { Marker, Popup, TileLayer, useMapEvents } from "react-leaflet"
-import { ButtonComponent } from "../button/Button"
-import { MapIconComponent } from "../icon/map/Map-icon"
 import { IMapContainerProps } from "./MapContainer.props"
 import style from "./map.module.scss"
 
@@ -42,13 +41,13 @@ const MapComponent: FC<IMapContainerProps> = ({ currentLocation }) => {
 				contributors
 			</div>
 			<div className={style.navigation}>
-				<ButtonComponent
+				<Button
 					className={style.button}
 					onClick={() => map.flyTo(currentLocation).getZoomScale(50)}
 				>
-					<MapIconComponent />
+					<MapIcon />
 					<span>Где я ?</span>
-				</ButtonComponent>
+				</Button>
 			</div>
 		</>
 	)

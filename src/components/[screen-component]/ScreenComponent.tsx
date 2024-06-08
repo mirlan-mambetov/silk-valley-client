@@ -1,6 +1,6 @@
 "use client"
 
-import { ButtonComponent } from "@/components"
+import { Button } from "@/components"
 import { screenMotionVariant } from "@/framer-motion/screen/screen.motion"
 import cn from "classnames"
 import { motion } from "framer-motion"
@@ -23,21 +23,21 @@ export const ScreenComponent: FC<IScreenComponentProps> = ({
 				[style.default]: typeOfScreen === "default",
 			})}
 		>
-			<ButtonComponent
+			<Button
 				className={style.close}
 				onClick={closeHandle}
 				btnType="closed"
 				size={"xl2"}
-			></ButtonComponent>
+			></Button>
 			{/* CONTENT */}
 			<div className={style.content}>
 				{typeOfScreen === "modal" ? (
-					<ButtonComponent
+					<Button
 						className={style.closeContent}
 						onClick={closeHandle}
 						btnType="closed"
 						size={"xxl1"}
-					></ButtonComponent>
+					></Button>
 				) : null}
 				{content}
 			</div>

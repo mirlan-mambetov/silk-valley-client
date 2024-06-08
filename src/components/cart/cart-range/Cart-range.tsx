@@ -1,6 +1,6 @@
 "use client"
 
-import { ButtonComponent } from "@/components"
+import { Button } from "@/components"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { IProduct } from "@/interfaces/product.interface"
 import cn from "classnames"
@@ -50,7 +50,7 @@ export const CartRangeComponent: FC<ICartRangeComponentProps> = ({
 		<div className={cn(style.quantity, className)} {...props}>
 			{text && <small>Количество</small>}
 			<div className={style.quantity_item}>
-				<ButtonComponent
+				<Button
 					disabled={minusLoading || product.quantity == 1}
 					isLoading={minusLoading}
 					title="Убрать"
@@ -58,9 +58,9 @@ export const CartRangeComponent: FC<ICartRangeComponentProps> = ({
 					onClick={changeMinusHandler}
 				>
 					<LuMinus />
-				</ButtonComponent>
+				</Button>
 				<span>{quantity}</span>
-				<ButtonComponent
+				<Button
 					disabled={plusLoading || product.quantity <= 1}
 					isLoading={plusLoading}
 					title="Добавить"
@@ -68,7 +68,7 @@ export const CartRangeComponent: FC<ICartRangeComponentProps> = ({
 					onClick={changePlusHandler}
 				>
 					<LuPlus />
-				</ButtonComponent>
+				</Button>
 			</div>
 		</div>
 	)

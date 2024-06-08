@@ -1,5 +1,5 @@
 import { APP_URI } from "@/api/config/api-config"
-import { LoaderComponent } from "@/components"
+import { Loader } from "@/components"
 import { APP_REVALIDATE } from "@/constants/app.constants"
 import { ISecondCategories } from "@/interfaces/categories.interface"
 import { IPageParams } from "@/interfaces/page.interface"
@@ -71,9 +71,7 @@ export default async function CatalogPage({ params }: IPageParams) {
 		<>
 			<section>
 				<div className="container">
-					<Suspense
-						fallback={<LoaderComponent position="absolute" color="black" />}
-					>
+					<Suspense fallback={<Loader position="absolute" color="black" />}>
 						{category && <Catalog data={category} />}
 					</Suspense>
 				</div>

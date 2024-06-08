@@ -1,11 +1,6 @@
 "use client"
 
-import {
-	ButtonComponent,
-	FieldComponent,
-	HeaderTopComponent,
-	LogoComponent,
-} from "@/components"
+import { Bar, Button, FieldComponent, Logo } from "@/components"
 import { FC } from "react"
 
 import cn from "classnames"
@@ -25,12 +20,12 @@ export const MobileHeaderComponent: FC = () => {
 				[style.strech]: isProductPage,
 			})}
 		>
-			<HeaderTopComponent />
+			<Bar />
 			<div className="container">
 				<div className={style.wrap}>
-					<LogoComponent className={style.logo} height={40} width={70} />
+					<Logo className={style.logo} height={40} width={70} />
 					<div className={style.search}>
-						<ButtonComponent className={style.button}>
+						<Button className={style.button}>
 							<Image
 								src={"/icons/Search.svg"}
 								alt="search"
@@ -38,7 +33,7 @@ export const MobileHeaderComponent: FC = () => {
 								height={16}
 							/>
 							{/* <span>Поиск</span> */}
-						</ButtonComponent>
+						</Button>
 						<FieldComponent />
 					</div>
 				</div>

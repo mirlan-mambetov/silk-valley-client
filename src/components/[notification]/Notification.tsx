@@ -1,11 +1,11 @@
 "use client"
 
+import { Button } from "@/components"
 import { notifyMotionVariant } from "@/framer-motion/notify/notify.motion"
 import cn from "classnames"
 import { motion } from "framer-motion"
 import { FC } from "react"
 import { IoCheckboxOutline } from "react-icons/io5"
-import { ButtonComponent } from "../button/Button"
 import { INotificationProps } from "./Notification.props"
 
 import { VscWarning } from "react-icons/vsc"
@@ -41,7 +41,7 @@ export const Notification: FC<INotificationProps> = ({
 			</div>
 			{options?.notifyType === "Dialog" ? (
 				<div className={style.buttons}>
-					<ButtonComponent
+					<Button
 						btnType="default"
 						onClick={() => {
 							onConfirm && onConfirm()
@@ -49,8 +49,8 @@ export const Notification: FC<INotificationProps> = ({
 						}}
 					>
 						Да
-					</ButtonComponent>
-					<ButtonComponent
+					</Button>
+					<Button
 						btnType="default"
 						onClick={() => {
 							onCanceled && onCanceled()
@@ -58,7 +58,7 @@ export const Notification: FC<INotificationProps> = ({
 						}}
 					>
 						Нет
-					</ButtonComponent>
+					</Button>
 				</div>
 			) : null}
 		</motion.div>

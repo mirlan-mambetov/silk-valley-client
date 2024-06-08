@@ -1,17 +1,14 @@
 "use client"
 
+import { Button, Price, RatingComponent, SwiperComponent } from "@/components"
 import { hostSourceImages } from "@/utils/hostSource"
 import cn from "classnames"
 import Image from "next/image"
 import { FC } from "react"
 import { MdContentCopy } from "react-icons/md"
 import { SwiperSlide } from "swiper/react"
-import { ButtonComponent } from "../button/Button"
-import { PriceComponent } from "../price/Price"
 // import { ProductDiscountComponent } from "../product/product-discount/Product-discount"
 import { useAttributes } from "@/hooks/useAttributes"
-import { RatingComponent } from "../rating/Rating"
-import { SwiperComponent } from "../swiper-component/Swiper-component"
 import style from "./__productAttributes.module.scss"
 import { IProductAttributes } from "./ProductAttributes.props"
 
@@ -26,9 +23,9 @@ export const __ProductAttributes: FC<IProductAttributes> = ({ data }) => {
 				<h2 className={style.product_name}>{data?.title}</h2>
 				<div className={style.product_id}>
 					<span>ID: {data?.articleNumber}</span>
-					<ButtonComponent title="Нажмите скопировать">
+					<Button title="Нажмите скопировать">
 						<MdContentCopy />
-					</ButtonComponent>
+					</Button>
 				</div>
 			</div>
 			<div className={style.attribute}>
@@ -38,7 +35,7 @@ export const __ProductAttributes: FC<IProductAttributes> = ({ data }) => {
 			<div className={style.attribute}>
 				<h5 className={style.title}>Цена</h5>
 				<div className={style.price}>
-					<PriceComponent
+					<Price
 						price={data.price}
 						discount={data.discount}
 						orientation="column"
@@ -109,7 +106,7 @@ export const __ProductAttributes: FC<IProductAttributes> = ({ data }) => {
 					<div className={style.sizes}>
 						<div className={style.size}>
 							{data.attributes.map((attribute, i) => (
-								<ButtonComponent
+								<Button
 									className={cn(style.button, {
 										[style.active_color]: selectedSize === attribute.size,
 									})}
@@ -119,7 +116,7 @@ export const __ProductAttributes: FC<IProductAttributes> = ({ data }) => {
 									}}
 								>
 									{attribute.size}
-								</ButtonComponent>
+								</Button>
 							))}
 						</div>
 					</div>

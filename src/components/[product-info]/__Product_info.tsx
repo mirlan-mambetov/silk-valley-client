@@ -1,11 +1,6 @@
 "use client"
 
-import {
-	__ProductActions,
-	ButtonComponent,
-	FeaturedComponent,
-	PriceComponent,
-} from "@/components"
+import { __ProductActions, Button, Featured, Price } from "@/components"
 import { showDestinationName } from "@/helpers/showDestinationName"
 import { useCart } from "@/hooks/cart/useCart"
 import { useAttributes } from "@/hooks/useAttributes"
@@ -39,7 +34,7 @@ export const __Product_info: FC<IProductInfoProps> = ({ data, type }) => {
 								<>с учетом скидки</>
 							</small>
 							<div className={style.box_item}>
-								<PriceComponent
+								<Price
 									price={data.price}
 									discount={data.discount}
 									orientation="column"
@@ -51,13 +46,13 @@ export const __Product_info: FC<IProductInfoProps> = ({ data, type }) => {
 						<>
 							<small>Цена</small>
 							<div className={style.box_item}>
-								<PriceComponent
+								<Price
 									price={data.price}
 									discount={data.discount}
 									orientation="column"
 									size="3xxl"
 								/>
-								<FeaturedComponent size={18} type="fixed" />
+								<Featured size={18} type="fixed" />
 							</div>
 						</>
 					)}
@@ -66,12 +61,12 @@ export const __Product_info: FC<IProductInfoProps> = ({ data, type }) => {
 					<small>Доставка</small>
 					<div className={style.box_item}>
 						<span>{showDestinationName(pointDeliverLocation)}</span>
-						<ButtonComponent
+						<Button
 							title="Выбрать координаты доставки"
 							// onClick={() => setContentHandler(<DeliverComponent />)}
 						>
 							<FiEdit2 />
-						</ButtonComponent>
+						</Button>
 					</div>
 				</div>
 
@@ -102,9 +97,9 @@ export const __Product_info: FC<IProductInfoProps> = ({ data, type }) => {
 
 			<div className={style.cart}>
 				<span>Товары, {products.length}шт</span>
-				<ButtonComponent>
+				<Button>
 					<SlHandbag />
-				</ButtonComponent>
+				</Button>
 			</div>
 		</div>
 	)

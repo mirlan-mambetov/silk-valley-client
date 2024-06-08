@@ -1,13 +1,13 @@
 "use client"
 
 import { UserApi } from "@/api/api-user/api-user"
-import { FooterComponent, HeaderComponent } from "@/components"
+import { Footer, Header } from "@/components"
+import Sidebar from "@/components/common/[sidebar]/Sidebar"
 import { MobileNavigation } from "@/components/mobile/mobile-navigation/Mobile-navigation"
-import SidebarComponent from "@/components/sidebar/Sidebar"
 import { useAuth } from "@/hooks/auth/useAuth"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { useQuery } from "@tanstack/react-query"
-import React, { Suspense, useEffect } from "react"
+import React, { useEffect } from "react"
 
 export default function HomeLayout({
 	children,
@@ -31,14 +31,12 @@ export default function HomeLayout({
 
 	return (
 		<>
-			<HeaderComponent />
+			<Header />
 			{/* <Cungrulations /> */}
 			<MobileNavigation />
-			<SidebarComponent />
-			<main className="main">
-				<Suspense>{children}</Suspense>
-			</main>
-			<FooterComponent />
+			<Sidebar />
+			<main className="main">{children}</main>
+			<Footer />
 		</>
 	)
 }

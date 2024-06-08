@@ -1,5 +1,6 @@
 "use client"
 
+import { Button } from "@/components"
 import { useLoader } from "@/hooks/app/useLoader"
 import { useCart } from "@/hooks/cart/useCart"
 import { useExistInCart } from "@/hooks/cart/useExistInCart"
@@ -8,7 +9,6 @@ import { useNotification } from "@/hooks/useNotification"
 import cn from "classnames"
 import { useRouter } from "next/navigation"
 import { FC } from "react"
-import { ButtonComponent } from "../button/Button"
 import style from "./__productActions.module.scss"
 import { IProductActionsProps } from "./Product-actions.props"
 
@@ -63,7 +63,7 @@ export const __ProductActions: FC<IProductActionsProps> = ({
 			return (
 				<>
 					{isExist && !isLoading ? (
-						<ButtonComponent
+						<Button
 							className={cn(style.button, {
 								[style.xl1]: btnSize === "1xl",
 								[style.xl2]: btnSize === "2xl",
@@ -73,9 +73,9 @@ export const __ProductActions: FC<IProductActionsProps> = ({
 							onClick={() => push("/cart")}
 						>
 							Перейти к корзине
-						</ButtonComponent>
+						</Button>
 					) : (
-						<ButtonComponent
+						<Button
 							isLoading={isLoading}
 							aria-label="Просмотр"
 							className={cn(style.button, {
@@ -91,7 +91,7 @@ export const __ProductActions: FC<IProductActionsProps> = ({
 
 		case "toView":
 			return (
-				<ButtonComponent
+				<Button
 					disabled={disable}
 					className={cn(style.button, {
 						[style.xl1]: btnSize === "1xl",
@@ -102,11 +102,11 @@ export const __ProductActions: FC<IProductActionsProps> = ({
 					onClick={() => push(`/product/${alias}`)}
 				>
 					Просмотр
-				</ButtonComponent>
+				</Button>
 			)
 		default:
 			return (
-				<ButtonComponent
+				<Button
 					disabled={disable}
 					className={cn(style.button, {
 						[style.xl1]: btnSize === "1xl",
@@ -117,7 +117,7 @@ export const __ProductActions: FC<IProductActionsProps> = ({
 					onClick={() => push(`/product/${alias}`)}
 				>
 					Просмотр
-				</ButtonComponent>
+				</Button>
 			)
 	}
 }

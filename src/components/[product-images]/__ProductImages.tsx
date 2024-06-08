@@ -1,5 +1,6 @@
 "use client"
 
+import { Button, SwiperComponent } from "@/components"
 import { useWindowWidth } from "@/hooks/app/useWindowWidth"
 import { hostSourceImages } from "@/utils/hostSource"
 import Image from "next/image"
@@ -11,8 +12,6 @@ import {
 import ReactImageMagnify from "react-image-magnify"
 import { Navigation, Pagination } from "swiper/modules"
 import { SwiperSlide } from "swiper/react"
-import { ButtonComponent } from "../button/Button"
-import { SwiperComponent } from "../swiper-component/Swiper-component"
 import style from "./__productCards.module.scss"
 import { IProductImagesProps } from "./ProductImages.props"
 
@@ -92,12 +91,12 @@ export const __ProductImages: FC<IProductImagesProps> = ({ data }) => {
 						</SwiperSlide>
 					))}
 					<div className={style.navigation}>
-						<ButtonComponent className={style.prev}>
+						<Button className={style.prev}>
 							<MdOutlineKeyboardArrowUp />
-						</ButtonComponent>
-						<ButtonComponent className={style.next}>
+						</Button>
+						<Button className={style.next}>
 							<MdOutlineKeyboardArrowDown />
-						</ButtonComponent>
+						</Button>
 					</div>
 				</SwiperComponent>
 			</div>

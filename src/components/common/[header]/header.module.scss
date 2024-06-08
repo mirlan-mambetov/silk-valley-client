@@ -1,0 +1,90 @@
+@import "../../../styles/vars";
+@import "../../../styles/media.mixin";
+@import "../../../styles/mixin";
+
+.header {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	background: $white;
+	margin-bottom: 20px;
+	z-index: 50;
+	@include mediaLarge530px {
+		display: none;
+	}
+}
+
+.content {
+	display: grid;
+	grid-template-columns: repeat(3, calc(100% / 3 - 12px / 3 * (3 - 1)));
+	position: relative;
+	padding: 10px 0;
+	z-index: 2;
+
+	.row {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		gap: 15px;
+		color: $darken;
+		&:nth-child(3) {
+			justify-content: flex-end;
+		}
+		.menu {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			border: 1px solid $darkenRGBA;
+			border-radius: 5px;
+			padding: 10px;
+			cursor: pointer;
+			.button {
+				display: flex;
+				flex-direction: column;
+				gap: 3px;
+
+				span {
+					width: 18px;
+					height: 1px;
+					padding: 1px;
+					background: $darken;
+					transition: transform 0.2s ease;
+					transform-origin: center center;
+				}
+			}
+			&.active {
+				.button {
+					span {
+						&:nth-child(1) {
+							transform: translate(0px, 4px) rotate(45deg);
+						}
+						&:nth-child(2) {
+							transform: scaleX(0);
+						}
+						&:nth-child(3) {
+							transform: translate(0px, -6px) rotate(-45deg);
+						}
+					}
+				}
+			}
+		}
+		.column {
+			position: relative;
+			.search,
+			.cart {
+				font-size: 18px;
+			}
+
+			button {
+				font-size: 12px;
+				font-weight: 500;
+				text-transform: uppercase;
+			}
+		}
+	}
+}
+.overlay {
+	width: 100%;
+	padding: 2px;
+	background: $purple;
+}

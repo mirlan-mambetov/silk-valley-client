@@ -1,6 +1,6 @@
 "use client"
 
-import { ButtonComponent } from "@/components"
+import { Button } from "@/components"
 import { formatDateString } from "@/helpers/formate.data.helper"
 import { useAuth } from "@/hooks/auth/useAuth"
 import { useUser } from "@/hooks/user/useUser"
@@ -48,10 +48,10 @@ const User: FC = () => {
 									{user?.phoneNumber}
 								</div>
 								<div className={style.item}>
-									<ButtonComponent onClick={logoutHandle}>
+									<Button onClick={logoutHandle}>
 										<IoLogOutOutline />
 										Выйти
-									</ButtonComponent>
+									</Button>
 								</div>
 							</div>
 						</div>
