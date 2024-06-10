@@ -57,9 +57,9 @@ export const Checkout = () => {
 		}
 	}, [methodCard])
 
-	const placeOrderHandler = async (data: IPaymentDTO) => {
+	const placeOrderHandler = async (dto: IPaymentDTO) => {
 		try {
-			await mutateAsync(data, {
+			await mutateAsync(dto, {
 				onSuccess(data, variables, context) {
 					saveItemToStorage(
 						`${EnumSaveStorage.ORDER_ID}-${user?.id}`,
@@ -76,7 +76,7 @@ export const Checkout = () => {
 						},
 					})
 					queryClient.invalidateQueries({ queryKey: ["getUserProfile"] })
-					if (data.detail_order.url) {
+					if (data.detail_order?.url) {
 						console.log(data.detail_order)
 						push(`${data.detail_order.url}`)
 					}

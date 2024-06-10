@@ -10,6 +10,7 @@ export * from "./mobile/mobile-header/Mobile-header"
 export * from "./mobile/mobile-menu/Mobile-menu"
 
 // NEW
+export * from "./[cart]/Checkout"
 export * from "./[notification]/Notification"
 export * from "./[points-delivery]/PointsDelivery"
 export * from "./[product-actions]/ProductActions"

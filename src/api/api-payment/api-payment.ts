@@ -4,7 +4,7 @@ import { IPaymentDTO, IPaymentResponseWithCard } from "./data-transfer"
 export type PlaceOrderResponse = {} & {
 	message: string
 	orderId: number
-	detail_order: IPaymentResponseWithCard
+	detail_order?: IPaymentResponseWithCard
 	notifyId: number
 }
 

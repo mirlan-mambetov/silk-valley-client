@@ -49,6 +49,7 @@ export const Detail: FC<IDetailProps> = ({ data }) => {
 				</div>
 				{/* ORDER INFO */}
 				<ProductInfo data={data} />
+				{/* <Checkout /> */}
 				<ProductSpecification specifications={data.specifications} />
 			</div>
 		</div>
