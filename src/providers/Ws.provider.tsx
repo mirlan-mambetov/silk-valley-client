@@ -12,7 +12,7 @@ export const WebSocketProvider: React.FC<{ children: ReactNode }> = ({
 	const { isAuthentificated } = useAuth()
 
 	useEffect(() => {
-		if (!isAuthentificated || !user) {
+		if (!isAuthentificated) {
 			if (socket) {
 				socket.disconnect()
 				socket.on("disconnect", () => {
@@ -25,7 +25,7 @@ export const WebSocketProvider: React.FC<{ children: ReactNode }> = ({
 
 		const newSocket = io("https://api.slkvalley.com", {
 			auth: {
-				userId: user.id,
+				userId: user?.id,
 			},
 		})
 		newSocket.on("connect", () => {
@@ -39,7 +39,7 @@ export const WebSocketProvider: React.FC<{ children: ReactNode }> = ({
 				newSocket.disconnect()
 			}
 		}
-	}, [isAuthentificated, user])
+	}, [isAuthentificated])
 
 	const contextValue: WebSocketContextType = { socket }
 
