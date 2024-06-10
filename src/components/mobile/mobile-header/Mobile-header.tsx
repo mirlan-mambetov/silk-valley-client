@@ -1,6 +1,13 @@
 "use client"
 
-import { Bar, Button, MapIcon, Search, SelectLocation } from "@/components"
+import {
+	Bar,
+	Button,
+	Logo,
+	MapIcon,
+	Search,
+	SelectLocation,
+} from "@/components"
 import { FC } from "react"
 
 import { useScreen } from "@/hooks/screen/useScreen"
@@ -23,13 +30,17 @@ export const MobileHeaderComponent: FC = () => {
 			<Bar />
 			<div className="container">
 				<div className={style.wrap}>
-					<Button
-						className={style.map}
-						onClick={() => screenHandle({ content: <SelectLocation /> })}
-					>
-						<MapIcon fill="#6e6e6e" color="white" iconVersion="v2" />
-					</Button>
-					<Search />
+					<div className={style.column}>
+						<Logo variant="SV" color="purple" width={40} height={25} />
+						<Search />
+					</div>
+					<div className={style.column}>
+						<Button
+							onClick={() => screenHandle({ content: <SelectLocation /> })}
+						>
+							<MapIcon iconVersion="v2" />
+						</Button>
+					</div>
 				</div>
 			</div>
 		</div>
