@@ -11,11 +11,9 @@ import {
 	UserComponent,
 } from "@/components"
 import { useWindowWidth } from "@/hooks/app/useWindowWidth"
-import { useAuth } from "@/hooks/auth/useAuth"
 import { useCart } from "@/hooks/cart/useCart"
 import { useScreen } from "@/hooks/screen/useScreen"
 import { useUser } from "@/hooks/user/useUser"
-import cn from "classnames"
 import { useRouter } from "next/navigation"
 import { FC } from "react"
 import style from "./mobile-navigation.module.scss"
@@ -24,16 +22,11 @@ export const MobileNavigation: FC = () => {
 	const { width } = useWindowWidth()
 	const { push } = useRouter()
 	const { screenHandle } = useScreen()
-	const { products } = useCart()
+	const { state, showCart } = useCart()
 	const { user } = useUser()
-	const { isAuthentificated } = useAuth()
 
 	return width <= 530 ? (
-		<div
-			className={cn(style.menu, {
-				// [style.shadow]: isOpen,
-			})}
-		>
+		<div className={style.menu}>
 			<div className="container">
 				<div className={style.list}>
 					<div className={style.item}>
@@ -52,9 +45,9 @@ export const MobileNavigation: FC = () => {
 					</div>
 
 					<div className={style.item}>
-						<Button onClick={() => push("/cart")}>
+						<Button onClick={() => showCart()}>
 							<CartIcon />
-							<NotifyPlaceholder length={products.length} toUp="1" />
+							<NotifyPlaceholder length={state.products.length} toUp="1" />
 						</Button>
 					</div>
 

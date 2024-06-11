@@ -32,6 +32,7 @@ const Sidebar = () => {
 	return (
 		<>
 			<motion.aside
+				initial={false}
 				variants={sidebarVariantMotion}
 				animate={isOpen ? "open" : "closed"}
 				className={style.sidebar}
@@ -56,7 +57,9 @@ const Sidebar = () => {
 												setCategoryId(null)
 											}}
 											className={cn(style.submenu, {
-												[style.isOpen]: categoryId === category.id,
+												[style.isOpen]:
+													categoryId === category.id &&
+													category.categories.length,
 											})}
 										>
 											{category.categories.map((secondCategory) => (
@@ -107,6 +110,7 @@ const Sidebar = () => {
 				)}
 			</motion.aside>
 			<motion.div
+				initial={false}
 				variants={sidebarOverlayVariantMotion}
 				animate={isOpen ? "open" : "closed"}
 				className={style.overlay}

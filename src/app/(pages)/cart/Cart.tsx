@@ -1,45 +1,26 @@
 "use client"
 
-import {
-	Auth,
-	Button,
-	CartInfoComponent,
-	CartProductComponent,
-	Heading,
-	SelectLocation,
-} from "@/components"
 import { FC } from "react"
 
-import { showDestinationName } from "@/helpers/showDestinationName"
-import { useCart } from "@/hooks/cart/useCart"
-import { useScreen } from "@/hooks/screen/useScreen"
-import { useMap } from "@/hooks/useMap"
-import { useUser } from "@/hooks/user/useUser"
-import { scrollToSection } from "@/utils/scrollToAnchor"
-import { useRouter } from "next/navigation"
-import { BsEnvelopeAt } from "react-icons/bs"
-import { FaUser } from "react-icons/fa6"
-import { FiEdit2 } from "react-icons/fi"
-import { MdOutlinePhone } from "react-icons/md"
 import style from "./cart.module.scss"
 
 export const Cart: FC = () => {
-	const { products } = useCart()
-	const { screenHandle } = useScreen()
-	const { pointDeliverLocation } = useMap()
-	const { user } = useUser()
-	const { push } = useRouter()
+	// const { products } = useCart()
+	// const { screenHandle } = useScreen()
+	// const { pointDeliverLocation } = useMap()
+	// const { user } = useUser()
+	// const { push } = useRouter()
 
 	return (
 		<>
-			<Heading text="Корзина" length={products.length} />
+			{/* <Heading text="Корзина" length={products.length} /> */}
 			<div className={style.cart}>
-				<CartProductComponent products={products} />
-				<CartInfoComponent
+				{/* <CartProductComponent products={products} /> */}
+				{/* <CartInfoComponent
 					anchorHanlder={scrollToSection}
 					products={products}
-				/>
-				<div className={style.information}>
+				/> */}
+				{/* <div className={style.information}>
 					<div className={style.info}>
 						{user ? (
 							<>
@@ -88,7 +69,7 @@ export const Cart: FC = () => {
 							<FiEdit2 fontSize={20} />
 						</Button>
 					</div>
-				</div>
+				</div> */}
 			</div>
 		</>
 	)

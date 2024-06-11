@@ -1,17 +1,18 @@
 import { IProduct } from "./product.interface"
 
 export interface ICartProduct extends IProduct {
-	selectedColor: string | undefined
-	selectedSize: string | undefined
-	productQuantity?: number
+	selectedSize?: string
+	selectedColor?: string
+	quantityInCart: number
+}
+export interface ICart {
+	products: ICartProduct[]
+	totalCache: number
+	totalDiscount?: number
+	isShow: boolean
 }
 export interface ICartPayload {
 	product: ICartProduct
-}
-export interface ICartAddAttributePayload {
-	productId: number
-	color: string | undefined
-	size: string | undefined
 }
 
 export interface IChangeQuantityPayload extends Pick<IProduct, "id"> {

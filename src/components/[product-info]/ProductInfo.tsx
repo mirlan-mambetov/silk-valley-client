@@ -20,7 +20,7 @@ import { IProductInfoProps } from "./ProductInfo.props"
 import style from "./product-info.module.scss"
 
 export const ProductInfo: FC<IProductInfoProps> = ({ data, type }) => {
-	const { products } = useCart()
+	const { state } = useCart()
 	const { pointDeliverLocation } = useMap()
 	const { screenHandle } = useScreen()
 	const {
@@ -95,16 +95,11 @@ export const ProductInfo: FC<IProductInfoProps> = ({ data, type }) => {
 						</div>
 					</div>
 				)}
-				<ProductActions
-					btnSize="2xl"
-					actionType="toCart"
-					alias={data.alias}
-					product={data}
-				/>
+				<ProductActions actionType="toCart" product={data} alias="d" />
 			</div>
 
 			<div className={style.cart}>
-				<span>Товары, {products.length}шт</span>
+				<span>Товары, {state.products.length}шт</span>
 				<Button>
 					<SlHandbag />
 				</Button>

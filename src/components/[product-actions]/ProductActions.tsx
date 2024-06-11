@@ -22,7 +22,7 @@ export const ProductActions: FC<IProductActionsProps> = ({
 	const { push } = useRouter()
 	const { isExist } = useExistInCart(product)
 	const { isLoading, setLoadingHandler } = useLoader()
-	const { addToCart } = useCart()
+	const { addToCart, showCart } = useCart()
 	const { addNotification } = useNotification()
 	const {
 		payload: { selectedColor, selectedSize },
@@ -48,45 +48,39 @@ export const ProductActions: FC<IProductActionsProps> = ({
 						...product,
 						selectedColor,
 						selectedSize,
+						quantityInCart: 1,
 					},
 				})
 				resolve()
 			}, 3000)
 		})
-		addNotification({
-			message: "Товар добавлен в корзину",
-			options: { background: "Black" },
-		})
 	}
 	switch (actionType) {
 		case "toCart":
-			return (
-				<>
-					{isExist && !isLoading ? (
-						<Button
-							className={cn(style.button, {
-								[style.xl1]: btnSize === "1xl",
-								[style.xl2]: btnSize === "2xl",
-							})}
-							aria-label="Перейти к корзине"
-							btnType="cart"
-							onClick={() => push("/cart")}
-						>
-							Перейти к корзине
-						</Button>
-					) : (
-						<Button
-							isLoading={isLoading}
-							aria-label="Просмотр"
-							className={cn(style.button, {
-								[style.xl1]: btnSize === "1xl",
-								[style.xl2]: btnSize === "2xl",
-							})}
-							btnType="cart"
-							onClick={addToCartHandler}
-						/>
-					)}
-				</>
+			return !isExist ? (
+				<Button
+					isLoading={isLoading}
+					aria-label="В корзину"
+					className={cn(style.button, {
+						[style.xl1]: btnSize === "1xl",
+						[style.xl2]: btnSize === "2xl",
+					})}
+					btnType="cart"
+					onClick={addToCartHandler}
+				/>
+			) : (
+				<Button
+					disabled={disable}
+					className={cn(style.button, {
+						[style.xl1]: btnSize === "1xl",
+						[style.xl2]: btnSize === "2xl",
+					})}
+					aria-label="Открыть корзину"
+					btnType="cart"
+					onClick={() => showCart()}
+				>
+					Открыть корзину
+				</Button>
 			)
 
 		case "toView":

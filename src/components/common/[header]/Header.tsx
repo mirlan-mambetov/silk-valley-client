@@ -27,7 +27,7 @@ export const Header = () => {
 	const { push } = useRouter()
 	const { width } = useWindowWidth()
 	const { screenHandle } = useScreen()
-	const { products } = useCart()
+	const { state, showCart } = useCart()
 	const { isAuthentificated } = useAuth()
 	const { user } = useUser()
 	const { sidebarHandler, isOpen } = useSideBar()
@@ -83,12 +83,15 @@ export const Header = () => {
 										)}
 									</div>
 									<div className={style.column}>
-										<NotifyPlaceholder length={products?.length} />
+										<NotifyPlaceholder
+											length={state.products.length}
+											toUp="1"
+										/>
 										<Button
 											title="Корзина"
 											aria-label="Корзина"
 											className={style.cart}
-											onClick={() => push("/cart")}
+											onClick={() => showCart()}
 										>
 											<SlHandbag />
 										</Button>

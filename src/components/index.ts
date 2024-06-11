@@ -1,6 +1,3 @@
-export * from "./cart/cart-info/Cart-info"
-export * from "./cart/cart-product/Cart-product"
-export * from "./cart/cart-range/Cart-range"
 export * from "./field-component/Field-component"
 export * from "./filters/Filters"
 export * from "./filters/price-range/Price-range"
@@ -10,7 +7,8 @@ export * from "./mobile/mobile-header/Mobile-header"
 export * from "./mobile/mobile-menu/Mobile-menu"
 
 // NEW
-export * from "./[cart]/Checkout"
+export * from "./[cart]/Cart"
+export * from "./[cart]/CartRange"
 export * from "./[notification]/Notification"
 export * from "./[points-delivery]/PointsDelivery"
 export * from "./[product-actions]/ProductActions"
@@ -36,13 +34,13 @@ export * from "./common/[swiper-component]/SwiperComponent"
 
 // SPECIFIC
 export * from "./specific/[button]/Button"
+export * from "./specific/[destination-point]/DestinationPoint"
 export * from "./specific/[featured]/Featured"
 export * from "./specific/[heading]/Heading"
 export * from "./specific/[notify-placeholder]/Notify-Placeholder"
 export * from "./specific/[price]/Price"
 export * from "./specific/[rating]/Rating"
 export * from "./specific/[select]/Select"
-
 // ICONS
 export * from "./common/[icons]/Cart-Icon"
 export * from "./common/[icons]/Catalog-Icon"

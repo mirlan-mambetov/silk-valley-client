@@ -13,7 +13,7 @@
 		top: 20px;
 		right: 20px;
 		z-index: 3;
-		@include mediaLarge480px {
+		@include mediaLarge530px {
 			position: unset;
 		}
 	}

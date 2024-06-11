@@ -31,7 +31,7 @@ export const MobileHeaderComponent: FC = () => {
 			<div className="container">
 				<div className={style.wrap}>
 					<div className={style.column}>
-						<Logo variant="SV" color="purple" width={40} height={25} />
+						<Logo variant="SV" color="purple" width={60} height={34} />
 						<Search />
 					</div>
 					<div className={style.column}>

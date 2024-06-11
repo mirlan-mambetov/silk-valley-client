@@ -28,10 +28,10 @@ export const NotificationProvider: FC<PropsWithChildren> = ({ children }) => {
 
 	const removeNotification = async () => {
 		setIsShow(false)
-		setType(undefined)
 		new Promise<void>((resolve, reject) => {
 			setTimeout(() => {
 				setPayload({ message: undefined })
+				setType(undefined)
 				resolve()
 			}, 3000)
 		})

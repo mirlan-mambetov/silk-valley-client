@@ -1,27 +1,21 @@
 "use client"
 
 import { Button } from "@/components"
-import { useStoreActions } from "@/hooks/store/useStoreActions"
-import { IProduct } from "@/interfaces/product.interface"
+import { useCart } from "@/hooks/cart/useCart"
 import cn from "classnames"
-import { DetailsHTMLAttributes, FC, useState } from "react"
+import { FC, useState } from "react"
 import { LuMinus, LuPlus } from "react-icons/lu"
 import style from "./cart-range.module.scss"
+import { ICartRangeProps } from "./CartRange.props"
 
-interface ICartRangeComponentProps
-	extends DetailsHTMLAttributes<HTMLDivElement> {
-	text?: boolean
-	product: IProduct
-	quantity: number
-}
-export const CartRangeComponent: FC<ICartRangeComponentProps> = ({
+export const CartRange: FC<ICartRangeProps> = ({
 	text = true,
 	className,
 	product,
 	quantity,
 	...props
 }) => {
-	const { changedQuantity } = useStoreActions()
+	const { changeQuantity } = useCart()
 	const [minusLoading, setMinusLoading] = useState(false)
 	const [plusLoading, setPlusLoading] = useState(false)
 
@@ -29,7 +23,7 @@ export const CartRangeComponent: FC<ICartRangeComponentProps> = ({
 		setMinusLoading(true)
 		await new Promise<void>((resolve) => {
 			setTimeout(() => {
-				changedQuantity({ type: "minus", id: product.id })
+				changeQuantity({ type: "minus", id: product.id })
 				resolve()
 			}, 1300)
 		})
@@ -39,7 +33,7 @@ export const CartRangeComponent: FC<ICartRangeComponentProps> = ({
 		setPlusLoading(true)
 		await new Promise<void>((resolve) => {
 			setTimeout(() => {
-				changedQuantity({ type: "plus", id: product.id })
+				changeQuantity({ type: "plus", id: product.id })
 				resolve()
 			}, 1300)
 		})

@@ -69,15 +69,17 @@
 .cart {
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	padding: 12px 17px;
-	border-radius: 12px;
+	border-radius: 15px;
 	background: $black;
 	color: $white;
 	font-size: 14px;
 	font-weight: 500;
+	min-height: 45px;
 	@include buttonHover;
-	@include mediaLarge380px {
-		padding: 10px 6px;
+	@include mediaLarge440px {
+		min-height: 35px;
 	}
 }
 .delete {
@@ -106,8 +108,6 @@
 	justify-content: center;
 	width: 25px;
 	height: 25px;
-	min-height: 20px;
-	border: 1px solid $darkenRGBA;
 	> div {
 		> div {
 			width: 18px !important;

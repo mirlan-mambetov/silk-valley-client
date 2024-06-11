@@ -2,15 +2,10 @@
 
 import { PaymentApi } from "@/api/api-payment/api-payment"
 import { IPaymentDTO } from "@/api/api-payment/data-transfer"
-import { Button, FieldComponent, Heading } from "@/components"
-import {
-	EnumOrderStatus,
-	EnumPaymentMethod,
-	EnumSaveStorage,
-} from "@/enums/Payment.enum"
+import { FieldComponent, Heading } from "@/components"
+import { EnumSaveStorage } from "@/enums/Payment.enum"
 import { NotifyEnum } from "@/enums/notify.enum"
 import { saveItemToStorage } from "@/helpers/local.storage.helper"
-import { useCart } from "@/hooks/cart/useCart"
 import { useMap } from "@/hooks/useMap"
 import { useNotification } from "@/hooks/useNotification"
 import { useUser } from "@/hooks/user/useUser"
@@ -26,7 +21,7 @@ export const Checkout = () => {
 	const { user } = useUser()
 	const [methodCard, setMethodCard] = useState(false)
 	const [methodCache, setMethodCache] = useState(false)
-	const { products, totalPrice, clearCart } = useCart()
+	// const { products, totalCache, clearCart } = useCart()
 	const queryClient = useQueryClient()
 	const { pointDeliverLocation } = useMap()
 	const { addNotification } = useNotification()
@@ -80,7 +75,7 @@ export const Checkout = () => {
 						console.log(data.detail_order)
 						push(`${data.detail_order.url}`)
 					}
-					clearCart()
+					// clearCart()
 					// push(`/`)
 				},
 			})
@@ -181,7 +176,7 @@ export const Checkout = () => {
 								</li>
 							</ul>
 						</div>
-						<div className={style.policy}>
+						{/* <div className={style.policy}>
 							<h5>Товары, {products.length}шт</h5>
 							<div className={style.items}>
 								{products.map((product) => (
@@ -214,7 +209,7 @@ export const Checkout = () => {
 										: undefined
 								}
 							/>
-						</div>
+						</div> */}
 					</div>
 				</div>
 			</section>

@@ -1,20 +1,19 @@
 "use client"
 
 import { UserApi } from "@/api/api-user/api-user"
-import { Footer, Header } from "@/components"
+import { Cart, Footer, Header } from "@/components"
 import Sidebar from "@/components/common/[sidebar]/Sidebar"
 import { MobileNavigation } from "@/components/mobile/mobile-navigation/Mobile-navigation"
 import { useAuth } from "@/hooks/auth/useAuth"
 import { useStoreActions } from "@/hooks/store/useStoreActions"
 import { useQuery } from "@tanstack/react-query"
-import React, { useEffect, useRef } from "react"
+import React, { useEffect } from "react"
 
 export default function HomeLayout({
 	children,
 }: {
 	children: React.ReactNode
 }) {
-	const isUserAdded = useRef(false)
 	const { addUser, clearUser } = useStoreActions()
 	const { isAuthentificated } = useAuth()
 
@@ -39,6 +38,7 @@ export default function HomeLayout({
 			{/* <Cungrulations /> */}
 			<MobileNavigation />
 			<Sidebar />
+			<Cart />
 			<main className="main">{children}</main>
 			<Footer />
 		</>

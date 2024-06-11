@@ -18,17 +18,23 @@ export const Detail: FC<IDetailProps> = ({ data }) => {
 	const [selectedImages, setSelectedImages] = useState<string[] | undefined>(
 		undefined
 	)
-	const {
-		payload: { selectedColor },
-	} = useAttributes()
+	const { payload, addAttribute } = useAttributes()
 
-	const attribute = data.attributes.find((item) => item.color === selectedColor)
+	const attribute = data.attributes.find(
+		(item) => item.color === payload.selectedColor
+	)
 
 	useEffect(() => {
-		if (selectedColor) {
+		if (payload.selectedColor && payload.selectedSize) {
+			addAttribute({ selectedColor: undefined, selectedSize: undefined })
+		}
+	}, [])
+
+	useEffect(() => {
+		if (payload.selectedColor) {
 			setSelectedImages(attribute?.images)
 		}
-	}, [selectedColor])
+	}, [payload.selectedColor])
 
 	return (
 		<div className={style.detail}>
@@ -49,7 +55,6 @@ export const Detail: FC<IDetailProps> = ({ data }) => {
 				</div>
 				{/* ORDER INFO */}
 				<ProductInfo data={data} />
-				{/* <Checkout /> */}
 				<ProductSpecification specifications={data.specifications} />
 			</div>
 		</div>

@@ -7,6 +7,9 @@
 	gap: 5px;
 	min-height: 15px;
 	transition: opacity 1.2s ease;
+	font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+		"Lucida Sans", Arial, sans-serif, "Segoe UI", Tahoma, Geneva, Verdana,
+		sans-serif;
 	.old {
 		color: $discount;
 		text-decoration: line-through;
@@ -34,7 +37,7 @@
 			gap: 5px;
 			align-items: center;
 			font-size: 14px;
-			font-weight: 500;
+			font-weight: bold !important;
 			line-height: 16px;
 		}
 		.old {
@@ -46,7 +49,7 @@
 		.default,
 		.new {
 			font-size: 18px;
-			font-weight: 500;
+			font-weight: bold !important;
 			line-height: 17px;
 		}
 		.old {
@@ -59,7 +62,7 @@
 		.default,
 		.new {
 			font-size: 22px;
-			font-weight: 700;
+			font-weight: bold !important;
 			line-height: 30px;
 		}
 		.old {
@@ -76,7 +79,7 @@
 			align-items: center;
 			gap: 4px;
 			font-size: 16px;
-			font-weight: 500;
+			font-weight: bold !important;
 			line-height: 90%;
 		}
 		.old {

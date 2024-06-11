@@ -23,7 +23,7 @@ export const WebSocketProvider: React.FC<{ children: ReactNode }> = ({
 			return
 		}
 
-		const newSocket = io("https://api.slkvalley.com", {
+		const newSocket = io("http://localhost:5000", {
 			auth: {
 				userId: user?.id,
 			},
