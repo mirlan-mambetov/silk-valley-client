@@ -1,14 +1,13 @@
 "use client"
 
 import { Button } from "@/components"
-import { useLoader } from "@/hooks/app/useLoader"
 import { useCart } from "@/hooks/cart/useCart"
 import { useExistInCart } from "@/hooks/cart/useExistInCart"
 import { useAttributes } from "@/hooks/useAttributes"
 import { useNotification } from "@/hooks/useNotification"
 import cn from "classnames"
 import { useRouter } from "next/navigation"
-import { FC } from "react"
+import { FC, useState } from "react"
 import style from "./product-actions.module.scss"
 import { IProductActionsProps } from "./ProductActions.props"
 
@@ -19,9 +18,9 @@ export const ProductActions: FC<IProductActionsProps> = ({
 	btnSize,
 	disable,
 }) => {
+	const [isLoading, setIsLoading] = useState(false)
 	const { push } = useRouter()
 	const { isExist } = useExistInCart(product)
-	const { isLoading, setLoadingHandler } = useLoader()
 	const { addToCart, showCart } = useCart()
 	const { addNotification } = useNotification()
 	const {
@@ -40,7 +39,7 @@ export const ProductActions: FC<IProductActionsProps> = ({
 				options: { background: "Black" },
 			})
 		}
-		setLoadingHandler()
+		setIsLoading(true)
 		await new Promise<void>((resolve) => {
 			setTimeout(() => {
 				addToCart({
@@ -54,6 +53,7 @@ export const ProductActions: FC<IProductActionsProps> = ({
 				resolve()
 			}, 3000)
 		})
+		setIsLoading(false)
 	}
 	switch (actionType) {
 		case "toCart":

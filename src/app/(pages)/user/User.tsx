@@ -5,6 +5,7 @@ import { formatDateString } from "@/helpers/formate.data.helper"
 import { useAuth } from "@/hooks/auth/useAuth"
 import { useUser } from "@/hooks/user/useUser"
 import { hostSourceImages } from "@/utils/hostSource"
+import cn from "classnames"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { FC } from "react"
@@ -66,14 +67,14 @@ const User: FC = () => {
 							</div>
 						</div>
 
-						<div className={style.row}>
+						<div className={cn(style.row, style.disabled)}>
 							<div className={style.top}>
 								<span>
 									<GoHeart />
 								</span>
 								<h5
 									className={style.name}
-									onClick={() => push("/user/featured")}
+									// onClick={() => push("/user/featured")}
 								>
 									Избранное
 								</h5>
@@ -81,24 +82,24 @@ const User: FC = () => {
 						</div>
 					</div>
 					<div className={style.wrap}>
-						<div className={style.box}>
+						<div className={cn(style.box, style.disabled)}>
 							<span>
 								<BiLineChart />
 							</span>
 							<h5
 								className={style.title}
-								onClick={() => push("/user/purchases")}
+								// onClick={() => push("/user/purchases")}
 							>
 								Мои покупки
 							</h5>
 						</div>
-						<div className={style.box}>
+						<div className={cn(style.box, style.disabled)}>
 							<span>
 								<MdOutlineViewStream />
 							</span>
 							<h5
 								className={style.title}
-								onClick={() => push("/user/remaining")}
+								// onClick={() => push("/user/remaining")}
 							>
 								Просмотренные
 							</h5>

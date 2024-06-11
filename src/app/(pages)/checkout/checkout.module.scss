@@ -1,144 +1,172 @@
 @import "../../../styles/media.mixin";
 @import "../../../styles/mixin";
 @import "../../../styles/vars";
-.wrap {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	column-gap: 20px;
-	padding: 20px 0;
-	@include mediaLarge1024px {
-		grid-template-columns: repeat(2, 1fr);
-		row-gap: 20px;
-	}
-	@include mediaLarge776px {
-		grid-template-columns: 1fr;
-	}
-}
-.payments {
+.checkout {
 	display: flex;
 	flex-direction: column;
-	gap: 12px;
-	.method {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding: 20px;
-		border-radius: 10px;
-		@include lowBoxShadow;
-		border: 1px dashed $darkenRGBA;
-		cursor: pointer;
-		opacity: 0.6;
-		&.active {
-			opacity: 1;
-		}
-		strong {
-			font-size: 16px;
-			font-weight: 400;
-			line-height: 24px;
-			min-width: 200px;
-			max-width: 200px;
-		}
-		input {
-			width: 20px;
-			cursor: pointer;
-		}
-		img {
-			min-width: 200px;
-			max-width: 200px;
-			height: 50px;
-			object-fit: cover;
-			@include mediaLarge640px {
-				min-width: 100px;
-				max-width: 150px;
-				height: unset;
-			}
-		}
-		.icons {
-			display: flex;
-			.icon {
-				width: 40px;
-				height: 30px;
-				&.iconVisa {
-					background-image: url("/icons/Visa.svg");
-					background-position: center center;
-					background-repeat: no-repeat;
-				}
-				&.masterCard {
-					background-image: url("/icons/master-card.svg");
-					background-position: center center;
-					background-repeat: no-repeat;
-				}
-				&.maestro {
-					background-image: url("/icons/maestro.svg");
-					background-position: center center;
-					background-repeat: no-repeat;
-				}
-				&.unionPay {
-					background-image: url("/icons/union-pay.svg");
-					background-position: center center;
-					background-repeat: no-repeat;
-				}
-				&.elcard {
-					background-image: url("/icons/elcard.svg");
-					background-position: center center;
-					background-repeat: no-repeat;
-				}
-			}
-		}
-	}
-}
-.policy {
-	display: flex;
-	flex-direction: column;
-	gap: 12px;
-	padding: 10px;
-	@include baseBoxShadow;
-	border-radius: 10px;
-	h5 {
-		font-size: 14px;
-		font-weight: 500;
-		line-height: 20px;
-		color: $darkenFavorite;
-	}
-	.description {
+	gap: 50px;
+	.head {
 		display: flex;
 		flex-direction: column;
-		gap: 6px;
-		list-style-type: circle;
-		li {
-			font-size: 12px;
-			&:first-child {
-				color: $discount;
-			}
-			a {
-				margin: 5px;
-				color: $discount;
-				text-decoration: underline;
-			}
-		}
-	}
-	.items {
-		display: flex;
-		flex-direction: column;
+		align-items: flex-start;
 		gap: 5px;
-		strong {
-			font-size: 14px;
-			font-weight: 400;
-			line-height: 20px;
-		}
-		.total {
-			margin: 12px 0;
-			display: flex;
-			align-items: center;
-			gap: 6px;
-			font-size: 14px;
-			font-weight: 400;
-			line-height: 17px;
+		h3 {
+			margin: 0;
 			span {
 				font-size: 16px;
 				font-weight: 500;
-				line-height: 18px;
 			}
 		}
+		strong {
+			font-size: 12px;
+			font-weight: 400;
+			color: $gray;
+			border-bottom: 1px solid $grayDark;
+			padding: 3px 0;
+			cursor: help;
+		}
+	}
+	.wrap {
 	}
 }
+// .wrap {
+// 	display: grid;
+// 	grid-template-columns: 1fr 1fr 1fr;
+// 	column-gap: 20px;
+// 	padding: 20px 0;
+// 	@include mediaLarge1024px {
+// 		grid-template-columns: repeat(2, 1fr);
+// 		row-gap: 20px;
+// 	}
+// 	@include mediaLarge776px {
+// 		grid-template-columns: 1fr;
+// 	}
+// }
+// .payments {
+// 	display: flex;
+// 	flex-direction: column;
+// 	gap: 12px;
+// 	.method {
+// 		display: flex;
+// 		align-items: center;
+// 		justify-content: space-between;
+// 		padding: 20px;
+// 		border-radius: 10px;
+// 		@include lowBoxShadow;
+// 		border: 1px dashed $darkenRGBA;
+// 		cursor: pointer;
+// 		opacity: 0.6;
+// 		&.active {
+// 			opacity: 1;
+// 		}
+// 		strong {
+// 			font-size: 16px;
+// 			font-weight: 400;
+// 			line-height: 24px;
+// 			min-width: 200px;
+// 			max-width: 200px;
+// 		}
+// 		input {
+// 			width: 20px;
+// 			cursor: pointer;
+// 		}
+// 		img {
+// 			min-width: 200px;
+// 			max-width: 200px;
+// 			height: 50px;
+// 			object-fit: cover;
+// 			@include mediaLarge640px {
+// 				min-width: 100px;
+// 				max-width: 150px;
+// 				height: unset;
+// 			}
+// 		}
+// 		.icons {
+// 			display: flex;
+// 			.icon {
+// 				width: 40px;
+// 				height: 30px;
+// 				&.iconVisa {
+// 					background-image: url("/icons/Visa.svg");
+// 					background-position: center center;
+// 					background-repeat: no-repeat;
+// 				}
+// 				&.masterCard {
+// 					background-image: url("/icons/master-card.svg");
+// 					background-position: center center;
+// 					background-repeat: no-repeat;
+// 				}
+// 				&.maestro {
+// 					background-image: url("/icons/maestro.svg");
+// 					background-position: center center;
+// 					background-repeat: no-repeat;
+// 				}
+// 				&.unionPay {
+// 					background-image: url("/icons/union-pay.svg");
+// 					background-position: center center;
+// 					background-repeat: no-repeat;
+// 				}
+// 				&.elcard {
+// 					background-image: url("/icons/elcard.svg");
+// 					background-position: center center;
+// 					background-repeat: no-repeat;
+// 				}
+// 			}
+// 		}
+// 	}
+// }
+// .policy {
+// 	display: flex;
+// 	flex-direction: column;
+// 	gap: 12px;
+// 	padding: 10px;
+// 	@include baseBoxShadow;
+// 	border-radius: 10px;
+// 	h5 {
+// 		font-size: 14px;
+// 		font-weight: 500;
+// 		line-height: 20px;
+// 		color: $darkenFavorite;
+// 	}
+// 	.description {
+// 		display: flex;
+// 		flex-direction: column;
+// 		gap: 6px;
+// 		list-style-type: circle;
+// 		li {
+// 			font-size: 12px;
+// 			&:first-child {
+// 				color: $discount;
+// 			}
+// 			a {
+// 				margin: 5px;
+// 				color: $discount;
+// 				text-decoration: underline;
+// 			}
+// 		}
+// 	}
+// 	.items {
+// 		display: flex;
+// 		flex-direction: column;
+// 		gap: 5px;
+// 		strong {
+// 			font-size: 14px;
+// 			font-weight: 400;
+// 			line-height: 20px;
+// 		}
+// 		.total {
+// 			margin: 12px 0;
+// 			display: flex;
+// 			align-items: center;
+// 			gap: 6px;
+// 			font-size: 14px;
+// 			font-weight: 400;
+// 			line-height: 17px;
+// 			span {
+// 				font-size: 16px;
+// 				font-weight: 500;
+// 				line-height: 18px;
+// 			}
+// 		}
+// 	}
+// }

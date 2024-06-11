@@ -29,6 +29,7 @@ export * from "./common/[header]/Header"
 export * from "./common/[loader]/Loader"
 export * from "./common/[logo]/Logo"
 export * from "./common/[search]/Search"
+export * from "./common/[steps]/Steps"
 export * from "./common/[sticky]/Sticky"
 export * from "./common/[swiper-component]/SwiperComponent"
 

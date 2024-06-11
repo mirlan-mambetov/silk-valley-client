@@ -5,7 +5,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { FC, PropsWithChildren } from "react"
 import { Provider } from "react-redux"
 import { PersistGate } from "redux-persist/integration/react"
-import { LoaderProvider } from "./Loader.provider"
 import { ScreenProvider } from "./Screen.provider"
 
 import { AttributesProvider } from "./Attributes.prodivder"
@@ -29,11 +28,9 @@ export const AppProvider: FC<PropsWithChildren> = ({ children }) => {
 					<QueryClientProvider client={queryClient}>
 						<NotificationProvider>
 							<ScreenProvider>
-								<LoaderProvider>
-									<AttributesProvider>
-										<SidebarProvider>{children}</SidebarProvider>
-									</AttributesProvider>
-								</LoaderProvider>
+								<AttributesProvider>
+									<SidebarProvider>{children}</SidebarProvider>
+								</AttributesProvider>
 							</ScreenProvider>
 						</NotificationProvider>
 					</QueryClientProvider>

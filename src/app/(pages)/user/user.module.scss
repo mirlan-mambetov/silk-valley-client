@@ -21,6 +21,17 @@
 			box-shadow: 7px 6px 19px 0px rgba(34, 60, 80, 0.03);
 			padding: 10px;
 			border-radius: 8px;
+			user-select: none;
+
+			&.disabled {
+				opacity: 0.6;
+				cursor: not-allowed;
+				.top {
+					.name {
+						cursor: not-allowed;
+					}
+				}
+			}
 			.top {
 				display: flex;
 				align-items: center;
@@ -97,6 +108,15 @@
 			padding: 12px;
 			border-radius: 10px;
 			min-height: 200px;
+			user-select: none;
+
+			&.disabled {
+				opacity: 0.6;
+				cursor: not-allowed;
+				.title {
+					cursor: not-allowed;
+				}
+			}
 			span {
 				font-size: 20px;
 			}

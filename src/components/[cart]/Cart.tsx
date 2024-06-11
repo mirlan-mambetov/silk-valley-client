@@ -6,17 +6,27 @@ import {
 	cartVariantMotion,
 } from "@/framer-motion/cart"
 import { useCart } from "@/hooks/cart/useCart"
+import { useMap } from "@/hooks/useMap"
+import { IoResizeOutline } from "react-icons/io5"
+import { MdOutlineInvertColors } from "react-icons/md"
+
+import { useUser } from "@/hooks/user/useUser"
 import { hostSourceImages } from "@/utils/hostSource"
 import cn from "classnames"
 import { motion } from "framer-motion"
 import Image from "next/image"
+import { usePathname, useRouter } from "next/navigation"
 import { FC, useEffect, useRef } from "react"
 import style from "./cart.module.scss"
 import { ICartProps } from "./Cart.props"
 
-export const Cart: FC<ICartProps> = ({ ...props }) => {
-	const { state, closeCart, removeFromCart, clearCart } = useCart()
+export const Cart: FC<ICartProps> = () => {
+	const { state, closeCart, removeFromCart } = useCart()
+	const { push } = useRouter()
+	const { user } = useUser()
+	const { pointDeliverLocation } = useMap()
 	const cartRef = useRef<HTMLDivElement>(null)
+	const pathName = usePathname()
 
 	useEffect(() => {
 		const handleClickOutside = (event: any) => {
@@ -29,6 +39,11 @@ export const Cart: FC<ICartProps> = ({ ...props }) => {
 			document.removeEventListener("click", handleClickOutside)
 		}
 	}, [state])
+
+	useEffect(() => {
+		closeCart()
+	}, [pathName])
+
 	return (
 		<>
 			<motion.div
@@ -73,12 +88,18 @@ export const Cart: FC<ICartProps> = ({ ...props }) => {
 										<div className={style.description}>
 											<h5 className={style.title}>{product.title}</h5>
 											<div className={style.items}>
-												<div className={style.item}>
-													Цвет: <span>{product.selectedColor}</span>
-												</div>
-												<div className={style.item}>
-													Размер: <span>{product.selectedSize}</span>
-												</div>
+												{product.selectedColor ? (
+													<div className={style.item}>
+														<MdOutlineInvertColors fontSize={16} />
+														<span>{product.selectedColor}</span>
+													</div>
+												) : null}
+												{product.selectedSize ? (
+													<div className={style.item}>
+														<IoResizeOutline fontSize={16} />
+														<span>{product.selectedSize}</span>
+													</div>
+												) : null}
 											</div>
 										</div>
 									</div>
@@ -98,10 +119,7 @@ export const Cart: FC<ICartProps> = ({ ...props }) => {
 								Скидка: <span>{state.totalDiscount || "Н/Д"}</span>
 							</div>
 							<div className={style.counter}>
-								Доставка:
-								<span>
-									<DestinationPoin />
-								</span>
+								<DestinationPoin />
 							</div>
 							<div className={cn(style.counter, style.total)}>
 								Итого: <Price price={state.totalCache} />
@@ -109,9 +127,16 @@ export const Cart: FC<ICartProps> = ({ ...props }) => {
 						</div>
 
 						<Button
+							title={
+								!user
+									? "Войдите в систему"
+									: !pointDeliverLocation?.location
+									? "Выберите пункт выдачи"
+									: "Перейти к оформлению"
+							}
 							btnType="placeOrder"
-							// disabled={!user || !pointDeliverLocation?.location}
-							// onClick={() => push("/checkout")}
+							disabled={!user || !pointDeliverLocation?.location}
+							onClick={() => push("/checkout")}
 						>
 							Перейти к оформлению
 						</Button>

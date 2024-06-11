@@ -19,11 +19,6 @@ const useOutsiteClick = (initialValue: boolean): TypeClickOute => {
 	}
 
 	useEffect(() => {
-		if (isShow) {
-			document.body.style.overflow = "hidden"
-		} else {
-			document.body.style.overflow = "auto"
-		}
 		document.addEventListener("click", handleClick)
 		return () => {
 			document.removeEventListener("click", handleClick)

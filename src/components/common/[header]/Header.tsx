@@ -85,7 +85,7 @@ export const Header = () => {
 									<div className={style.column}>
 										<NotifyPlaceholder
 											length={state.products.length}
-											toUp="1"
+											toUp="2"
 										/>
 										<Button
 											title="Корзина"
