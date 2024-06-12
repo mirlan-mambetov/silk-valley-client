@@ -60,7 +60,7 @@ export const PointsDelivery = () => {
 					disabled={!pointDeliverLocation}
 					onClick={closeHandle}
 					className={style.btn}
-					children={pointDeliverLocation ? "Выбрано" : "Готово"}
+					children={pointDeliverLocation ? "Выбрать" : "Готово"}
 				/>
 			</div>
 		</div>

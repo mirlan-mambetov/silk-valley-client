@@ -22,6 +22,8 @@ export const Steps = () => {
 			stepClass={style.step}
 			nextBtnName="Потдвердить"
 			previousBtnName="Назад"
+			primaryBtnClass={style.primaryBtn}
+			submitBtnName="Оформить"
 			steps={[
 				{
 					label: "Информация о получателе",

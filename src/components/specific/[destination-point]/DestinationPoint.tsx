@@ -17,9 +17,7 @@ export const DestinationPoin = () => {
 					: undefined
 			}}
 		>
-			{`Пунк выдачи: ${
-				pointDeliverLocation ? pointDeliverLocation.name : "Выбрать "
-			}`}
+			{`${pointDeliverLocation ? pointDeliverLocation.name : "Выбрать "}`}
 			<FiEdit2 />
 		</span>
 	)

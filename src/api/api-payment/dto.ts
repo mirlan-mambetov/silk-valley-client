@@ -5,20 +5,17 @@ import {
 } from "@/enums/Payment.enum"
 import { ICartProduct } from "@/interfaces/cart.interface"
 import { IPointsDelivery } from "@/interfaces/select.location.interface"
+import { IUser } from "@/interfaces/user.interface"
 
 export interface IPaymentDTO {
 	status: EnumOrderStatus
 	products: ICartProduct[]
-
 	totalPrice: number
-
 	paymentMethod: EnumPaymentMethod
-
 	color?: boolean
-
 	sizes?: boolean
-
 	address: IPointsDelivery
+	user: Pick<IUser, "email" | "name" | "phoneNumber">
 }
 
 export interface IPaymentResponseWithCard {

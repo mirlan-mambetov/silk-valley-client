@@ -1,6 +1,6 @@
 "use client"
 
-import { Button, CartRange, DestinationPoin, Price } from "@/components"
+import { Button, CartRange, Price } from "@/components"
 import {
 	cartOverlayVariantMotion,
 	cartVariantMotion,
@@ -118,24 +118,16 @@ export const Cart: FC<ICartProps> = () => {
 							<div className={style.counter}>
 								Скидка: <span>{state.totalDiscount || "Н/Д"}</span>
 							</div>
-							<div className={style.counter}>
-								<DestinationPoin />
-							</div>
+
 							<div className={cn(style.counter, style.total)}>
 								Итого: <Price price={state.totalCache} />
 							</div>
 						</div>
 
 						<Button
-							title={
-								!user
-									? "Войдите в систему"
-									: !pointDeliverLocation?.location
-									? "Выберите пункт выдачи"
-									: "Перейти к оформлению"
-							}
+							title={!user ? "Войдите в систему" : "Перейти к оформлению"}
 							btnType="placeOrder"
-							disabled={!user || !pointDeliverLocation?.location}
+							disabled={!user}
 							onClick={() => push("/checkout")}
 						>
 							Перейти к оформлению

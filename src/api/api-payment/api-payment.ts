@@ -1,5 +1,5 @@
 import { apiBase } from "../axios-base"
-import { IPaymentDTO, IPaymentResponseWithCard } from "./data-transfer"
+import { IPaymentDTO, IPaymentResponseWithCard } from "./dto"
 
 export type PlaceOrderResponse = {} & {
 	message: string
