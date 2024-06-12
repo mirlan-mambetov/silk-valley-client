@@ -12,8 +12,8 @@ export interface IPaymentDTO {
 	products: ICartProduct[]
 	totalPrice: number
 	paymentMethod: EnumPaymentMethod
-	color?: boolean
-	sizes?: boolean
+	color?: string
+	sizes?: string
 	address: IPointsDelivery
 	user: Pick<IUser, "email" | "name" | "phoneNumber">
 }

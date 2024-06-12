@@ -22,6 +22,7 @@ body {
 		"Lucida Grande", "Droid Sans", Tahoma, "Microsoft Sans Serif", sans-serif;
 	background: $white;
 	color: $darken;
+	scroll-behavior: smooth;
 }
 .main {
 	min-height: 100vh;
