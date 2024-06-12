@@ -3,10 +3,12 @@
 @import "../../../styles/mixin";
 
 .logo {
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	flex: 1;
+	a {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 	@include mediaLarge530px {
 		flex: 2;
 		justify-content: flex-start;

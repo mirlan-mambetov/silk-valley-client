@@ -7,7 +7,7 @@ import style from "./search.module.scss"
 export const Search: FC = () => {
 	return (
 		<div className={style.search}>
-			<FieldComponent placeholder="Я ищу..iphone" />
+			<FieldComponent placeholder="Поиск на Silk Valley" />
 		</div>
 	)
 }

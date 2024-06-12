@@ -11,7 +11,7 @@
 	z-index: 198;
 	background: $white;
 	margin-bottom: 15px;
-
+	border-bottom: 1px solid $darkenRGBA;
 	&.strech {
 		position: unset;
 	}
