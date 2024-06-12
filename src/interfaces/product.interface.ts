@@ -1,4 +1,5 @@
 import { IBase } from "./base.interface"
+import { ICategories } from "./categories.interface"
 
 export interface IProduct extends IBase {
 	title: string
@@ -16,6 +17,7 @@ export interface IProduct extends IBase {
 	specifications?: IProductSpecifications[]
 	quantity: number
 	attributes: IProductAttributes[]
+	category: Pick<ICategories, "id" | "name">
 }
 
 export interface IProductAttributes extends IBase {

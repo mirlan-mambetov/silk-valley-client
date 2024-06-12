@@ -54,7 +54,7 @@ export async function generateMetadata({
 		openGraph: {
 			title: `${product.title}`,
 			siteName: "Silk Valley",
-			url: "https://slkvalley.com",
+			url: `/product/${product.alias}`,
 			images: {
 				width: 32,
 				height: 32,
@@ -63,10 +63,15 @@ export async function generateMetadata({
 				url: `${process.env.NEXT_PUBLIC_API_STATIC}`,
 			},
 			locale: "ru_RU",
-			type: "website",
+			type: "article",
 		},
+		category: `${product.category.name}`,
+		keywords: `${product.title}, ${product.category.name}, ${product.description}`,
 		alternates: {
-			canonical: `/${product.alias}`,
+			canonical: `/product/${product.alias}`,
+			languages: {
+				ru: "ru-RU",
+			},
 		},
 	}
 }
