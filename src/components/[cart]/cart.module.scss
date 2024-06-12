@@ -78,6 +78,15 @@
 					position: absolute;
 					top: 0px;
 					right: 0px;
+					@include mediaLarge480px {
+						top: 3px;
+						right: 3px;
+						font-size: 18px;
+					}
+				}
+				@include mediaLarge480px {
+					width: 90px;
+					height: 115px;
 				}
 			}
 			.description {
@@ -119,6 +128,10 @@
 			justify-content: center;
 			gap: 12px;
 		}
+	}
+	@include mediaLarge480px {
+		max-height: 200px;
+		min-height: 200px;
 	}
 }
 .counters {
