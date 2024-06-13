@@ -1,0 +1,36 @@
+.icons {
+	display: flex;
+	gap: 10px;
+	.icon {
+		width: 30px;
+		height: 20px;
+		background-size: contain;
+		&.iconVisa {
+			background-image: url("/icons/Visa.svg");
+			background-position: center center;
+			background-repeat: no-repeat;
+		}
+		&.masterCard {
+			background-image: url("/icons/master-card.svg");
+			background-position: center center;
+			background-repeat: no-repeat;
+		}
+		&.maestro {
+			background-image: url("/icons/maestro.svg");
+			background-position: center center;
+			background-repeat: no-repeat;
+		}
+		&.mbank {
+			background-image: url("/images/mbank.png");
+			background-position: center center;
+			background-repeat: no-repeat;
+			width: 50px;
+		}
+
+		&.elcard {
+			background-image: url("/icons/elcard.svg");
+			background-position: center center;
+			background-repeat: no-repeat;
+		}
+	}
+}

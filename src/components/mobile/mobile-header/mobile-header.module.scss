@@ -20,7 +20,7 @@
 		align-items: center;
 		grid-template-columns: 1fr 40px;
 		column-gap: 12px;
-		padding: 17px 0;
+		padding: 20px 0;
 
 		.column {
 			display: flex;
@@ -31,7 +31,7 @@
 				justify-content: flex-end;
 			}
 			button {
-				font-size: 22px;
+				font-size: 33px;
 				color: $black;
 			}
 		}

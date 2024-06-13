@@ -18,7 +18,8 @@
 	flex-direction: column;
 	gap: 15px;
 	@include mediaLarge640px {
-		width: 100%;
+		max-width: unset;
+		min-width: unset;
 	}
 	&.backgroundBlack {
 		background: $black;

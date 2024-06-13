@@ -1,0 +1,44 @@
+@import "../../../styles/media.mixin";
+@import "../../../styles/mixin";
+@import "../../../styles/vars";
+
+.user {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	.userItem {
+		width: unset;
+		font-size: 14px;
+		font-weight: 500;
+		min-width: 45%;
+		padding: 10px;
+		border-radius: 10px;
+		background: $whiteRGBA;
+		border: none;
+		&.point {
+			font-size: 16px;
+			background: transparent;
+			color: $purple;
+		}
+		@include mediaLarge480px {
+			min-width: 100%;
+		}
+	}
+	.action {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 5px;
+		color: $purple;
+		min-width: 48%;
+		font-size: 14px;
+		font-weight: 500;
+		@include mediaLarge480px {
+			min-width: 100%;
+			margin: 10px 0;
+			border: 1px solid $purple;
+			padding: 15px;
+			border-radius: 15px;
+		}
+	}
+}

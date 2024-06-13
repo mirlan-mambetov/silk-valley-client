@@ -22,12 +22,12 @@
 				display: flex;
 				align-items: center;
 				font-size: 14px;
-				line-height: 12px;
+				line-height: 18px;
 				font-weight: 400;
 				height: 30px;
 				color: $purple;
 				@include mediaLarge480px {
-					font-size: 16px;
+					font-size: 14px;
 					font-weight: 500;
 				}
 			}
@@ -42,9 +42,6 @@
 					font-size: 12px;
 					line-height: 15px;
 					color: $gray;
-					@include mediaLarge480px {
-						font-size: 14px;
-					}
 				}
 				@include mediaLarge480px {
 					gap: 8px;
@@ -80,9 +77,8 @@
 			.item {
 				color: $gray;
 				font-size: 12px;
-				@include mediaLarge480px {
-					font-size: 14px;
-				}
+				font-weight: 400;
+				line-height: 15px;
 			}
 			@include mediaLarge940px {
 				grid-template-columns: 1fr 1fr 1fr 1fr;

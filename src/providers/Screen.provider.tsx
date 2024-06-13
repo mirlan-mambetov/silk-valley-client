@@ -37,7 +37,9 @@ export const ScreenProvider: FC<PropsWithChildren> = ({ children }) => {
 
 	const closeHandle = () => {
 		setActive(false)
-		setContent(null)
+		setTimeout(() => {
+			setContent(null)
+		}, 1300)
 	}
 
 	return (

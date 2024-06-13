@@ -82,8 +82,8 @@ export const Logo: FC<ILogo> = ({
 							height={height}
 						/> */}
 						<svg
-							width="50"
-							height="36"
+							width="30"
+							height="15"
 							viewBox="0 0 90 68"
 							fill="none"
 							xmlns="http://www.w3.org/2000/svg"

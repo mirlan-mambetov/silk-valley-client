@@ -32,7 +32,7 @@
 	background: $black;
 	color: $white;
 	padding: 12px;
-	border-radius: 5px;
+	border-radius: 16px;
 	min-height: 50px;
 	@include buttonHover;
 	span {
@@ -76,11 +76,10 @@
 	color: $white;
 	font-size: 14px;
 	font-weight: 500;
-	min-height: 45px;
-	@include buttonHover;
-	@include mediaLarge440px {
-		min-height: 35px;
+	@include mediaLarge480px {
+		border-radius: 20px;
 	}
+	@include buttonHover;
 }
 .delete {
 	color: $gray;

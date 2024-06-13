@@ -7,7 +7,7 @@ import { IProductSpecificationsProps } from "./ProductSpecification.props"
 export const ProductSpecification: FC<IProductSpecificationsProps> = ({
 	specifications,
 }) => {
-	return (
+	return specifications?.length ? (
 		<div className={style.specifications}>
 			<h3 className={style.title}>
 				<span>Дополнительная информация</span>
@@ -21,5 +21,5 @@ export const ProductSpecification: FC<IProductSpecificationsProps> = ({
 				))}
 			</div>
 		</div>
-	)
+	) : null
 }

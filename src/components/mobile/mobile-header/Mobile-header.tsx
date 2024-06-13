@@ -1,13 +1,6 @@
 "use client"
 
-import {
-	Bar,
-	Button,
-	Logo,
-	MapIcon,
-	Search,
-	SelectLocation,
-} from "@/components"
+import { Bar, Button, MapIcon, Search, SelectLocation } from "@/components"
 import { FC } from "react"
 
 import { useScreen } from "@/hooks/screen/useScreen"
@@ -31,7 +24,7 @@ export const MobileHeaderComponent: FC = () => {
 			<div className="container">
 				<div className={style.wrap}>
 					<div className={style.column}>
-						<Logo variant="SV" color="black" width={40} height={27} />
+						{/* <Logo variant="SV" color="black" width={40} height={27} /> */}
 						<Search />
 					</div>
 					<div className={style.column}>

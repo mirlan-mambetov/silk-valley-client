@@ -61,7 +61,7 @@ export const ProductActions: FC<IProductActionsProps> = ({
 				<Button
 					isLoading={isLoading}
 					aria-label="В корзину"
-					className={cn(style.button, {
+					className={cn(style.button, style.toCart, {
 						[style.xl1]: btnSize === "1xl",
 						[style.xl2]: btnSize === "2xl",
 					})}
@@ -71,7 +71,7 @@ export const ProductActions: FC<IProductActionsProps> = ({
 			) : (
 				<Button
 					disabled={disable}
-					className={cn(style.button, {
+					className={cn(style.button, style.toCart, {
 						[style.xl1]: btnSize === "1xl",
 						[style.xl2]: btnSize === "2xl",
 					})}
@@ -87,7 +87,7 @@ export const ProductActions: FC<IProductActionsProps> = ({
 			return (
 				<Button
 					disabled={disable}
-					className={cn(style.button, {
+					className={cn(style.button, style.view, {
 						[style.xl1]: btnSize === "1xl",
 						[style.xl2]: btnSize === "2xl",
 					})}
@@ -102,7 +102,7 @@ export const ProductActions: FC<IProductActionsProps> = ({
 			return (
 				<Button
 					disabled={disable}
-					className={cn(style.button, {
+					className={cn(style.button, style.view, {
 						[style.xl1]: btnSize === "1xl",
 						[style.xl2]: btnSize === "2xl",
 					})}

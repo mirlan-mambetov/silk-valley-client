@@ -145,30 +145,30 @@
 				}
 			}
 		}
-		&:nth-child(1) {
-			@include mediaLarge530px {
-				order: 4;
-			}
-		}
-		&:nth-child(2) {
-			@include mediaLarge530px {
-				order: 2;
-			}
-		}
-		&:nth-child(4) {
-			@include mediaLarge530px {
-				order: 3;
-			}
-		}
-		&:nth-child(5) {
-			@include mediaLarge530px {
-				order: 5;
-			}
-		}
-		&:nth-child(6) {
-			@include mediaLarge530px {
-				order: 6;
-			}
-		}
+		// &:nth-child(1) {
+		// 	@include mediaLarge530px {
+		// 		order: 4;
+		// 	}
+		// }
+		// &:nth-child(2) {
+		// 	@include mediaLarge530px {
+		// 		order: 2;
+		// 	}
+		// }
+		// &:nth-child(4) {
+		// 	@include mediaLarge530px {
+		// 		order: 3;
+		// 	}
+		// }
+		// &:nth-child(5) {
+		// 	@include mediaLarge530px {
+		// 		order: 5;
+		// 	}
+		// }
+		// &:nth-child(6) {
+		// 	@include mediaLarge530px {
+		// 		order: 6;
+		// 	}
+		// }
 	}
 }

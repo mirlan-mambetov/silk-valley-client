@@ -1,3 +1,7 @@
+@import "../../styles/media.mixin";
+@import "../../styles/mixin";
+@import "../../styles/vars";
+
 .button {
 	display: flex;
 	justify-content: center;
@@ -6,6 +10,12 @@
 	width: 100%;
 	font-size: 12px;
 	line-height: 8px;
+	&.view {
+		min-height: 35px;
+	}
+	&.toCart {
+		min-height: 50px;
+	}
 	&.xl1 {
 		padding: 8px 12px;
 	}
