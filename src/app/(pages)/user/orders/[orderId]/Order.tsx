@@ -9,12 +9,12 @@ import { FC } from "react"
 import style from "./order.module.scss"
 
 interface IOrderProps {
-	id: string
+	orderId: string
 }
-export const Order: FC<IOrderProps> = ({ id }) => {
+export const Order: FC<IOrderProps> = ({ orderId }) => {
 	const { data, isLoading } = useQuery({
 		queryKey: ["getUserOrder"],
-		queryFn: () => OrderApi.fetchOrder(+id),
+		queryFn: () => OrderApi.fetchOrder(+orderId),
 	})
 
 	return isLoading ? (

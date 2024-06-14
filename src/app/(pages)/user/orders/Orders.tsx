@@ -86,7 +86,7 @@ const Orders: FC = () => {
 						<div className={style.row}>
 							<strong>Действие</strong>
 							<Button
-								onClick={() => push(`/user/orders/${order.id}`)}
+								onClick={() => push(`/user/orders/${order.orderId}`)}
 								title={`Просмотр заказа ${order.orderId}`}
 							>
 								<span>

@@ -11,6 +11,7 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { FC, useEffect, useMemo } from "react"
 import { GoHeart, GoStar } from "react-icons/go"
+import { IoMdNotificationsOutline } from "react-icons/io"
 import { IoLogOutOutline } from "react-icons/io5"
 import { UserNotifyComponent } from "../user/Notify"
 import style from "./user.module.scss"
@@ -77,6 +78,12 @@ export const UserComponent: FC<IUserComponentProps> = ({ user, ...props }) => {
 								(notify) =>
 									notify.typeOfNotify === EnumNotifyType.ORDER && !notify.expire
 							),
+						},
+						{
+							name: "Уведомления",
+							href: "/user/notifications",
+							Icon: IoMdNotificationsOutline,
+							notify: user.notifications?.some((notify) => !notify.expire),
 						},
 						{
 							name: "Избранные",

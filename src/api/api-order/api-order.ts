@@ -5,9 +5,9 @@ export const OrderApi = {
 	/**
 	 * @returns ORDER
 	 */
-	async fetchOrder(id: number) {
+	async fetchOrder(orderId: number) {
 		const response = await apiBase<IOrder>({
-			url: `/order/${id}`,
+			url: `/order/${orderId}`,
 			method: "GET",
 		})
 		return response.data

@@ -12,10 +12,12 @@ export const metadata: Metadata = {
 	},
 }
 
-export default function OrderPage({ params }: IPageParams<{ id: string }>) {
+export default function OrderPage({
+	params,
+}: IPageParams<{ orderId: string }>) {
 	return (
 		<Suspense fallback={<Loader color="black" position="absolute" />}>
-			<Order id={params.id} />
+			<Order orderId={params.orderId} />
 		</Suspense>
 	)
 }

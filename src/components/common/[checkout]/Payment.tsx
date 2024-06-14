@@ -16,6 +16,7 @@ import { useAttributes } from "@/hooks/useAttributes"
 import { useMap } from "@/hooks/useMap"
 import { useNotification } from "@/hooks/useNotification"
 import { useUser } from "@/hooks/user/useUser"
+import { useWebSocket } from "@/hooks/ws/useWebSocket"
 import { IUser } from "@/interfaces/user.interface"
 import { scrollToSection } from "@/utils/scrollToAnchor"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
@@ -37,6 +38,7 @@ export const Payment: FC<IPaymentProps> = ({ userData, paymentMethod }) => {
 	const { addNotification } = useNotification()
 	const queryClient = useQueryClient()
 	const { payload } = useAttributes()
+	const socket = useWebSocket()
 
 	const [rules, setRules] = useState<{ rulesOfUse: boolean; parties: boolean }>(
 		{
@@ -46,7 +48,7 @@ export const Payment: FC<IPaymentProps> = ({ userData, paymentMethod }) => {
 	)
 
 	// PAYMENT MUTATION
-	const { mutateAsync, isPending } = useMutation({
+	const { mutateAsync } = useMutation({
 		mutationKey: ["placeOrder"],
 		mutationFn: (data: IPaymentDTO) => PaymentApi.placeOrder(data),
 	})
@@ -92,6 +94,8 @@ export const Payment: FC<IPaymentProps> = ({ userData, paymentMethod }) => {
 								console.log(data.detail_order)
 								push(`${data.detail_order.url}`)
 							}
+							socket?.emit("placeOrder", { placeOrder: true })
+
 							if (!data.detail_order) {
 								push(`/`)
 							}
