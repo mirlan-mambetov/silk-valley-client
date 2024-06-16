@@ -1,11 +1,9 @@
+import { NO_INDEX_PAGE } from "@/constants/app.constants"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
 	title: "Избранное",
-	robots: {
-		index: false,
-		follow: false,
-	},
+	...NO_INDEX_PAGE,
 }
 
 const FeaturedPage = () => {

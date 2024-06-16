@@ -44,7 +44,9 @@ export const Detail: FC<IDetailProps> = ({ data }) => {
 					{/* IMAGES */}
 					<ProductImages
 						data={{
-							poster: selectedImages ? selectedImages[0] : data.poster,
+							poster: selectedImages
+								? selectedImages[0]
+								: data.attributes[0].images[0],
 							images: selectedImages || data.attributes[0].images,
 						}}
 					/>
